@@ -30,7 +30,14 @@ namespace app
 
         private void IconMaximized_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void IconMinimized_Click(object sender, EventArgs e)
@@ -71,6 +78,22 @@ namespace app
                 FormPanelTextBoxPassword.UseSystemPasswordChar = true;
                 FormPanelTextBoxPassword.IconRight = Properties.Resources.visionHide;
             }
+        }
+
+        private void FormPanelButtonEnterance_Click(object sender, EventArgs e)
+        {
+            ActiveForm.Hide();
+            ГлавнаяА to = new ГлавнаяА();
+            to.ShowDialog();
+            Close();
+        }
+
+        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        {
+            ActiveForm.Hide();
+            ГлавнаяО to = new ГлавнаяО();
+            to.ShowDialog();
+            Close();
         }
     }
 }

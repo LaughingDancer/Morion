@@ -52,6 +52,155 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DB.cs" />
+    <Compile Include="Classes\Hashing.cs" />
+    <Compile Include="Classes\ValidationData.cs" />
+    <Compile Include="Classes\ValidationLogin.cs" />
+    <Compile Include="Classes\ValidationPassword.cs" />
+    <Compile Include="Forms\ДобавлениеПерсонал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ДобавлениеПерсонал.Designer.cs">
+      <DependentUpon>ДобавлениеПерсонал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ИзменениеПерсонал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ИзменениеПерсонал.Designer.cs">
+      <DependentUpon>ИзменениеПерсонал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\УдалениеПерсонал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\УдалениеПерсонал.Designer.cs">
+      <DependentUpon>УдалениеПерсонал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsOperator\UC_ДеталиЗаказов.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsOperator\UC_ДеталиЗаказов.Designer.cs">
+      <DependentUpon>UC_ДеталиЗаказов.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsOperator\UC_ОформитьЗаказ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsOperator\UC_ОформитьЗаказ.Designer.cs">
+      <DependentUpon>UC_ОформитьЗаказ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ВариантыОптимизацииСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ВариантыОптимизацииСА.Designer.cs">
+      <DependentUpon>UC_ВариантыОптимизацииСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ДеталиЗаказаСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ДеталиЗаказаСА.Designer.cs">
+      <DependentUpon>UC_ДеталиЗаказаСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ЗаказыСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ЗаказыСА.Designer.cs">
+      <DependentUpon>UC_ЗаказыСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ИзделияСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ИзделияСА.Designer.cs">
+      <DependentUpon>UC_ИзделияСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ИзделияТканиСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ИзделияТканиСА.Designer.cs">
+      <DependentUpon>UC_ИзделияТканиСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ПользователиСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ПользователиСА.Designer.cs">
+      <DependentUpon>UC_ПользователиСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_СотрудникиСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_СотрудникиСА.Designer.cs">
+      <DependentUpon>UC_СотрудникиСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ТканиСА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsStatistics\UC_ТканиСА.Designer.cs">
+      <DependentUpon>UC_ТканиСА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ВариантыОптимизацииА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ВариантыОптимизацииА.Designer.cs">
+      <DependentUpon>UC_ВариантыОптимизацииА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ДеталиЗаказаА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ДеталиЗаказаА.Designer.cs">
+      <DependentUpon>UC_ДеталиЗаказаА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ЗаказыА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ЗаказыА.Designer.cs">
+      <DependentUpon>UC_ЗаказыА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ИзделияА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ИзделияА.Designer.cs">
+      <DependentUpon>UC_ИзделияА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ИзделияТканиА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ИзделияТканиА.Designer.cs">
+      <DependentUpon>UC_ИзделияТканиА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ПользователиА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ПользователиА.Designer.cs">
+      <DependentUpon>UC_ПользователиА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_СотрудникиА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_СотрудникиА.Designer.cs">
+      <DependentUpon>UC_СотрудникиА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ТканиА.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsTables\UC_ТканиА.Designer.cs">
+      <DependentUpon>UC_ТканиА.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Главная.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Главная.Designer.cs">
+      <DependentUpon>UC_Главная.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Персонал.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Персонал.Designer.cs">
+      <DependentUpon>UC_Персонал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ГлавнаяА.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ГлавнаяА.Designer.cs">
+      <DependentUpon>ГлавнаяА.cs</DependentUpon>
+    </Compile>
     <Compile Include="Авторизация.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +209,84 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ГлавнаяО.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ГлавнаяО.Designer.cs">
+      <DependentUpon>ГлавнаяО.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\ДобавлениеПерсонал.resx">
+      <DependentUpon>ДобавлениеПерсонал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ИзменениеПерсонал.resx">
+      <DependentUpon>ИзменениеПерсонал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\УдалениеПерсонал.resx">
+      <DependentUpon>УдалениеПерсонал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsOperator\UC_ДеталиЗаказов.resx">
+      <DependentUpon>UC_ДеталиЗаказов.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsOperator\UC_ОформитьЗаказ.resx">
+      <DependentUpon>UC_ОформитьЗаказ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_ВариантыОптимизацииСА.resx">
+      <DependentUpon>UC_ВариантыОптимизацииСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_ДеталиЗаказаСА.resx">
+      <DependentUpon>UC_ДеталиЗаказаСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_ЗаказыСА.resx">
+      <DependentUpon>UC_ЗаказыСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_ИзделияСА.resx">
+      <DependentUpon>UC_ИзделияСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_ИзделияТканиСА.resx">
+      <DependentUpon>UC_ИзделияТканиСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_ПользователиСА.resx">
+      <DependentUpon>UC_ПользователиСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_СотрудникиСА.resx">
+      <DependentUpon>UC_СотрудникиСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsStatistics\UC_ТканиСА.resx">
+      <DependentUpon>UC_ТканиСА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_ВариантыОптимизацииА.resx">
+      <DependentUpon>UC_ВариантыОптимизацииА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_ДеталиЗаказаА.resx">
+      <DependentUpon>UC_ДеталиЗаказаА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_ЗаказыА.resx">
+      <DependentUpon>UC_ЗаказыА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_ИзделияА.resx">
+      <DependentUpon>UC_ИзделияА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_ИзделияТканиА.resx">
+      <DependentUpon>UC_ИзделияТканиА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_ПользователиА.resx">
+      <DependentUpon>UC_ПользователиА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_СотрудникиА.resx">
+      <DependentUpon>UC_СотрудникиА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsTables\UC_ТканиА.resx">
+      <DependentUpon>UC_ТканиА.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Главная.resx">
+      <DependentUpon>UC_Главная.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Персонал.resx">
+      <DependentUpon>UC_Персонал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ГлавнаяА.resx">
+      <DependentUpon>ГлавнаяА.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -72,6 +299,9 @@
     </Compile>
     <EmbeddedResource Include="Авторизация.resx">
       <DependentUpon>Авторизация.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ГлавнаяО.resx">
+      <DependentUpon>ГлавнаяО.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -91,9 +321,6 @@
     <None Include="Resources\closeW.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\expand-arrows.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\minimizeW.png" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +334,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\visionHide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spreadsheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pie-chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teamwork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expand-window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\default_photo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Авторизация));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.HeaderPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.FormPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.FormPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.FormPanelButtonEnterance = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.FormPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.FormPanelTextBoxPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.FormPanelTextBoxLogin = new Guna.UI2.WinForms.Guna2TextBox();
             this.IconMinimized = new Guna.UI2.WinForms.Guna2Button();
@@ -100,17 +102,6 @@
             this.FormPanel.TabIndex = 1;
             this.FormPanel.UseTransparentBackground = true;
             // 
-            // FormPanelLabel
-            // 
-            this.FormPanelLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FormPanelLabel.BackColor = System.Drawing.Color.Transparent;
-            this.FormPanelLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.FormPanelLabel.Location = new System.Drawing.Point(103, 50);
-            this.FormPanelLabel.Name = "FormPanelLabel";
-            this.FormPanelLabel.Size = new System.Drawing.Size(308, 47);
-            this.FormPanelLabel.TabIndex = 5;
-            this.FormPanelLabel.Text = "Добро пожаловать";
-            // 
             // FormPanelButtonEnterance
             // 
             this.FormPanelButtonEnterance.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -133,6 +124,42 @@
             this.FormPanelButtonEnterance.Size = new System.Drawing.Size(333, 55);
             this.FormPanelButtonEnterance.TabIndex = 8;
             this.FormPanelButtonEnterance.Text = "Вход";
+            this.FormPanelButtonEnterance.Click += new System.EventHandler(this.FormPanelButtonEnterance_Click);
+            // 
+            // FormPanelLabel
+            // 
+            this.FormPanelLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.FormPanelLabel.BackColor = System.Drawing.Color.Transparent;
+            this.FormPanelLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.FormPanelLabel.Location = new System.Drawing.Point(103, 50);
+            this.FormPanelLabel.Name = "FormPanelLabel";
+            this.FormPanelLabel.Size = new System.Drawing.Size(308, 47);
+            this.FormPanelLabel.TabIndex = 5;
+            this.FormPanelLabel.Text = "Добро пожаловать";
+            // 
+            // guna2GradientButton1
+            // 
+            this.guna2GradientButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2GradientButton1.BorderRadius = 25;
+            this.guna2GradientButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientButton1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            this.guna2GradientButton1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.guna2GradientButton1.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.guna2GradientButton1.Location = new System.Drawing.Point(50, 364);
+            this.guna2GradientButton1.Name = "guna2GradientButton1";
+            this.guna2GradientButton1.Size = new System.Drawing.Size(194, 55);
+            this.guna2GradientButton1.TabIndex = 9;
+            this.guna2GradientButton1.Text = "ВходО";
+            this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
             // FormPanelTextBoxPassword
             // 
@@ -235,8 +262,8 @@
             this.IconMaximized.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.IconMaximized.ForeColor = System.Drawing.Color.White;
             this.IconMaximized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.IconMaximized.Image = global::app.Properties.Resources.expand_arrows;
-            this.IconMaximized.ImageSize = new System.Drawing.Size(24, 24);
+            this.IconMaximized.Image = global::app.Properties.Resources.expand_window;
+            this.IconMaximized.ImageSize = new System.Drawing.Size(30, 30);
             this.IconMaximized.Location = new System.Drawing.Point(920, 0);
             this.IconMaximized.Name = "IconMaximized";
             this.IconMaximized.Size = new System.Drawing.Size(40, 40);
@@ -270,9 +297,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.FormPanel);
             this.Controls.Add(this.HeaderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Авторизация";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -299,6 +328,7 @@
         private Guna.UI2.WinForms.Guna2TextBox FormPanelTextBoxLogin;
         private Guna.UI2.WinForms.Guna2HtmlLabel FormPanelLabel;
         private Guna.UI2.WinForms.Guna2GradientButton FormPanelButtonEnterance;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
     }
 }
 
