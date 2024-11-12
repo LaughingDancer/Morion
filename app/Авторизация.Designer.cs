@@ -33,16 +33,15 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.HeaderPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.FormPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.FormPanelButtonEnterance = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.FormPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.FormPanelTextBoxPassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.FormPanelTextBoxLogin = new Guna.UI2.WinForms.Guna2TextBox();
             this.IconMinimized = new Guna.UI2.WinForms.Guna2Button();
             this.IconMaximized = new Guna.UI2.WinForms.Guna2Button();
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.FormPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.FormPanelButtonEnterance = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.FormPanelTextBoxPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.FormPanelTextBoxLogin = new Guna.UI2.WinForms.Guna2TextBox();
+            this.FormPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.HeaderPanel.SuspendLayout();
             this.FormPanel.SuspendLayout();
             this.SuspendLayout();
@@ -79,155 +78,6 @@
             this.HeaderPanelLabel.Size = new System.Drawing.Size(80, 26);
             this.HeaderPanelLabel.TabIndex = 3;
             this.HeaderPanelLabel.Text = "Морион";
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.HeaderPanel;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // FormPanel
-            // 
-            this.FormPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FormPanel.BackColor = System.Drawing.Color.Transparent;
-            this.FormPanel.BorderRadius = 40;
-            this.FormPanel.Controls.Add(this.FormPanelButtonEnterance);
-            this.FormPanel.Controls.Add(this.FormPanelTextBoxPassword);
-            this.FormPanel.Controls.Add(this.FormPanelTextBoxLogin);
-            this.FormPanel.Controls.Add(this.FormPanelLabel);
-            this.FormPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
-            this.FormPanel.Location = new System.Drawing.Point(250, 50);
-            this.FormPanel.Name = "FormPanel";
-            this.FormPanel.Size = new System.Drawing.Size(500, 400);
-            this.FormPanel.TabIndex = 1;
-            this.FormPanel.UseTransparentBackground = true;
-            // 
-            // FormPanelButtonEnterance
-            // 
-            this.FormPanelButtonEnterance.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FormPanelButtonEnterance.BorderRadius = 25;
-            this.FormPanelButtonEnterance.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FormPanelButtonEnterance.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.FormPanelButtonEnterance.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.FormPanelButtonEnterance.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.FormPanelButtonEnterance.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.FormPanelButtonEnterance.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.FormPanelButtonEnterance.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.FormPanelButtonEnterance.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.FormPanelButtonEnterance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.FormPanelButtonEnterance.ForeColor = System.Drawing.Color.White;
-            this.FormPanelButtonEnterance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            this.FormPanelButtonEnterance.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.FormPanelButtonEnterance.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.FormPanelButtonEnterance.Location = new System.Drawing.Point(84, 314);
-            this.FormPanelButtonEnterance.Name = "FormPanelButtonEnterance";
-            this.FormPanelButtonEnterance.Size = new System.Drawing.Size(333, 55);
-            this.FormPanelButtonEnterance.TabIndex = 8;
-            this.FormPanelButtonEnterance.Text = "Вход";
-            this.FormPanelButtonEnterance.Click += new System.EventHandler(this.FormPanelButtonEnterance_Click);
-            // 
-            // FormPanelLabel
-            // 
-            this.FormPanelLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FormPanelLabel.BackColor = System.Drawing.Color.Transparent;
-            this.FormPanelLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.FormPanelLabel.Location = new System.Drawing.Point(103, 50);
-            this.FormPanelLabel.Name = "FormPanelLabel";
-            this.FormPanelLabel.Size = new System.Drawing.Size(308, 47);
-            this.FormPanelLabel.TabIndex = 5;
-            this.FormPanelLabel.Text = "Добро пожаловать";
-            // 
-            // guna2GradientButton1
-            // 
-            this.guna2GradientButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2GradientButton1.BorderRadius = 25;
-            this.guna2GradientButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2GradientButton1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            this.guna2GradientButton1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.guna2GradientButton1.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.guna2GradientButton1.Location = new System.Drawing.Point(50, 364);
-            this.guna2GradientButton1.Name = "guna2GradientButton1";
-            this.guna2GradientButton1.Size = new System.Drawing.Size(194, 55);
-            this.guna2GradientButton1.TabIndex = 9;
-            this.guna2GradientButton1.Text = "ВходО";
-            this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
-            // 
-            // FormPanelTextBoxPassword
-            // 
-            this.FormPanelTextBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FormPanelTextBoxPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.FormPanelTextBoxPassword.BorderRadius = 25;
-            this.FormPanelTextBoxPassword.BorderThickness = 2;
-            this.FormPanelTextBoxPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.FormPanelTextBoxPassword.DefaultText = "";
-            this.FormPanelTextBoxPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.FormPanelTextBoxPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.FormPanelTextBoxPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.FormPanelTextBoxPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.FormPanelTextBoxPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
-            this.FormPanelTextBoxPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
-            this.FormPanelTextBoxPassword.FocusedState.FillColor = System.Drawing.Color.White;
-            this.FormPanelTextBoxPassword.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.FormPanelTextBoxPassword.ForeColor = System.Drawing.Color.Black;
-            this.FormPanelTextBoxPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
-            this.FormPanelTextBoxPassword.IconLeft = global::app.Properties.Resources._lock;
-            this.FormPanelTextBoxPassword.IconLeftOffset = new System.Drawing.Point(10, 0);
-            this.FormPanelTextBoxPassword.IconLeftSize = new System.Drawing.Size(25, 25);
-            this.FormPanelTextBoxPassword.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-            this.FormPanelTextBoxPassword.IconRightOffset = new System.Drawing.Point(10, 0);
-            this.FormPanelTextBoxPassword.IconRightSize = new System.Drawing.Size(25, 25);
-            this.FormPanelTextBoxPassword.Location = new System.Drawing.Point(84, 219);
-            this.FormPanelTextBoxPassword.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.FormPanelTextBoxPassword.Name = "FormPanelTextBoxPassword";
-            this.FormPanelTextBoxPassword.PasswordChar = '\0';
-            this.FormPanelTextBoxPassword.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.FormPanelTextBoxPassword.PlaceholderText = "Пароль";
-            this.FormPanelTextBoxPassword.SelectedText = "";
-            this.FormPanelTextBoxPassword.Size = new System.Drawing.Size(333, 55);
-            this.FormPanelTextBoxPassword.TabIndex = 7;
-            this.FormPanelTextBoxPassword.TextOffset = new System.Drawing.Point(10, 0);
-            this.FormPanelTextBoxPassword.IconRightClick += new System.EventHandler(this.FormPanelTextBoxPassword_IconRightClick);
-            // 
-            // FormPanelTextBoxLogin
-            // 
-            this.FormPanelTextBoxLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FormPanelTextBoxLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.FormPanelTextBoxLogin.BorderRadius = 25;
-            this.FormPanelTextBoxLogin.BorderThickness = 2;
-            this.FormPanelTextBoxLogin.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.FormPanelTextBoxLogin.DefaultText = "";
-            this.FormPanelTextBoxLogin.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.FormPanelTextBoxLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.FormPanelTextBoxLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.FormPanelTextBoxLogin.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.FormPanelTextBoxLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
-            this.FormPanelTextBoxLogin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
-            this.FormPanelTextBoxLogin.FocusedState.FillColor = System.Drawing.Color.White;
-            this.FormPanelTextBoxLogin.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.FormPanelTextBoxLogin.ForeColor = System.Drawing.Color.Black;
-            this.FormPanelTextBoxLogin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
-            this.FormPanelTextBoxLogin.IconLeft = global::app.Properties.Resources.user;
-            this.FormPanelTextBoxLogin.IconLeftOffset = new System.Drawing.Point(10, 0);
-            this.FormPanelTextBoxLogin.IconLeftSize = new System.Drawing.Size(25, 25);
-            this.FormPanelTextBoxLogin.Location = new System.Drawing.Point(84, 127);
-            this.FormPanelTextBoxLogin.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.FormPanelTextBoxLogin.Name = "FormPanelTextBoxLogin";
-            this.FormPanelTextBoxLogin.PasswordChar = '\0';
-            this.FormPanelTextBoxLogin.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.FormPanelTextBoxLogin.PlaceholderText = "Логин";
-            this.FormPanelTextBoxLogin.SelectedText = "";
-            this.FormPanelTextBoxLogin.Size = new System.Drawing.Size(333, 55);
-            this.FormPanelTextBoxLogin.TabIndex = 6;
-            this.FormPanelTextBoxLogin.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // IconMinimized
             // 
@@ -292,12 +142,139 @@
             this.IconClose.UseTransparentBackground = true;
             this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.HeaderPanel;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // FormPanel
+            // 
+            this.FormPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.FormPanel.BackColor = System.Drawing.Color.Transparent;
+            this.FormPanel.BorderRadius = 25;
+            this.FormPanel.Controls.Add(this.FormPanelButtonEnterance);
+            this.FormPanel.Controls.Add(this.FormPanelTextBoxPassword);
+            this.FormPanel.Controls.Add(this.FormPanelTextBoxLogin);
+            this.FormPanel.Controls.Add(this.FormPanelLabel);
+            this.FormPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
+            this.FormPanel.Location = new System.Drawing.Point(250, 100);
+            this.FormPanel.Name = "FormPanel";
+            this.FormPanel.Size = new System.Drawing.Size(500, 400);
+            this.FormPanel.TabIndex = 1;
+            this.FormPanel.UseTransparentBackground = true;
+            // 
+            // FormPanelButtonEnterance
+            // 
+            this.FormPanelButtonEnterance.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.FormPanelButtonEnterance.BorderRadius = 15;
+            this.FormPanelButtonEnterance.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FormPanelButtonEnterance.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.FormPanelButtonEnterance.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.FormPanelButtonEnterance.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.FormPanelButtonEnterance.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.FormPanelButtonEnterance.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.FormPanelButtonEnterance.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.FormPanelButtonEnterance.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.FormPanelButtonEnterance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.FormPanelButtonEnterance.ForeColor = System.Drawing.Color.White;
+            this.FormPanelButtonEnterance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            this.FormPanelButtonEnterance.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.FormPanelButtonEnterance.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.FormPanelButtonEnterance.Location = new System.Drawing.Point(84, 314);
+            this.FormPanelButtonEnterance.Name = "FormPanelButtonEnterance";
+            this.FormPanelButtonEnterance.Size = new System.Drawing.Size(333, 55);
+            this.FormPanelButtonEnterance.TabIndex = 8;
+            this.FormPanelButtonEnterance.Text = "Вход";
+            this.FormPanelButtonEnterance.Click += new System.EventHandler(this.FormPanelButtonEnterance_Click);
+            this.FormPanelButtonEnterance.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormPanelButtonEnterance_KeyDown);
+            // 
+            // FormPanelTextBoxPassword
+            // 
+            this.FormPanelTextBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.FormPanelTextBoxPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.FormPanelTextBoxPassword.BorderRadius = 15;
+            this.FormPanelTextBoxPassword.BorderThickness = 2;
+            this.FormPanelTextBoxPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.FormPanelTextBoxPassword.DefaultText = "";
+            this.FormPanelTextBoxPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.FormPanelTextBoxPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.FormPanelTextBoxPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.FormPanelTextBoxPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.FormPanelTextBoxPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
+            this.FormPanelTextBoxPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
+            this.FormPanelTextBoxPassword.FocusedState.FillColor = System.Drawing.Color.White;
+            this.FormPanelTextBoxPassword.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.FormPanelTextBoxPassword.ForeColor = System.Drawing.Color.Black;
+            this.FormPanelTextBoxPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
+            this.FormPanelTextBoxPassword.IconLeft = global::app.Properties.Resources._lock;
+            this.FormPanelTextBoxPassword.IconLeftOffset = new System.Drawing.Point(10, 0);
+            this.FormPanelTextBoxPassword.IconLeftSize = new System.Drawing.Size(25, 25);
+            this.FormPanelTextBoxPassword.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.FormPanelTextBoxPassword.IconRightOffset = new System.Drawing.Point(10, 0);
+            this.FormPanelTextBoxPassword.IconRightSize = new System.Drawing.Size(25, 25);
+            this.FormPanelTextBoxPassword.Location = new System.Drawing.Point(84, 219);
+            this.FormPanelTextBoxPassword.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.FormPanelTextBoxPassword.Name = "FormPanelTextBoxPassword";
+            this.FormPanelTextBoxPassword.PasswordChar = '\0';
+            this.FormPanelTextBoxPassword.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.FormPanelTextBoxPassword.PlaceholderText = "Пароль";
+            this.FormPanelTextBoxPassword.SelectedText = "";
+            this.FormPanelTextBoxPassword.Size = new System.Drawing.Size(333, 55);
+            this.FormPanelTextBoxPassword.TabIndex = 7;
+            this.FormPanelTextBoxPassword.TextOffset = new System.Drawing.Point(10, 0);
+            this.FormPanelTextBoxPassword.IconRightClick += new System.EventHandler(this.FormPanelTextBoxPassword_IconRightClick);
+            this.FormPanelTextBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormPanelTextBoxPassword_KeyDown);
+            // 
+            // FormPanelTextBoxLogin
+            // 
+            this.FormPanelTextBoxLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.FormPanelTextBoxLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.FormPanelTextBoxLogin.BorderRadius = 15;
+            this.FormPanelTextBoxLogin.BorderThickness = 2;
+            this.FormPanelTextBoxLogin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.FormPanelTextBoxLogin.DefaultText = "";
+            this.FormPanelTextBoxLogin.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.FormPanelTextBoxLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.FormPanelTextBoxLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.FormPanelTextBoxLogin.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.FormPanelTextBoxLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
+            this.FormPanelTextBoxLogin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
+            this.FormPanelTextBoxLogin.FocusedState.FillColor = System.Drawing.Color.White;
+            this.FormPanelTextBoxLogin.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.FormPanelTextBoxLogin.ForeColor = System.Drawing.Color.Black;
+            this.FormPanelTextBoxLogin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(100)))), ((int)(((byte)(5)))));
+            this.FormPanelTextBoxLogin.IconLeft = global::app.Properties.Resources.user;
+            this.FormPanelTextBoxLogin.IconLeftOffset = new System.Drawing.Point(10, 0);
+            this.FormPanelTextBoxLogin.IconLeftSize = new System.Drawing.Size(25, 25);
+            this.FormPanelTextBoxLogin.Location = new System.Drawing.Point(84, 127);
+            this.FormPanelTextBoxLogin.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.FormPanelTextBoxLogin.Name = "FormPanelTextBoxLogin";
+            this.FormPanelTextBoxLogin.PasswordChar = '\0';
+            this.FormPanelTextBoxLogin.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.FormPanelTextBoxLogin.PlaceholderText = "Логин";
+            this.FormPanelTextBoxLogin.SelectedText = "";
+            this.FormPanelTextBoxLogin.Size = new System.Drawing.Size(333, 55);
+            this.FormPanelTextBoxLogin.TabIndex = 6;
+            this.FormPanelTextBoxLogin.TextOffset = new System.Drawing.Point(10, 0);
+            this.FormPanelTextBoxLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormPanelTextBoxLogin_KeyDown);
+            // 
+            // FormPanelLabel
+            // 
+            this.FormPanelLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.FormPanelLabel.BackColor = System.Drawing.Color.Transparent;
+            this.FormPanelLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.FormPanelLabel.Location = new System.Drawing.Point(103, 50);
+            this.FormPanelLabel.Name = "FormPanelLabel";
+            this.FormPanelLabel.Size = new System.Drawing.Size(308, 47);
+            this.FormPanelLabel.TabIndex = 5;
+            this.FormPanelLabel.Text = "Добро пожаловать";
+            // 
             // Авторизация
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 500);
-            this.Controls.Add(this.guna2GradientButton1);
+            this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.FormPanel);
             this.Controls.Add(this.HeaderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -328,7 +305,6 @@
         private Guna.UI2.WinForms.Guna2TextBox FormPanelTextBoxLogin;
         private Guna.UI2.WinForms.Guna2HtmlLabel FormPanelLabel;
         private Guna.UI2.WinForms.Guna2GradientButton FormPanelButtonEnterance;
-        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
     }
 }
 

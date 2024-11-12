@@ -1,8 +1,10 @@
-﻿using Guna.UI2.WinForms;
+﻿using app.Classes;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -82,18 +84,108 @@ namespace app
 
         private void FormPanelButtonEnterance_Click(object sender, EventArgs e)
         {
-            ActiveForm.Hide();
-            ГлавнаяА to = new ГлавнаяА();
-            to.ShowDialog();
-            Close();
+            var login = FormPanelTextBoxLogin.Text;
+            var password = FormPanelTextBoxPassword.Text;
+            if (login == string.Empty || password == string.Empty)
+            {
+                MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var authResult = AuthorizeUser(login, password);
+            if (authResult.isAuthorized)
+            {
+                ActiveForm.Hide();
+                switch (authResult.position)
+                {
+                    case "Специалист КБД":
+                        ГлавнаяА toГлавнаяА = new ГлавнаяА(login);
+                        toГлавнаяА.ShowDialog();
+                        break;
+                    case "Оператор":
+                        ГлавнаяО toГлавнаяО = new ГлавнаяО(login);
+                        toГлавнаяО.ShowDialog();
+                        break;
+                    case "Швея":
+                        ГлавнаяШ toГлавнаяШ = new ГлавнаяШ(login);
+                        toГлавнаяШ.ShowDialog();
+                        break;
+                    default:
+                        MyCustomMessageBox.ShowMessage("Неизвестная должность.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                }
+                Close();
+            }
+            else
+            {
+                MyCustomMessageBox.ShowMessage("Неверный логин или пароль.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private (bool isAuthorized, string position) AuthorizeUser(string login, string password)
+        {
+            bool isAuthorized = false;
+            string position = string.Empty;
+            var dbQeury = new DB();
+            var getHash = new Hashing();
+            using (SqlConnection con = new SqlConnection(dbQeury.StringConnection()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM Пользователи" +
+                    $" WHERE Логин ='{login}' and Пароль = '{getHash.Hash(password)}'", con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader["Пароль"].ToString() == getHash.Hash(password) &&
+                                reader["Логин"].ToString() == login)
+                            {
+                                isAuthorized = true;
+                                position = reader["Должность"].ToString();
+                                MyCustomMessageBox.ShowMessage("Вход успешно выполнен!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            return (isAuthorized, position);
         }
 
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        private void FormPanelTextBoxLogin_KeyDown(object sender, KeyEventArgs e)
         {
-            ActiveForm.Hide();
-            ГлавнаяО to = new ГлавнаяО();
-            to.ShowDialog();
-            Close();
+            if (e.KeyCode == Keys.Down)
+            {
+                FormPanelTextBoxPassword.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                FormPanelButtonEnterance.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void FormPanelTextBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                FormPanelTextBoxLogin.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                FormPanelButtonEnterance.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void FormPanelButtonEnterance_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FormPanelButtonEnterance.PerformClick();
+                e.Handled = true;
+            }
         }
     }
 }

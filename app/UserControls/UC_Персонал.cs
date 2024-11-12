@@ -40,7 +40,7 @@ namespace app.UserControls
         private void CreateColumns()
         {
             DataGridViewPeople.Columns.Add("КодСотрудника", "КодСотрудника");
-            DataGridViewPeople.Columns["КодСотрудника"].Visible = false; // Скрываем столбец
+            DataGridViewPeople.Columns["КодСотрудника"].Visible = false;
 
             DataGridViewPeople.Columns.Add("Фамилия", "Фамилия");
             DataGridViewPeople.Columns.Add("Имя", "Имя");
@@ -79,6 +79,7 @@ namespace app.UserControls
             Record.GetDateTime(4).ToShortDateString(),
             Record.GetDecimal(5),
             Record.GetString(8),
+
             Properties.Resources.edit,
             Properties.Resources.delete
             );
@@ -131,7 +132,6 @@ namespace app.UserControls
             {
                 if (e.ColumnIndex == DataGridViewPeople.Columns["EditColumn"].Index)
                 {
-                    // Получаем данные выбранной строки
                     int employeeId = Convert.ToInt32(DataGridViewPeople.Rows[e.RowIndex].Cells["КодСотрудника"].Value);
                     string firstName = DataGridViewPeople.Rows[e.RowIndex].Cells["Имя"].Value.ToString();
                     string lastName = DataGridViewPeople.Rows[e.RowIndex].Cells["Фамилия"].Value.ToString();
@@ -140,21 +140,17 @@ namespace app.UserControls
                     string salary = DataGridViewPeople.Rows[e.RowIndex].Cells["Зарплата"].Value.ToString();
                     string post = DataGridViewPeople.Rows[e.RowIndex].Cells["Должность"].Value.ToString();
 
-                    // Открываем форму "ИзмененияПерсонал" и передаем данные
                     ИзменениеПерсонал editForm = new ИзменениеПерсонал(employeeId, firstName, lastName, email, dateOfHire, salary, post, this);
                     editForm.Show();
 
-                    // Обновляем DataGridView после закрытия формы
                     RefreshDataGridView();
                 }
                 else if (e.ColumnIndex == DataGridViewPeople.Columns["DeleteColumn"].Index)
                 {
-                    // Получаем данные выбранной строки
                     int employeeId = Convert.ToInt32(DataGridViewPeople.Rows[e.RowIndex].Cells["КодСотрудника"].Value);
                     string firstName = DataGridViewPeople.Rows[e.RowIndex].Cells["Имя"].Value.ToString();
                     string lastName = DataGridViewPeople.Rows[e.RowIndex].Cells["Фамилия"].Value.ToString();
 
-                    // Открываем форму "УвольнениеПерсонал" и передаем данные
                     УдалениеПерсонал fireForm = new УдалениеПерсонал(employeeId, firstName, lastName, this);
                     fireForm.Show();
                 }
@@ -185,7 +181,6 @@ namespace app.UserControls
             DataSet DS = new DataSet();
             sqlDataAdapter.Fill(DS, "Должность");
 
-            // Добавляем опцию "Все" в DataTable
             DataRow allRow = DS.Tables["Должность"].NewRow();
             allRow["Должность"] = "Все Должности";
             DS.Tables["Должность"].Rows.InsertAt(allRow, 0);
@@ -195,7 +190,6 @@ namespace app.UserControls
             comboBoxPostSearch.DataSource = DS.Tables["Должность"];
             DB.CloseConnection();
 
-            // Устанавливаем выбранный индекс на "Все"
             comboBoxPostSearch.SelectedIndex = 0;
         }
         private void display_DGW()
@@ -204,18 +198,15 @@ namespace app.UserControls
 
             if (comboBoxPostSearch.Text == "Все Должности")
             {
-                // Если выбрано "Все", то запрашиваем все записи без фильтрации по должности
                 querrySearch = $"SELECT Сотрудники.*, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя";
             }
             else
             {
-                // Если выбрана конкретная должность, фильтруем по ней
                 querrySearch = $"SELECT Сотрудники.*, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя WHERE Пользователи.Должность = @Должность";
             }
 
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
 
-            // Если выбрана конкретная должность, добавляем её как параметр
             if (comboBoxPostSearch.Text != "Все Должности")
             {
                 sqlCommand.Parameters.AddWithValue("@Должность", comboBoxPostSearch.Text);
@@ -227,7 +218,6 @@ namespace app.UserControls
 
             sqlDataAdapter.Fill(DT);
 
-            // Заполняем DataGridView данными из DataTable
             foreach (DataRow row in DT.Rows)
             {
                 DataGridViewPeople.Rows.Add(
@@ -243,7 +233,6 @@ namespace app.UserControls
                 );
             }
         }
-
 
         private void comboBoxPostSearch_SelectedIndexChanged(object sender, EventArgs e)
         {

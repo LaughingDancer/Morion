@@ -1,4 +1,5 @@
-﻿using app.UserControls;
+﻿using app.Classes;
+using app.UserControls;
 using app.UserControlsStatistics;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace app
         private Guna.UI2.WinForms.Guna2Button _selectedButton2;
         bool menuExpandOne = false;
         bool menuExpandTwo = false;
+        private UC_Главная ucГлавная;
+        private Dictionary<string, string> employeeData;
+        private byte[] employeePhoto;
         private void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
@@ -25,11 +29,11 @@ namespace app
             DesktopPanel.Controls.Add(userControl);
             userControl.BringToFront();
         }
-        public ГлавнаяА()
+        public ГлавнаяА(string login)
         {
             InitializeComponent();
-            UC_Главная uc = new UC_Главная();
-            addUserControl(uc);
+            ucГлавная = new UC_Главная();
+            addUserControl(ucГлавная);
 
             guna2Button2.Click += guna2Button2_Click;
             guna2Button3.Click += guna2Button3_Click;
@@ -48,6 +52,15 @@ namespace app
             guna2Button18.Click += guna2Button18_Click;
             guna2Button19.Click += guna2Button19_Click;
             guna2Button20.Click += guna2Button20_Click;
+
+            LoadEmployeeData(login);
+        }
+        private void LoadEmployeeData(string login)
+        {
+            DB db = new DB();
+            employeeData = db.GetEmployeeDataByLogin(login);
+            employeePhoto = db.GetEmployeePhotoByLogin(login);
+            ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
         }
 
         private void menuTable_Click(object sender, EventArgs e)
@@ -65,7 +78,7 @@ namespace app
             if (menuExpandOne == false)
             {
                 MainPanelMenuContainer1.Height += 10;
-                if (MainPanelMenuContainer1.Height >= 450)
+                if (MainPanelMenuContainer1.Height >= 500)
                 {
                     menuTransitionOne.Stop();
                     menuExpandOne = true;
@@ -87,7 +100,7 @@ namespace app
             if (menuExpandTwo == false)
             {
                 MainPanelMenuContainer2.Height += 10;
-                if (MainPanelMenuContainer2.Height >= 450)
+                if (MainPanelMenuContainer2.Height >= 500)
                 {
                     menuTransitionTwo.Stop();
                     menuExpandTwo = true;
@@ -141,8 +154,8 @@ namespace app
 
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            UC_Главная uc = new UC_Главная();
-            addUserControl(uc);
+            ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
+            addUserControl(ucГлавная);
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)

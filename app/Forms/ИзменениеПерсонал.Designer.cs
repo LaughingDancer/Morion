@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.HeaderPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.IconClose = new Guna.UI2.WinForms.Guna2Button();
             this.comboBoxPost = new Guna.UI2.WinForms.Guna2ComboBox();
             this.buttonChange = new Guna.UI2.WinForms.Guna2Button();
             this.textBoxSalary = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,7 +42,6 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.DateTimePickerEmployee = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.pictureSet = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.IconClose = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +67,27 @@
             this.HeaderPanelLabel.Size = new System.Drawing.Size(262, 26);
             this.HeaderPanelLabel.TabIndex = 3;
             this.HeaderPanelLabel.Text = "Морион | Редактирование";
+            // 
+            // IconClose
+            // 
+            this.IconClose.BackColor = System.Drawing.Color.Transparent;
+            this.IconClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.IconClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.IconClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.IconClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.IconClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.IconClose.FillColor = System.Drawing.Color.Empty;
+            this.IconClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.IconClose.ForeColor = System.Drawing.Color.White;
+            this.IconClose.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.IconClose.Image = global::app.Properties.Resources.closeW;
+            this.IconClose.ImageSize = new System.Drawing.Size(30, 30);
+            this.IconClose.Location = new System.Drawing.Point(410, 0);
+            this.IconClose.Name = "IconClose";
+            this.IconClose.Size = new System.Drawing.Size(40, 40);
+            this.IconClose.TabIndex = 0;
+            this.IconClose.UseTransparentBackground = true;
+            this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
             // comboBoxPost
             // 
@@ -114,6 +135,7 @@
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseTransparentBackground = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
+            this.buttonChange.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonChange_KeyDown);
             // 
             // textBoxSalary
             // 
@@ -138,6 +160,8 @@
             this.textBoxSalary.SelectedText = "";
             this.textBoxSalary.Size = new System.Drawing.Size(350, 50);
             this.textBoxSalary.TabIndex = 36;
+            this.textBoxSalary.TabStop = false;
+            this.textBoxSalary.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalary_KeyDown);
             // 
             // textBoxEmail
             // 
@@ -162,6 +186,8 @@
             this.textBoxEmail.SelectedText = "";
             this.textBoxEmail.Size = new System.Drawing.Size(350, 50);
             this.textBoxEmail.TabIndex = 35;
+            this.textBoxEmail.TabStop = false;
+            this.textBoxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxEmail_KeyDown);
             // 
             // textBoxSurname
             // 
@@ -186,6 +212,8 @@
             this.textBoxSurname.SelectedText = "";
             this.textBoxSurname.Size = new System.Drawing.Size(350, 50);
             this.textBoxSurname.TabIndex = 34;
+            this.textBoxSurname.TabStop = false;
+            this.textBoxSurname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSurname_KeyDown);
             // 
             // textBoxName
             // 
@@ -210,6 +238,8 @@
             this.textBoxName.SelectedText = "";
             this.textBoxName.Size = new System.Drawing.Size(350, 50);
             this.textBoxName.TabIndex = 33;
+            this.textBoxName.TabStop = false;
+            this.textBoxName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyDown);
             // 
             // guna2DragControl1
             // 
@@ -256,27 +286,6 @@
             this.pictureSet.TabIndex = 32;
             this.pictureSet.TabStop = false;
             this.pictureSet.Click += new System.EventHandler(this.pictureSet_Click);
-            // 
-            // IconClose
-            // 
-            this.IconClose.BackColor = System.Drawing.Color.Transparent;
-            this.IconClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.IconClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.IconClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.IconClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.IconClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.IconClose.FillColor = System.Drawing.Color.Empty;
-            this.IconClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IconClose.ForeColor = System.Drawing.Color.White;
-            this.IconClose.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.IconClose.Image = global::app.Properties.Resources.closeW;
-            this.IconClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.IconClose.Location = new System.Drawing.Point(410, 0);
-            this.IconClose.Name = "IconClose";
-            this.IconClose.Size = new System.Drawing.Size(40, 40);
-            this.IconClose.TabIndex = 0;
-            this.IconClose.UseTransparentBackground = true;
-            this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
             // ИзменениеПерсонал
             // 

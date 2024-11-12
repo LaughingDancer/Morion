@@ -29,7 +29,6 @@ namespace app.Forms
             this.ucПерсонал = ucПерсонал;
             DB = new DB();
 
-            // Отображаем данные сотрудника
             labelEmployeeInfo.Text = $"{lastName} {firstName}";
             labelEmployeeInfo.TextAlignment = ContentAlignment.MiddleCenter;
             labelEmployeeInfo.Location = new Point(
@@ -44,7 +43,7 @@ namespace app.Forms
 
         private void buttonFire_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите уволить сотрудника?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MyCustomMessageBox.ShowMessage("Вы уверены, что хотите уволить сотрудника?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 string queryDeleteEmployee = "DELETE FROM Сотрудники WHERE КодСотрудника = @КодСотрудника";
@@ -62,7 +61,8 @@ namespace app.Forms
             }
             else
             {
-                MessageBox.Show("Действие отменено", "Отмена");
+                MyCustomMessageBox.ShowMessage("Действие отменено.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
         }
     }

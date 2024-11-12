@@ -1,6 +1,5 @@
 ﻿using app.Classes;
 using app.UserControls;
-using app.UserControlsOperator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +12,7 @@ using System.Windows.Forms;
 
 namespace app
 {
-    public partial class ГлавнаяО : Form
+    public partial class ГлавнаяШ : Form
     {
         private UC_Главная ucГлавная;
         private Dictionary<string, string> employeeData;
@@ -25,7 +24,7 @@ namespace app
             DesktopPanel.Controls.Add(userControl);
             userControl.BringToFront();
         }
-        public ГлавнаяО(string login)
+        public ГлавнаяШ(string login)
         {
             InitializeComponent();
             ucГлавная = new UC_Главная();
@@ -39,10 +38,18 @@ namespace app
             employeePhoto = db.GetEmployeePhotoByLogin(login);
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
         }
-        private void HomeButton_Click(object sender, EventArgs e)
+
+        private void ГлавнаяШ_Resize(object sender, EventArgs e)
         {
-            UC_Главная uc = new UC_Главная();
-            addUserControl(uc);
+            this.Invalidate();
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                guna2BorderlessForm1.BorderRadius = 0;
+            }
+            else
+            {
+                guna2BorderlessForm1.BorderRadius = 20;
+            }
         }
 
         private void IconClose_Click(object sender, EventArgs e)
@@ -75,29 +82,9 @@ namespace app
             Close();
         }
 
-        private void ordering_Click(object sender, EventArgs e)
+        private void HomeButton_Click(object sender, EventArgs e)
         {
-            UC_ОформитьЗаказ uc = new UC_ОформитьЗаказ();
-            addUserControl(uc);
-        }
 
-        private void orderDetails_Click(object sender, EventArgs e)
-        {
-            UC_ДеталиЗаказов uc = new UC_ДеталиЗаказов();
-            addUserControl(uc);
-        }
-
-        private void ГлавнаяО_Resize(object sender, EventArgs e)
-        {
-            this.Invalidate();
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                guna2BorderlessForm1.BorderRadius = 0;
-            }
-            else
-            {
-                guna2BorderlessForm1.BorderRadius = 20;
-            }
         }
     }
 }

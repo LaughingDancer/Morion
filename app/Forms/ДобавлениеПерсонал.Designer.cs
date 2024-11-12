@@ -33,17 +33,15 @@
             this.textBoxName = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBoxSurname = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBoxEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBoxLogin = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBoxPassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.buttonSave = new Guna.UI2.WinForms.Guna2Button();
             this.comboBoxPost = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.pictureSet = new Guna.UI2.WinForms.Guna2PictureBox();
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.HeaderPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).BeginInit();
+            this.buttonSave = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureSet = new Guna.UI2.WinForms.Guna2PictureBox();
             this.HeaderPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -71,13 +69,15 @@
             this.textBoxName.ForeColor = System.Drawing.Color.Black;
             this.textBoxName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.textBoxName.Location = new System.Drawing.Point(50, 338);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.PasswordChar = '\0';
             this.textBoxName.PlaceholderText = "Имя";
             this.textBoxName.SelectedText = "";
             this.textBoxName.Size = new System.Drawing.Size(350, 50);
             this.textBoxName.TabIndex = 14;
+            this.textBoxName.TabStop = false;
+            this.textBoxName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyDown);
             // 
             // textBoxSurname
             // 
@@ -102,6 +102,8 @@
             this.textBoxSurname.SelectedText = "";
             this.textBoxSurname.Size = new System.Drawing.Size(350, 50);
             this.textBoxSurname.TabIndex = 15;
+            this.textBoxSurname.TabStop = false;
+            this.textBoxSurname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSurname_KeyDown);
             // 
             // textBoxEmail
             // 
@@ -126,77 +128,8 @@
             this.textBoxEmail.SelectedText = "";
             this.textBoxEmail.Size = new System.Drawing.Size(350, 50);
             this.textBoxEmail.TabIndex = 16;
-            // 
-            // textBoxLogin
-            // 
-            this.textBoxLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxLogin.BorderRadius = 10;
-            this.textBoxLogin.BorderThickness = 2;
-            this.textBoxLogin.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxLogin.DefaultText = "";
-            this.textBoxLogin.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBoxLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBoxLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxLogin.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxLogin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxLogin.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxLogin.ForeColor = System.Drawing.Color.Black;
-            this.textBoxLogin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxLogin.Location = new System.Drawing.Point(50, 454);
-            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.PasswordChar = '\0';
-            this.textBoxLogin.PlaceholderText = "Логин";
-            this.textBoxLogin.SelectedText = "";
-            this.textBoxLogin.Size = new System.Drawing.Size(350, 50);
-            this.textBoxLogin.TabIndex = 19;
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxPassword.BorderRadius = 10;
-            this.textBoxPassword.BorderThickness = 2;
-            this.textBoxPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxPassword.DefaultText = "";
-            this.textBoxPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBoxPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBoxPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxPassword.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxPassword.Location = new System.Drawing.Point(50, 512);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '\0';
-            this.textBoxPassword.PlaceholderText = "Пароль";
-            this.textBoxPassword.SelectedText = "";
-            this.textBoxPassword.Size = new System.Drawing.Size(350, 50);
-            this.textBoxPassword.TabIndex = 20;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSave.BorderRadius = 10;
-            this.buttonSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonSave.FillColor = System.Drawing.Color.Green;
-            this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.HoverState.FillColor = System.Drawing.Color.ForestGreen;
-            this.buttonSave.Location = new System.Drawing.Point(50, 639);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(350, 50);
-            this.buttonSave.TabIndex = 22;
-            this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseTransparentBackground = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.textBoxEmail.TabStop = false;
+            this.textBoxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxEmail_KeyDown);
             // 
             // comboBoxPost
             // 
@@ -216,8 +149,8 @@
             "Швея",
             "Оператор",
             "Специалист КБД"});
-            this.comboBoxPost.Location = new System.Drawing.Point(50, 569);
-            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.comboBoxPost.Location = new System.Drawing.Point(50, 453);
+            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(350, 50);
             this.comboBoxPost.TabIndex = 23;
@@ -226,20 +159,6 @@
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // pictureSet
-            // 
-            this.pictureSet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureSet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureSet.ImageRotate = 0F;
-            this.pictureSet.Location = new System.Drawing.Point(100, 60);
-            this.pictureSet.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureSet.Name = "pictureSet";
-            this.pictureSet.Size = new System.Drawing.Size(250, 200);
-            this.pictureSet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureSet.TabIndex = 2;
-            this.pictureSet.TabStop = false;
-            this.pictureSet.Click += new System.EventHandler(this.pictureSet_Click);
             // 
             // HeaderPanel
             // 
@@ -284,17 +203,53 @@
             this.IconClose.UseTransparentBackground = true;
             this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSave.BorderRadius = 10;
+            this.buttonSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonSave.FillColor = System.Drawing.Color.Green;
+            this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.buttonSave.ForeColor = System.Drawing.Color.White;
+            this.buttonSave.HoverState.FillColor = System.Drawing.Color.ForestGreen;
+            this.buttonSave.Location = new System.Drawing.Point(50, 511);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(350, 50);
+            this.buttonSave.TabIndex = 22;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseTransparentBackground = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonSave_KeyDown);
+            // 
+            // pictureSet
+            // 
+            this.pictureSet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureSet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureSet.ImageRotate = 0F;
+            this.pictureSet.Location = new System.Drawing.Point(100, 60);
+            this.pictureSet.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureSet.Name = "pictureSet";
+            this.pictureSet.Size = new System.Drawing.Size(250, 200);
+            this.pictureSet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureSet.TabIndex = 2;
+            this.pictureSet.TabStop = false;
+            this.pictureSet.Click += new System.EventHandler(this.pictureSet_Click);
+            // 
             // ДобавлениеПерсонал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(450, 714);
+            this.ClientSize = new System.Drawing.Size(450, 577);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.comboBoxPost);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.textBoxName);
@@ -303,9 +258,9 @@
             this.Name = "ДобавлениеПерсонал";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ДобавлениеПерсонал";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -317,8 +272,6 @@
         private Guna.UI2.WinForms.Guna2TextBox textBoxEmail;
         private Guna.UI2.WinForms.Guna2TextBox textBoxSurname;
         private Guna.UI2.WinForms.Guna2TextBox textBoxName;
-        private Guna.UI2.WinForms.Guna2TextBox textBoxPassword;
-        private Guna.UI2.WinForms.Guna2TextBox textBoxLogin;
         private Guna.UI2.WinForms.Guna2Button buttonSave;
         private Guna.UI2.WinForms.Guna2ComboBox comboBoxPost;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;

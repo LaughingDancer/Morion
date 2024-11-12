@@ -1,6 +1,7 @@
 ﻿using app.Classes;
 using app.UserControls;
 using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,18 +70,15 @@ namespace app.Forms
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            // Преобразуем дату в правильный формат
             DateTime dateOfHire = DateTime.Parse(DateTimePickerEmployee.Text);
             string formattedDateOfHire = dateOfHire.ToString("yyyy-MM-dd");
 
-            // Проверяем, что значение зарплаты является числом
             if (!decimal.TryParse(textBoxSalary.Text, out decimal salary))
             {
-                MessageBox.Show("Значение зарплаты должно быть числом.", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Значение зарплаты должно быть числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Обновляем данные в таблице Сотрудники
             string queryUpEmployee = "UPDATE Сотрудники SET Имя = @Имя, Фамилия = @Фамилия, ЭлектроннаяПочта = @ЭлектроннаяПочта, ДатаПриема = @ДатаПриема, Зарплата = @Зарплата WHERE КодСотрудника = @КодСотрудника";
             using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
             {
@@ -97,7 +95,6 @@ namespace app.Forms
                 }
             }
 
-            // Обновляем должность в таблице Пользователи
             string queryUpUser = "UPDATE Пользователи SET Должность = @Должность WHERE КодПользователя = (SELECT КодПользователя FROM Сотрудники WHERE КодСотрудника = @КодСотрудника)";
             using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
             {
@@ -110,7 +107,6 @@ namespace app.Forms
                 }
             }
 
-            // Если выбрана новая фотография, обновляем её в базе данных
             if (selectedPhotoBytes != null)
             {
                 string queryUpPhoto = "UPDATE Сотрудники SET Фото = @Фото WHERE КодСотрудника = @КодСотрудника";
@@ -125,8 +121,7 @@ namespace app.Forms
                     }
                 }
             }
-
-            MessageBox.Show("Данные успешно обновлены", "Успех");
+            MyCustomMessageBox.ShowMessage("Данные успешно обновлены!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ucПерсонал.RefreshDataGridView();
             Close();
         }
@@ -146,6 +141,81 @@ namespace app.Forms
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void textBoxSurname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textBoxName.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textBoxEmail.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                textBoxSurname.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textBoxSalary.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                textBoxName.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxSalary_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                textBoxEmail.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void buttonChange_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
         }
     }
 }

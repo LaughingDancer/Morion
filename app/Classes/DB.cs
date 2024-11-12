@@ -65,7 +65,7 @@ namespace app.Classes
                         }
                         else
                         {
-                            throw new Exception("No result returned from the query.");
+                            throw new Exception("Запрос не вернул никакого результата.");
                         }
                     }
                 }
@@ -73,7 +73,7 @@ namespace app.Classes
             catch (Exception ex)
             {
                 MessageBox.Show("Возникла ошибка при выполнении запроса: " + ex.Message, "Ошибка");
-                return -1; // Возвращаем -1 в случае ошибки
+                return -1;
             }
         }
 
@@ -87,7 +87,7 @@ namespace app.Classes
                     using (SqlCommand command = new SqlCommand(query, myCon))
                     {
                         command.ExecuteNonQuery();
-                        MessageBox.Show("Действие успешно выполнено!", "Успех");
+                        MyCustomMessageBox.ShowMessage("Данные успешно обновлены!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -105,6 +105,63 @@ namespace app.Classes
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@EmployeeId", employeeId);
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return (byte[])result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+        public Dictionary<string, string> GetEmployeeDataByLogin(string login)
+        {
+            Dictionary<string, string> employeeData = new Dictionary<string, string>();
+            using (SqlConnection con = new SqlConnection(StringConnection()))
+            {
+                con.Open();
+                string query = @"
+                SELECT Сотрудники.Имя, Сотрудники.Фамилия, Сотрудники.ЭлектроннаяПочта, Сотрудники.ДатаПриема, Сотрудники.Зарплата, Пользователи.Должность, Пользователи.Пароль, Пользователи.Логин
+                FROM Сотрудники
+                INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+                WHERE Пользователи.Логин = @Логин";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@Логин", login);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            employeeData["Имя"] = reader["Имя"].ToString();
+                            employeeData["Фамилия"] = reader["Фамилия"].ToString();
+                            employeeData["ЭлектроннаяПочта"] = reader["ЭлектроннаяПочта"].ToString();
+                            employeeData["ДатаПриема"] = reader["ДатаПриема"].ToString();
+                            employeeData["Зарплата"] = reader["Зарплата"].ToString();
+                            employeeData["Должность"] = reader["Должность"].ToString();
+                            employeeData["Пароль"] = reader["Пароль"].ToString();
+                            employeeData["Логин"] = reader["Логин"].ToString();
+                        }
+                    }
+                }
+            }
+            return employeeData;
+        }
+        public byte[] GetEmployeePhotoByLogin(string login)
+        {
+            using (SqlConnection con = new SqlConnection(StringConnection()))
+            {
+                con.Open();
+                string query = @"
+                SELECT Фото
+                FROM Сотрудники
+                INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+                WHERE Пользователи.Логин = @Логин";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@Логин", login);
                     object result = command.ExecuteScalar();
                     if (result != null && result != DBNull.Value)
                     {

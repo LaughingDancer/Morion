@@ -43,78 +43,95 @@ namespace app.Forms
                 selectedPhotoBytes = File.ReadAllBytes(selectedFile);
             }
         }
+        private string GeneratePassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=[{]};:<>|./?";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, 12)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        private string GenerateLogin(string password)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=[{]};:<>|./?";
+            var random = new Random();
+            string login;
+            do
+            {
+                login = new string(Enumerable.Repeat(chars, 12)
+                    .Select(s => s[random.Next(s.Length)]).ToArray());
+            } while (login == password); // Проверка на совпадение с паролем
+            return login;
+        }
 
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text == string.Empty || textBoxSurname.Text == string.Empty || textBoxEmail.Text == string.Empty || textBoxLogin.Text == string.Empty || textBoxPassword.Text == string.Empty || comboBoxPost.Text == string.Empty)
+            if (textBoxName.Text == string.Empty || textBoxSurname.Text == string.Empty || textBoxEmail.Text == string.Empty || comboBoxPost.Text == string.Empty)
             {
-                MessageBox.Show("Заполните все поля", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             Validation validator = new Validation();
             string firstName = textBoxName.Text;
             string lastName = textBoxSurname.Text;
             string email = textBoxEmail.Text;
             string post = comboBoxPost.Text;
+
             if (!validator.ValidateLastName(lastName))
             {
-                MessageBox.Show("Некорректная фамилия", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Некорректная фамилия", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             if (!validator.ValidateFirstName(firstName))
             {
-                MessageBox.Show("Некорректное имя", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Некорректное имя", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             if (!validator.ValidateEmail(email))
             {
-                MessageBox.Show("Некорректный email", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Некорректный email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            ValidationPassword PassV = new ValidationPassword();
-            if (PassV.Validation(textBoxPassword.Text) == false)
-            {
-                return;
-            }
-            if (textBoxPassword.Text == textBoxLogin.Text)
-            {
-                MessageBox.Show("Пароль и логин не должны совпадать.", "Ошибка");
-                return;
-            }
+
+            string password = GeneratePassword();
+            string login = GenerateLogin(password);
+
             ValidationLogin LV = new ValidationLogin();
-            if (LV.Validation(textBoxLogin.Text) == false)
+            if (!LV.CheckLoginUniqueness(login))
             {
+                MyCustomMessageBox.ShowMessage("Логин уже существует. Попробуйте снова.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!LV.CheckLoginUniqueness(textBoxLogin.Text))
+
+            if (password == login)
             {
-                MessageBox.Show("Логин уже существует. Выберите другой логин.", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Пароль и логин не должны совпадать.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else
+
+            int userId = RegisterUser(login, password, comboBoxPost.Text);
+            if (userId > 0)
             {
-                int userId = RegisterUser(textBoxLogin.Text, textBoxPassword.Text, comboBoxPost.Text);
-                if (userId > 0)
+                int employeeId = RegisterEmployee(textBoxName.Text, textBoxSurname.Text, textBoxEmail.Text, userId);
+                if (employeeId > 0)
                 {
-                    int employeeId = RegisterEmployee(textBoxName.Text, textBoxSurname.Text, textBoxEmail.Text, userId);
-                    if (employeeId > 0)
-                    {
-                        var uploader = new ImageUploader(con);
-                        uploader.Upload(employeeId, pictureSet);
-                        SendMessage(textBoxLogin.Text, textBoxPassword.Text, textBoxEmail.Text);
-                        ucПерсонал.RefreshDataGridView();
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ошибка при регистрации сотрудника.", "Ошибка");
-                    }
+                    var uploader = new ImageUploader(con);
+                    uploader.Upload(employeeId, pictureSet);
+                    SendMessage(login, password, textBoxEmail.Text);
+                    ucПерсонал.RefreshDataGridView();
+                    Close();
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка при регистрации пользователя.", "Ошибка");
+                    MyCustomMessageBox.ShowMessage("Ошибка при регистрации сотрудника.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            else
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при регистрации пользователя.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -173,29 +190,24 @@ namespace app.Forms
         }
         private void SendMessage(string login, string password, string email)
         {
-            // Настройки SMTP-сервера Mail.ru
-            string smtpServer = "smtp.mail.ru"; //smpt сервер(зависит от почты отправителя)
-            int smtpPort = 587; // Обычно используется порт 587 для TLS
-            string smtpUsername = "noreplymorion@mail.ru"; //твоя почта, с которой отправляется сообщение
-            string smtpPassword = "TeB6bnQkvFsBR1evpPw9";//пароль приложения (от почты)
+            string smtpServer = "smtp.mail.ru";
+            int smtpPort = 587;
+            string smtpUsername = "noreplymorion@mail.ru";
+            string smtpPassword = "TeB6bnQkvFsBR1evpPw9";
 
-            // Создаем объект клиента SMTP
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
-                // Настройки аутентификации
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                 smtpClient.EnableSsl = true;
 
                 using (MailMessage mailMessage = new MailMessage())
                 {
                     mailMessage.From = new MailAddress(smtpUsername);
-                    mailMessage.To.Add(email); // Укажите адрес получателя
+                    mailMessage.To.Add(email);
                     mailMessage.Subject = "Добро пожаловать в компанию 'Морион'!";
                     mailMessage.Body = $"Логин: {login} \r\nПароль: {password} \r\nНикому не сообщайте эти данные";
-
                     try
                     {
-                        // Отправляем сообщение
                         smtpClient.Send(mailMessage);
                         Console.WriteLine("Сообщение успешно отправлено.");
                     }
@@ -210,6 +222,62 @@ namespace app.Forms
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void textBoxSurname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textBoxName.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonSave.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textBoxEmail.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                textBoxSurname.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonSave.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                textBoxName.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonSave.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void buttonSave_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonSave.PerformClick();
+                e.Handled = true;
+            }
         }
     }
 }

@@ -54,9 +54,21 @@
   <ItemGroup>
     <Compile Include="Classes\DB.cs" />
     <Compile Include="Classes\Hashing.cs" />
+    <Compile Include="Classes\MyCustomMessageBox.cs" />
     <Compile Include="Classes\ValidationData.cs" />
     <Compile Include="Classes\ValidationLogin.cs" />
-    <Compile Include="Classes\ValidationPassword.cs" />
+    <Compile Include="CustomMessageBoxes\CustomMessageYesNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomMessageBoxes\CustomMessageYesNo.Designer.cs">
+      <DependentUpon>CustomMessageYesNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomMessageBoxes\CustomMessageOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomMessageBoxes\CustomMessageOK.Designer.cs">
+      <DependentUpon>CustomMessageOK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ДобавлениеПерсонал.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +227,18 @@
     <Compile Include="ГлавнаяО.Designer.cs">
       <DependentUpon>ГлавнаяО.cs</DependentUpon>
     </Compile>
+    <Compile Include="ГлавнаяШ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ГлавнаяШ.Designer.cs">
+      <DependentUpon>ГлавнаяШ.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomMessageBoxes\CustomMessageYesNo.resx">
+      <DependentUpon>CustomMessageYesNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomMessageBoxes\CustomMessageOK.resx">
+      <DependentUpon>CustomMessageOK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ДобавлениеПерсонал.resx">
       <DependentUpon>ДобавлениеПерсонал.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,6 +327,9 @@
     <EmbeddedResource Include="ГлавнаяО.resx">
       <DependentUpon>ГлавнаяО.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ГлавнаяШ.resx">
+      <DependentUpon>ГлавнаяШ.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -367,6 +394,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\default_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkOK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\qustions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
