@@ -81,10 +81,5 @@ namespace app
             to.ShowDialog();
             Close();
         }
-
-        private void HomeButton_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

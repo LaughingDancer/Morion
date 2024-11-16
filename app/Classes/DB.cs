@@ -117,6 +117,55 @@ namespace app.Classes
                 }
             }
         }
+        public byte[] GetProductPhoto(int productId)
+        {
+            using (SqlConnection connection = new SqlConnection(StringConnection()))
+            {
+                connection.Open();
+                string query = "SELECT Фото FROM Изделия WHERE КодИзделия = @ProductId";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ProductId", productId);
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return (byte[])result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+        public (string Name, byte[] Photo) GetProductDetails(int productId)
+        {
+            using (SqlConnection connection = new SqlConnection(StringConnection()))
+            {
+                connection.Open();
+                string query = "SELECT НазваниеИзделия, Фото FROM Изделия WHERE КодИзделия = @ProductId";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ProductId", productId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string name = reader["НазваниеИзделия"].ToString();
+                            byte[] photo = reader["Фото"] as byte[];
+                            return (name, photo);
+                        }
+                        else
+                        {
+                            return (null, null);
+                        }
+                    }
+                }
+            }
+        }
+
+
         public Dictionary<string, string> GetEmployeeDataByLogin(string login)
         {
             Dictionary<string, string> employeeData = new Dictionary<string, string>();
@@ -124,10 +173,11 @@ namespace app.Classes
             {
                 con.Open();
                 string query = @"
-                SELECT Сотрудники.Имя, Сотрудники.Фамилия, Сотрудники.ЭлектроннаяПочта, Сотрудники.ДатаПриема, Сотрудники.Зарплата, Пользователи.Должность, Пользователи.Пароль, Пользователи.Логин
-                FROM Сотрудники
-                INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-                WHERE Пользователи.Логин = @Логин";
+        SELECT Сотрудники.КодСотрудника, Сотрудники.Имя, Сотрудники.Фамилия, Сотрудники.ЭлектроннаяПочта, 
+               Сотрудники.ДатаПриема, Сотрудники.Зарплата, Пользователи.Должность, Пользователи.Пароль, Пользователи.Логин
+        FROM Сотрудники
+        INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+        WHERE Пользователи.Логин = @Логин";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@Логин", login);
@@ -135,6 +185,7 @@ namespace app.Classes
                     {
                         if (reader.Read())
                         {
+                            employeeData["КодСотрудника"] = reader["КодСотрудника"].ToString();
                             employeeData["Имя"] = reader["Имя"].ToString();
                             employeeData["Фамилия"] = reader["Фамилия"].ToString();
                             employeeData["ЭлектроннаяПочта"] = reader["ЭлектроннаяПочта"].ToString();

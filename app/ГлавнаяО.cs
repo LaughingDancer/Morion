@@ -37,12 +37,13 @@ namespace app
             DB db = new DB();
             employeeData = db.GetEmployeeDataByLogin(login);
             employeePhoto = db.GetEmployeePhotoByLogin(login);
+            int employeeId = Convert.ToInt32(employeeData["КодСотрудника"]);
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
         }
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            UC_Главная uc = new UC_Главная();
-            addUserControl(uc);
+            ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
+            addUserControl(ucГлавная);
         }
 
         private void IconClose_Click(object sender, EventArgs e)
@@ -77,7 +78,8 @@ namespace app
 
         private void ordering_Click(object sender, EventArgs e)
         {
-            UC_ОформитьЗаказ uc = new UC_ОформитьЗаказ();
+            int employeeId = Convert.ToInt32(employeeData["КодСотрудника"]);
+            UC_ОформитьЗаказ uc = new UC_ОформитьЗаказ(employeeId);
             addUserControl(uc);
         }
 
@@ -98,6 +100,12 @@ namespace app
             {
                 guna2BorderlessForm1.BorderRadius = 20;
             }
+        }
+
+        private void ProductList_Click(object sender, EventArgs e)
+        {
+            UC_Изделия uc = new UC_Изделия();
+            addUserControl(uc);
         }
     }
 }

@@ -69,17 +69,47 @@
     <Compile Include="CustomMessageBoxes\CustomMessageOK.Designer.cs">
       <DependentUpon>CustomMessageOK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ДобавлениеЗаказ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ДобавлениеЗаказ.Designer.cs">
+      <DependentUpon>ДобавлениеЗаказ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ДобавлениеИзделия.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ДобавлениеИзделия.Designer.cs">
+      <DependentUpon>ДобавлениеИзделия.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ДобавлениеПерсонал.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ДобавлениеПерсонал.Designer.cs">
       <DependentUpon>ДобавлениеПерсонал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ИзменениеИзделия.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ИзменениеИзделия.Designer.cs">
+      <DependentUpon>ИзменениеИзделия.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ИзменениеПерсонал.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ИзменениеПерсонал.Designer.cs">
       <DependentUpon>ИзменениеПерсонал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\УдалениеЗаказа.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\УдалениеЗаказа.Designer.cs">
+      <DependentUpon>УдалениеЗаказа.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\УдалениеИзделия.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\УдалениеИзделия.Designer.cs">
+      <DependentUpon>УдалениеИзделия.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\УдалениеПерсонал.cs">
       <SubType>Form</SubType>
@@ -92,6 +122,12 @@
     </Compile>
     <Compile Include="UserControlsOperator\UC_ДеталиЗаказов.Designer.cs">
       <DependentUpon>UC_ДеталиЗаказов.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsOperator\UC_Изделия.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsOperator\UC_Изделия.Designer.cs">
+      <DependentUpon>UC_Изделия.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlsOperator\UC_ОформитьЗаказ.cs">
       <SubType>UserControl</SubType>
@@ -239,17 +275,35 @@
     <EmbeddedResource Include="CustomMessageBoxes\CustomMessageOK.resx">
       <DependentUpon>CustomMessageOK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ДобавлениеЗаказ.resx">
+      <DependentUpon>ДобавлениеЗаказ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ДобавлениеИзделия.resx">
+      <DependentUpon>ДобавлениеИзделия.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ДобавлениеПерсонал.resx">
       <DependentUpon>ДобавлениеПерсонал.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ИзменениеИзделия.resx">
+      <DependentUpon>ИзменениеИзделия.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ИзменениеПерсонал.resx">
       <DependentUpon>ИзменениеПерсонал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\УдалениеЗаказа.resx">
+      <DependentUpon>УдалениеЗаказа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\УдалениеИзделия.resx">
+      <DependentUpon>УдалениеИзделия.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\УдалениеПерсонал.resx">
       <DependentUpon>УдалениеПерсонал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlsOperator\UC_ДеталиЗаказов.resx">
       <DependentUpon>UC_ДеталиЗаказов.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsOperator\UC_Изделия.resx">
+      <DependentUpon>UC_Изделия.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlsOperator\UC_ОформитьЗаказ.resx">
       <DependentUpon>UC_ОформитьЗаказ.cs</DependentUpon>
@@ -406,6 +460,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uniform.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

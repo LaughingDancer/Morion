@@ -1,6 +1,6 @@
 ﻿namespace app.Forms
 {
-    partial class УдалениеПерсонал
+    partial class УдалениеИзделия
     {
         /// <summary>
         /// Required designer variable.
@@ -29,15 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.HeaderPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.buttonFire = new Guna.UI2.WinForms.Guna2Button();
             this.labelQuation = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelEmployeeInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.buttonDelete = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 20;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.DragForm = false;
+            this.guna2BorderlessForm1.ResizeForm = false;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // HeaderPanel
             // 
@@ -48,7 +57,7 @@
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
             this.HeaderPanel.Size = new System.Drawing.Size(508, 40);
-            this.HeaderPanel.TabIndex = 32;
+            this.HeaderPanel.TabIndex = 33;
             // 
             // HeaderPanelLabel
             // 
@@ -57,9 +66,9 @@
             this.HeaderPanelLabel.ForeColor = System.Drawing.Color.White;
             this.HeaderPanelLabel.Location = new System.Drawing.Point(12, 7);
             this.HeaderPanelLabel.Name = "HeaderPanelLabel";
-            this.HeaderPanelLabel.Size = new System.Drawing.Size(217, 26);
+            this.HeaderPanelLabel.Size = new System.Drawing.Size(193, 26);
             this.HeaderPanelLabel.TabIndex = 3;
-            this.HeaderPanelLabel.Text = "Морион | Увольнение";
+            this.HeaderPanelLabel.Text = "Морион | Удаление";
             // 
             // IconClose
             // 
@@ -80,49 +89,16 @@
             this.IconClose.Size = new System.Drawing.Size(40, 40);
             this.IconClose.TabIndex = 0;
             this.IconClose.UseTransparentBackground = true;
-            this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 20;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.DragForm = false;
-            this.guna2BorderlessForm1.ResizeForm = false;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // buttonFire
-            // 
-            this.buttonFire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFire.BackColor = System.Drawing.Color.Transparent;
-            this.buttonFire.BorderRadius = 10;
-            this.buttonFire.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFire.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonFire.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonFire.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonFire.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonFire.FillColor = System.Drawing.Color.DarkRed;
-            this.buttonFire.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.buttonFire.ForeColor = System.Drawing.Color.White;
-            this.buttonFire.HoverState.FillColor = System.Drawing.Color.Maroon;
-            this.buttonFire.Location = new System.Drawing.Point(83, 194);
-            this.buttonFire.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonFire.Name = "buttonFire";
-            this.buttonFire.Size = new System.Drawing.Size(350, 50);
-            this.buttonFire.TabIndex = 39;
-            this.buttonFire.Text = "Уволить";
-            this.buttonFire.UseTransparentBackground = true;
-            this.buttonFire.Click += new System.EventHandler(this.buttonFire_Click);
             // 
             // labelQuation
             // 
             this.labelQuation.BackColor = System.Drawing.Color.Transparent;
             this.labelQuation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQuation.Location = new System.Drawing.Point(49, 78);
+            this.labelQuation.Location = new System.Drawing.Point(63, 85);
             this.labelQuation.Name = "labelQuation";
-            this.labelQuation.Size = new System.Drawing.Size(411, 26);
-            this.labelQuation.TabIndex = 40;
-            this.labelQuation.Text = "Вы уверены, что хотите уволить сотрудника:";
+            this.labelQuation.Size = new System.Drawing.Size(383, 26);
+            this.labelQuation.TabIndex = 41;
+            this.labelQuation.Text = "Вы уверены, что хотите удалить изделие:";
             // 
             // labelEmployeeInfo
             // 
@@ -131,23 +107,46 @@
             this.labelEmployeeInfo.Location = new System.Drawing.Point(217, 121);
             this.labelEmployeeInfo.Name = "labelEmployeeInfo";
             this.labelEmployeeInfo.Size = new System.Drawing.Size(74, 26);
-            this.labelEmployeeInfo.TabIndex = 41;
+            this.labelEmployeeInfo.TabIndex = 42;
             this.labelEmployeeInfo.Text = "quations";
             // 
-            // УдалениеПерсонал
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDelete.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDelete.BorderRadius = 10;
+            this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonDelete.FillColor = System.Drawing.Color.DarkRed;
+            this.buttonDelete.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
+            this.buttonDelete.HoverState.FillColor = System.Drawing.Color.Maroon;
+            this.buttonDelete.Location = new System.Drawing.Point(79, 189);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(350, 50);
+            this.buttonDelete.TabIndex = 43;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseTransparentBackground = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // УдалениеИзделия
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(508, 268);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.labelEmployeeInfo);
             this.Controls.Add(this.labelQuation);
-            this.Controls.Add(this.buttonFire);
             this.Controls.Add(this.HeaderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "УдалениеПерсонал";
+            this.Name = "УдалениеИзделия";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "УдалениеПерсонал";
+            this.Text = "УдалениеИзделия";
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -157,12 +156,12 @@
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel HeaderPanel;
         private Guna.UI2.WinForms.Guna2HtmlLabel HeaderPanelLabel;
         private Guna.UI2.WinForms.Guna2Button IconClose;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2Button buttonFire;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelQuation;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelEmployeeInfo;
+        private Guna.UI2.WinForms.Guna2Button buttonDelete;
     }
 }

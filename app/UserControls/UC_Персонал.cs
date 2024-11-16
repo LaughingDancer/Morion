@@ -150,8 +150,9 @@ namespace app.UserControls
                     int employeeId = Convert.ToInt32(DataGridViewPeople.Rows[e.RowIndex].Cells["КодСотрудника"].Value);
                     string firstName = DataGridViewPeople.Rows[e.RowIndex].Cells["Имя"].Value.ToString();
                     string lastName = DataGridViewPeople.Rows[e.RowIndex].Cells["Фамилия"].Value.ToString();
+                    string email = DataGridViewPeople.Rows[e.RowIndex].Cells["ЭлектроннаяПочта"].Value.ToString();
 
-                    УдалениеПерсонал fireForm = new УдалениеПерсонал(employeeId, firstName, lastName, this);
+                    УдалениеПерсонал fireForm = new УдалениеПерсонал(employeeId, firstName, lastName, email, this);
                     fireForm.Show();
                 }
             }

@@ -44,7 +44,7 @@
             this.PanelMessage.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(183)))), ((int)(((byte)(211)))));
             this.PanelMessage.Location = new System.Drawing.Point(0, 0);
             this.PanelMessage.Name = "PanelMessage";
-            this.PanelMessage.Size = new System.Drawing.Size(30, 163);
+            this.PanelMessage.Size = new System.Drawing.Size(30, 180);
             this.PanelMessage.TabIndex = 2;
             // 
             // LabelMessage
@@ -54,7 +54,7 @@
             this.LabelMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelMessage.Location = new System.Drawing.Point(169, 31);
             this.LabelMessage.Name = "LabelMessage";
-            this.LabelMessage.Size = new System.Drawing.Size(220, 59);
+            this.LabelMessage.Size = new System.Drawing.Size(237, 73);
             this.LabelMessage.TabIndex = 4;
             this.LabelMessage.Text = "Сообщение";
             // 
@@ -70,7 +70,7 @@
             this.ButtonYes.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(155)))), ((int)(((byte)(53)))));
             this.ButtonYes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.ButtonYes.ForeColor = System.Drawing.Color.White;
-            this.ButtonYes.Location = new System.Drawing.Point(169, 96);
+            this.ButtonYes.Location = new System.Drawing.Point(169, 110);
             this.ButtonYes.Name = "ButtonYes";
             this.ButtonYes.Size = new System.Drawing.Size(100, 35);
             this.ButtonYes.TabIndex = 5;
@@ -89,7 +89,7 @@
             this.ButtonNo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
             this.ButtonNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.ButtonNo.ForeColor = System.Drawing.Color.White;
-            this.ButtonNo.Location = new System.Drawing.Point(289, 96);
+            this.ButtonNo.Location = new System.Drawing.Point(306, 110);
             this.ButtonNo.Name = "ButtonNo";
             this.ButtonNo.Size = new System.Drawing.Size(100, 35);
             this.ButtonNo.TabIndex = 6;
@@ -101,9 +101,9 @@
             this.PictureBoxIcon.BackColor = System.Drawing.Color.Transparent;
             this.PictureBoxIcon.Image = global::app.Properties.Resources.qustions;
             this.PictureBoxIcon.ImageRotate = 0F;
-            this.PictureBoxIcon.Location = new System.Drawing.Point(36, 31);
+            this.PictureBoxIcon.Location = new System.Drawing.Point(36, 35);
             this.PictureBoxIcon.Name = "PictureBoxIcon";
-            this.PictureBoxIcon.Size = new System.Drawing.Size(100, 100);
+            this.PictureBoxIcon.Size = new System.Drawing.Size(110, 110);
             this.PictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBoxIcon.TabIndex = 3;
             this.PictureBoxIcon.TabStop = false;
@@ -123,7 +123,7 @@
             this.AcceptButton = this.ButtonYes;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 163);
+            this.ClientSize = new System.Drawing.Size(450, 180);
             this.Controls.Add(this.ButtonNo);
             this.Controls.Add(this.ButtonYes);
             this.Controls.Add(this.LabelMessage);

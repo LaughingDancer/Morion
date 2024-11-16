@@ -1,6 +1,6 @@
 ﻿namespace app.Forms
 {
-    partial class УдалениеПерсонал
+    partial class УдалениеЗаказа
     {
         /// <summary>
         /// Required designer variable.
@@ -29,15 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.HeaderPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.buttonFire = new Guna.UI2.WinForms.Guna2Button();
+            this.buttonDeleteOrder = new Guna.UI2.WinForms.Guna2Button();
+            this.labelOrderInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelQuation = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.labelEmployeeInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // HeaderPanel
             // 
@@ -48,7 +60,7 @@
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
             this.HeaderPanel.Size = new System.Drawing.Size(508, 40);
-            this.HeaderPanel.TabIndex = 32;
+            this.HeaderPanel.TabIndex = 34;
             // 
             // HeaderPanelLabel
             // 
@@ -57,9 +69,9 @@
             this.HeaderPanelLabel.ForeColor = System.Drawing.Color.White;
             this.HeaderPanelLabel.Location = new System.Drawing.Point(12, 7);
             this.HeaderPanelLabel.Name = "HeaderPanelLabel";
-            this.HeaderPanelLabel.Size = new System.Drawing.Size(217, 26);
+            this.HeaderPanelLabel.Size = new System.Drawing.Size(193, 26);
             this.HeaderPanelLabel.TabIndex = 3;
-            this.HeaderPanelLabel.Text = "Морион | Увольнение";
+            this.HeaderPanelLabel.Text = "Морион | Удаление";
             // 
             // IconClose
             // 
@@ -82,72 +94,63 @@
             this.IconClose.UseTransparentBackground = true;
             this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
-            // guna2BorderlessForm1
+            // buttonDeleteOrder
             // 
-            this.guna2BorderlessForm1.BorderRadius = 20;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.DragForm = false;
-            this.guna2BorderlessForm1.ResizeForm = false;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            this.buttonDeleteOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteOrder.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDeleteOrder.BorderRadius = 10;
+            this.buttonDeleteOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDeleteOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonDeleteOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonDeleteOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonDeleteOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonDeleteOrder.FillColor = System.Drawing.Color.DarkRed;
+            this.buttonDeleteOrder.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.buttonDeleteOrder.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteOrder.HoverState.FillColor = System.Drawing.Color.Maroon;
+            this.buttonDeleteOrder.Location = new System.Drawing.Point(79, 183);
+            this.buttonDeleteOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonDeleteOrder.Name = "buttonDeleteOrder";
+            this.buttonDeleteOrder.Size = new System.Drawing.Size(350, 50);
+            this.buttonDeleteOrder.TabIndex = 46;
+            this.buttonDeleteOrder.Text = "Удалить";
+            this.buttonDeleteOrder.UseTransparentBackground = true;
+            this.buttonDeleteOrder.Click += new System.EventHandler(this.buttonDeleteOrder_Click);
             // 
-            // buttonFire
+            // labelOrderInfo
             // 
-            this.buttonFire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFire.BackColor = System.Drawing.Color.Transparent;
-            this.buttonFire.BorderRadius = 10;
-            this.buttonFire.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFire.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonFire.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonFire.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonFire.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonFire.FillColor = System.Drawing.Color.DarkRed;
-            this.buttonFire.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.buttonFire.ForeColor = System.Drawing.Color.White;
-            this.buttonFire.HoverState.FillColor = System.Drawing.Color.Maroon;
-            this.buttonFire.Location = new System.Drawing.Point(83, 194);
-            this.buttonFire.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonFire.Name = "buttonFire";
-            this.buttonFire.Size = new System.Drawing.Size(350, 50);
-            this.buttonFire.TabIndex = 39;
-            this.buttonFire.Text = "Уволить";
-            this.buttonFire.UseTransparentBackground = true;
-            this.buttonFire.Click += new System.EventHandler(this.buttonFire_Click);
+            this.labelOrderInfo.BackColor = System.Drawing.Color.Transparent;
+            this.labelOrderInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelOrderInfo.Location = new System.Drawing.Point(217, 115);
+            this.labelOrderInfo.Name = "labelOrderInfo";
+            this.labelOrderInfo.Size = new System.Drawing.Size(74, 26);
+            this.labelOrderInfo.TabIndex = 45;
+            this.labelOrderInfo.Text = "quations";
             // 
             // labelQuation
             // 
             this.labelQuation.BackColor = System.Drawing.Color.Transparent;
             this.labelQuation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQuation.Location = new System.Drawing.Point(49, 78);
+            this.labelQuation.Location = new System.Drawing.Point(76, 79);
             this.labelQuation.Name = "labelQuation";
-            this.labelQuation.Size = new System.Drawing.Size(411, 26);
-            this.labelQuation.TabIndex = 40;
-            this.labelQuation.Text = "Вы уверены, что хотите уволить сотрудника:";
+            this.labelQuation.Size = new System.Drawing.Size(356, 26);
+            this.labelQuation.TabIndex = 44;
+            this.labelQuation.Text = "Вы уверены, что хотите удалить заказ:";
             // 
-            // labelEmployeeInfo
-            // 
-            this.labelEmployeeInfo.BackColor = System.Drawing.Color.Transparent;
-            this.labelEmployeeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEmployeeInfo.Location = new System.Drawing.Point(217, 121);
-            this.labelEmployeeInfo.Name = "labelEmployeeInfo";
-            this.labelEmployeeInfo.Size = new System.Drawing.Size(74, 26);
-            this.labelEmployeeInfo.TabIndex = 41;
-            this.labelEmployeeInfo.Text = "quations";
-            // 
-            // УдалениеПерсонал
+            // УдалениеЗаказа
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(508, 268);
-            this.Controls.Add(this.labelEmployeeInfo);
+            this.Controls.Add(this.buttonDeleteOrder);
+            this.Controls.Add(this.labelOrderInfo);
             this.Controls.Add(this.labelQuation);
-            this.Controls.Add(this.buttonFire);
             this.Controls.Add(this.HeaderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "УдалениеПерсонал";
+            this.Name = "УдалениеЗаказа";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "УдалениеПерсонал";
+            this.Text = "УдалениеЗаказ";
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -157,12 +160,13 @@
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Panel HeaderPanel;
         private Guna.UI2.WinForms.Guna2HtmlLabel HeaderPanelLabel;
         private Guna.UI2.WinForms.Guna2Button IconClose;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2Button buttonFire;
+        private Guna.UI2.WinForms.Guna2Button buttonDeleteOrder;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelOrderInfo;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelQuation;
-        private Guna.UI2.WinForms.Guna2HtmlLabel labelEmployeeInfo;
     }
 }

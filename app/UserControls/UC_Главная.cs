@@ -31,7 +31,10 @@ namespace app.UserControls
             searchTextBox.Text = employeeData["Имя"];
             TextBoxSurname.Text = employeeData["Фамилия"];
             TextBoxEmail.Text = employeeData["ЭлектроннаяПочта"];
-            TextBoxDateOfHire.Text = employeeData["ДатаПриема"];
+            if (DateTime.TryParse(employeeData["ДатаПриема"], out DateTime dateOfHire))
+            {
+                TextBoxDateOfHire.Text = dateOfHire.ToString("dd.MM.yyyy");
+            }
             TextBoxSalary.Text = employeeData["Зарплата"];
             TextBoxPost.Text = employeeData["Должность"];
             TextBoxLogin.Text = employeeData["Логин"];

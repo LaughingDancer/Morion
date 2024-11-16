@@ -31,18 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.IconMinimized = new Guna.UI2.WinForms.Guna2Button();
+            this.IconMaximized = new Guna.UI2.WinForms.Guna2Button();
+            this.IconClose = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.orderDetails = new Guna.UI2.WinForms.Guna2Button();
             this.ordering = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button22 = new Guna.UI2.WinForms.Guna2Button();
             this.HomeButton = new Guna.UI2.WinForms.Guna2Button();
-            this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.IconMinimized = new Guna.UI2.WinForms.Guna2Button();
-            this.IconMaximized = new Guna.UI2.WinForms.Guna2Button();
-            this.IconClose = new Guna.UI2.WinForms.Guna2Button();
             this.DesktopPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.MainPanel.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
+            this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -59,6 +59,81 @@
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2DragControl1.TargetControl = this.HeaderPanel;
             this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // HeaderPanel
+            // 
+            this.HeaderPanel.Controls.Add(this.IconMinimized);
+            this.HeaderPanel.Controls.Add(this.IconMaximized);
+            this.HeaderPanel.Controls.Add(this.IconClose);
+            this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HeaderPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.HeaderPanel.Location = new System.Drawing.Point(200, 0);
+            this.HeaderPanel.Name = "HeaderPanel";
+            this.HeaderPanel.Size = new System.Drawing.Size(600, 40);
+            this.HeaderPanel.TabIndex = 3;
+            // 
+            // IconMinimized
+            // 
+            this.IconMinimized.BackColor = System.Drawing.Color.Transparent;
+            this.IconMinimized.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.IconMinimized.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.IconMinimized.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.IconMinimized.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.IconMinimized.Dock = System.Windows.Forms.DockStyle.Right;
+            this.IconMinimized.FillColor = System.Drawing.Color.Empty;
+            this.IconMinimized.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.IconMinimized.ForeColor = System.Drawing.Color.White;
+            this.IconMinimized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.IconMinimized.Image = global::app.Properties.Resources.minimizeW;
+            this.IconMinimized.ImageSize = new System.Drawing.Size(24, 24);
+            this.IconMinimized.Location = new System.Drawing.Point(480, 0);
+            this.IconMinimized.Name = "IconMinimized";
+            this.IconMinimized.Size = new System.Drawing.Size(40, 40);
+            this.IconMinimized.TabIndex = 2;
+            this.IconMinimized.UseTransparentBackground = true;
+            this.IconMinimized.Click += new System.EventHandler(this.IconMinimized_Click);
+            // 
+            // IconMaximized
+            // 
+            this.IconMaximized.BackColor = System.Drawing.Color.Transparent;
+            this.IconMaximized.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.IconMaximized.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.IconMaximized.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.IconMaximized.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.IconMaximized.Dock = System.Windows.Forms.DockStyle.Right;
+            this.IconMaximized.FillColor = System.Drawing.Color.Empty;
+            this.IconMaximized.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.IconMaximized.ForeColor = System.Drawing.Color.White;
+            this.IconMaximized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.IconMaximized.Image = global::app.Properties.Resources.expand_window;
+            this.IconMaximized.ImageSize = new System.Drawing.Size(30, 30);
+            this.IconMaximized.Location = new System.Drawing.Point(520, 0);
+            this.IconMaximized.Name = "IconMaximized";
+            this.IconMaximized.Size = new System.Drawing.Size(40, 40);
+            this.IconMaximized.TabIndex = 1;
+            this.IconMaximized.UseTransparentBackground = true;
+            this.IconMaximized.Click += new System.EventHandler(this.IconMaximized_Click);
+            // 
+            // IconClose
+            // 
+            this.IconClose.BackColor = System.Drawing.Color.Transparent;
+            this.IconClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.IconClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.IconClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.IconClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.IconClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.IconClose.FillColor = System.Drawing.Color.Empty;
+            this.IconClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.IconClose.ForeColor = System.Drawing.Color.White;
+            this.IconClose.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.IconClose.Image = global::app.Properties.Resources.closeW;
+            this.IconClose.ImageSize = new System.Drawing.Size(30, 30);
+            this.IconClose.Location = new System.Drawing.Point(560, 0);
+            this.IconClose.Name = "IconClose";
+            this.IconClose.Size = new System.Drawing.Size(40, 40);
+            this.IconClose.TabIndex = 0;
+            this.IconClose.UseTransparentBackground = true;
+            this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
             // MainPanel
             // 
@@ -159,82 +234,6 @@
             this.HomeButton.Size = new System.Drawing.Size(200, 80);
             this.HomeButton.TabIndex = 0;
             this.HomeButton.Text = "Морион";
-            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
-            // 
-            // HeaderPanel
-            // 
-            this.HeaderPanel.Controls.Add(this.IconMinimized);
-            this.HeaderPanel.Controls.Add(this.IconMaximized);
-            this.HeaderPanel.Controls.Add(this.IconClose);
-            this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HeaderPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.HeaderPanel.Location = new System.Drawing.Point(200, 0);
-            this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(600, 40);
-            this.HeaderPanel.TabIndex = 3;
-            // 
-            // IconMinimized
-            // 
-            this.IconMinimized.BackColor = System.Drawing.Color.Transparent;
-            this.IconMinimized.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.IconMinimized.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.IconMinimized.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.IconMinimized.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.IconMinimized.Dock = System.Windows.Forms.DockStyle.Right;
-            this.IconMinimized.FillColor = System.Drawing.Color.Empty;
-            this.IconMinimized.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IconMinimized.ForeColor = System.Drawing.Color.White;
-            this.IconMinimized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.IconMinimized.Image = global::app.Properties.Resources.minimizeW;
-            this.IconMinimized.ImageSize = new System.Drawing.Size(24, 24);
-            this.IconMinimized.Location = new System.Drawing.Point(480, 0);
-            this.IconMinimized.Name = "IconMinimized";
-            this.IconMinimized.Size = new System.Drawing.Size(40, 40);
-            this.IconMinimized.TabIndex = 2;
-            this.IconMinimized.UseTransparentBackground = true;
-            this.IconMinimized.Click += new System.EventHandler(this.IconMinimized_Click);
-            // 
-            // IconMaximized
-            // 
-            this.IconMaximized.BackColor = System.Drawing.Color.Transparent;
-            this.IconMaximized.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.IconMaximized.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.IconMaximized.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.IconMaximized.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.IconMaximized.Dock = System.Windows.Forms.DockStyle.Right;
-            this.IconMaximized.FillColor = System.Drawing.Color.Empty;
-            this.IconMaximized.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IconMaximized.ForeColor = System.Drawing.Color.White;
-            this.IconMaximized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.IconMaximized.Image = global::app.Properties.Resources.expand_window;
-            this.IconMaximized.ImageSize = new System.Drawing.Size(30, 30);
-            this.IconMaximized.Location = new System.Drawing.Point(520, 0);
-            this.IconMaximized.Name = "IconMaximized";
-            this.IconMaximized.Size = new System.Drawing.Size(40, 40);
-            this.IconMaximized.TabIndex = 1;
-            this.IconMaximized.UseTransparentBackground = true;
-            this.IconMaximized.Click += new System.EventHandler(this.IconMaximized_Click);
-            // 
-            // IconClose
-            // 
-            this.IconClose.BackColor = System.Drawing.Color.Transparent;
-            this.IconClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.IconClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.IconClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.IconClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.IconClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.IconClose.FillColor = System.Drawing.Color.Empty;
-            this.IconClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IconClose.ForeColor = System.Drawing.Color.White;
-            this.IconClose.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.IconClose.Image = global::app.Properties.Resources.closeW;
-            this.IconClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.IconClose.Location = new System.Drawing.Point(560, 0);
-            this.IconClose.Name = "IconClose";
-            this.IconClose.Size = new System.Drawing.Size(40, 40);
-            this.IconClose.TabIndex = 0;
-            this.IconClose.UseTransparentBackground = true;
-            this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
             // DesktopPanel
             // 
@@ -258,8 +257,8 @@
             this.Text = "ГлавнаяШ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Resize += new System.EventHandler(this.ГлавнаяШ_Resize);
-            this.MainPanel.ResumeLayout(false);
             this.HeaderPanel.ResumeLayout(false);
+            this.MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
