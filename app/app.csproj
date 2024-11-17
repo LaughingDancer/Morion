@@ -78,52 +78,52 @@
     <Compile Include="CustomMessageBoxes\CustomMessageOK.Designer.cs">
       <DependentUpon>CustomMessageOK.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ВыполнениеЗаказа.cs">
+    <Compile Include="ModalWindows\ВыполнениеЗаказа.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ВыполнениеЗаказа.Designer.cs">
+    <Compile Include="ModalWindows\ВыполнениеЗаказа.Designer.cs">
       <DependentUpon>ВыполнениеЗаказа.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ДобавлениеИзделия.cs">
+    <Compile Include="ModalWindows\ДобавлениеИзделия.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ДобавлениеИзделия.Designer.cs">
+    <Compile Include="ModalWindows\ДобавлениеИзделия.Designer.cs">
       <DependentUpon>ДобавлениеИзделия.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ДобавлениеПерсонал.cs">
+    <Compile Include="ModalWindows\ДобавлениеПерсонал.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ДобавлениеПерсонал.Designer.cs">
+    <Compile Include="ModalWindows\ДобавлениеПерсонал.Designer.cs">
       <DependentUpon>ДобавлениеПерсонал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ИзменениеИзделия.cs">
+    <Compile Include="ModalWindows\ИзменениеИзделия.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ИзменениеИзделия.Designer.cs">
+    <Compile Include="ModalWindows\ИзменениеИзделия.Designer.cs">
       <DependentUpon>ИзменениеИзделия.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ИзменениеПерсонал.cs">
+    <Compile Include="ModalWindows\ИзменениеПерсонал.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ИзменениеПерсонал.Designer.cs">
+    <Compile Include="ModalWindows\ИзменениеПерсонал.Designer.cs">
       <DependentUpon>ИзменениеПерсонал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\УдалениеЗаказа.cs">
+    <Compile Include="ModalWindows\УдалениеЗаказа.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\УдалениеЗаказа.Designer.cs">
+    <Compile Include="ModalWindows\УдалениеЗаказа.Designer.cs">
       <DependentUpon>УдалениеЗаказа.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\УдалениеИзделия.cs">
+    <Compile Include="ModalWindows\УдалениеИзделия.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\УдалениеИзделия.Designer.cs">
+    <Compile Include="ModalWindows\УдалениеИзделия.Designer.cs">
       <DependentUpon>УдалениеИзделия.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\УдалениеПерсонал.cs">
+    <Compile Include="ModalWindows\УдалениеПерсонал.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\УдалениеПерсонал.Designer.cs">
+    <Compile Include="ModalWindows\УдалениеПерсонал.Designer.cs">
       <DependentUpon>УдалениеПерсонал.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlsOperator\UC_Заказы.cs">
@@ -149,6 +149,12 @@
     </Compile>
     <Compile Include="UserControlsSeamstress\UC_ЗаказыШвея.Designer.cs">
       <DependentUpon>UC_ЗаказыШвея.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlsSpecialist\UC_ЖурналБэкап.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlsSpecialist\UC_ЖурналБэкап.Designer.cs">
+      <DependentUpon>UC_ЖурналБэкап.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlsStatistics\UC_Статистика.cs">
       <SubType>UserControl</SubType>
@@ -212,28 +218,28 @@
     <EmbeddedResource Include="CustomMessageBoxes\CustomMessageOK.resx">
       <DependentUpon>CustomMessageOK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ВыполнениеЗаказа.resx">
+    <EmbeddedResource Include="ModalWindows\ВыполнениеЗаказа.resx">
       <DependentUpon>ВыполнениеЗаказа.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ДобавлениеИзделия.resx">
+    <EmbeddedResource Include="ModalWindows\ДобавлениеИзделия.resx">
       <DependentUpon>ДобавлениеИзделия.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ДобавлениеПерсонал.resx">
+    <EmbeddedResource Include="ModalWindows\ДобавлениеПерсонал.resx">
       <DependentUpon>ДобавлениеПерсонал.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ИзменениеИзделия.resx">
+    <EmbeddedResource Include="ModalWindows\ИзменениеИзделия.resx">
       <DependentUpon>ИзменениеИзделия.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ИзменениеПерсонал.resx">
+    <EmbeddedResource Include="ModalWindows\ИзменениеПерсонал.resx">
       <DependentUpon>ИзменениеПерсонал.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\УдалениеЗаказа.resx">
+    <EmbeddedResource Include="ModalWindows\УдалениеЗаказа.resx">
       <DependentUpon>УдалениеЗаказа.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\УдалениеИзделия.resx">
+    <EmbeddedResource Include="ModalWindows\УдалениеИзделия.resx">
       <DependentUpon>УдалениеИзделия.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\УдалениеПерсонал.resx">
+    <EmbeddedResource Include="ModalWindows\УдалениеПерсонал.resx">
       <DependentUpon>УдалениеПерсонал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlsOperator\UC_Заказы.resx">
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlsSeamstress\UC_ЗаказыШвея.resx">
       <DependentUpon>UC_ЗаказыШвея.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlsSpecialist\UC_ЖурналБэкап.resx">
+      <DependentUpon>UC_ЖурналБэкап.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlsStatistics\UC_Статистика.resx">
       <DependentUpon>UC_Статистика.cs</DependentUpon>
@@ -374,5 +383,6 @@
   <ItemGroup>
     <None Include="Resources\database.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

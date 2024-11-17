@@ -1,6 +1,7 @@
 ﻿using app.Classes;
 using app.UserControls;
 using app.UserControlsOperator;
+using app.UserControlsSpecialist;
 using app.UserControlsStatistics;
 using System;
 using System.Collections.Generic;
@@ -169,6 +170,16 @@ namespace app
         private void menuChart_Click(object sender, EventArgs e)
         {
             UC_Статистика uc = new UC_Статистика();
+            addUserControl(uc);
+            foreach (var button in MainPanelMenuContainer1.Controls.OfType<Guna.UI2.WinForms.Guna2Button>())
+            {
+                button.Checked = false;
+            }
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            UC_ЖурналБэкап uc = new UC_ЖурналБэкап();
             addUserControl(uc);
             foreach (var button in MainPanelMenuContainer1.Controls.OfType<Guna.UI2.WinForms.Guna2Button>())
             {
