@@ -85,7 +85,7 @@ namespace app
 
         private void orderDetails_Click(object sender, EventArgs e)
         {
-            UC_ДеталиЗаказов uc = new UC_ДеталиЗаказов();
+            UC_Заказы uc = new UC_Заказы();
             addUserControl(uc);
         }
 

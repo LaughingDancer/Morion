@@ -158,6 +158,7 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.HeaderPanel;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // HeaderPanel

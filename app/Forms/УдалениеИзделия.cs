@@ -65,5 +65,10 @@ namespace app.Forms
                 }
             }
         }
+
+        private void IconClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

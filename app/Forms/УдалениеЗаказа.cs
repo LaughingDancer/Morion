@@ -17,9 +17,9 @@ namespace app.Forms
     {
         private int orderId;
         private string productName;
-        private UC_ДеталиЗаказов ucДеталиЗаказов;
+        private UC_Заказы ucДеталиЗаказов;
         private DB DB;
-        public УдалениеЗаказа(int orderId, string productName, UC_ДеталиЗаказов ucДеталиЗаказов)
+        public УдалениеЗаказа(int orderId, string productName, UC_Заказы ucДеталиЗаказов)
         {
             InitializeComponent();
             this.orderId = orderId;

@@ -13,30 +13,33 @@ using System.Windows.Forms;
 
 namespace app.UserControlsOperator
 {
-    public partial class UC_ДеталиЗаказов : UserControl
+    public partial class UC_Заказы : UserControl
     {
         private DB DB;
+        private ExcelExporter excelExporter;
         public void RefreshDataGridView()
         {
             RefreshDataGrid(DataGridViewOrders);
         }
-        public UC_ДеталиЗаказов()
+        public UC_Заказы()
         {
             InitializeComponent();
             DB = new DB();
+            excelExporter = new ExcelExporter();
         }
         private void CreateColumns()
         {
             DataGridViewOrders.Columns.Add("КодЗаказа", "КодЗаказа");
             DataGridViewOrders.Columns["КодЗаказа"].Visible = false;
 
-            DataGridViewOrders.Columns.Add("НазваниеИзделия", "НазваниеИзделия");
-            DataGridViewOrders.Columns.Add("НазваниеРазмера", "НазваниеРазмера");
-            DataGridViewOrders.Columns.Add("КоличествоИзделий", "КоличествоИзделий");
-            DataGridViewOrders.Columns.Add("КоличествоВыполненных", "КоличествоВыполненных");
+            DataGridViewOrders.Columns.Add("НазваниеИзделия", "Изделия");
+            DataGridViewOrders.Columns.Add("НазваниеРазмера", "Размер");
+            DataGridViewOrders.Columns.Add("ВидТкани", "Ткань"); // Добавленный столбец
+            DataGridViewOrders.Columns.Add("КоличествоИзделий", "Количество");
+            DataGridViewOrders.Columns.Add("КоличествоВыполненных", "Выполненные");
             DataGridViewOrders.Columns.Add("Статус", "Статус");
-            DataGridViewOrders.Columns.Add("ОбщаяСтоимость", "ОбщаяСтоимость");
-            DataGridViewOrders.Columns.Add("ДатаЗаказа", "ДатаЗаказа");
+            DataGridViewOrders.Columns.Add("ОбщаяСтоимость", "Общая Стоимость");
+            DataGridViewOrders.Columns.Add("ДатаЗаказа", "Дата Заказа");
 
             DataGridViewImageColumn newDeleteColumn = new DataGridViewImageColumn();
             newDeleteColumn.Name = "DeleteColumn";
@@ -54,12 +57,13 @@ namespace app.UserControlsOperator
             DGW.Rows.Add(
                 record.GetInt32(0),                         // КодЗаказа
                 record.GetString(1),                        // НазваниеИзделия
-                record.GetString(2),                        // НазваниеРазмера
-                record.GetInt32(3),                         // КоличествоИзделий
-                record.GetInt32(4),                         // КоличествоВыполненных
-                record.GetString(5),                        // Статус
-                record.GetDecimal(6),                       // ОбщаяСтоимость
-                record.GetDateTime(7).ToShortDateString(),                      // ДатаЗаказа
+                record.GetString(2),                        // НазваниеРазмер
+                record.GetString(3),                        // ВидТкани
+                record.GetInt32(4),                         // КоличествоИзделий
+                record.GetInt32(5),                         // КоличествоВыполненных
+                record.GetString(6),                        // Статус
+                record.GetDecimal(7),                       // ОбщаяСтоимость
+                record.GetDateTime(8).ToShortDateString(),  // ДатаЗаказа
                 Properties.Resources.delete
             );
         }
@@ -72,6 +76,7 @@ SELECT
     Заказы.КодЗаказа, 
     Изделия.НазваниеИзделия, 
     Размеры.НазваниеРазмер, 
+    Ткани.Вид AS ВидТкани,
     ВариантыОптимизации.КоличествоИзделий, 
     Заказы.КоличествоВыполненных, 
     Заказы.Статус, 
@@ -84,7 +89,9 @@ JOIN
 JOIN 
     Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера
 JOIN 
-    Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия";
+    Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
+JOIN 
+    Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани";
 
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             try
@@ -116,6 +123,7 @@ SELECT
     Заказы.КодЗаказа, 
     Изделия.НазваниеИзделия, 
     Размеры.НазваниеРазмер, 
+    Ткани.Вид AS ВидТкани,
     ВариантыОптимизации.КоличествоИзделий, 
     Заказы.КоличествоВыполненных, 
     Заказы.Статус, 
@@ -129,8 +137,10 @@ JOIN
     Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера
 JOIN 
     Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
+JOIN 
+    Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
 WHERE 
-    CONCAT(Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, Заказы.Статус, Заказы.ОбщаяСтоимость, Заказы.ДатаЗаказа) LIKE '%" + searchTextBox.Text + "%'";
+    CONCAT(Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, Ткани.Вид, Заказы.Статус, Заказы.ОбщаяСтоимость, Заказы.ДатаЗаказа) LIKE '%" + searchTextBox.Text + "%'";
 
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
@@ -141,11 +151,12 @@ WHERE
                     reader.GetInt32(0),                         // КодЗаказа
                     reader.GetString(1),                        // НазваниеИзделия
                     reader.GetString(2),                        // НазваниеРазмер
-                    reader.GetInt32(3),                         // КоличествоИзделий
-                    reader.GetInt32(4),                         // КоличествоВыполненных
-                    reader.GetString(5),                        // Статус
-                    reader.GetDecimal(6),                       // ОбщаяСтоимость
-                    reader.GetDateTime(7).ToShortDateString(),                      // ДатаЗаказа
+                    reader.GetString(3),                        // ВидТкани
+                    reader.GetInt32(4),                         // КоличествоИзделий
+                    reader.GetInt32(5),                         // КоличествоВыполненных
+                    reader.GetString(6),                        // Статус
+                    reader.GetDecimal(7),                       // ОбщаяСтоимость
+                    reader.GetDateTime(8).ToShortDateString(),  // ДатаЗаказа
                     Properties.Resources.delete
                 );
             }
@@ -182,27 +193,7 @@ SELECT
     Заказы.КодЗаказа, 
     Изделия.НазваниеИзделия, 
     Размеры.НазваниеРазмер, 
-    ВариантыОптимизации.КоличествоИзделий, 
-    Заказы.КоличествоВыполненных, 
-    Заказы.Статус, 
-    Заказы.ОбщаяСтоимость, 
-    Заказы.ДатаЗаказа 
-FROM 
-    Заказы 
-JOIN 
-    ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации
-JOIN 
-    Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера
-JOIN 
-    Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия";
-            }
-            else
-            {
-                querrySearch = $@"
-SELECT 
-    Заказы.КодЗаказа, 
-    Изделия.НазваниеИзделия, 
-    Размеры.НазваниеРазмер, 
+    Ткани.Вид AS ВидТкани,
     ВариантыОптимизации.КоличествоИзделий, 
     Заказы.КоличествоВыполненных, 
     Заказы.Статус, 
@@ -216,6 +207,32 @@ JOIN
     Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера
 JOIN 
     Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
+JOIN 
+    Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани";
+            }
+            else
+            {
+                querrySearch = $@"
+SELECT 
+    Заказы.КодЗаказа, 
+    Изделия.НазваниеИзделия, 
+    Размеры.НазваниеРазмер, 
+    Ткани.Вид AS ВидТкани,
+    ВариантыОптимизации.КоличествоИзделий, 
+    Заказы.КоличествоВыполненных, 
+    Заказы.Статус, 
+    Заказы.ОбщаяСтоимость, 
+    Заказы.ДатаЗаказа 
+FROM 
+    Заказы 
+JOIN 
+    ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации
+JOIN 
+    Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера
+JOIN 
+    Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
+JOIN 
+    Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
 WHERE 
     Заказы.Статус = @Статус";
             }
@@ -239,11 +256,12 @@ WHERE
                     row["КодЗаказа"],                    // КодЗаказа
                     row["НазваниеИзделия"],              // НазваниеИзделия
                     row["НазваниеРазмер"],               // НазваниеРазмер
+                    row["ВидТкани"],                     // ВидТкани
                     row["КоличествоИзделий"],            // КоличествоИзделий
                     row["КоличествоВыполненных"],        // КоличествоВыполненных
                     row["Статус"],                       // Статус
                     row["ОбщаяСтоимость"],               // ОбщаяСтоимость
-                    ((DateTime)row["ДатаЗаказа"]).ToShortDateString(),                   // ДатаЗаказа
+                    ((DateTime)row["ДатаЗаказа"]).ToShortDateString(),  // ДатаЗаказа
                     Properties.Resources.delete
                 );
             }
@@ -293,6 +311,11 @@ WHERE
                     deleteForm.Show();
                 }
             }
+        }
+
+        private void ButtonExcel_Click(object sender, EventArgs e)
+        {
+            excelExporter.ExportExcel(DataGridViewOrders);
         }
     }
 }

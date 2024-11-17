@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 
 namespace app.Classes
 {
@@ -224,6 +225,56 @@ namespace app.Classes
                     }
                 }
             }
+        }
+        public DataTable GetOptimizationData()
+        {
+            DataTable dataTable = new DataTable();
+            string query = @"
+        SELECT 
+            Изделия.НазваниеИзделия, 
+            Размеры.НазваниеРазмер, 
+            ВариантыОптимизации.КоличествоИзделий, 
+            ВариантыОптимизации.КоличествоОтходов, 
+            ВариантыОптимизации.ПроцентОтходов, 
+            Ткани.Вид AS ВидТкани, 
+            Ткани.Длина, 
+            Ткани.Ширина 
+        FROM 
+            ВариантыОптимизации 
+        JOIN 
+            Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
+        JOIN 
+            Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
+        JOIN 
+            Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера";
+
+            SqlDataAdapter adapter = QueryExecute(query);
+            if (adapter != null)
+            {
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+        public DataTable GetChartFabric()
+        {
+            DataTable dataTable = new DataTable();
+            string query = @"
+        SELECT 
+            Ткани.Вид AS ВидТкани, 
+            SUM(ВариантыОптимизации.КоличествоИзделий) AS КоличествоИзделий
+        FROM 
+            ВариантыОптимизации 
+        JOIN 
+            Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
+        GROUP BY 
+            Ткани.Вид";
+
+            SqlDataAdapter adapter = QueryExecute(query);
+            if (adapter != null)
+            {
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
         }
     }
 }

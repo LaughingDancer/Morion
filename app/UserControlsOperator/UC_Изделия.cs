@@ -16,6 +16,7 @@ namespace app.UserControlsOperator
     public partial class UC_Изделия : UserControl
     {
         private DB DB;
+        private ExcelExporter excelExporter;
         public void RefreshDataGridView()
         {
             RefreshDataGrid(DataGridViewProduct);
@@ -24,6 +25,7 @@ namespace app.UserControlsOperator
         {
             InitializeComponent();
             DB = new DB();
+            excelExporter = new ExcelExporter();
             DataGridViewProduct.CellMouseEnter += DataGridViewProduct_CellMouseEnter;
             DataGridViewProduct.CellMouseLeave += DataGridViewProduct_CellMouseLeave;
         }
@@ -231,7 +233,6 @@ JOIN
             }
         }
 
-
         private void comboBoxPostSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             display_DGW();
@@ -273,6 +274,11 @@ JOIN
         {
             ДобавлениеИзделия toForm = new ДобавлениеИзделия(this);
             toForm.Show();
+        }
+
+        private void ButtonExcel_Click(object sender, EventArgs e)
+        {
+            excelExporter.ExportExcel(DataGridViewProduct);
         }
     }
 }

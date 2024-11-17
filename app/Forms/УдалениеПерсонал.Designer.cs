@@ -36,6 +36,7 @@
             this.buttonFire = new Guna.UI2.WinForms.Guna2Button();
             this.labelQuation = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelEmployeeInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,6 +135,12 @@
             this.labelEmployeeInfo.TabIndex = 41;
             this.labelEmployeeInfo.Text = "quations";
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.HeaderPanel;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
             // УдалениеПерсонал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,5 +171,6 @@
         private Guna.UI2.WinForms.Guna2Button buttonFire;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelQuation;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelEmployeeInfo;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

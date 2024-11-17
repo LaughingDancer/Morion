@@ -1,6 +1,6 @@
-﻿namespace app.UserControlsOperator
+﻿namespace app.UserControlsSeamstress
 {
-    partial class UC_ДеталиЗаказов
+    partial class UC_ЗаказыШвея
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -33,9 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.DataGridViewOrders = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.comboBoxStatus = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.comboBoxProduct = new Guna.UI2.WinForms.Guna2ComboBox();
             this.searchTextBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.DataGridViewOrders = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOrders)).BeginInit();
@@ -50,7 +50,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1571, 50);
-            this.guna2Panel2.TabIndex = 10;
+            this.guna2Panel2.TabIndex = 11;
             // 
             // guna2HtmlLabel1
             // 
@@ -58,11 +58,61 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(660, 0);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(727, 0);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(251, 39);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(117, 39);
             this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Детали Заказов";
+            this.guna2HtmlLabel1.Text = "Заказы";
+            // 
+            // comboBoxProduct
+            // 
+            this.comboBoxProduct.BackColor = System.Drawing.Color.Transparent;
+            this.comboBoxProduct.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxProduct.BorderRadius = 10;
+            this.comboBoxProduct.BorderThickness = 2;
+            this.comboBoxProduct.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProduct.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxProduct.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxProduct.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxProduct.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxProduct.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxProduct.ItemHeight = 44;
+            this.comboBoxProduct.Items.AddRange(new object[] {
+            "Швея",
+            "Оператор",
+            "Специалист КБД"});
+            this.comboBoxProduct.Location = new System.Drawing.Point(325, 71);
+            this.comboBoxProduct.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.comboBoxProduct.Name = "comboBoxProduct";
+            this.comboBoxProduct.Size = new System.Drawing.Size(300, 50);
+            this.comboBoxProduct.TabIndex = 58;
+            this.comboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comboBoxProduct_SelectedIndexChanged);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.searchTextBox.BorderRadius = 10;
+            this.searchTextBox.BorderThickness = 2;
+            this.searchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchTextBox.DefaultText = "";
+            this.searchTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.searchTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.searchTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.searchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.searchTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.searchTextBox.Location = new System.Drawing.Point(18, 71);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.PasswordChar = '\0';
+            this.searchTextBox.PlaceholderText = "Поиск";
+            this.searchTextBox.SelectedText = "";
+            this.searchTextBox.Size = new System.Drawing.Size(300, 50);
+            this.searchTextBox.TabIndex = 57;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // DataGridViewOrders
             // 
@@ -96,7 +146,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataGridViewOrders.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewOrders.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.DataGridViewOrders.Location = new System.Drawing.Point(18, 152);
+            this.DataGridViewOrders.Location = new System.Drawing.Point(18, 151);
             this.DataGridViewOrders.Margin = new System.Windows.Forms.Padding(0);
             this.DataGridViewOrders.Name = "DataGridViewOrders";
             this.DataGridViewOrders.ReadOnly = true;
@@ -104,7 +154,7 @@
             this.DataGridViewOrders.RowHeadersWidth = 60;
             this.DataGridViewOrders.RowTemplate.Height = 60;
             this.DataGridViewOrders.Size = new System.Drawing.Size(1535, 348);
-            this.DataGridViewOrders.TabIndex = 48;
+            this.DataGridViewOrders.TabIndex = 55;
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -127,58 +177,6 @@
             this.DataGridViewOrders.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewOrders.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.DataGridViewOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewOrders_CellClick);
-            this.DataGridViewOrders.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewOptimizationOptions_CellMouseEnter);
-            this.DataGridViewOrders.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewOptimizationOptions_CellMouseLeave);
-            // 
-            // comboBoxStatus
-            // 
-            this.comboBoxStatus.BackColor = System.Drawing.Color.Transparent;
-            this.comboBoxStatus.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.comboBoxStatus.BorderRadius = 10;
-            this.comboBoxStatus.BorderThickness = 2;
-            this.comboBoxStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.comboBoxStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.comboBoxStatus.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.comboBoxStatus.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxStatus.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.comboBoxStatus.ItemHeight = 44;
-            this.comboBoxStatus.Items.AddRange(new object[] {
-            "Швея",
-            "Оператор",
-            "Специалист КБД"});
-            this.comboBoxStatus.Location = new System.Drawing.Point(325, 72);
-            this.comboBoxStatus.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(300, 50);
-            this.comboBoxStatus.TabIndex = 54;
-            this.comboBoxStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxStatus_SelectedIndexChanged);
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.searchTextBox.BorderRadius = 10;
-            this.searchTextBox.BorderThickness = 2;
-            this.searchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchTextBox.DefaultText = "";
-            this.searchTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.searchTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.searchTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.searchTextBox.ForeColor = System.Drawing.Color.Black;
-            this.searchTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.searchTextBox.Location = new System.Drawing.Point(18, 72);
-            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.PasswordChar = '\0';
-            this.searchTextBox.PlaceholderText = "Поиск";
-            this.searchTextBox.SelectedText = "";
-            this.searchTextBox.Size = new System.Drawing.Size(300, 50);
-            this.searchTextBox.TabIndex = 53;
-            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // guna2PictureBox1
             // 
@@ -186,27 +184,27 @@
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.Image = global::app.Properties.Resources.Logo;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(720, 503);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(720, 502);
             this.guna2PictureBox1.MaximumSize = new System.Drawing.Size(450, 350);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(130, 150);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 52;
+            this.guna2PictureBox1.TabIndex = 56;
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // UC_ДеталиЗаказов
+            // UC_ЗаказыШвея
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBoxStatus);
+            this.Controls.Add(this.comboBoxProduct);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.DataGridViewOrders);
             this.Controls.Add(this.guna2Panel2);
-            this.Name = "UC_ДеталиЗаказов";
+            this.Name = "UC_ЗаказыШвея";
             this.Size = new System.Drawing.Size(1571, 653);
-            this.Load += new System.EventHandler(this.UC_ДеталиЗаказов_Load);
+            this.Load += new System.EventHandler(this.UC_ЗаказыШвея_Load);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOrders)).EndInit();
@@ -219,9 +217,9 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2DataGridView DataGridViewOrders;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2ComboBox comboBoxStatus;
+        private Guna.UI2.WinForms.Guna2ComboBox comboBoxProduct;
         private Guna.UI2.WinForms.Guna2TextBox searchTextBox;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2DataGridView DataGridViewOrders;
     }
 }

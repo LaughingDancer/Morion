@@ -1,5 +1,7 @@
 ﻿using app.Classes;
 using app.UserControls;
+using app.UserControlsOperator;
+using app.UserControlsSeamstress;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,6 +82,18 @@ namespace app
             Авторизация to = new Авторизация();
             to.ShowDialog();
             Close();
+        }
+
+        private void orderDetails_Click(object sender, EventArgs e)
+        {
+            UC_ЗаказыШвея uc = new UC_ЗаказыШвея();
+            addUserControl(uc);
+        }
+
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
+            ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
+            addUserControl(ucГлавная);
         }
     }
 }

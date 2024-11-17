@@ -36,6 +36,7 @@
             this.labelQuation = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelEmployeeInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.buttonDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +90,7 @@
             this.IconClose.Size = new System.Drawing.Size(40, 40);
             this.IconClose.TabIndex = 0;
             this.IconClose.UseTransparentBackground = true;
+            this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
             // labelQuation
             // 
@@ -133,6 +135,12 @@
             this.buttonDelete.UseTransparentBackground = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.HeaderPanel;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
             // УдалениеИзделия
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,7 +154,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "УдалениеИзделия";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "УдалениеИзделия";
+            this.Text = " ";
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -163,5 +171,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel labelQuation;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelEmployeeInfo;
         private Guna.UI2.WinForms.Guna2Button buttonDelete;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

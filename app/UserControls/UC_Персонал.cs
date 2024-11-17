@@ -14,17 +14,8 @@ using System.Xml.Serialization;
 
 namespace app.UserControls
 {
-    enum RowState
-    {
-        Exicted,
-        New,
-        Modified,
-        ModifiedNew,
-        Deleted
-    }
     public partial class UC_Персонал : UserControl
     {
-        int SelectedRow;
         private DB DB;
         public void RefreshDataGridView()
         {
@@ -41,7 +32,7 @@ namespace app.UserControls
         {
             DataGridViewPeople.Columns.Add("КодСотрудника", "КодСотрудника");
             DataGridViewPeople.Columns["КодСотрудника"].Visible = false;
-
+            DataGridViewPeople.Columns.Add("Логин", "Логин"); // Добавляем столбец для логина
             DataGridViewPeople.Columns.Add("Фамилия", "Фамилия");
             DataGridViewPeople.Columns.Add("Имя", "Имя");
             DataGridViewPeople.Columns.Add("ЭлектроннаяПочта", "Email");
@@ -72,22 +63,25 @@ namespace app.UserControls
         private void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {
             DGW.Rows.Add(
-            Record.GetInt32(0),
-            Record.GetString(2),
-            Record.GetString(1),
-            Record.GetString(3),
-            Record.GetDateTime(4).ToShortDateString(),
-            Record.GetDecimal(5),
-            Record.GetString(8),
-
-            Properties.Resources.edit,
-            Properties.Resources.delete
+                Record["КодСотрудника"],
+                Record["Логин"], // Добавляем логин
+                Record["Фамилия"],
+                Record["Имя"],
+                Record["ЭлектроннаяПочта"],
+                ((DateTime)Record["ДатаПриема"]).ToShortDateString(),
+                Record["Зарплата"],
+                Record["Должность"],
+                Properties.Resources.edit,
+                Properties.Resources.delete
             );
         }
         private void RefreshDataGrid(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string queryString = "SELECT Сотрудники.*, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя";
+            string queryString = @"
+        SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность 
+        FROM Сотрудники 
+        JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя";
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = command.ExecuteReader();
@@ -160,7 +154,11 @@ namespace app.UserControls
         private void Search(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string querrySearch = $"SELECT Сотрудники.*, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя WHERE CONCAT(Имя, Фамилия, ЭлектроннаяПочта, ДатаПриема, Зарплата) LIKE '%" + searchTextBox.Text + "%'";
+            string querrySearch = $@"
+        SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность 
+        FROM Сотрудники 
+        JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя 
+        WHERE CONCAT(Имя, Фамилия, ЭлектроннаяПочта, ДатаПриема, Зарплата, Пользователи.Логин, Пользователи.Должность) LIKE '%{searchTextBox.Text}%'";
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -169,6 +167,7 @@ namespace app.UserControls
                 ReadSingleRow(DGW, reader);
             }
             reader.Close();
+            DB.CloseConnection();
         }
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -199,11 +198,18 @@ namespace app.UserControls
 
             if (comboBoxPostSearch.Text == "Все Должности")
             {
-                querrySearch = $"SELECT Сотрудники.*, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя";
+                querrySearch = @"
+            SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин 
+            FROM Сотрудники 
+            JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя";
             }
             else
             {
-                querrySearch = $"SELECT Сотрудники.*, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя WHERE Пользователи.Должность = @Должность";
+                querrySearch = @"
+            SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин 
+            FROM Сотрудники 
+            JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя 
+            WHERE Пользователи.Должность = @Должность";
             }
 
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
@@ -223,6 +229,7 @@ namespace app.UserControls
             {
                 DataGridViewPeople.Rows.Add(
                     row["КодСотрудника"],
+                    row["Логин"], // Добавляем логин
                     row["Фамилия"],
                     row["Имя"],
                     row["ЭлектроннаяПочта"],

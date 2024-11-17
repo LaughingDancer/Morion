@@ -33,18 +33,18 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.HomeButton = new Guna.UI2.WinForms.Guna2Button();
-            this.DesktopPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button21 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.IconMinimized = new Guna.UI2.WinForms.Guna2Button();
             this.IconMaximized = new Guna.UI2.WinForms.Guna2Button();
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
+            this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.ProductList = new Guna.UI2.WinForms.Guna2Button();
             this.orderDetails = new Guna.UI2.WinForms.Guna2Button();
             this.ordering = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button22 = new Guna.UI2.WinForms.Guna2Button();
+            this.HomeButton = new Guna.UI2.WinForms.Guna2Button();
+            this.DesktopPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button21 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -75,93 +75,6 @@
             this.HeaderPanel.Name = "HeaderPanel";
             this.HeaderPanel.Size = new System.Drawing.Size(800, 40);
             this.HeaderPanel.TabIndex = 2;
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.AutoScroll = true;
-            this.MainPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.MainPanel.Controls.Add(this.ProductList);
-            this.MainPanel.Controls.Add(this.orderDetails);
-            this.MainPanel.Controls.Add(this.ordering);
-            this.MainPanel.Controls.Add(this.guna2Button22);
-            this.MainPanel.Controls.Add(this.HomeButton);
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MainPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.MainPanel.Location = new System.Drawing.Point(0, 0);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(200, 600);
-            this.MainPanel.TabIndex = 1;
-            // 
-            // HomeButton
-            // 
-            this.HomeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HomeButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.HomeButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.HomeButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.HomeButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.HomeButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HomeButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.HomeButton.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
-            this.HomeButton.ForeColor = System.Drawing.Color.White;
-            this.HomeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.HomeButton.Location = new System.Drawing.Point(0, 0);
-            this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(200, 80);
-            this.HomeButton.TabIndex = 0;
-            this.HomeButton.Text = "Морион";
-            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
-            // 
-            // DesktopPanel
-            // 
-            this.DesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DesktopPanel.Location = new System.Drawing.Point(200, 40);
-            this.DesktopPanel.Name = "DesktopPanel";
-            this.DesktopPanel.Size = new System.Drawing.Size(800, 560);
-            this.DesktopPanel.TabIndex = 5;
-            // 
-            // guna2Button21
-            // 
-            this.guna2Button21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button21.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.guna2Button21.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button21.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button21.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button21.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button21.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.guna2Button21.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button21.ForeColor = System.Drawing.Color.White;
-            this.guna2Button21.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.guna2Button21.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button21.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button21.Location = new System.Drawing.Point(0, 80);
-            this.guna2Button21.Name = "guna2Button21";
-            this.guna2Button21.Size = new System.Drawing.Size(200, 50);
-            this.guna2Button21.TabIndex = 7;
-            this.guna2Button21.Text = "Оформить заказ";
-            this.guna2Button21.TextOffset = new System.Drawing.Point(10, 0);
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button1.Location = new System.Drawing.Point(0, 130);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(200, 50);
-            this.guna2Button1.TabIndex = 8;
-            this.guna2Button1.Text = "Детали заказов";
-            this.guna2Button1.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // IconMinimized
             // 
@@ -225,6 +138,22 @@
             this.IconClose.TabIndex = 0;
             this.IconClose.UseTransparentBackground = true;
             this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.AutoScroll = true;
+            this.MainPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.MainPanel.Controls.Add(this.ProductList);
+            this.MainPanel.Controls.Add(this.orderDetails);
+            this.MainPanel.Controls.Add(this.ordering);
+            this.MainPanel.Controls.Add(this.guna2Button22);
+            this.MainPanel.Controls.Add(this.HomeButton);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MainPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(200, 600);
+            this.MainPanel.TabIndex = 1;
             // 
             // ProductList
             // 
@@ -307,7 +236,7 @@
             this.guna2Button22.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button22.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Button22.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.guna2Button22.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.guna2Button22.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.guna2Button22.ForeColor = System.Drawing.Color.White;
             this.guna2Button22.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(36)))), ((int)(((byte)(20)))));
             this.guna2Button22.Image = global::app.Properties.Resources.exit;
@@ -318,6 +247,77 @@
             this.guna2Button22.TabIndex = 6;
             this.guna2Button22.Text = "Выход";
             this.guna2Button22.Click += new System.EventHandler(this.guna2Button22_Click);
+            // 
+            // HomeButton
+            // 
+            this.HomeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HomeButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.HomeButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.HomeButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.HomeButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.HomeButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HomeButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.HomeButton.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
+            this.HomeButton.ForeColor = System.Drawing.Color.White;
+            this.HomeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.HomeButton.Location = new System.Drawing.Point(0, 0);
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(200, 80);
+            this.HomeButton.TabIndex = 0;
+            this.HomeButton.Text = "Морион";
+            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
+            // 
+            // DesktopPanel
+            // 
+            this.DesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesktopPanel.Location = new System.Drawing.Point(200, 40);
+            this.DesktopPanel.Name = "DesktopPanel";
+            this.DesktopPanel.Size = new System.Drawing.Size(800, 560);
+            this.DesktopPanel.TabIndex = 5;
+            // 
+            // guna2Button21
+            // 
+            this.guna2Button21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button21.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.guna2Button21.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button21.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button21.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button21.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Button21.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2Button21.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.guna2Button21.ForeColor = System.Drawing.Color.White;
+            this.guna2Button21.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2Button21.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button21.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button21.Location = new System.Drawing.Point(0, 80);
+            this.guna2Button21.Name = "guna2Button21";
+            this.guna2Button21.Size = new System.Drawing.Size(200, 50);
+            this.guna2Button21.TabIndex = 7;
+            this.guna2Button21.Text = "Оформить заказ";
+            this.guna2Button21.TextOffset = new System.Drawing.Point(10, 0);
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button1.Location = new System.Drawing.Point(0, 130);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(200, 50);
+            this.guna2Button1.TabIndex = 8;
+            this.guna2Button1.Text = "Детали заказов";
+            this.guna2Button1.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // ГлавнаяО
             // 
