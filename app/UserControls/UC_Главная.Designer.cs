@@ -55,7 +55,7 @@
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.Image = global::app.Properties.Resources.Logo;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(1464, 576);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(1376, 213);
             this.guna2PictureBox1.MaximumSize = new System.Drawing.Size(450, 350);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(230, 250);
@@ -71,7 +71,7 @@
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1697, 50);
+            this.guna2Panel1.Size = new System.Drawing.Size(1621, 50);
             this.guna2Panel1.TabIndex = 10;
             // 
             // guna2HtmlLabel2
@@ -80,7 +80,7 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(787, 0);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(749, 0);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(123, 39);
             this.guna2HtmlLabel2.TabIndex = 0;
@@ -89,6 +89,7 @@
             // guna2Panel2
             // 
             this.guna2Panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
             this.guna2Panel2.BorderRadius = 10;
             this.guna2Panel2.BorderThickness = 10;
@@ -103,10 +104,12 @@
             this.guna2Panel2.Controls.Add(this.TextBoxSalary);
             this.guna2Panel2.Controls.Add(this.TextBoxEmail);
             this.guna2Panel2.Controls.Add(this.TextBoxDateOfHire);
-            this.guna2Panel2.Location = new System.Drawing.Point(131, 150);
+            this.guna2Panel2.Location = new System.Drawing.Point(18, 85);
+            this.guna2Panel2.MinimumSize = new System.Drawing.Size(1000, 400);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1341, 528);
             this.guna2Panel2.TabIndex = 24;
+            this.guna2Panel2.UseTransparentBackground = true;
             // 
             // buttonChangePassword
             // 
@@ -123,6 +126,7 @@
             this.buttonChangePassword.ForeColor = System.Drawing.Color.Black;
             this.buttonChangePassword.Location = new System.Drawing.Point(901, 414);
             this.buttonChangePassword.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonChangePassword.MinimumSize = new System.Drawing.Size(300, 50);
             this.buttonChangePassword.Name = "buttonChangePassword";
             this.buttonChangePassword.Size = new System.Drawing.Size(400, 50);
             this.buttonChangePassword.TabIndex = 38;
@@ -154,6 +158,7 @@
             this.TextBoxLogin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.TextBoxLogin.Location = new System.Drawing.Point(473, 414);
             this.TextBoxLogin.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.TextBoxLogin.MinimumSize = new System.Drawing.Size(300, 50);
             this.TextBoxLogin.Name = "TextBoxLogin";
             this.TextBoxLogin.PasswordChar = '\0';
             this.TextBoxLogin.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -204,6 +209,7 @@
             this.searchTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.searchTextBox.Location = new System.Drawing.Point(473, 128);
             this.searchTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchTextBox.MinimumSize = new System.Drawing.Size(300, 50);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.PasswordChar = '\0';
             this.searchTextBox.PlaceholderText = "Поиск";
@@ -220,6 +226,7 @@
             this.PictureBoxEmployee.ImageRotate = 0F;
             this.PictureBoxEmployee.Location = new System.Drawing.Point(40, 64);
             this.PictureBoxEmployee.MaximumSize = new System.Drawing.Size(400, 400);
+            this.PictureBoxEmployee.MinimumSize = new System.Drawing.Size(300, 300);
             this.PictureBoxEmployee.Name = "PictureBoxEmployee";
             this.PictureBoxEmployee.Size = new System.Drawing.Size(400, 400);
             this.PictureBoxEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -244,6 +251,7 @@
             this.TextBoxPost.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.TextBoxPost.Location = new System.Drawing.Point(901, 284);
             this.TextBoxPost.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxPost.MinimumSize = new System.Drawing.Size(300, 50);
             this.TextBoxPost.Name = "TextBoxPost";
             this.TextBoxPost.PasswordChar = '\0';
             this.TextBoxPost.PlaceholderText = "Поиск";
@@ -269,6 +277,7 @@
             this.TextBoxSurname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.TextBoxSurname.Location = new System.Drawing.Point(473, 206);
             this.TextBoxSurname.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxSurname.MinimumSize = new System.Drawing.Size(300, 50);
             this.TextBoxSurname.Name = "TextBoxSurname";
             this.TextBoxSurname.PasswordChar = '\0';
             this.TextBoxSurname.PlaceholderText = "Поиск";
@@ -294,6 +303,7 @@
             this.TextBoxSalary.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.TextBoxSalary.Location = new System.Drawing.Point(473, 284);
             this.TextBoxSalary.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxSalary.MinimumSize = new System.Drawing.Size(300, 50);
             this.TextBoxSalary.Name = "TextBoxSalary";
             this.TextBoxSalary.PasswordChar = '\0';
             this.TextBoxSalary.PlaceholderText = "Поиск";
@@ -319,6 +329,7 @@
             this.TextBoxEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.TextBoxEmail.Location = new System.Drawing.Point(901, 128);
             this.TextBoxEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxEmail.MinimumSize = new System.Drawing.Size(300, 50);
             this.TextBoxEmail.Name = "TextBoxEmail";
             this.TextBoxEmail.PasswordChar = '\0';
             this.TextBoxEmail.PlaceholderText = "Поиск";
@@ -344,6 +355,7 @@
             this.TextBoxDateOfHire.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.TextBoxDateOfHire.Location = new System.Drawing.Point(901, 206);
             this.TextBoxDateOfHire.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxDateOfHire.MinimumSize = new System.Drawing.Size(300, 50);
             this.TextBoxDateOfHire.Name = "TextBoxDateOfHire";
             this.TextBoxDateOfHire.PasswordChar = '\0';
             this.TextBoxDateOfHire.PlaceholderText = "Поиск";
@@ -359,7 +371,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2PictureBox1);
             this.Name = "UC_Главная";
-            this.Size = new System.Drawing.Size(1697, 829);
+            this.Size = new System.Drawing.Size(1621, 658);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();

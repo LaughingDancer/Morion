@@ -62,7 +62,7 @@ namespace app
             if (menuExpandOne == false)
             {
                 MainPanelMenuContainer1.Height += 10;
-                if (MainPanelMenuContainer1.Height >= 250)
+                if (MainPanelMenuContainer1.Height >= 375)
                 {
                     menuTransitionOne.Stop();
                     menuExpandOne = true;
@@ -71,7 +71,7 @@ namespace app
             else
             {
                 MainPanelMenuContainer1.Height -= 10;
-                if (MainPanelMenuContainer1.Height <= 50)
+                if (MainPanelMenuContainer1.Height <= 75)
                 {
                     menuTransitionOne.Stop();
                     menuExpandOne = false;

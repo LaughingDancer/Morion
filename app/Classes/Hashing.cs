@@ -11,10 +11,10 @@ namespace app.Classes
     {
         public string Hash(string input)
         {
-            using (var sha128 = SHA1.Create())
+            using (var sha512 = SHA512.Create())
             {
                 byte[] passwordBytes = Encoding.UTF8.GetBytes(input);
-                byte[] hash = sha128.ComputeHash(passwordBytes);
+                byte[] hash = sha512.ComputeHash(passwordBytes);
                 return Convert.ToBase64String(hash);
             }
         }

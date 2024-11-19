@@ -59,7 +59,7 @@ namespace app.Forms
             {
                 login = new string(Enumerable.Repeat(chars, 12)
                     .Select(s => s[random.Next(s.Length)]).ToArray());
-            } while (login == password); // Проверка на совпадение с паролем
+            } while (login == password);
             return login;
         }
 
@@ -69,6 +69,26 @@ namespace app.Forms
             if (textBoxName.Text == string.Empty || textBoxSurname.Text == string.Empty || textBoxEmail.Text == string.Empty || comboBoxPost.Text == string.Empty)
             {
                 MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (textBoxName.Text == string.Empty)
+            {
+                MyCustomMessageBox.ShowMessage("Заполните поле Имя", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (textBoxSurname.Text == string.Empty)
+            {
+                MyCustomMessageBox.ShowMessage("Заполните поле Фамилия", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (textBoxEmail.Text == string.Empty)
+            {
+                MyCustomMessageBox.ShowMessage("Заполните поле электронная почта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBoxPost.Text == string.Empty)
+            {
+                MyCustomMessageBox.ShowMessage("Выберите Должность", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -122,6 +142,7 @@ namespace app.Forms
                     uploader.Upload(employeeId, pictureSet);
                     SendMessage(login, password, textBoxEmail.Text);
                     ucПерсонал.RefreshDataGridView();
+                    MyCustomMessageBox.ShowMessage("Сотрудник упешно зарегистрирован!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
                 else

@@ -1,10 +1,13 @@
 ﻿using app.Classes;
+using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -193,6 +196,60 @@ namespace app.UserControlsSpecialist
         private void ButtonExcel_Click(object sender, EventArgs e)
         {
             excelExporter.ExportExcel(DataGridViewChangeLog);
+        }
+        public void BackupDatabase(string databaseName)
+        {
+            try
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Title = "Выберите место для сохранения резервной копии";
+                    saveFileDialog.Filter = "SQL Backup Files (*.bak)|*.bak";
+                    string defaultPath = @"C:\BackupDB";
+                    saveFileDialog.InitialDirectory = Directory.Exists(defaultPath) ? defaultPath : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    saveFileDialog.FileName = $"{databaseName}_Backup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string backupPath = saveFileDialog.FileName;
+                        if (!Directory.Exists(Path.GetDirectoryName(backupPath)))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(backupPath));
+                        }
+                        ServerConnection serverConnection = new ServerConnection
+                        {
+                            ServerInstance = "MAKSIMN",
+                            LoginSecure = true
+                        };
+                        Server server = new Server(serverConnection);
+                        if (!server.Databases.Contains(databaseName))
+                        {
+                            throw new Exception($"База данных '{databaseName}' не найдена на сервере '{serverConnection.ServerInstance}'.");
+                        }
+                        Backup backup = new Backup
+                        {
+                            Action = BackupActionType.Database,
+                            Database = databaseName 
+                        };
+                        backup.Devices.AddDevice(backupPath, DeviceType.File);
+                        backup.SqlBackup(server);
+                        MyCustomMessageBox.ShowMessage($"Резервное копирование успешно завершено. Файл сохранен по пути:\n{backupPath}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage($"Ошибка при резервном копировании:\n{ex.Message}\n{ex.InnerException?.Message}",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void ButtonChartHorizontalBar_Click(object sender, EventArgs e)
+        {
+            string databaseName = "Морион";
+            BackupDatabase(databaseName);
         }
     }
 }

@@ -55,7 +55,6 @@
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.DragForm = false;
-            this.guna2BorderlessForm1.ResizeForm = false;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // guna2DragControl1
@@ -71,9 +70,9 @@
             this.HeaderPanel.Controls.Add(this.IconClose);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.HeaderPanel.Location = new System.Drawing.Point(200, 0);
+            this.HeaderPanel.Location = new System.Drawing.Point(300, 0);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(800, 40);
+            this.HeaderPanel.Size = new System.Drawing.Size(1400, 40);
             this.HeaderPanel.TabIndex = 2;
             // 
             // IconMinimized
@@ -90,7 +89,7 @@
             this.IconMinimized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.IconMinimized.Image = global::app.Properties.Resources.minimizeW;
             this.IconMinimized.ImageSize = new System.Drawing.Size(24, 24);
-            this.IconMinimized.Location = new System.Drawing.Point(680, 0);
+            this.IconMinimized.Location = new System.Drawing.Point(1280, 0);
             this.IconMinimized.Name = "IconMinimized";
             this.IconMinimized.Size = new System.Drawing.Size(40, 40);
             this.IconMinimized.TabIndex = 2;
@@ -111,7 +110,7 @@
             this.IconMaximized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.IconMaximized.Image = global::app.Properties.Resources.expand_window;
             this.IconMaximized.ImageSize = new System.Drawing.Size(30, 30);
-            this.IconMaximized.Location = new System.Drawing.Point(720, 0);
+            this.IconMaximized.Location = new System.Drawing.Point(1320, 0);
             this.IconMaximized.Name = "IconMaximized";
             this.IconMaximized.Size = new System.Drawing.Size(40, 40);
             this.IconMaximized.TabIndex = 1;
@@ -132,7 +131,7 @@
             this.IconClose.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.IconClose.Image = global::app.Properties.Resources.closeW;
             this.IconClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.IconClose.Location = new System.Drawing.Point(760, 0);
+            this.IconClose.Location = new System.Drawing.Point(1360, 0);
             this.IconClose.Name = "IconClose";
             this.IconClose.Size = new System.Drawing.Size(40, 40);
             this.IconClose.TabIndex = 0;
@@ -152,7 +151,7 @@
             this.MainPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(200, 600);
+            this.MainPanel.Size = new System.Drawing.Size(300, 900);
             this.MainPanel.TabIndex = 1;
             // 
             // ProductList
@@ -165,15 +164,15 @@
             this.ProductList.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.ProductList.Dock = System.Windows.Forms.DockStyle.Top;
             this.ProductList.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ProductList.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ProductList.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.ProductList.ForeColor = System.Drawing.Color.White;
             this.ProductList.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ProductList.Image = global::app.Properties.Resources.uniform;
             this.ProductList.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ProductList.ImageSize = new System.Drawing.Size(30, 30);
-            this.ProductList.Location = new System.Drawing.Point(0, 180);
+            this.ProductList.ImageSize = new System.Drawing.Size(40, 40);
+            this.ProductList.Location = new System.Drawing.Point(0, 230);
             this.ProductList.Name = "ProductList";
-            this.ProductList.Size = new System.Drawing.Size(200, 50);
+            this.ProductList.Size = new System.Drawing.Size(300, 75);
             this.ProductList.TabIndex = 9;
             this.ProductList.Text = "Изделия";
             this.ProductList.TextOffset = new System.Drawing.Point(10, 0);
@@ -189,15 +188,15 @@
             this.orderDetails.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.orderDetails.Dock = System.Windows.Forms.DockStyle.Top;
             this.orderDetails.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.orderDetails.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.orderDetails.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.orderDetails.ForeColor = System.Drawing.Color.White;
             this.orderDetails.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.orderDetails.Image = global::app.Properties.Resources.order;
             this.orderDetails.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.orderDetails.ImageSize = new System.Drawing.Size(30, 30);
-            this.orderDetails.Location = new System.Drawing.Point(0, 130);
+            this.orderDetails.ImageSize = new System.Drawing.Size(40, 40);
+            this.orderDetails.Location = new System.Drawing.Point(0, 155);
             this.orderDetails.Name = "orderDetails";
-            this.orderDetails.Size = new System.Drawing.Size(200, 50);
+            this.orderDetails.Size = new System.Drawing.Size(300, 75);
             this.orderDetails.TabIndex = 8;
             this.orderDetails.Text = "Детали заказов";
             this.orderDetails.TextOffset = new System.Drawing.Point(10, 0);
@@ -213,15 +212,15 @@
             this.ordering.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.ordering.Dock = System.Windows.Forms.DockStyle.Top;
             this.ordering.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ordering.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ordering.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.ordering.ForeColor = System.Drawing.Color.White;
             this.ordering.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ordering.Image = global::app.Properties.Resources.document;
             this.ordering.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ordering.ImageSize = new System.Drawing.Size(30, 30);
+            this.ordering.ImageSize = new System.Drawing.Size(40, 40);
             this.ordering.Location = new System.Drawing.Point(0, 80);
             this.ordering.Name = "ordering";
-            this.ordering.Size = new System.Drawing.Size(200, 50);
+            this.ordering.Size = new System.Drawing.Size(300, 75);
             this.ordering.TabIndex = 7;
             this.ordering.Text = "Оформить заказ";
             this.ordering.TextOffset = new System.Drawing.Point(10, 0);
@@ -236,14 +235,13 @@
             this.guna2Button22.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button22.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Button22.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.guna2Button22.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.guna2Button22.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.guna2Button22.ForeColor = System.Drawing.Color.White;
             this.guna2Button22.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(36)))), ((int)(((byte)(20)))));
             this.guna2Button22.Image = global::app.Properties.Resources.exit;
-            this.guna2Button22.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button22.Location = new System.Drawing.Point(0, 550);
+            this.guna2Button22.Location = new System.Drawing.Point(0, 825);
             this.guna2Button22.Name = "guna2Button22";
-            this.guna2Button22.Size = new System.Drawing.Size(200, 50);
+            this.guna2Button22.Size = new System.Drawing.Size(300, 75);
             this.guna2Button22.TabIndex = 6;
             this.guna2Button22.Text = "Выход";
             this.guna2Button22.Click += new System.EventHandler(this.guna2Button22_Click);
@@ -257,12 +255,12 @@
             this.HomeButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.HomeButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.HomeButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.HomeButton.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
+            this.HomeButton.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
             this.HomeButton.ForeColor = System.Drawing.Color.White;
             this.HomeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.HomeButton.Location = new System.Drawing.Point(0, 0);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(200, 80);
+            this.HomeButton.Size = new System.Drawing.Size(300, 80);
             this.HomeButton.TabIndex = 0;
             this.HomeButton.Text = "Морион";
             this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
@@ -270,9 +268,9 @@
             // DesktopPanel
             // 
             this.DesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DesktopPanel.Location = new System.Drawing.Point(200, 40);
+            this.DesktopPanel.Location = new System.Drawing.Point(300, 40);
             this.DesktopPanel.Name = "DesktopPanel";
-            this.DesktopPanel.Size = new System.Drawing.Size(800, 560);
+            this.DesktopPanel.Size = new System.Drawing.Size(1400, 860);
             this.DesktopPanel.TabIndex = 5;
             // 
             // guna2Button21
@@ -323,13 +321,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.ClientSize = new System.Drawing.Size(1700, 900);
             this.Controls.Add(this.DesktopPanel);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.MainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(500, 300);
+            this.MinimumSize = new System.Drawing.Size(1700, 900);
             this.Name = "ГлавнаяО";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ГлавнаяО";

@@ -92,6 +92,16 @@ namespace app
                 MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (login == string.Empty)
+            {
+                MyCustomMessageBox.ShowMessage("Заполните поля логина", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (password == string.Empty)
+            {
+                MyCustomMessageBox.ShowMessage("Заполните поля пароля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             var authResult = AuthorizeUser(login, password);
             if (authResult.isAuthorized)

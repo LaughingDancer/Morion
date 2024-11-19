@@ -86,31 +86,12 @@ namespace app.UserControlsOperator
             string типТкани = ComboBoxFabric1.SelectedItem.ToString();
             string размерИзделия = ComboBoxSizes1.SelectedItem.ToString();
 
-            // SQL-запрос для расчета
-            string query = @"SELECT 
-    T.Вид AS Ткань,
-    I.НазваниеИзделия AS Изделие,
-    R.НазваниеРазмер AS Размер,
-    FLOOR((@длина / R.НеобходимаяДлинаТкани) * (@ширина / R.НеобходимаяШиринаТкани) * @количество) AS КоличествоИзделий,
-    (@длина * @ширина * @количество) - 
-    (FLOOR((@длина * @ширина * @количество) / (R.НеобходимаяДлинаТкани * R.НеобходимаяШиринаТкани)) * R.НеобходимаяДлинаТкани * R.НеобходимаяШиринаТкани) AS КоличествоОтходов,
-((@длина * @ширина * @количество) - 
-    (FLOOR((@длина * @ширина * @количество) / (R.НеобходимаяДлинаТкани * R.НеобходимаяШиринаТкани)) * R.НеобходимаяДлинаТкани * R.НеобходимаяШиринаТкани)) / (@длина * @ширина * @количество) * 100 AS ПроцентОтходов,
-    GETDATE() AS ДатаСоздания
-FROM 
-    Изделия I
-JOIN 
-    Ткани T ON I.КодТкани = T.КодТкани
-JOIN 
-    Размеры R ON I.КодИзделия = R.КодИзделия
-WHERE 
-    T.Вид = @типТкани 
-    AND R.НазваниеРазмер = @размерИзделия;";
-
-            // Подключение и выполнение запроса
+            // Подключение и выполнение хранимой процедуры
             using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCommand command = new SqlCommand("CalculateOptimization", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
                 command.Parameters.AddWithValue("@длина", длинаТкани);
                 command.Parameters.AddWithValue("@ширина", ширинаТкани);
                 command.Parameters.AddWithValue("@количество", количествоТкани);
@@ -220,6 +201,7 @@ WHERE
                             insertOrderCommand.ExecuteNonQuery();
 
                             MyCustomMessageBox.ShowMessage("Вариант оптимизации и заказ успешно добавлены в базу данных.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearFields();
                         }
                     }
                 }
@@ -256,6 +238,26 @@ WHERE
         }
 
         private void ButtonClearProduct_Click(object sender, EventArgs e)
+        {
+            // Очистка текстовых полей
+            TextBoxLenght1.Text = string.Empty;
+            TextBoxWidth1.Text = string.Empty;
+            TextBoxAmountFabric1.Text = string.Empty;
+
+            // Очистка комбобоксов
+            ComboBoxSizes1.Items.Insert(0, "Размеры");
+            ComboBoxSizes1.SelectedIndex = 0;
+            FDDComboBoxSizes1 = true;
+
+            ComboBoxFabric1.Items.Insert(0, "Ткани");
+            ComboBoxFabric1.SelectedIndex = 0;
+            FDDComboBoxFabric1 = true;
+
+            // Очистка DataGridView
+            DataGridViewOptimizationOptions.DataSource = null;
+            DataGridViewOptimizationOptions.Rows.Clear();
+        }
+        private void ClearFields()
         {
             // Очистка текстовых полей
             TextBoxLenght1.Text = string.Empty;

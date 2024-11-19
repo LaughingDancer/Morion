@@ -110,30 +110,5 @@ namespace app.Classes
             else
                 MessageBox.Show("Данных не достаточно.", "Ошибка");
         }
-
-        public void ChartPolar(GunaChart chart, DataTable data, string nameChart)
-        {
-            if (checkEmpty(data))
-            {
-                //Chart configuration  
-                chart.Legend.Position = LegendPosition.Right;
-                chart.XAxes.Display = false;
-                chart.YAxes.Display = false;
-                chart.Legend.Display = true;
-
-                chart.Datasets.Clear();
-                var dataset = new GunaPolarAreaDataset();
-                foreach (DataRow row in data.Rows)
-                {
-                    dataset.DataPoints.Add(
-                        Convert.ToString(row["НазваниеИзделия"]),
-                        Convert.ToDouble(row["КоличествоИзделий"])
-                    );
-                }
-                chart.Datasets.Add(dataset);
-            }
-            else
-                MessageBox.Show("Данных не достаточно.", "Ошибка");
-        }
     }
 }
