@@ -1,15 +1,8 @@
 ﻿using app.Classes;
 using app.UserControls;
-using app.UserControlsOperator;
 using app.UserControlsSeamstress;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app
@@ -40,7 +33,6 @@ namespace app
             employeePhoto = db.GetEmployeePhotoByLogin(login);
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
         }
-
         private void ГлавнаяШ_Resize(object sender, EventArgs e)
         {
             this.Invalidate();
@@ -53,12 +45,10 @@ namespace app
                 guna2BorderlessForm1.BorderRadius = 20;
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void IconMaximized_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -70,12 +60,10 @@ namespace app
                 this.WindowState = FormWindowState.Maximized;
             }
         }
-
         private void IconMinimized_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void guna2Button22_Click(object sender, EventArgs e)
         {
             ActiveForm.Hide();
@@ -83,13 +71,11 @@ namespace app
             to.ShowDialog();
             Close();
         }
-
         private void orderDetails_Click(object sender, EventArgs e)
         {
             UC_ЗаказыШвея uc = new UC_ЗаказыШвея();
             addUserControl(uc);
         }
-
         private void HomeButton_Click(object sender, EventArgs e)
         {
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);

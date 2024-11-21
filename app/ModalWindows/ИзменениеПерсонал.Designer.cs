@@ -112,6 +112,8 @@
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(350, 50);
             this.comboBoxPost.TabIndex = 39;
+            this.comboBoxPost.Enter += new System.EventHandler(this.comboBoxPost_Enter);
+            this.comboBoxPost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxPost_KeyDown);
             // 
             // buttonChange
             // 
@@ -135,7 +137,6 @@
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseTransparentBackground = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
-            this.buttonChange.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonChange_KeyDown);
             // 
             // textBoxSalary
             // 

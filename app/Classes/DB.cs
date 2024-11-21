@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 
@@ -28,7 +25,7 @@ namespace app.Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Возникла ошибка при выполнении запроса: " + ex.Message, "Ошибка");
+                MyCustomMessageBox.ShowMessage("Возникла ошибка при выполнении запроса: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -73,11 +70,10 @@ namespace app.Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Возникла ошибка при выполнении запроса: " + ex.Message, "Ошибка");
+                MyCustomMessageBox.ShowMessage("Возникла ошибка при выполнении запроса: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
         }
-
         public void QueryExecuteNonQuery(string query)
         {
             try
@@ -94,7 +90,7 @@ namespace app.Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Возникла ошибка при выполнении запроса: " + ex.Message, "Ошибка");
+                MyCustomMessageBox.ShowMessage("Возникла ошибка при выполнении запроса: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public byte[] GetEmployeePhoto(int employeeId)
@@ -106,27 +102,6 @@ namespace app.Classes
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@EmployeeId", employeeId);
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
-                    {
-                        return (byte[])result;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-        }
-        public byte[] GetProductPhoto(int productId)
-        {
-            using (SqlConnection connection = new SqlConnection(StringConnection()))
-            {
-                connection.Open();
-                string query = "SELECT Фото FROM Изделия WHERE КодИзделия = @ProductId";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ProductId", productId);
                     object result = command.ExecuteScalar();
                     if (result != null && result != DBNull.Value)
                     {
@@ -165,8 +140,6 @@ namespace app.Classes
                 }
             }
         }
-
-
         public Dictionary<string, string> GetEmployeeDataByLogin(string login)
         {
             Dictionary<string, string> employeeData = new Dictionary<string, string>();
@@ -247,7 +220,6 @@ namespace app.Classes
             Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
         JOIN 
             Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера";
-
             SqlDataAdapter adapter = QueryExecute(query);
             if (adapter != null)
             {
@@ -268,7 +240,6 @@ namespace app.Classes
             Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
         GROUP BY 
             Ткани.Вид";
-
             SqlDataAdapter adapter = QueryExecute(query);
             if (adapter != null)
             {

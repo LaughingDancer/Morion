@@ -1,16 +1,10 @@
 ﻿using app.Classes;
-using app.UserControls;
 using app.UserControlsOperator;
+using Guna.UI2.WinForms.Suite;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.Forms
@@ -28,7 +22,6 @@ namespace app.Forms
         private DB DB;
         private byte[] selectedPhotoBytes;
         private UC_Изделия ucИзделия;
-
         public ИзменениеИзделия(int sizeId, string sizeName, int productId, string productName, string length, string width, string density, string fabricId, UC_Изделия ucИзделия)
         {
             InitializeComponent();
@@ -42,23 +35,16 @@ namespace app.Forms
             this.fabricId = fabricId;
             DB = new DB();
             this.ucИзделия = ucИзделия;
-
-            // Убедитесь, что ComboBoxSize заполнен данными
             FillComboBoxSize();
-
-            // Установите значение sizeName в ComboBoxSize
             ComboBoxSize.Text = sizeName;
-
             TextBoxLength.Text = length;
             TextBoxWidth.Text = width;
             TextBoxDensity.Text = density;
             ComboBoxFabric.Text = fabricId;
-
             LoadProductDetails();
         }
         private void FillComboBoxSize()
         {
-            // Заполните ComboBoxSize данными из базы данных
             string query = "SELECT DISTINCT НазваниеРазмер FROM Размеры";
             using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
             {
@@ -78,16 +64,14 @@ namespace app.Forms
         private void LoadProductDetails()
         {
             var productDetails = DB.GetProductDetails(productId);
-
             if (productDetails.Name != null)
             {
-                TextBoxProduct.Text = productDetails.Name; // Устанавливаем название изделия
+                TextBoxProduct.Text = productDetails.Name;
             }
             else
             {
                 TextBoxProduct.Text = "Название не найдено";
             }
-
             if (productDetails.Photo != null)
             {
                 using (MemoryStream ms = new MemoryStream(productDetails.Photo))
@@ -100,7 +84,6 @@ namespace app.Forms
                 pictureSet.Image = Properties.Resources.default_photo;
             }
         }
-
         private void pictureSet_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -112,7 +95,6 @@ namespace app.Forms
                 selectedPhotoBytes = File.ReadAllBytes(selectedFile);
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -133,7 +115,6 @@ namespace app.Forms
                 }
             }
         }
-
         private int GetFabricIdByName(string fabricName)
         {
             string query = "SELECT КодТкани FROM Ткани WHERE Вид = @Вид";
@@ -155,7 +136,6 @@ namespace app.Forms
                 }
             }
         }
-
         private void UpdateProduct()
         {
             string queryUpdateProduct = "UPDATE Изделия SET НазваниеИзделия = @НазваниеИзделия, Плотность = @Плотность, КодТкани = @КодТкани WHERE КодИзделия = @КодИзделия";
@@ -166,14 +146,13 @@ namespace app.Forms
                 {
                     command.Parameters.AddWithValue("@НазваниеИзделия", TextBoxProduct.Text);
                     command.Parameters.AddWithValue("@Плотность", decimal.Parse(TextBoxDensity.Text));
-                    int fabricId = GetFabricIdByName(ComboBoxFabric.Text); // Получаем код ткани по его названию
+                    int fabricId = GetFabricIdByName(ComboBoxFabric.Text);
                     command.Parameters.AddWithValue("@КодТкани", fabricId);
                     command.Parameters.AddWithValue("@КодИзделия", productId);
                     command.ExecuteNonQuery();
                 }
             }
         }
-
         private void UpdatePhoto()
         {
             if (selectedPhotoBytes != null)
@@ -191,16 +170,185 @@ namespace app.Forms
                 }
             }
         }
-
+        private bool ValidateInput()
+        {
+            ValidationData.Validation validator = new ValidationData.Validation();
+            bool isValid = true;
+            if (string.IsNullOrWhiteSpace(TextBoxProduct.Text))
+            {
+                MyCustomMessageBox.ShowMessage("Название Изделия не может быть пустым.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            else if (!validator.ValidateFirstName(TextBoxProduct.Text))
+            {
+                MyCustomMessageBox.ShowMessage("Некорректное значение для Названия Изделия.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(TextBoxDensity.Text))
+            {
+                MyCustomMessageBox.ShowMessage("Плотность не может быть пустой.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            else if (!decimal.TryParse(TextBoxDensity.Text, out decimal density))
+            {
+                MyCustomMessageBox.ShowMessage("Некорректное значение для Плотности.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            else if (density <= 0)
+            {
+                MyCustomMessageBox.ShowMessage("Плотность должна быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(TextBoxLength.Text))
+            {
+                MyCustomMessageBox.ShowMessage("Необходимая Длина Ткани не может быть пустой.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            else if (!decimal.TryParse(TextBoxLength.Text, out decimal length))
+            {
+                MyCustomMessageBox.ShowMessage("Некорректное значение для Необходимой Длины Ткани.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            else if (length <= 0)
+            {
+                MyCustomMessageBox.ShowMessage("Необходимая Длина Ткани должна быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(TextBoxWidth.Text))
+            {
+                MyCustomMessageBox.ShowMessage("Необходимая Ширина Ткани не может быть пустой.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            else if (!decimal.TryParse(TextBoxWidth.Text, out decimal width))
+            {
+                MyCustomMessageBox.ShowMessage("Некорректное значение для Необходимой Ширины Ткани.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            else if (width <= 0)
+            {
+                MyCustomMessageBox.ShowMessage("Необходимая Ширина Ткани должна быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isValid = false;
+            }
+            return isValid;
+        }
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            UpdateSize();
-            UpdateProduct();
-            UpdatePhoto();
+            if (ValidateInput())
+            {
+                UpdateSize();
+                UpdateProduct();
+                UpdatePhoto();
+                MyCustomMessageBox.ShowMessage("Данные успешно обновлены!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ucИзделия.RefreshDataGridView();
+                Close();
+            }
+        }
 
-            MyCustomMessageBox.ShowMessage("Данные успешно обновлены!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ucИзделия.RefreshDataGridView();
-            Close();
+        private void TextBoxProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                ComboBoxSize.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+        private void ComboBoxSize_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                TextBoxProduct.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                TextBoxLength.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+        private void TextBoxLength_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                ComboBoxSize.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                TextBoxWidth.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+        private void TextBoxWidth_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                TextBoxLength.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                TextBoxDensity.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+        private void TextBoxDensity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                TextBoxWidth.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                ComboBoxFabric.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+        private void ComboBoxFabric_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                TextBoxDensity.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonChange.PerformClick();
+                e.Handled = true;
+            }
+        }
+        private void ComboBoxSize_Enter(object sender, EventArgs e)
+        {
+            ComboBoxSize.DroppedDown = true;
+        }
+        private void ComboBoxFabric_Enter(object sender, EventArgs e)
+        {
+            ComboBoxFabric.DroppedDown = true;
         }
     }
 }

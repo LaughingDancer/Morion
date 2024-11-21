@@ -1,15 +1,8 @@
 ﻿using app.Classes;
-using app.UserControls;
 using app.UserControlsOperator;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.Forms
@@ -34,29 +27,32 @@ namespace app.Forms
                 (this.ClientSize.Width - labelEmployeeInfo.Width) / 2,
                 (this.ClientSize.Height - labelEmployeeInfo.Height) / 2);
         }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DeleteProduct(productId);
-            MessageBox.Show("Изделие успешно удалено!");
-            ucИзделия.RefreshDataGridView();
-            this.Close();
+            DialogResult result = MyCustomMessageBox.ShowMessage("Вы уверены, что хотите удалить изделие?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DeleteProduct(productId);
+                ucИзделия.RefreshDataGridView();
+                this.Close();
+            }
+            else
+            {
+                MyCustomMessageBox.ShowMessage("Действие отменено.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
         }
         private void DeleteProduct(int productId)
         {
             using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
             {
                 connection.Open();
-
-                // Удаление связанных записей в таблице Размеры
                 string deleteSizesQuery = "DELETE FROM Размеры WHERE КодИзделия = @КодИзделия";
                 using (SqlCommand deleteSizesCommand = new SqlCommand(deleteSizesQuery, connection))
                 {
                     deleteSizesCommand.Parameters.AddWithValue("@КодИзделия", productId);
                     deleteSizesCommand.ExecuteNonQuery();
                 }
-
-                // Удаление изделия
                 string deleteProductQuery = "DELETE FROM Изделия WHERE КодИзделия = @КодИзделия";
                 using (SqlCommand deleteProductCommand = new SqlCommand(deleteProductQuery, connection))
                 {
@@ -65,7 +61,6 @@ namespace app.Forms
                 }
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();

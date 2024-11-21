@@ -1,15 +1,8 @@
 ﻿using app.Classes;
-using app.UserControlsOperator;
 using app.UserControlsSeamstress;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.Forms
@@ -30,9 +23,7 @@ namespace app.Forms
             КоличествоИзделий = количествоИзделий;
             КоличествоВыполненных = количествоВыполненных;
             this.ucЗаказыШвея = ucЗаказыШвея;
-            // Получаем название изделия
             НазваниеИзделия = GetProductName(кодЗаказа);
-
             UpdateOrderInfoLabel();
         }
         private string GetProductName(int кодЗаказа)
@@ -49,7 +40,6 @@ JOIN
     Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
 WHERE 
     Заказы.КодЗаказа = @КодЗаказа";
-
             using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
             {
                 connection.Open();
@@ -74,6 +64,11 @@ WHERE
         {
             if (int.TryParse(TextBoxCompleted.Text, out int дополнительноВыполнено))
             {
+                if (дополнительноВыполнено <= 0)
+                {
+                    MyCustomMessageBox.ShowMessage("Количество выполненных изделий должно быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 int новыйКоличествоВыполненных = КоличествоВыполненных + дополнительноВыполнено;
 
                 if (новыйКоличествоВыполненных >= 0 && новыйКоличествоВыполненных <= КоличествоИзделий)
@@ -93,18 +88,26 @@ WHERE
                 }
                 else
                 {
-                    MessageBox.Show("Количество выполненных изделий должно быть неотрицательным и не превышать общее количество изделий.");
+                    MyCustomMessageBox.ShowMessage("Количество выполненных изделий должно быть неотрицательным и не превышать общее количество изделий.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Пожалуйста, введите корректное число.");
+                MyCustomMessageBox.ShowMessage("Пожалуйста, введите корректное число.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TextBoxCompleted_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButtonConfirm.PerformClick();
+                e.Handled = true;
+            }
         }
     }
 }

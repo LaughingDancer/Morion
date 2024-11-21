@@ -178,12 +178,12 @@
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.ForestGreen;
-            this.guna2Button1.Location = new System.Drawing.Point(580, 69);
+            this.guna2Button1.Location = new System.Drawing.Point(535, 69);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(163, 50);
+            this.guna2Button1.Size = new System.Drawing.Size(208, 50);
             this.guna2Button1.TabIndex = 14;
-            this.guna2Button1.Text = "Создать";
+            this.guna2Button1.Text = "Регистрация";
             this.guna2Button1.UseTransparentBackground = true;
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 

@@ -1,19 +1,11 @@
 ﻿using app.Classes;
 using app.UserControls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Net.Mail;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Web.UI.WebControls;
 
 namespace app.Forms
 {
@@ -34,19 +26,16 @@ namespace app.Forms
             this.email = email;
             this.ucПерсонал = ucПерсонал;
             DB = new DB();
-
             labelEmployeeInfo.Text = $"{lastName} {firstName}";
             labelEmployeeInfo.TextAlignment = ContentAlignment.MiddleCenter;
             labelEmployeeInfo.Location = new Point(
                 (this.ClientSize.Width - labelEmployeeInfo.Width) / 2,
                 (this.ClientSize.Height - labelEmployeeInfo.Height) / 2);
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void buttonFire_Click(object sender, EventArgs e)
         {
             DialogResult result = MyCustomMessageBox.ShowMessage("Вы уверены, что хотите уволить сотрудника?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -78,12 +67,10 @@ namespace app.Forms
             int smtpPort = 587;
             string smtpUsername = "noreplymorion@mail.ru";
             string smtpPassword = "TeB6bnQkvFsBR1evpPw9";
-
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                 smtpClient.EnableSsl = true;
-
                 using (MailMessage mailMessage = new MailMessage())
                 {
                     mailMessage.From = new MailAddress(smtpUsername);

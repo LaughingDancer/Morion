@@ -42,11 +42,9 @@
             this.PanelOrder1 = new Guna.UI2.WinForms.Guna2Panel();
             this.ComboBoxSizes1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.ButtonOrderСalculate = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOptimizationOptions)).BeginInit();
             this.PanelOrder1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel2
@@ -96,6 +94,7 @@
             this.TextBoxLenght1.Size = new System.Drawing.Size(250, 50);
             this.TextBoxLenght1.TabIndex = 35;
             this.TextBoxLenght1.TabStop = false;
+            this.TextBoxLenght1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxLenght1_KeyDown);
             // 
             // TextBoxWidth1
             // 
@@ -122,6 +121,7 @@
             this.TextBoxWidth1.Size = new System.Drawing.Size(250, 50);
             this.TextBoxWidth1.TabIndex = 41;
             this.TextBoxWidth1.TabStop = false;
+            this.TextBoxWidth1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxWidth1_KeyDown);
             // 
             // TextBoxAmountFabric1
             // 
@@ -148,6 +148,7 @@
             this.TextBoxAmountFabric1.Size = new System.Drawing.Size(250, 50);
             this.TextBoxAmountFabric1.TabIndex = 42;
             this.TextBoxAmountFabric1.TabStop = false;
+            this.TextBoxAmountFabric1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxAmountFabric1_KeyDown);
             // 
             // ComboBoxFabric1
             // 
@@ -175,6 +176,8 @@
             this.ComboBoxFabric1.TabIndex = 43;
             this.ComboBoxFabric1.DropDown += new System.EventHandler(this.ComboBoxFabric1_DropDown);
             this.ComboBoxFabric1.DropDownClosed += new System.EventHandler(this.ComboBoxFabric1_DropDownClosed);
+            this.ComboBoxFabric1.Enter += new System.EventHandler(this.ComboBoxFabric1_Enter);
+            this.ComboBoxFabric1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBoxFabric1_KeyDown);
             // 
             // ButtonClearProduct
             // 
@@ -235,7 +238,7 @@
             this.DataGridViewOptimizationOptions.RowHeadersVisible = false;
             this.DataGridViewOptimizationOptions.RowHeadersWidth = 60;
             this.DataGridViewOptimizationOptions.RowTemplate.Height = 60;
-            this.DataGridViewOptimizationOptions.Size = new System.Drawing.Size(1539, 348);
+            this.DataGridViewOptimizationOptions.Size = new System.Drawing.Size(1539, 501);
             this.DataGridViewOptimizationOptions.TabIndex = 47;
             this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -301,6 +304,8 @@
             this.ComboBoxSizes1.TabIndex = 40;
             this.ComboBoxSizes1.DropDown += new System.EventHandler(this.ComboBoxSizes1_DropDown);
             this.ComboBoxSizes1.DropDownClosed += new System.EventHandler(this.ComboBoxSizes1_DropDownClosed);
+            this.ComboBoxSizes1.Enter += new System.EventHandler(this.ComboBoxSizes1_Enter);
+            this.ComboBoxSizes1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBoxSizes1_KeyDown);
             // 
             // ButtonOrderСalculate
             // 
@@ -324,26 +329,10 @@
             this.ButtonOrderСalculate.UseTransparentBackground = true;
             this.ButtonOrderСalculate.Click += new System.EventHandler(this.ButtonOrderСalculate_Click);
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::app.Properties.Resources.Logo;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(720, 503);
-            this.guna2PictureBox1.MaximumSize = new System.Drawing.Size(450, 350);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(130, 150);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 51;
-            this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.UseTransparentBackground = true;
-            // 
             // UC_ОформитьЗаказ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.PanelOrder1);
             this.Controls.Add(this.ButtonOrderСalculate);
             this.Controls.Add(this.ButtonClearProduct);
@@ -355,7 +344,6 @@
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOptimizationOptions)).EndInit();
             this.PanelOrder1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,6 +361,5 @@
         private Guna.UI2.WinForms.Guna2Panel PanelOrder1;
         private Guna.UI2.WinForms.Guna2ComboBox ComboBoxSizes1;
         private Guna.UI2.WinForms.Guna2Button ButtonOrderСalculate;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

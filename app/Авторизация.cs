@@ -1,16 +1,8 @@
 ﻿using app.Classes;
-using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace app
@@ -25,12 +17,10 @@ namespace app
             FormPanelTextBoxPassword.IconRight = Properties.Resources.visionHide;
             FormPanelTextBoxPassword.UseSystemPasswordChar = true;
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void IconMaximized_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -42,12 +32,10 @@ namespace app
                 this.WindowState = FormWindowState.Maximized;
             }
         }
-
         private void IconMinimized_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void Авторизация_Resize(object sender, EventArgs e)
         {
             this.Invalidate();
@@ -60,7 +48,6 @@ namespace app
                 guna2BorderlessForm1.BorderRadius = 20;
             }
         }
-
         private void set_background(Object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
@@ -68,7 +55,6 @@ namespace app
             Brush b = new LinearGradientBrush(gradient_rectangle, Color.FromArgb(33, 41, 61), Color.FromArgb(255, 120, 10), 270f);
             graphics.FillRectangle(b, gradient_rectangle);
         }
-
         private void FormPanelTextBoxPassword_IconRightClick(object sender, EventArgs e)
         {
             if (FormPanelTextBoxPassword.UseSystemPasswordChar)
@@ -82,12 +68,11 @@ namespace app
                 FormPanelTextBoxPassword.IconRight = Properties.Resources.visionHide;
             }
         }
-
         private void FormPanelButtonEnterance_Click(object sender, EventArgs e)
         {
             var login = FormPanelTextBoxLogin.Text;
             var password = FormPanelTextBoxPassword.Text;
-            if (login == string.Empty || password == string.Empty)
+            if (string.IsNullOrEmpty(login) && string.IsNullOrEmpty(password))
             {
                 MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -102,7 +87,6 @@ namespace app
                 MyCustomMessageBox.ShowMessage("Заполните поля пароля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             var authResult = AuthorizeUser(login, password);
             if (authResult.isAuthorized)
             {
@@ -161,7 +145,6 @@ namespace app
             }
             return (isAuthorized, position);
         }
-
         private void FormPanelTextBoxLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
@@ -175,7 +158,6 @@ namespace app
                 e.Handled = true;
             }
         }
-
         private void FormPanelTextBoxPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
@@ -184,15 +166,6 @@ namespace app
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.Enter)
-            {
-                FormPanelButtonEnterance.PerformClick();
-                e.Handled = true;
-            }
-        }
-
-        private void FormPanelButtonEnterance_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
             {
                 FormPanelButtonEnterance.PerformClick();
                 e.Handled = true;

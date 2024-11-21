@@ -1,16 +1,9 @@
 ﻿using app.Classes;
 using app.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace app.UserControls
 {
@@ -32,14 +25,13 @@ namespace app.UserControls
         {
             DataGridViewPeople.Columns.Add("КодСотрудника", "КодСотрудника");
             DataGridViewPeople.Columns["КодСотрудника"].Visible = false;
-            DataGridViewPeople.Columns.Add("Логин", "Логин"); // Добавляем столбец для логина
+            DataGridViewPeople.Columns.Add("Логин", "Логин");
             DataGridViewPeople.Columns.Add("Фамилия", "Фамилия");
             DataGridViewPeople.Columns.Add("Имя", "Имя");
             DataGridViewPeople.Columns.Add("ЭлектроннаяПочта", "Email");
             DataGridViewPeople.Columns.Add("ДатаПриема", "Дата Приема");
             DataGridViewPeople.Columns.Add("Зарплата", "Зарплата");
             DataGridViewPeople.Columns.Add("Должность", "Должность");
-
             DataGridViewImageColumn newEditColumn = new DataGridViewImageColumn();
             newEditColumn.Name = "EditColumn";
             newEditColumn.HeaderText = "Изменить";
@@ -49,7 +41,6 @@ namespace app.UserControls
             DataGridViewPeople.Columns["EditColumn"].DisplayIndex = DataGridViewPeople.Columns.Count - 1;
             DataGridViewPeople.Columns["EditColumn"].Width = 60;
             DataGridViewPeople.Columns["EditColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
             DataGridViewImageColumn newDeleteColumn = new DataGridViewImageColumn();
             newDeleteColumn.Name = "DeleteColumn";
             newDeleteColumn.HeaderText = "Уволить";
@@ -64,7 +55,7 @@ namespace app.UserControls
         {
             DGW.Rows.Add(
                 Record["КодСотрудника"],
-                Record["Логин"], // Добавляем логин
+                Record["Логин"],
                 Record["Фамилия"],
                 Record["Имя"],
                 Record["ЭлектроннаяПочта"],
@@ -92,7 +83,6 @@ namespace app.UserControls
             reader.Close();
             DB.CloseConnection();
         }
-
         private void UC_Персонал_Load(object sender, EventArgs e)
         {
             CreateColumns();
@@ -100,7 +90,6 @@ namespace app.UserControls
             comboSearch();
             display_DGW();
         }
-
         private void DataGridViewPeople_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if ((e.ColumnIndex == DataGridViewPeople.Columns["EditColumn"].Index || e.ColumnIndex == DataGridViewPeople.Columns["DeleteColumn"].Index) && e.RowIndex >= 0)
@@ -108,18 +97,15 @@ namespace app.UserControls
                 DataGridViewPeople.Cursor = Cursors.Hand;
             }
         }
-
         private void DataGridViewPeople_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewPeople.Cursor = Cursors.Default;
         }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             ДобавлениеПерсонал toForm = new ДобавлениеПерсонал(this);
             toForm.Show();
         }
-
         private void DataGridViewPeople_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -133,10 +119,8 @@ namespace app.UserControls
                     string dateOfHire = DataGridViewPeople.Rows[e.RowIndex].Cells["ДатаПриема"].Value.ToString();
                     string salary = DataGridViewPeople.Rows[e.RowIndex].Cells["Зарплата"].Value.ToString();
                     string post = DataGridViewPeople.Rows[e.RowIndex].Cells["Должность"].Value.ToString();
-
                     ИзменениеПерсонал editForm = new ИзменениеПерсонал(employeeId, firstName, lastName, email, dateOfHire, salary, post, this);
                     editForm.Show();
-
                     RefreshDataGridView();
                 }
                 else if (e.ColumnIndex == DataGridViewPeople.Columns["DeleteColumn"].Index)
@@ -145,7 +129,6 @@ namespace app.UserControls
                     string firstName = DataGridViewPeople.Rows[e.RowIndex].Cells["Имя"].Value.ToString();
                     string lastName = DataGridViewPeople.Rows[e.RowIndex].Cells["Фамилия"].Value.ToString();
                     string email = DataGridViewPeople.Rows[e.RowIndex].Cells["ЭлектроннаяПочта"].Value.ToString();
-
                     УдалениеПерсонал fireForm = new УдалениеПерсонал(employeeId, firstName, lastName, email, this);
                     fireForm.Show();
                 }
@@ -180,22 +163,18 @@ namespace app.UserControls
             DB.OpenConnection();
             DataSet DS = new DataSet();
             sqlDataAdapter.Fill(DS, "Должность");
-
             DataRow allRow = DS.Tables["Должность"].NewRow();
             allRow["Должность"] = "Все Должности";
             DS.Tables["Должность"].Rows.InsertAt(allRow, 0);
-
             comboBoxPostSearch.DisplayMember = "Должность";
             comboBoxPostSearch.ValueMember = "Должность";
             comboBoxPostSearch.DataSource = DS.Tables["Должность"];
             DB.CloseConnection();
-
             comboBoxPostSearch.SelectedIndex = 0;
         }
         private void display_DGW()
         {
             string querrySearch;
-
             if (comboBoxPostSearch.Text == "Все Должности")
             {
                 querrySearch = @"
@@ -211,25 +190,21 @@ namespace app.UserControls
             JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя 
             WHERE Пользователи.Должность = @Должность";
             }
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
 
             if (comboBoxPostSearch.Text != "Все Должности")
             {
                 sqlCommand.Parameters.AddWithValue("@Должность", comboBoxPostSearch.Text);
             }
-
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable DT = new DataTable();
             DataGridViewPeople.Rows.Clear();
-
             sqlDataAdapter.Fill(DT);
-
             foreach (DataRow row in DT.Rows)
             {
                 DataGridViewPeople.Rows.Add(
                     row["КодСотрудника"],
-                    row["Логин"], // Добавляем логин
+                    row["Логин"],
                     row["Фамилия"],
                     row["Имя"],
                     row["ЭлектроннаяПочта"],
@@ -241,7 +216,6 @@ namespace app.UserControls
                 );
             }
         }
-
         private void comboBoxPostSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             display_DGW();

@@ -193,6 +193,16 @@ namespace app.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo1 {
+            get {
+                object obj = ResourceManager.GetObject("Logo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minimizeW {
             get {
                 object obj = ResourceManager.GetObject("minimizeW", resourceCulture);
@@ -216,6 +226,16 @@ namespace app.Properties {
         internal static System.Drawing.Bitmap minimizeW2 {
             get {
                 object obj = ResourceManager.GetObject("minimizeW2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap optimization {
+            get {
+                object obj = ResourceManager.GetObject("optimization", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

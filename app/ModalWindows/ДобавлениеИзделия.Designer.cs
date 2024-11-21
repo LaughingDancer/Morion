@@ -165,6 +165,7 @@
             this.TextBoxDensity.Size = new System.Drawing.Size(350, 50);
             this.TextBoxDensity.TabIndex = 56;
             this.TextBoxDensity.TabStop = false;
+            this.TextBoxDensity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxDensity_KeyDown);
             // 
             // ComboBoxSize
             // 
@@ -190,6 +191,10 @@
             this.ComboBoxSize.Name = "ComboBoxSize";
             this.ComboBoxSize.Size = new System.Drawing.Size(350, 50);
             this.ComboBoxSize.TabIndex = 55;
+            this.ComboBoxSize.DropDown += new System.EventHandler(this.ComboBoxSize_DropDown);
+            this.ComboBoxSize.DropDownClosed += new System.EventHandler(this.ComboBoxSize_DropDownClosed);
+            this.ComboBoxSize.Enter += new System.EventHandler(this.ComboBoxSize_Enter);
+            this.ComboBoxSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBoxSize_KeyDown);
             // 
             // ComboBoxFabric
             // 
@@ -214,6 +219,10 @@
             this.ComboBoxFabric.Name = "ComboBoxFabric";
             this.ComboBoxFabric.Size = new System.Drawing.Size(350, 50);
             this.ComboBoxFabric.TabIndex = 54;
+            this.ComboBoxFabric.DropDown += new System.EventHandler(this.ComboBoxFabric_DropDown);
+            this.ComboBoxFabric.DropDownClosed += new System.EventHandler(this.ComboBoxFabric_DropDownClosed);
+            this.ComboBoxFabric.Enter += new System.EventHandler(this.ComboBoxFabric_Enter);
+            this.ComboBoxFabric.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBoxFabric_KeyDown);
             // 
             // TextBoxWidth
             // 
@@ -239,6 +248,7 @@
             this.TextBoxWidth.Size = new System.Drawing.Size(350, 50);
             this.TextBoxWidth.TabIndex = 53;
             this.TextBoxWidth.TabStop = false;
+            this.TextBoxWidth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxWidth_KeyDown);
             // 
             // TextBoxLength
             // 
@@ -264,6 +274,7 @@
             this.TextBoxLength.Size = new System.Drawing.Size(350, 50);
             this.TextBoxLength.TabIndex = 52;
             this.TextBoxLength.TabStop = false;
+            this.TextBoxLength.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxLength_KeyDown);
             // 
             // TextBoxProduct
             // 
@@ -289,6 +300,7 @@
             this.TextBoxProduct.Size = new System.Drawing.Size(350, 50);
             this.TextBoxProduct.TabIndex = 51;
             this.TextBoxProduct.TabStop = false;
+            this.TextBoxProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxProduct_KeyDown);
             // 
             // ДобавлениеИзделия
             // 

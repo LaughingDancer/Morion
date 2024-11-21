@@ -398,6 +398,9 @@
             this.HomeButton.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
             this.HomeButton.ForeColor = System.Drawing.Color.White;
             this.HomeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.HomeButton.Image = global::app.Properties.Resources.Logo;
+            this.HomeButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.HomeButton.ImageSize = new System.Drawing.Size(50, 50);
             this.HomeButton.Location = new System.Drawing.Point(0, 0);
             this.HomeButton.Name = "HomeButton";
             this.HomeButton.Size = new System.Drawing.Size(300, 80);

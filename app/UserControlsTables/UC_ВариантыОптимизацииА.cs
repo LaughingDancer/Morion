@@ -1,13 +1,7 @@
 ﻿using app.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.UserControls
@@ -43,7 +37,6 @@ namespace app.UserControls
             DataGridViewOptimizationOptions.Columns.Add("ПроцентОтходов", "Процент Отходов");
             DataGridViewOptimizationOptions.Columns.Add("ДатаСоздания", "Дата Создания");
         }
-
         private void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {
             DGW.Rows.Add(
@@ -61,7 +54,6 @@ namespace app.UserControls
                 Record["ДатаСоздания"]
             );
         }
-
         private void RefreshDataGrid(DataGridView DGW)
         {
             DGW.Rows.Clear();
@@ -89,7 +81,6 @@ namespace app.UserControls
         Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера
     JOIN 
         Сотрудники ON ВариантыОптимизации.КодСотрудника = Сотрудники.КодСотрудника";
-
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = command.ExecuteReader();
@@ -136,7 +127,6 @@ namespace app.UserControls
         Сотрудники ON ВариантыОптимизации.КодСотрудника = Сотрудники.КодСотрудника
     WHERE 
         CONCAT(Сотрудники.Фамилия, Ткани.Вид, Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, ВариантыОптимизации.КоличествоИзделий, ВариантыОптимизации.КоличествоОтходов, ВариантыОптимизации.ПроцентОтходов, ВариантыОптимизации.ДатаСоздания, Ткани.Длина, Ткани.Ширина) LIKE '%{searchTextBox.Text}%'";
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -154,19 +144,15 @@ namespace app.UserControls
             DB.OpenConnection();
             DataSet DS = new DataSet();
             sqlDataAdapter.Fill(DS, "Вид");
-
             DataRow allRow = DS.Tables["Вид"].NewRow();
             allRow["Вид"] = "Все Виды";
             DS.Tables["Вид"].Rows.InsertAt(allRow, 0);
-
             comboBoxPostSearch.DisplayMember = "Вид";
             comboBoxPostSearch.ValueMember = "Вид";
             comboBoxPostSearch.DataSource = DS.Tables["Вид"];
             DB.CloseConnection();
-
             comboBoxPostSearch.SelectedIndex = 0;
         }
-
         private void display_DGW()
         {
             string querrySearch = @"
@@ -196,10 +182,7 @@ namespace app.UserControls
     WHERE 
         (@Вид IS NULL OR Ткани.Вид = @Вид)
         AND (@Поиск IS NULL OR CONCAT(Сотрудники.Фамилия, Ткани.Вид, Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, ВариантыОптимизации.КоличествоИзделий, ВариантыОптимизации.КоличествоОтходов, ВариантыОптимизации.ПроцентОтходов, ВариантыОптимизации.ДатаСоздания, Ткани.Длина, Ткани.Ширина) LIKE '%' + @Поиск + '%')";
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
-
-            // Условие для фильтра по виду ткани
             if (comboBoxPostSearch.Text != "Все Виды")
             {
                 sqlCommand.Parameters.AddWithValue("@Вид", comboBoxPostSearch.Text);
@@ -208,8 +191,6 @@ namespace app.UserControls
             {
                 sqlCommand.Parameters.AddWithValue("@Вид", DBNull.Value);
             }
-
-            // Условие для фильтра по тексту поиска
             if (!string.IsNullOrWhiteSpace(searchTextBox.Text))
             {
                 sqlCommand.Parameters.AddWithValue("@Поиск", searchTextBox.Text);
@@ -218,12 +199,10 @@ namespace app.UserControls
             {
                 sqlCommand.Parameters.AddWithValue("@Поиск", DBNull.Value);
             }
-
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable DT = new DataTable();
             DataGridViewOptimizationOptions.Rows.Clear();
             sqlDataAdapter.Fill(DT);
-
             foreach (DataRow row in DT.Rows)
             {
                 DataGridViewOptimizationOptions.Rows.Add(
@@ -246,12 +225,10 @@ namespace app.UserControls
         {
             excelExporter.ExportExcel(DataGridViewOptimizationOptions);
         }
-
         private void comboBoxPostSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             display_DGW();
         }
-
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
             Search(DataGridViewOptimizationOptions);

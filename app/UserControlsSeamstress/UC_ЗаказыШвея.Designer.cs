@@ -36,10 +36,8 @@
             this.comboBoxProduct = new Guna.UI2.WinForms.Guna2ComboBox();
             this.searchTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.DataGridViewOrders = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel2
@@ -153,7 +151,7 @@
             this.DataGridViewOrders.RowHeadersVisible = false;
             this.DataGridViewOrders.RowHeadersWidth = 60;
             this.DataGridViewOrders.RowTemplate.Height = 60;
-            this.DataGridViewOrders.Size = new System.Drawing.Size(1535, 348);
+            this.DataGridViewOrders.Size = new System.Drawing.Size(1535, 502);
             this.DataGridViewOrders.TabIndex = 55;
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -178,28 +176,12 @@
             this.DataGridViewOrders.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.DataGridViewOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewOrders_CellClick);
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::app.Properties.Resources.Logo;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(720, 502);
-            this.guna2PictureBox1.MaximumSize = new System.Drawing.Size(450, 350);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(130, 150);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 56;
-            this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.UseTransparentBackground = true;
-            // 
             // UC_ЗаказыШвея
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.comboBoxProduct);
             this.Controls.Add(this.searchTextBox);
-            this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.DataGridViewOrders);
             this.Controls.Add(this.guna2Panel2);
             this.Name = "UC_ЗаказыШвея";
@@ -208,7 +190,6 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -219,7 +200,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2ComboBox comboBoxProduct;
         private Guna.UI2.WinForms.Guna2TextBox searchTextBox;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridViewOrders;
     }
 }

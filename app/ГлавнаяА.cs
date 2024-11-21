@@ -5,12 +5,7 @@ using app.UserControlsSpecialist;
 using app.UserControlsStatistics;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app
@@ -36,12 +31,10 @@ namespace app
             InitializeComponent();
             ucГлавная = new UC_Главная();
             addUserControl(ucГлавная);
-
             guna2Button2.Click += guna2Button2_Click;
             guna2Button4.Click += guna2Button4_Click;
             guna2Button5.Click += guna2Button5_Click;
             guna2Button10.Click += guna2Button10_Click;
-
             LoadEmployeeData(login);
         }
         private void LoadEmployeeData(string login)
@@ -51,12 +44,10 @@ namespace app
             employeePhoto = db.GetEmployeePhotoByLogin(login);
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
         }
-
         private void menuTable_Click(object sender, EventArgs e)
         {
             menuTransitionOne.Start();
         }
-
         private void menuTransitionOne_Tick(object sender, EventArgs e)
         {
             if (menuExpandOne == false)
@@ -78,12 +69,10 @@ namespace app
                 }
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void IconMaximized_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -95,12 +84,10 @@ namespace app
                 this.WindowState = FormWindowState.Maximized;
             }
         }
-
         private void IconMinimized_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void Главная_Resize(object sender, EventArgs e)
         {
             this.Invalidate();
@@ -113,7 +100,6 @@ namespace app
                 guna2BorderlessForm1.BorderRadius = 20;
             }
         }
-
         private void HomeButton_Click(object sender, EventArgs e)
         {
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
@@ -123,32 +109,26 @@ namespace app
                 button.Checked = false;
             }
         }
-
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             UC_ВариантыОптимизацииА uc = new UC_ВариантыОптимизацииА();
             addUserControl(uc);
         }
-
-
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             UC_Заказы uc = new UC_Заказы();
             addUserControl(uc);
         }
-
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             UC_Изделия uc = new UC_Изделия();
             addUserControl(uc);
         }
-
         private void guna2Button10_Click(object sender, EventArgs e)
         {
             UC_ТканиА uc = new UC_ТканиА();
             addUserControl(uc);
         }
-
         private void guna2Button21_Click(object sender, EventArgs e)
         {
             UC_Персонал uc = new UC_Персонал();
@@ -158,7 +138,6 @@ namespace app
                 button.Checked = false;
             }
         }
-
         private void guna2Button22_Click(object sender, EventArgs e)
         {
             ActiveForm.Hide();
@@ -166,7 +145,6 @@ namespace app
             to.ShowDialog();
             Close();
         }
-
         private void menuChart_Click(object sender, EventArgs e)
         {
             UC_Статистика uc = new UC_Статистика();
@@ -176,7 +154,6 @@ namespace app
                 button.Checked = false;
             }
         }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             UC_ЖурналБэкап uc = new UC_ЖурналБэкап();

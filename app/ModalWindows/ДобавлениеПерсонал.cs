@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using app.Classes;
-using Guna.UI2.WinForms;
 using static app.Classes.ValidationData;
 using System.Data.SqlClient;
 using System.Drawing.Imaging;
@@ -31,7 +26,6 @@ namespace app.Forms
             DB = new DB();
             InitializeComponent();
         }
-
         private void pictureSet_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -62,76 +56,71 @@ namespace app.Forms
             } while (login == password);
             return login;
         }
-
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text == string.Empty || textBoxSurname.Text == string.Empty || textBoxEmail.Text == string.Empty || comboBoxPost.Text == string.Empty)
+            var firstName = textBoxName.Text;
+            var lastName = textBoxSurname.Text;
+            var email = textBoxEmail.Text;
+            var post = comboBoxPost.Text;
+            if (string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(lastName) && string.IsNullOrEmpty(email) && string.IsNullOrEmpty(post))
             {
                 MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (textBoxName.Text == string.Empty)
+            if (string.IsNullOrEmpty(firstName))
             {
                 MyCustomMessageBox.ShowMessage("Заполните поле Имя", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (textBoxSurname.Text == string.Empty)
+            if (string.IsNullOrEmpty(lastName))
             {
                 MyCustomMessageBox.ShowMessage("Заполните поле Фамилия", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (textBoxEmail.Text == string.Empty)
+            if (string.IsNullOrEmpty(email))
             {
                 MyCustomMessageBox.ShowMessage("Заполните поле электронная почта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (comboBoxPost.Text == string.Empty)
+            if (string.IsNullOrEmpty(post))
             {
                 MyCustomMessageBox.ShowMessage("Выберите Должность", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             Validation validator = new Validation();
-            string firstName = textBoxName.Text;
-            string lastName = textBoxSurname.Text;
-            string email = textBoxEmail.Text;
-            string post = comboBoxPost.Text;
-
             if (!validator.ValidateLastName(lastName))
             {
                 MyCustomMessageBox.ShowMessage("Некорректная фамилия", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             if (!validator.ValidateFirstName(firstName))
             {
                 MyCustomMessageBox.ShowMessage("Некорректное имя", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             if (!validator.ValidateEmail(email))
             {
                 MyCustomMessageBox.ShowMessage("Некорректный email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (selectedPhotoBytes == null || selectedPhotoBytes.Length == 0)
+            {
+                MyCustomMessageBox.ShowMessage("Пожалуйста, загрузите фотографию сотрудника.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string password = GeneratePassword();
             string login = GenerateLogin(password);
-
             ValidationLogin LV = new ValidationLogin();
             if (!LV.CheckLoginUniqueness(login))
             {
                 MyCustomMessageBox.ShowMessage("Логин уже существует. Попробуйте снова.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             if (password == login)
             {
                 MyCustomMessageBox.ShowMessage("Пароль и логин не должны совпадать.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             int userId = RegisterUser(login, password, comboBoxPost.Text);
             if (userId > 0)
             {
@@ -155,7 +144,6 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Ошибка при регистрации пользователя.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private int RegisterUser(string login, string password, string post)
         {
             Hashing GH = new Hashing();
@@ -163,7 +151,6 @@ namespace app.Forms
             var DB = new DB();
             return DB.QueryExecuteScalar(queryadd);
         }
-
         private int RegisterEmployee(string firstName, string lastName, string email, int userId)
         {
             var queryAdd = $"INSERT INTO Сотрудники (Имя, Фамилия, ЭлектроннаяПочта, КодПользователя) VALUES ('{firstName}', '{lastName}', '{email}', {userId}); SELECT SCOPE_IDENTITY();";
@@ -173,31 +160,26 @@ namespace app.Forms
         class ImageUploader
         {
             private readonly string _connectionString;
-
             public ImageUploader(string connectionString)
             {
                 _connectionString = connectionString;
             }
-
             public void Upload(int employeeId, PictureBox pictureBox)
             {
                 using (var connection = new SqlConnection(_connectionString))
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = "UPDATE Сотрудники SET Фото = @Фото WHERE КодСотрудника = @EmployeeId";
-
                     var image = new Bitmap(pictureBox.Image);
                     using (var memoryStream = new MemoryStream())
                     {
                         image.Save(memoryStream, ImageFormat.Jpeg);
                         memoryStream.Position = 0;
-
                         var sqlParameterPhoto = new SqlParameter("@Фото", SqlDbType.VarBinary, (int)memoryStream.Length)
                         {
                             Value = memoryStream.ToArray()
                         };
                         command.Parameters.Add(sqlParameterPhoto);
-
                         var sqlParameterEmployeeId = new SqlParameter("@EmployeeId", SqlDbType.Int)
                         {
                             Value = employeeId
@@ -215,12 +197,10 @@ namespace app.Forms
             int smtpPort = 587;
             string smtpUsername = "noreplymorion@mail.ru";
             string smtpPassword = "TeB6bnQkvFsBR1evpPw9";
-
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                 smtpClient.EnableSsl = true;
-
                 using (MailMessage mailMessage = new MailMessage())
                 {
                     mailMessage.From = new MailAddress(smtpUsername);
@@ -239,12 +219,10 @@ namespace app.Forms
                 }
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void textBoxSurname_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
@@ -258,7 +236,6 @@ namespace app.Forms
                 e.Handled = true;
             }
         }
-
         private void textBoxName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
@@ -277,12 +254,16 @@ namespace app.Forms
                 e.Handled = true;
             }
         }
-
         private void textBoxEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
             {
                 textBoxName.Focus();
+                e.Handled = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                comboBoxPost.Focus();
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.Enter)
@@ -291,14 +272,22 @@ namespace app.Forms
                 e.Handled = true;
             }
         }
-
-        private void buttonSave_KeyDown(object sender, KeyEventArgs e)
+        private void comboBoxPost_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Up)
+            {
+                textBoxEmail.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
             {
                 buttonSave.PerformClick();
                 e.Handled = true;
             }
+        }
+        private void comboBoxPost_Enter(object sender, EventArgs e)
+        {
+            comboBoxPost.DroppedDown = true;
         }
     }
 }

@@ -2,15 +2,9 @@
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.UserControlsSpecialist
@@ -59,7 +53,6 @@ namespace app.UserControlsSpecialist
             reader.Close();
             DB.CloseConnection();
         }
-
         private void ReadSingleRowChangeLog(DataGridView DGW, IDataRecord Record)
         {
             DGW.Rows.Add(
@@ -78,16 +71,13 @@ namespace app.UserControlsSpecialist
             DB.OpenConnection();
             DataSet DS = new DataSet();
             sqlDataAdapter.Fill(DS, "Таблица");
-
             DataRow allRow = DS.Tables["Таблица"].NewRow();
             allRow["Таблица"] = "Все Таблицы";
             DS.Tables["Таблица"].Rows.InsertAt(allRow, 0);
-
             comboBoxTable.DisplayMember = "Таблица";
             comboBoxTable.ValueMember = "Таблица";
             comboBoxTable.DataSource = DS.Tables["Таблица"];
             DB.CloseConnection();
-
             comboBoxTable.SelectedIndex = 0;
         }
         private void SearchChangeLog(DataGridView DGW)
@@ -104,7 +94,6 @@ namespace app.UserControlsSpecialist
             ЖурналИзменений 
         WHERE 
             CONCAT(Таблица, Действие, СтароеЗначение, НовоеЗначение, ДатаИзменения) LIKE '%{searchTextBox.Text}%'";
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -119,7 +108,6 @@ namespace app.UserControlsSpecialist
         private void display_DGW()
         {
             string querrySearch;
-
             if (comboBoxTable.Text == "Все Таблицы")
             {
                 querrySearch = @"
@@ -148,20 +136,15 @@ namespace app.UserControlsSpecialist
             WHERE 
                 Таблица = @Таблица";
             }
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
-
             if (comboBoxTable.Text != "Все Таблицы")
             {
                 sqlCommand.Parameters.AddWithValue("@Таблица", comboBoxTable.Text);
             }
-
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable DT = new DataTable();
             DataGridViewChangeLog.Rows.Clear();
-
             sqlDataAdapter.Fill(DT);
-
             foreach (DataRow row in DT.Rows)
             {
                 DataGridViewChangeLog.Rows.Add(
@@ -174,12 +157,10 @@ namespace app.UserControlsSpecialist
                 );
             }
         }
-
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
             SearchChangeLog(DataGridViewChangeLog);
         }
-
         private void UC_ЖурналБэкап_Load(object sender, EventArgs e)
         {
             CreateColumns();
@@ -187,12 +168,10 @@ namespace app.UserControlsSpecialist
             display_DGW();
             comboSearchTable();
         }
-
         private void comboBoxTable_SelectedIndexChanged(object sender, EventArgs e)
         {
             display_DGW();
         }
-
         private void ButtonExcel_Click(object sender, EventArgs e)
         {
             excelExporter.ExportExcel(DataGridViewChangeLog);
@@ -208,7 +187,6 @@ namespace app.UserControlsSpecialist
                     string defaultPath = @"C:\BackupDB";
                     saveFileDialog.InitialDirectory = Directory.Exists(defaultPath) ? defaultPath : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     saveFileDialog.FileName = $"{databaseName}_Backup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
-
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string backupPath = saveFileDialog.FileName;
@@ -243,9 +221,6 @@ namespace app.UserControlsSpecialist
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
         private void ButtonChartHorizontalBar_Click(object sender, EventArgs e)
         {
             string databaseName = "Морион";

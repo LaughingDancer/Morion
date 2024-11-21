@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data.SqlClient;
 
 namespace app.Classes
 {
@@ -15,7 +8,6 @@ namespace app.Classes
         {
             return @"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True";
         }
-
         public bool CheckLoginUniqueness(string login)
         {
             using (SqlConnection connection = new SqlConnection(StringConnection()))

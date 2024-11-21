@@ -3,12 +3,6 @@ using app.UserControls;
 using app.UserControlsOperator;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app
@@ -45,12 +39,10 @@ namespace app
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
             addUserControl(ucГлавная);
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void IconMaximized_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -62,12 +54,10 @@ namespace app
                 this.WindowState = FormWindowState.Maximized;
             }
         }
-
         private void IconMinimized_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void guna2Button22_Click(object sender, EventArgs e)
         {
             ActiveForm.Hide();
@@ -75,20 +65,17 @@ namespace app
             to.ShowDialog();
             Close();
         }
-
         private void ordering_Click(object sender, EventArgs e)
         {
             int employeeId = Convert.ToInt32(employeeData["КодСотрудника"]);
             UC_ОформитьЗаказ uc = new UC_ОформитьЗаказ(employeeId);
             addUserControl(uc);
         }
-
         private void orderDetails_Click(object sender, EventArgs e)
         {
             UC_Заказы uc = new UC_Заказы();
             addUserControl(uc);
         }
-
         private void ГлавнаяО_Resize(object sender, EventArgs e)
         {
             this.Invalidate();
@@ -101,10 +88,14 @@ namespace app
                 guna2BorderlessForm1.BorderRadius = 20;
             }
         }
-
         private void ProductList_Click(object sender, EventArgs e)
         {
             UC_Изделия uc = new UC_Изделия();
+            addUserControl(uc);
+        }
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            UC_ВариантыОптимизацииА uc = new UC_ВариантыОптимизацииА();
             addUserControl(uc);
         }
     }

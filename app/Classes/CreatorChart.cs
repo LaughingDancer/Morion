@@ -1,9 +1,5 @@
 ﻿using Guna.Charts.WinForms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 namespace app.Classes
@@ -20,15 +16,11 @@ namespace app.Classes
             if (checkEmpty(data))
             {
                 chart.Datasets.Clear();
-
-                //config chart
                 chart.Legend.Position = LegendPosition.Right;
                 chart.Legend.Display = true;
                 chart.XAxes.Display = false;
                 chart.YAxes.Display = false;
                 chart.Title.Text = nameChart;
-
-                // Создаем серию данных для количества изделий по тканям
                 var datasetТканей = new GunaPieDataset();
                 datasetТканей.Label = "Количество Изделий по Тканям";
                 foreach (DataRow row in data.Rows)
@@ -41,7 +33,7 @@ namespace app.Classes
                 chart.Datasets.Add(datasetТканей);
             }
             else
-                MessageBox.Show("Данных не достаточно.", "Ошибка");
+            MyCustomMessageBox.ShowMessage("Данных не достаточно.", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ChartBar(GunaChart chart, DataTable data, string nameChart)
@@ -49,15 +41,13 @@ namespace app.Classes
             if (checkEmpty(data))
             {
                 chart.Datasets.Clear();
-                //Chart configuration 
                 chart.Legend.Display = false;
                 chart.YAxes.GridLines.Display = false;
                 chart.XAxes.Display = true;
                 chart.YAxes.Display = true;
                 chart.Title.Text = nameChart;
-
                 var dataset = new GunaBarDataset();
-                dataset.Label = "Количество Изделий"; // Устанавливаем метку для датасета
+                dataset.Label = "Количество Изделий";
                 foreach (DataRow row in data.Rows)
                 {
                     dataset.DataPoints.Add(
@@ -68,7 +58,7 @@ namespace app.Classes
                 chart.Datasets.Add(dataset);
             }
             else
-                MessageBox.Show("Данных не достаточно.", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Данных не достаточно.", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ChartHorizontalBar(GunaChart chart, DataTable data, string nameChart)
@@ -76,14 +66,10 @@ namespace app.Classes
             if (checkEmpty(data))
             {
                 chart.Datasets.Clear();
-
-                //config chart
                 chart.Legend.Display = true;
                 chart.XAxes.Display = true;
                 chart.YAxes.Display = true;
                 chart.Title.Text = nameChart;
-
-                // Создаем серию данных для количества отходов
                 var datasetОтходов = new GunaHorizontalBarDataset();
                 datasetОтходов.Label = "Количество Отходов";
                 foreach (DataRow row in data.Rows)
@@ -94,8 +80,6 @@ namespace app.Classes
                     );
                 }
                 chart.Datasets.Add(datasetОтходов);
-
-                // Создаем серию данных для процента отходов
                 var datasetПроцентОтходов = new GunaHorizontalBarDataset();
                 datasetПроцентОтходов.Label = "Процент Отходов";
                 foreach (DataRow row in data.Rows)
@@ -108,7 +92,7 @@ namespace app.Classes
                 chart.Datasets.Add(datasetПроцентОтходов);
             }
             else
-                MessageBox.Show("Данных не достаточно.", "Ошибка");
+                MyCustomMessageBox.ShowMessage("Данных не достаточно.", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

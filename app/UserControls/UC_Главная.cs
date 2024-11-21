@@ -1,7 +1,6 @@
 ﻿using app.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -9,8 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.UserControls
@@ -27,7 +24,6 @@ namespace app.UserControls
         }
         public void LoadEmployeeData(Dictionary<string, string> employeeData, byte[] photoBytes)
         {
-            // Пример отображения данных о сотруднике
             searchTextBox.Text = employeeData["Имя"];
             TextBoxSurname.Text = employeeData["Фамилия"];
             TextBoxEmail.Text = employeeData["ЭлектроннаяПочта"];
@@ -38,8 +34,6 @@ namespace app.UserControls
             TextBoxSalary.Text = employeeData["Зарплата"];
             TextBoxPost.Text = employeeData["Должность"];
             TextBoxLogin.Text = employeeData["Логин"];
-
-            // Загрузка фотографии
             if (photoBytes != null)
             {
                 using (MemoryStream ms = new MemoryStream(photoBytes))
@@ -52,7 +46,6 @@ namespace app.UserControls
                 PictureBoxEmployee.Image = Properties.Resources.default_photo;
             }
         }
-
         private void TextBoxLogin_IconRightClick(object sender, EventArgs e)
         {
             if (TextBoxLogin.UseSystemPasswordChar)
@@ -78,14 +71,9 @@ namespace app.UserControls
             DialogResult result = MyCustomMessageBox.ShowMessage("Вы уверены, что хотите изменить пароль?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // Генерация нового пароля
                 string newPassword = GeneratePassword();
-
-                // Хеширование нового пароля
                 Hashing hashing = new Hashing();
                 string hashedPassword = hashing.Hash(newPassword);
-
-                // Обновление пароля в базе данных
                 string queryUpdatePassword = "UPDATE Пользователи SET Пароль = @Пароль WHERE Логин = @Логин";
                 using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
                 {
@@ -97,10 +85,7 @@ namespace app.UserControls
                         command.ExecuteNonQuery();
                     }
                 }
-
-                // Отправка нового пароля на почту
                 SendMessage(TextBoxLogin.Text, newPassword, TextBoxEmail.Text);
-
                 MyCustomMessageBox.ShowMessage("Пароль успешно изменен и отправлен на почту.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -114,12 +99,10 @@ namespace app.UserControls
             int smtpPort = 587;
             string smtpUsername = "noreplymorion@mail.ru";
             string smtpPassword = "TeB6bnQkvFsBR1evpPw9";
-
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                 smtpClient.EnableSsl = true;
-
                 using (MailMessage mailMessage = new MailMessage())
                 {
                     mailMessage.From = new MailAddress(smtpUsername);

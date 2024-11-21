@@ -154,6 +154,8 @@
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(350, 50);
             this.comboBoxPost.TabIndex = 23;
+            this.comboBoxPost.Enter += new System.EventHandler(this.comboBoxPost_Enter);
+            this.comboBoxPost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxPost_KeyDown);
             // 
             // guna2DragControl1
             // 
@@ -226,7 +228,6 @@
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseTransparentBackground = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            this.buttonSave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonSave_KeyDown);
             // 
             // pictureSet
             // 

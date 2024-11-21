@@ -164,6 +164,7 @@
             this.TextBoxCompleted.SelectedText = "";
             this.TextBoxCompleted.Size = new System.Drawing.Size(350, 50);
             this.TextBoxCompleted.TabIndex = 58;
+            this.TextBoxCompleted.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxCompleted_KeyDown);
             // 
             // ВыполнениеЗаказа
             // 

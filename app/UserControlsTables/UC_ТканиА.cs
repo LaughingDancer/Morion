@@ -1,14 +1,7 @@
 ﻿using app.Classes;
-using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.UserControls
@@ -62,7 +55,6 @@ namespace app.UserControls
             reader.Close();
             DB.CloseConnection();
         }
-
         private void UC_ТканиА_Load(object sender, EventArgs e)
         {
             CreateColumns();
@@ -98,22 +90,18 @@ namespace app.UserControls
             DB.OpenConnection();
             DataSet DS = new DataSet();
             sqlDataAdapter.Fill(DS, "Вид");
-
             DataRow allRow = DS.Tables["Вид"].NewRow();
             allRow["Вид"] = "Все Виды";
             DS.Tables["Вид"].Rows.InsertAt(allRow, 0);
-
             comboBoxPostSearch.DisplayMember = "Вид";
             comboBoxPostSearch.ValueMember = "Вид";
             comboBoxPostSearch.DataSource = DS.Tables["Вид"];
             DB.CloseConnection();
-
             comboBoxPostSearch.SelectedIndex = 0;
         }
         private void display_DGW()
         {
             string querrySearch;
-
             if (comboBoxPostSearch.Text == "Все Виды")
             {
                 querrySearch = "SELECT * FROM Ткани";
@@ -125,20 +113,15 @@ namespace app.UserControls
                 FROM Ткани 
                 WHERE Вид = @Вид";
             }
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
-
             if (comboBoxPostSearch.Text != "Все Виды")
             {
                 sqlCommand.Parameters.AddWithValue("@Вид", comboBoxPostSearch.Text);
             }
-
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable DT = new DataTable();
             DataGridViewPeople.Rows.Clear();
-
             sqlDataAdapter.Fill(DT);
-
             foreach (DataRow row in DT.Rows)
             {
                 DataGridViewPeople.Rows.Add(
@@ -151,12 +134,10 @@ namespace app.UserControls
                 );
             }
         }
-
         private void comboBoxPostSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             display_DGW();
         }
-
         private void ButtonExcel_Click(object sender, EventArgs e)
         {
             excelExporter.ExportExcel(DataGridViewPeople);

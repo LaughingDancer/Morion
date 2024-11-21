@@ -37,6 +37,7 @@
             this.IconMaximized = new Guna.UI2.WinForms.Guna2Button();
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.ProductList = new Guna.UI2.WinForms.Guna2Button();
             this.orderDetails = new Guna.UI2.WinForms.Guna2Button();
             this.ordering = new Guna.UI2.WinForms.Guna2Button();
@@ -142,6 +143,7 @@
             // 
             this.MainPanel.AutoScroll = true;
             this.MainPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.MainPanel.Controls.Add(this.guna2Button2);
             this.MainPanel.Controls.Add(this.ProductList);
             this.MainPanel.Controls.Add(this.orderDetails);
             this.MainPanel.Controls.Add(this.ordering);
@@ -153,6 +155,30 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(300, 900);
             this.MainPanel.TabIndex = 1;
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.guna2Button2.Image = global::app.Properties.Resources.optimization;
+            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button2.ImageSize = new System.Drawing.Size(50, 50);
+            this.guna2Button2.Location = new System.Drawing.Point(0, 305);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(300, 75);
+            this.guna2Button2.TabIndex = 10;
+            this.guna2Button2.Text = "Оптимизация";
+            this.guna2Button2.TextOffset = new System.Drawing.Point(10, 0);
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // ProductList
             // 
@@ -255,9 +281,12 @@
             this.HomeButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.HomeButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.HomeButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.HomeButton.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
+            this.HomeButton.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
             this.HomeButton.ForeColor = System.Drawing.Color.White;
             this.HomeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.HomeButton.Image = global::app.Properties.Resources.Logo;
+            this.HomeButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.HomeButton.ImageSize = new System.Drawing.Size(50, 50);
             this.HomeButton.Location = new System.Drawing.Point(0, 0);
             this.HomeButton.Name = "HomeButton";
             this.HomeButton.Size = new System.Drawing.Size(300, 80);
@@ -356,5 +385,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button21;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button ProductList;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }

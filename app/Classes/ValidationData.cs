@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace app.Classes
 {
@@ -19,7 +14,6 @@ namespace app.Classes
             {
                 return Regex.IsMatch(firstName, @"^[а-яА-Яa-zA-Z]+$");
             }
-
             public bool ValidateEmail(string email)
             {
                 return Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
