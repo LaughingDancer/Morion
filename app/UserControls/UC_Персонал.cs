@@ -119,7 +119,8 @@ namespace app.UserControls
                     string dateOfHire = DataGridViewPeople.Rows[e.RowIndex].Cells["ДатаПриема"].Value.ToString();
                     string salary = DataGridViewPeople.Rows[e.RowIndex].Cells["Зарплата"].Value.ToString();
                     string post = DataGridViewPeople.Rows[e.RowIndex].Cells["Должность"].Value.ToString();
-                    ИзменениеПерсонал editForm = new ИзменениеПерсонал(employeeId, firstName, lastName, email, dateOfHire, salary, post, this);
+                    string login = DataGridViewPeople.Rows[e.RowIndex].Cells["Логин"].Value.ToString();
+                    ИзменениеПерсонал editForm = new ИзменениеПерсонал(employeeId, firstName, lastName, email, dateOfHire, salary, post, login, this);
                     editForm.Show();
                     RefreshDataGridView();
                 }

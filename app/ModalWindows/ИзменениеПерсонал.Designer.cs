@@ -42,6 +42,7 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.DateTimePickerEmployee = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.pictureSet = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.buttonChangePassword = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).BeginInit();
             this.SuspendLayout();
@@ -129,7 +130,7 @@
             this.buttonChange.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonChange.ForeColor = System.Drawing.Color.White;
             this.buttonChange.HoverState.FillColor = System.Drawing.Color.ForestGreen;
-            this.buttonChange.Location = new System.Drawing.Point(50, 639);
+            this.buttonChange.Location = new System.Drawing.Point(50, 635);
             this.buttonChange.Margin = new System.Windows.Forms.Padding(0);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(350, 50);
@@ -288,12 +289,36 @@
             this.pictureSet.TabStop = false;
             this.pictureSet.Click += new System.EventHandler(this.pictureSet_Click);
             // 
+            // buttonChangePassword
+            // 
+            this.buttonChangePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChangePassword.BackColor = System.Drawing.Color.Transparent;
+            this.buttonChangePassword.BorderRadius = 10;
+            this.buttonChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonChangePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonChangePassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(64)))));
+            this.buttonChangePassword.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.buttonChangePassword.ForeColor = System.Drawing.Color.Black;
+            this.buttonChangePassword.Location = new System.Drawing.Point(50, 689);
+            this.buttonChangePassword.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonChangePassword.MinimumSize = new System.Drawing.Size(300, 50);
+            this.buttonChangePassword.Name = "buttonChangePassword";
+            this.buttonChangePassword.Size = new System.Drawing.Size(350, 50);
+            this.buttonChangePassword.TabIndex = 41;
+            this.buttonChangePassword.Text = "Изменить пароль";
+            this.buttonChangePassword.UseTransparentBackground = true;
+            this.buttonChangePassword.Click += new System.EventHandler(this.buttonChangePassword_Click);
+            // 
             // ИзменениеПерсонал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(450, 714);
+            this.ClientSize = new System.Drawing.Size(450, 755);
+            this.Controls.Add(this.buttonChangePassword);
             this.Controls.Add(this.DateTimePickerEmployee);
             this.Controls.Add(this.comboBoxPost);
             this.Controls.Add(this.buttonChange);
@@ -328,5 +353,6 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePickerEmployee;
+        private Guna.UI2.WinForms.Guna2Button buttonChangePassword;
     }
 }

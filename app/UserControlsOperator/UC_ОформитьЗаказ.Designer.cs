@@ -40,7 +40,6 @@
             this.ButtonClearProduct = new Guna.UI2.WinForms.Guna2Button();
             this.DataGridViewOptimizationOptions = new Guna.UI2.WinForms.Guna2DataGridView();
             this.PanelOrder1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.ComboBoxSizes1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.ButtonOrderСalculate = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOptimizationOptions)).BeginInit();
@@ -54,7 +53,7 @@
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1571, 50);
+            this.guna2Panel2.Size = new System.Drawing.Size(1315, 50);
             this.guna2Panel2.TabIndex = 11;
             // 
             // guna2HtmlLabel1
@@ -63,7 +62,7 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(654, 0);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(526, 0);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(263, 39);
             this.guna2HtmlLabel1.TabIndex = 0;
@@ -193,7 +192,7 @@
             this.ButtonClearProduct.ForeColor = System.Drawing.Color.White;
             this.ButtonClearProduct.Image = global::app.Properties.Resources.minimizeW2;
             this.ButtonClearProduct.ImageSize = new System.Drawing.Size(40, 40);
-            this.ButtonClearProduct.Location = new System.Drawing.Point(1298, 77);
+            this.ButtonClearProduct.Location = new System.Drawing.Point(1045, 77);
             this.ButtonClearProduct.Name = "ButtonClearProduct";
             this.ButtonClearProduct.Size = new System.Drawing.Size(50, 50);
             this.ButtonClearProduct.TabIndex = 46;
@@ -238,7 +237,7 @@
             this.DataGridViewOptimizationOptions.RowHeadersVisible = false;
             this.DataGridViewOptimizationOptions.RowHeadersWidth = 60;
             this.DataGridViewOptimizationOptions.RowTemplate.Height = 60;
-            this.DataGridViewOptimizationOptions.Size = new System.Drawing.Size(1539, 501);
+            this.DataGridViewOptimizationOptions.Size = new System.Drawing.Size(1286, 501);
             this.DataGridViewOptimizationOptions.TabIndex = 47;
             this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -267,45 +266,14 @@
             // 
             this.PanelOrder1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PanelOrder1.Controls.Add(this.TextBoxLenght1);
-            this.PanelOrder1.Controls.Add(this.ComboBoxSizes1);
             this.PanelOrder1.Controls.Add(this.TextBoxWidth1);
             this.PanelOrder1.Controls.Add(this.TextBoxAmountFabric1);
             this.PanelOrder1.Controls.Add(this.ComboBoxFabric1);
             this.PanelOrder1.Location = new System.Drawing.Point(16, 77);
             this.PanelOrder1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 25);
             this.PanelOrder1.Name = "PanelOrder1";
-            this.PanelOrder1.Size = new System.Drawing.Size(1279, 50);
+            this.PanelOrder1.Size = new System.Drawing.Size(1026, 50);
             this.PanelOrder1.TabIndex = 49;
-            // 
-            // ComboBoxSizes1
-            // 
-            this.ComboBoxSizes1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ComboBoxSizes1.BackColor = System.Drawing.Color.Transparent;
-            this.ComboBoxSizes1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.ComboBoxSizes1.BorderRadius = 10;
-            this.ComboBoxSizes1.BorderThickness = 2;
-            this.ComboBoxSizes1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ComboBoxSizes1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxSizes1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.ComboBoxSizes1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.ComboBoxSizes1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ComboBoxSizes1.ForeColor = System.Drawing.Color.Black;
-            this.ComboBoxSizes1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.ComboBoxSizes1.ItemHeight = 44;
-            this.ComboBoxSizes1.Items.AddRange(new object[] {
-            "S",
-            "M",
-            "L",
-            "XL"});
-            this.ComboBoxSizes1.Location = new System.Drawing.Point(1029, 0);
-            this.ComboBoxSizes1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.ComboBoxSizes1.Name = "ComboBoxSizes1";
-            this.ComboBoxSizes1.Size = new System.Drawing.Size(250, 50);
-            this.ComboBoxSizes1.TabIndex = 40;
-            this.ComboBoxSizes1.DropDown += new System.EventHandler(this.ComboBoxSizes1_DropDown);
-            this.ComboBoxSizes1.DropDownClosed += new System.EventHandler(this.ComboBoxSizes1_DropDownClosed);
-            this.ComboBoxSizes1.Enter += new System.EventHandler(this.ComboBoxSizes1_Enter);
-            this.ComboBoxSizes1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBoxSizes1_KeyDown);
             // 
             // ButtonOrderСalculate
             // 
@@ -320,7 +288,7 @@
             this.ButtonOrderСalculate.FillColor = System.Drawing.Color.ForestGreen;
             this.ButtonOrderСalculate.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.ButtonOrderСalculate.ForeColor = System.Drawing.Color.White;
-            this.ButtonOrderСalculate.Location = new System.Drawing.Point(1355, 77);
+            this.ButtonOrderСalculate.Location = new System.Drawing.Point(1102, 77);
             this.ButtonOrderСalculate.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonOrderСalculate.Name = "ButtonOrderСalculate";
             this.ButtonOrderСalculate.Size = new System.Drawing.Size(200, 50);
@@ -339,7 +307,7 @@
             this.Controls.Add(this.DataGridViewOptimizationOptions);
             this.Controls.Add(this.guna2Panel2);
             this.Name = "UC_ОформитьЗаказ";
-            this.Size = new System.Drawing.Size(1571, 653);
+            this.Size = new System.Drawing.Size(1315, 653);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOptimizationOptions)).EndInit();
@@ -359,7 +327,6 @@
         private Guna.UI2.WinForms.Guna2Button ButtonClearProduct;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridViewOptimizationOptions;
         private Guna.UI2.WinForms.Guna2Panel PanelOrder1;
-        private Guna.UI2.WinForms.Guna2ComboBox ComboBoxSizes1;
         private Guna.UI2.WinForms.Guna2Button ButtonOrderСalculate;
     }
 }
