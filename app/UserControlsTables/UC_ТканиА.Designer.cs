@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.comboBoxPostSearch = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -48,7 +48,7 @@
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1092, 50);
+            this.guna2Panel2.Size = new System.Drawing.Size(900, 50);
             this.guna2Panel2.TabIndex = 16;
             // 
             // guna2HtmlLabel1
@@ -57,7 +57,7 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(500, 0);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(404, 0);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(93, 39);
             this.guna2HtmlLabel1.TabIndex = 0;
@@ -81,8 +81,8 @@
             "Швея",
             "Оператор",
             "Специалист КБД"});
-            this.comboBoxPostSearch.Location = new System.Drawing.Point(327, 72);
-            this.comboBoxPostSearch.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.comboBoxPostSearch.Location = new System.Drawing.Point(330, 70);
+            this.comboBoxPostSearch.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.comboBoxPostSearch.Name = "comboBoxPostSearch";
             this.comboBoxPostSearch.Size = new System.Drawing.Size(300, 50);
             this.comboBoxPostSearch.TabIndex = 31;
@@ -103,8 +103,8 @@
             this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.searchTextBox.ForeColor = System.Drawing.Color.Black;
             this.searchTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.searchTextBox.Location = new System.Drawing.Point(20, 72);
-            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTextBox.Location = new System.Drawing.Point(20, 70);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 10, 20);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.PasswordChar = '\0';
             this.searchTextBox.PlaceholderText = "Поиск";
@@ -119,31 +119,31 @@
             this.DataGridViewPeople.AllowUserToDeleteRows = false;
             this.DataGridViewPeople.AllowUserToResizeColumns = false;
             this.DataGridViewPeople.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            this.DataGridViewPeople.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            this.DataGridViewPeople.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DataGridViewPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridViewPeople.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewPeople.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.DataGridViewPeople.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewPeople.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DataGridViewPeople.ColumnHeadersHeight = 40;
             this.DataGridViewPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DataGridViewPeople.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewPeople.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewPeople.DefaultCellStyle = dataGridViewCellStyle6;
             this.DataGridViewPeople.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.DataGridViewPeople.Location = new System.Drawing.Point(20, 139);
             this.DataGridViewPeople.Margin = new System.Windows.Forms.Padding(0);
@@ -152,14 +152,14 @@
             this.DataGridViewPeople.RowHeadersVisible = false;
             this.DataGridViewPeople.RowHeadersWidth = 60;
             this.DataGridViewPeople.RowTemplate.Height = 60;
-            this.DataGridViewPeople.Size = new System.Drawing.Size(1052, 421);
+            this.DataGridViewPeople.Size = new System.Drawing.Size(860, 440);
             this.DataGridViewPeople.TabIndex = 28;
             this.DataGridViewPeople.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewPeople.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.DataGridViewPeople.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.DataGridViewPeople.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.DataGridViewPeople.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.DataGridViewPeople.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
+            this.DataGridViewPeople.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
             this.DataGridViewPeople.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.DataGridViewPeople.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
             this.DataGridViewPeople.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -191,7 +191,7 @@
             this.ButtonExcel.ForeColor = System.Drawing.Color.White;
             this.ButtonExcel.Image = global::app.Properties.Resources.excel;
             this.ButtonExcel.ImageSize = new System.Drawing.Size(50, 50);
-            this.ButtonExcel.Location = new System.Drawing.Point(872, 72);
+            this.ButtonExcel.Location = new System.Drawing.Point(680, 70);
             this.ButtonExcel.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonExcel.Name = "ButtonExcel";
             this.ButtonExcel.Size = new System.Drawing.Size(200, 50);
@@ -209,7 +209,7 @@
             this.Controls.Add(this.DataGridViewPeople);
             this.Controls.Add(this.guna2Panel2);
             this.Name = "UC_ТканиА";
-            this.Size = new System.Drawing.Size(1092, 560);
+            this.Size = new System.Drawing.Size(900, 600);
             this.Load += new System.EventHandler(this.UC_ТканиА_Load);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();

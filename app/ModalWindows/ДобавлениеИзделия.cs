@@ -40,8 +40,6 @@ namespace app.Forms
         {
             ValidationData.Validation validator = new ValidationData.Validation();
             bool isValid = true;
-
-            // Проверка на пустые поля
             if (string.IsNullOrWhiteSpace(TextBoxProduct.Text))
             {
                 MyCustomMessageBox.ShowMessage("Название Изделия не может быть пустым.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -52,7 +50,6 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Некорректное значение для Названия Изделия.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
-
             if (string.IsNullOrWhiteSpace(TextBoxDensity.Text))
             {
                 MyCustomMessageBox.ShowMessage("Плотность не может быть пустой.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -68,7 +65,6 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Плотность должна быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
-
             if (string.IsNullOrWhiteSpace(TextBoxLength.Text))
             {
                 MyCustomMessageBox.ShowMessage("Необходимая Длина Ткани не может быть пустой.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -84,7 +80,6 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Необходимая Длина Ткани должна быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
-
             if (string.IsNullOrWhiteSpace(TextBoxWidth.Text))
             {
                 MyCustomMessageBox.ShowMessage("Необходимая Ширина Ткани не может быть пустой.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -100,8 +95,6 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Необходимая Ширина Ткани должна быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
-
-            // Проверка выбранных элементов в комбобоксах
             if (ComboBoxFabric.SelectedItem == null || ComboBoxFabric.SelectedItem.ToString() == "Ткань")
             {
                 MyCustomMessageBox.ShowMessage("Пожалуйста, выберите тип ткани.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -113,14 +106,11 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Пожалуйста, выберите размер изделия.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
-
-            // Проверка загрузки фотографии
             if (selectedPhotoBytes == null || selectedPhotoBytes.Length == 0)
             {
                 MyCustomMessageBox.ShowMessage("Пожалуйста, загрузите фотографию изделия.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
-
             return isValid;
         }
         private void SaveProduct()

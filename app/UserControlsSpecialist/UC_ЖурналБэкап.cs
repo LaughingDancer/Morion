@@ -207,11 +207,11 @@ namespace app.UserControlsSpecialist
                         Backup backup = new Backup
                         {
                             Action = BackupActionType.Database,
-                            Database = databaseName 
+                            Database = databaseName
                         };
                         backup.Devices.AddDevice(backupPath, DeviceType.File);
                         backup.SqlBackup(server);
-                        MyCustomMessageBox.ShowMessage($"Резервное копирование успешно завершено. Файл сохранен по пути:\n{backupPath}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MyCustomMessageBox.ShowMessage($"Резервное копирование успешно завершено!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

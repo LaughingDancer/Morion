@@ -47,8 +47,9 @@
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1571, 50);
+            this.guna2Panel2.Size = new System.Drawing.Size(900, 50);
             this.guna2Panel2.TabIndex = 10;
             // 
             // guna2HtmlLabel1
@@ -57,7 +58,7 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(727, 0);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(392, 0);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(117, 39);
             this.guna2HtmlLabel1.TabIndex = 0;
@@ -74,7 +75,7 @@
             this.DataGridViewOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridViewOrders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
+            this.DataGridViewOrders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -95,21 +96,21 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataGridViewOrders.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewOrders.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.DataGridViewOrders.Location = new System.Drawing.Point(18, 152);
+            this.DataGridViewOrders.Location = new System.Drawing.Point(20, 140);
             this.DataGridViewOrders.Margin = new System.Windows.Forms.Padding(0);
             this.DataGridViewOrders.Name = "DataGridViewOrders";
             this.DataGridViewOrders.ReadOnly = true;
             this.DataGridViewOrders.RowHeadersVisible = false;
             this.DataGridViewOrders.RowHeadersWidth = 60;
             this.DataGridViewOrders.RowTemplate.Height = 60;
-            this.DataGridViewOrders.Size = new System.Drawing.Size(1535, 501);
+            this.DataGridViewOrders.Size = new System.Drawing.Size(860, 440);
             this.DataGridViewOrders.TabIndex = 48;
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.DataGridViewOrders.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.DataGridViewOrders.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
+            this.DataGridViewOrders.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
             this.DataGridViewOrders.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.DataGridViewOrders.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
             this.DataGridViewOrders.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -147,8 +148,8 @@
             "Швея",
             "Оператор",
             "Специалист КБД"});
-            this.comboBoxStatus.Location = new System.Drawing.Point(325, 72);
-            this.comboBoxStatus.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.comboBoxStatus.Location = new System.Drawing.Point(330, 70);
+            this.comboBoxStatus.Margin = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(300, 50);
             this.comboBoxStatus.TabIndex = 54;
@@ -169,8 +170,8 @@
             this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.searchTextBox.ForeColor = System.Drawing.Color.Black;
             this.searchTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.searchTextBox.Location = new System.Drawing.Point(18, 72);
-            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTextBox.Location = new System.Drawing.Point(20, 70);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 0, 5, 20);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.PasswordChar = '\0';
             this.searchTextBox.PlaceholderText = "Поиск";
@@ -194,7 +195,7 @@
             this.ButtonExcel.ForeColor = System.Drawing.Color.White;
             this.ButtonExcel.Image = global::app.Properties.Resources.excel;
             this.ButtonExcel.ImageSize = new System.Drawing.Size(50, 50);
-            this.ButtonExcel.Location = new System.Drawing.Point(1353, 72);
+            this.ButtonExcel.Location = new System.Drawing.Point(680, 70);
             this.ButtonExcel.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonExcel.Name = "ButtonExcel";
             this.ButtonExcel.Size = new System.Drawing.Size(200, 50);
@@ -212,7 +213,7 @@
             this.Controls.Add(this.DataGridViewOrders);
             this.Controls.Add(this.guna2Panel2);
             this.Name = "UC_Заказы";
-            this.Size = new System.Drawing.Size(1571, 653);
+            this.Size = new System.Drawing.Size(900, 600);
             this.Load += new System.EventHandler(this.UC_ДеталиЗаказов_Load);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();

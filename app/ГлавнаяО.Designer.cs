@@ -224,7 +224,7 @@
             this.orderDetails.Name = "orderDetails";
             this.orderDetails.Size = new System.Drawing.Size(300, 75);
             this.orderDetails.TabIndex = 8;
-            this.orderDetails.Text = "Детали заказов";
+            this.orderDetails.Text = "Заказы";
             this.orderDetails.TextOffset = new System.Drawing.Point(10, 0);
             this.orderDetails.Click += new System.EventHandler(this.orderDetails_Click);
             // 
@@ -248,7 +248,7 @@
             this.ordering.Name = "ordering";
             this.ordering.Size = new System.Drawing.Size(300, 75);
             this.ordering.TabIndex = 7;
-            this.ordering.Text = "Оформить заказ";
+            this.ordering.Text = "Оформление";
             this.ordering.TextOffset = new System.Drawing.Point(10, 0);
             this.ordering.Click += new System.EventHandler(this.ordering_Click);
             // 

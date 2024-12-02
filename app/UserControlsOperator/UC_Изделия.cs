@@ -72,22 +72,7 @@ namespace app.UserControlsOperator
         private void RefreshDataGrid(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string queryString = @"
-SELECT 
-    Размеры.КодРазмера, 
-    Изделия.КодИзделия, 
-    Размеры.НазваниеРазмер, 
-    Изделия.НазваниеИзделия, 
-    Размеры.НеобходимаяДлинаТкани, 
-    Размеры.НеобходимаяШиринаТкани, 
-    Изделия.Плотность, 
-    Ткани.Вид AS ВидТкани 
-FROM 
-    Размеры 
-JOIN 
-    Изделия ON Размеры.КодИзделия = Изделия.КодИзделия
-JOIN 
-    Ткани ON Изделия.КодТкани = Ткани.КодТкани";
+            string queryString = @"SELECT Размеры.КодРазмера, Изделия.КодИзделия, Размеры.НазваниеРазмер, Изделия.НазваниеИзделия, Размеры.НеобходимаяДлинаТкани, Размеры.НеобходимаяШиринаТкани, Изделия.Плотность, Ткани.Вид AS ВидТкани FROM Размеры JOIN Изделия ON Размеры.КодИзделия = Изделия.КодИзделия JOIN Ткани ON Изделия.КодТкани = Ткани.КодТкани";
 
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             try
@@ -222,7 +207,7 @@ JOIN
                     int sizeId = Convert.ToInt32(DataGridViewProduct.Rows[e.RowIndex].Cells["КодРазмера"].Value);
                     string sizeName = DataGridViewProduct.Rows[e.RowIndex].Cells["НазваниеРазмер"].Value.ToString();
                     int productId = Convert.ToInt32(DataGridViewProduct.Rows[e.RowIndex].Cells["КодИзделия"].Value);
-                    string productName = DataGridViewProduct.Rows[e.RowIndex].Cells["НазваниеИзделия"].Value.ToString(); // Название изделия
+                    string productName = DataGridViewProduct.Rows[e.RowIndex].Cells["НазваниеИзделия"].Value.ToString();
                     string length = DataGridViewProduct.Rows[e.RowIndex].Cells["НеобходимаяДлинаТкани"].Value.ToString();
                     string width = DataGridViewProduct.Rows[e.RowIndex].Cells["НеобходимаяШиринаТкани"].Value.ToString();
                     string density = DataGridViewProduct.Rows[e.RowIndex].Cells["Плотность"].Value.ToString();

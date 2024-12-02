@@ -96,7 +96,7 @@
             // 
             this.labelQuation.BackColor = System.Drawing.Color.Transparent;
             this.labelQuation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQuation.Location = new System.Drawing.Point(63, 85);
+            this.labelQuation.Location = new System.Drawing.Point(63, 78);
             this.labelQuation.Name = "labelQuation";
             this.labelQuation.Size = new System.Drawing.Size(383, 26);
             this.labelQuation.TabIndex = 41;
@@ -122,11 +122,10 @@
             this.buttonDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonDelete.FillColor = System.Drawing.Color.DarkRed;
+            this.buttonDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonDelete.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.HoverState.FillColor = System.Drawing.Color.Maroon;
-            this.buttonDelete.Location = new System.Drawing.Point(79, 189);
+            this.buttonDelete.Location = new System.Drawing.Point(83, 194);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(350, 50);

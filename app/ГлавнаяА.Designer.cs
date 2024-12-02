@@ -183,7 +183,7 @@
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(300, 75);
             this.guna2Button1.TabIndex = 8;
-            this.guna2Button1.Text = "Журнал и бэкап";
+            this.guna2Button1.Text = "Журнал && Бэкап";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // menuChart
@@ -221,7 +221,6 @@
             this.guna2Button22.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.guna2Button22.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.guna2Button22.ForeColor = System.Drawing.Color.White;
-            this.guna2Button22.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(36)))), ((int)(((byte)(20)))));
             this.guna2Button22.Image = global::app.Properties.Resources.exit;
             this.guna2Button22.Location = new System.Drawing.Point(0, 625);
             this.guna2Button22.Name = "guna2Button22";
@@ -311,7 +310,7 @@
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(300, 75);
             this.guna2Button2.TabIndex = 1;
-            this.guna2Button2.Text = "Варианты оптимизации";
+            this.guna2Button2.Text = "Оптимизация";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button4

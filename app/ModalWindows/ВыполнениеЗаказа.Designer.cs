@@ -105,7 +105,7 @@
             this.labelOrderInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelOrderInfo.Location = new System.Drawing.Point(100, 97);
             this.labelOrderInfo.Name = "labelOrderInfo";
-            this.labelOrderInfo.Size = new System.Drawing.Size(350, 86);
+            this.labelOrderInfo.Size = new System.Drawing.Size(350, 99);
             this.labelOrderInfo.TabIndex = 44;
             this.labelOrderInfo.Text = "quations";
             // 
@@ -113,11 +113,11 @@
             // 
             this.labelQuation.BackColor = System.Drawing.Color.Transparent;
             this.labelQuation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQuation.Location = new System.Drawing.Point(84, 56);
+            this.labelQuation.Location = new System.Drawing.Point(71, 56);
             this.labelQuation.Name = "labelQuation";
-            this.labelQuation.Size = new System.Drawing.Size(383, 26);
+            this.labelQuation.Size = new System.Drawing.Size(409, 26);
             this.labelQuation.TabIndex = 43;
-            this.labelQuation.Text = "Вы уверены, что хотите удалить изделие:";
+            this.labelQuation.Text = "Вы уверены, что хотите выполнить изделие:";
             // 
             // ButtonConfirm
             // 
@@ -129,7 +129,7 @@
             this.ButtonConfirm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.ButtonConfirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.ButtonConfirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.ButtonConfirm.FillColor = System.Drawing.Color.ForestGreen;
+            this.ButtonConfirm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
             this.ButtonConfirm.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.ButtonConfirm.ForeColor = System.Drawing.Color.White;
             this.ButtonConfirm.Location = new System.Drawing.Point(100, 263);
@@ -157,7 +157,7 @@
             this.TextBoxCompleted.ForeColor = System.Drawing.Color.Black;
             this.TextBoxCompleted.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.TextBoxCompleted.Location = new System.Drawing.Point(100, 203);
-            this.TextBoxCompleted.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxCompleted.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.TextBoxCompleted.Name = "TextBoxCompleted";
             this.TextBoxCompleted.PasswordChar = '\0';
             this.TextBoxCompleted.PlaceholderText = "Количество Выполненных Изделий";

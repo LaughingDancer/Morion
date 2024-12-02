@@ -9,10 +9,12 @@ namespace app.Classes
     internal class DB
     {
         private SqlConnection sqlConnection = new SqlConnection(@"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True");
+
         public string StringConnection()
         {
             return @"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True";
         }
+
         public SqlDataAdapter QueryExecute(string query)
         {
             try
@@ -29,24 +31,42 @@ namespace app.Classes
                 return null;
             }
         }
+
         public void OpenConnection()
         {
-            if (sqlConnection.State == System.Data.ConnectionState.Closed)
+            try
             {
-                sqlConnection.Open();
+                if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                {
+                    sqlConnection.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при открытии соединения: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void CloseConnection()
         {
-            if (sqlConnection.State == System.Data.ConnectionState.Open)
+            try
             {
-                sqlConnection.Close();
+                if (sqlConnection.State == System.Data.ConnectionState.Open)
+                {
+                    sqlConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при закрытии соединения: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public SqlConnection GetConnection()
         {
             return sqlConnection;
         }
+
         public int QueryExecuteScalar(string query)
         {
             try
@@ -74,6 +94,7 @@ namespace app.Classes
                 return -1;
             }
         }
+
         public void QueryExecuteNonQuery(string query)
         {
             try
@@ -93,157 +114,182 @@ namespace app.Classes
                 MyCustomMessageBox.ShowMessage("Возникла ошибка при выполнении запроса: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public byte[] GetEmployeePhoto(int employeeId)
         {
-            using (SqlConnection connection = new SqlConnection(StringConnection()))
+            try
             {
-                connection.Open();
-                string query = "SELECT Фото FROM Сотрудники WHERE КодСотрудника = @EmployeeId";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(StringConnection()))
                 {
-                    command.Parameters.AddWithValue("@EmployeeId", employeeId);
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
+                    connection.Open();
+                    string query = "SELECT Фото FROM Сотрудники WHERE КодСотрудника = @EmployeeId";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        return (byte[])result;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-        }
-        public (string Name, byte[] Photo) GetProductDetails(int productId)
-        {
-            using (SqlConnection connection = new SqlConnection(StringConnection()))
-            {
-                connection.Open();
-                string query = "SELECT НазваниеИзделия, Фото FROM Изделия WHERE КодИзделия = @ProductId";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ProductId", productId);
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@EmployeeId", employeeId);
+                        object result = command.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
                         {
-                            string name = reader["НазваниеИзделия"].ToString();
-                            byte[] photo = reader["Фото"] as byte[];
-                            return (name, photo);
+                            return (byte[])result;
                         }
                         else
                         {
-                            return (null, null);
+                            return null;
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении фото сотрудника: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
+
+        public (string Name, byte[] Photo) GetProductDetails(int productId)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(StringConnection()))
+                {
+                    connection.Open();
+                    string query = "SELECT НазваниеИзделия, Фото FROM Изделия WHERE КодИзделия = @ProductId";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ProductId", productId);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string name = reader["НазваниеИзделия"].ToString();
+                                byte[] photo = reader["Фото"] as byte[];
+                                return (name, photo);
+                            }
+                            else
+                            {
+                                return (null, null);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении деталей продукта: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (null, null);
+            }
+        }
+
         public Dictionary<string, string> GetEmployeeDataByLogin(string login)
         {
             Dictionary<string, string> employeeData = new Dictionary<string, string>();
-            using (SqlConnection con = new SqlConnection(StringConnection()))
+            try
             {
-                con.Open();
-                string query = @"
-        SELECT Сотрудники.КодСотрудника, Сотрудники.Имя, Сотрудники.Фамилия, Сотрудники.ЭлектроннаяПочта, 
-               Сотрудники.ДатаПриема, Сотрудники.Зарплата, Пользователи.Должность, Пользователи.Пароль, Пользователи.Логин
-        FROM Сотрудники
-        INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-        WHERE Пользователи.Логин = @Логин";
-                using (SqlCommand command = new SqlCommand(query, con))
+                using (SqlConnection con = new SqlConnection(StringConnection()))
                 {
-                    command.Parameters.AddWithValue("@Логин", login);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    con.Open();
+                    string query = @"
+    SELECT Сотрудники.КодСотрудника, Сотрудники.Имя, Сотрудники.Фамилия, Сотрудники.ЭлектроннаяПочта, 
+           Сотрудники.ДатаПриема, Сотрудники.Зарплата, Пользователи.Должность, Пользователи.Пароль, Пользователи.Логин
+    FROM Сотрудники
+    INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+    WHERE Пользователи.Логин = @Логин";
+                    using (SqlCommand command = new SqlCommand(query, con))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@Логин", login);
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            employeeData["КодСотрудника"] = reader["КодСотрудника"].ToString();
-                            employeeData["Имя"] = reader["Имя"].ToString();
-                            employeeData["Фамилия"] = reader["Фамилия"].ToString();
-                            employeeData["ЭлектроннаяПочта"] = reader["ЭлектроннаяПочта"].ToString();
-                            employeeData["ДатаПриема"] = reader["ДатаПриема"].ToString();
-                            employeeData["Зарплата"] = reader["Зарплата"].ToString();
-                            employeeData["Должность"] = reader["Должность"].ToString();
-                            employeeData["Пароль"] = reader["Пароль"].ToString();
-                            employeeData["Логин"] = reader["Логин"].ToString();
+                            if (reader.Read())
+                            {
+                                employeeData["КодСотрудника"] = reader["КодСотрудника"].ToString();
+                                employeeData["Имя"] = reader["Имя"].ToString();
+                                employeeData["Фамилия"] = reader["Фамилия"].ToString();
+                                employeeData["ЭлектроннаяПочта"] = reader["ЭлектроннаяПочта"].ToString();
+                                employeeData["ДатаПриема"] = reader["ДатаПриема"].ToString();
+                                employeeData["Зарплата"] = reader["Зарплата"].ToString();
+                                employeeData["Должность"] = reader["Должность"].ToString();
+                                employeeData["Пароль"] = reader["Пароль"].ToString();
+                                employeeData["Логин"] = reader["Логин"].ToString();
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении данных сотрудника: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return employeeData;
         }
+
         public byte[] GetEmployeePhotoByLogin(string login)
         {
-            using (SqlConnection con = new SqlConnection(StringConnection()))
+            try
             {
-                con.Open();
-                string query = @"
-                SELECT Фото
-                FROM Сотрудники
-                INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-                WHERE Пользователи.Логин = @Логин";
-                using (SqlCommand command = new SqlCommand(query, con))
+                using (SqlConnection con = new SqlConnection(StringConnection()))
                 {
-                    command.Parameters.AddWithValue("@Логин", login);
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
+                    con.Open();
+                    string query = @"
+            SELECT Фото
+            FROM Сотрудники
+            INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+            WHERE Пользователи.Логин = @Логин";
+                    using (SqlCommand command = new SqlCommand(query, con))
                     {
-                        return (byte[])result;
-                    }
-                    else
-                    {
-                        return null;
+                        command.Parameters.AddWithValue("@Логин", login);
+                        object result = command.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            return (byte[])result;
+                        }
+                        else
+                        {
+                            return null;
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении фото сотрудника по логину: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
+
         public DataTable GetOptimizationData()
         {
             DataTable dataTable = new DataTable();
-            string query = @"
-        SELECT 
-            Изделия.НазваниеИзделия, 
-            Размеры.НазваниеРазмер, 
-            ВариантыОптимизации.КоличествоИзделий, 
-            ВариантыОптимизации.КоличествоОтходов, 
-            ВариантыОптимизации.ПроцентОтходов, 
-            Ткани.Вид AS ВидТкани, 
-            Ткани.Длина, 
-            Ткани.Ширина 
-        FROM 
-            ВариантыОптимизации 
-        JOIN 
-            Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
-        JOIN 
-            Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
-        JOIN 
-            Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера";
-            SqlDataAdapter adapter = QueryExecute(query);
-            if (adapter != null)
+            try
             {
-                adapter.Fill(dataTable);
+                string query = @"SELECT Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, ВариантыОптимизации.КоличествоИзделий, ВариантыОптимизации.КоличествоОтходов, ВариантыОптимизации.ПроцентОтходов, Ткани.Вид AS ВидТкани, Ткани.Длина, Ткани.Ширина FROM ВариантыОптимизации JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера";
+                SqlDataAdapter adapter = QueryExecute(query);
+                if (adapter != null)
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении данных оптимизации: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dataTable;
         }
+
         public DataTable GetChartFabric()
         {
             DataTable dataTable = new DataTable();
-            string query = @"
-        SELECT 
-            Ткани.Вид AS ВидТкани, 
-            SUM(ВариантыОптимизации.КоличествоИзделий) AS КоличествоИзделий
-        FROM 
-            ВариантыОптимизации 
-        JOIN 
-            Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
-        GROUP BY 
-            Ткани.Вид";
-            SqlDataAdapter adapter = QueryExecute(query);
-            if (adapter != null)
+            try
             {
-                adapter.Fill(dataTable);
+                string query = @"SELECT Ткани.Вид AS ВидТкани, SUM(ВариантыОптимизации.КоличествоИзделий) AS КоличествоИзделий FROM ВариантыОптимизации JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани GROUP BY Ткани.Вид";
+                SqlDataAdapter adapter = QueryExecute(query);
+                if (adapter != null)
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении данных для графика: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dataTable;
         }

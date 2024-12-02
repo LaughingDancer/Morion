@@ -108,8 +108,8 @@
             "Швея",
             "Оператор",
             "Специалист КБД"});
-            this.comboBoxPost.Location = new System.Drawing.Point(50, 569);
-            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.comboBoxPost.Location = new System.Drawing.Point(50, 570);
+            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(350, 50);
             this.comboBoxPost.TabIndex = 39;
@@ -126,12 +126,11 @@
             this.buttonChange.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonChange.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonChange.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonChange.FillColor = System.Drawing.Color.Green;
+            this.buttonChange.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
             this.buttonChange.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonChange.ForeColor = System.Drawing.Color.White;
-            this.buttonChange.HoverState.FillColor = System.Drawing.Color.ForestGreen;
-            this.buttonChange.Location = new System.Drawing.Point(50, 635);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonChange.Location = new System.Drawing.Point(50, 640);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(350, 50);
             this.buttonChange.TabIndex = 38;
@@ -154,8 +153,8 @@
             this.textBoxSalary.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalary.ForeColor = System.Drawing.Color.Black;
             this.textBoxSalary.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxSalary.Location = new System.Drawing.Point(50, 454);
-            this.textBoxSalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSalary.Location = new System.Drawing.Point(50, 450);
+            this.textBoxSalary.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxSalary.Name = "textBoxSalary";
             this.textBoxSalary.PasswordChar = '\0';
             this.textBoxSalary.PlaceholderText = "Зарплата";
@@ -180,8 +179,8 @@
             this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxEmail.ForeColor = System.Drawing.Color.Black;
             this.textBoxEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxEmail.Location = new System.Drawing.Point(50, 396);
-            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxEmail.Location = new System.Drawing.Point(50, 390);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.PasswordChar = '\0';
             this.textBoxEmail.PlaceholderText = "Электронная Почта";
@@ -206,8 +205,8 @@
             this.textBoxSurname.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSurname.ForeColor = System.Drawing.Color.Black;
             this.textBoxSurname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxSurname.Location = new System.Drawing.Point(50, 280);
-            this.textBoxSurname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSurname.Location = new System.Drawing.Point(50, 270);
+            this.textBoxSurname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.PasswordChar = '\0';
             this.textBoxSurname.PlaceholderText = "Фамилия";
@@ -232,8 +231,8 @@
             this.textBoxName.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxName.ForeColor = System.Drawing.Color.Black;
             this.textBoxName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxName.Location = new System.Drawing.Point(50, 338);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Location = new System.Drawing.Point(50, 330);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.PasswordChar = '\0';
             this.textBoxName.PlaceholderText = "Имя";
@@ -267,7 +266,8 @@
             this.DateTimePickerEmployee.FillColor = System.Drawing.Color.White;
             this.DateTimePickerEmployee.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DateTimePickerEmployee.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.DateTimePickerEmployee.Location = new System.Drawing.Point(50, 511);
+            this.DateTimePickerEmployee.Location = new System.Drawing.Point(50, 510);
+            this.DateTimePickerEmployee.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             this.DateTimePickerEmployee.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DateTimePickerEmployee.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DateTimePickerEmployee.Name = "DateTimePickerEmployee";
@@ -281,7 +281,7 @@
             this.pictureSet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureSet.ImageRotate = 0F;
             this.pictureSet.Location = new System.Drawing.Point(100, 60);
-            this.pictureSet.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureSet.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.pictureSet.Name = "pictureSet";
             this.pictureSet.Size = new System.Drawing.Size(250, 200);
             this.pictureSet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -299,11 +299,11 @@
             this.buttonChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonChangePassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(64)))));
+            this.buttonChangePassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.buttonChangePassword.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.buttonChangePassword.ForeColor = System.Drawing.Color.Black;
-            this.buttonChangePassword.Location = new System.Drawing.Point(50, 689);
-            this.buttonChangePassword.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonChangePassword.ForeColor = System.Drawing.Color.White;
+            this.buttonChangePassword.Location = new System.Drawing.Point(50, 700);
+            this.buttonChangePassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.buttonChangePassword.MinimumSize = new System.Drawing.Size(300, 50);
             this.buttonChangePassword.Name = "buttonChangePassword";
             this.buttonChangePassword.Size = new System.Drawing.Size(350, 50);
@@ -317,7 +317,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(450, 755);
+            this.ClientSize = new System.Drawing.Size(450, 773);
             this.Controls.Add(this.buttonChangePassword);
             this.Controls.Add(this.DateTimePickerEmployee);
             this.Controls.Add(this.comboBoxPost);

@@ -102,10 +102,9 @@
             this.buttonFire.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonFire.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonFire.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonFire.FillColor = System.Drawing.Color.DarkRed;
+            this.buttonFire.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonFire.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonFire.ForeColor = System.Drawing.Color.White;
-            this.buttonFire.HoverState.FillColor = System.Drawing.Color.Maroon;
             this.buttonFire.Location = new System.Drawing.Point(83, 194);
             this.buttonFire.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFire.Name = "buttonFire";

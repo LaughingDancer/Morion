@@ -42,6 +42,7 @@
             // 
             // guna2BorderlessForm1
             // 
+            this.guna2BorderlessForm1.BorderRadius = 20;
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
@@ -105,11 +106,10 @@
             this.buttonDeleteOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonDeleteOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonDeleteOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonDeleteOrder.FillColor = System.Drawing.Color.DarkRed;
+            this.buttonDeleteOrder.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonDeleteOrder.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonDeleteOrder.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteOrder.HoverState.FillColor = System.Drawing.Color.Maroon;
-            this.buttonDeleteOrder.Location = new System.Drawing.Point(79, 183);
+            this.buttonDeleteOrder.Location = new System.Drawing.Point(83, 194);
             this.buttonDeleteOrder.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDeleteOrder.Name = "buttonDeleteOrder";
             this.buttonDeleteOrder.Size = new System.Drawing.Size(350, 50);
@@ -122,7 +122,7 @@
             // 
             this.labelOrderInfo.BackColor = System.Drawing.Color.Transparent;
             this.labelOrderInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelOrderInfo.Location = new System.Drawing.Point(217, 115);
+            this.labelOrderInfo.Location = new System.Drawing.Point(217, 121);
             this.labelOrderInfo.Name = "labelOrderInfo";
             this.labelOrderInfo.Size = new System.Drawing.Size(74, 26);
             this.labelOrderInfo.TabIndex = 45;
@@ -132,7 +132,7 @@
             // 
             this.labelQuation.BackColor = System.Drawing.Color.Transparent;
             this.labelQuation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQuation.Location = new System.Drawing.Point(76, 79);
+            this.labelQuation.Location = new System.Drawing.Point(76, 78);
             this.labelQuation.Name = "labelQuation";
             this.labelQuation.Size = new System.Drawing.Size(356, 26);
             this.labelQuation.TabIndex = 44;

@@ -68,8 +68,8 @@
             this.textBoxName.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxName.ForeColor = System.Drawing.Color.Black;
             this.textBoxName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxName.Location = new System.Drawing.Point(50, 338);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Location = new System.Drawing.Point(50, 330);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.PasswordChar = '\0';
             this.textBoxName.PlaceholderText = "Имя";
@@ -94,8 +94,8 @@
             this.textBoxSurname.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSurname.ForeColor = System.Drawing.Color.Black;
             this.textBoxSurname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxSurname.Location = new System.Drawing.Point(50, 280);
-            this.textBoxSurname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSurname.Location = new System.Drawing.Point(50, 270);
+            this.textBoxSurname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.PasswordChar = '\0';
             this.textBoxSurname.PlaceholderText = "Фамилия";
@@ -120,8 +120,8 @@
             this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxEmail.ForeColor = System.Drawing.Color.Black;
             this.textBoxEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.textBoxEmail.Location = new System.Drawing.Point(50, 396);
-            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxEmail.Location = new System.Drawing.Point(50, 390);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.PasswordChar = '\0';
             this.textBoxEmail.PlaceholderText = "Электронная Почта";
@@ -149,8 +149,8 @@
             "Швея",
             "Оператор",
             "Специалист КБД"});
-            this.comboBoxPost.Location = new System.Drawing.Point(50, 453);
-            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxPost.Location = new System.Drawing.Point(50, 450);
+            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 20);
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(350, 50);
             this.comboBoxPost.TabIndex = 23;
@@ -216,12 +216,11 @@
             this.buttonSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonSave.FillColor = System.Drawing.Color.Green;
+            this.buttonSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.HoverState.FillColor = System.Drawing.Color.ForestGreen;
-            this.buttonSave.Location = new System.Drawing.Point(50, 511);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSave.Location = new System.Drawing.Point(50, 520);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(350, 50);
             this.buttonSave.TabIndex = 22;
@@ -235,7 +234,7 @@
             this.pictureSet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureSet.ImageRotate = 0F;
             this.pictureSet.Location = new System.Drawing.Point(100, 60);
-            this.pictureSet.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureSet.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.pictureSet.Name = "pictureSet";
             this.pictureSet.Size = new System.Drawing.Size(250, 200);
             this.pictureSet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -248,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(450, 577);
+            this.ClientSize = new System.Drawing.Size(450, 590);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.comboBoxPost);
             this.Controls.Add(this.buttonSave);

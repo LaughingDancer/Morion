@@ -29,17 +29,7 @@ namespace app.Forms
         private string GetProductName(int кодЗаказа)
         {
             string productName = string.Empty;
-            string query = @"
-SELECT 
-    Изделия.НазваниеИзделия 
-FROM 
-    Заказы 
-JOIN 
-    ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации
-JOIN 
-    Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
-WHERE 
-    Заказы.КодЗаказа = @КодЗаказа";
+            string query = @"SELECT Изделия.НазваниеИзделия FROM Заказы JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия WHERE Заказы.КодЗаказа = @КодЗаказа";
             using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
             {
                 connection.Open();
@@ -100,7 +90,6 @@ WHERE
         {
             Close();
         }
-
         private void TextBoxCompleted_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

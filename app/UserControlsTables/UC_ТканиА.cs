@@ -65,10 +65,7 @@ namespace app.UserControls
         private void Search(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string querrySearch = $@"
-        SELECT * 
-        FROM Ткани 
-        WHERE CONCAT(Вид, Ширина, Длина, ЦенаЗаМетр, Количество) LIKE '%" + searchTextBox.Text + "%'";
+            string querrySearch = $@"SELECT * FROM Ткани WHERE CONCAT(Вид, Ширина, Длина, ЦенаЗаМетр, Количество) LIKE '%" + searchTextBox.Text + "%'";
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();

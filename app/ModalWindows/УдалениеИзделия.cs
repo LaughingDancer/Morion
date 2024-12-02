@@ -20,7 +20,6 @@ namespace app.Forms
             this.productId = productId;
             this.productName = productName;
             DB = new DB();
-
             labelEmployeeInfo.Text = $"{productName}";
             labelEmployeeInfo.TextAlignment = ContentAlignment.MiddleCenter;
             labelEmployeeInfo.Location = new Point(

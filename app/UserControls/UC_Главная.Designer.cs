@@ -104,9 +104,9 @@
             this.buttonChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonChangePassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(64)))));
+            this.buttonChangePassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.buttonChangePassword.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.buttonChangePassword.ForeColor = System.Drawing.Color.Black;
+            this.buttonChangePassword.ForeColor = System.Drawing.Color.White;
             this.buttonChangePassword.Location = new System.Drawing.Point(901, 414);
             this.buttonChangePassword.Margin = new System.Windows.Forms.Padding(4);
             this.buttonChangePassword.MinimumSize = new System.Drawing.Size(300, 50);

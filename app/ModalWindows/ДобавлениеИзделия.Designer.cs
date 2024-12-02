@@ -99,12 +99,11 @@
             this.buttonSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.buttonSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.buttonSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonSave.FillColor = System.Drawing.Color.Green;
+            this.buttonSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.HoverState.FillColor = System.Drawing.Color.ForestGreen;
-            this.buttonSave.Location = new System.Drawing.Point(50, 638);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSave.Location = new System.Drawing.Point(50, 640);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(350, 50);
             this.buttonSave.TabIndex = 44;
@@ -117,8 +116,8 @@
             this.pictureSet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureSet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureSet.ImageRotate = 0F;
-            this.pictureSet.Location = new System.Drawing.Point(100, 69);
-            this.pictureSet.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureSet.Location = new System.Drawing.Point(100, 60);
+            this.pictureSet.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.pictureSet.Name = "pictureSet";
             this.pictureSet.Size = new System.Drawing.Size(250, 200);
             this.pictureSet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -156,8 +155,8 @@
             this.TextBoxDensity.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.TextBoxDensity.ForeColor = System.Drawing.Color.Black;
             this.TextBoxDensity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.TextBoxDensity.Location = new System.Drawing.Point(50, 507);
-            this.TextBoxDensity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxDensity.Location = new System.Drawing.Point(50, 510);
+            this.TextBoxDensity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxDensity.Name = "TextBoxDensity";
             this.TextBoxDensity.PasswordChar = '\0';
             this.TextBoxDensity.PlaceholderText = "Плотность";
@@ -186,8 +185,8 @@
             "M",
             "L",
             "XL"});
-            this.ComboBoxSize.Location = new System.Drawing.Point(50, 337);
-            this.ComboBoxSize.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.ComboBoxSize.Location = new System.Drawing.Point(50, 330);
+            this.ComboBoxSize.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             this.ComboBoxSize.Name = "ComboBoxSize";
             this.ComboBoxSize.Size = new System.Drawing.Size(350, 50);
             this.ComboBoxSize.TabIndex = 55;
@@ -214,8 +213,8 @@
             "Хлопок",
             "Полиэфир",
             "Смесовая"});
-            this.ComboBoxFabric.Location = new System.Drawing.Point(50, 568);
-            this.ComboBoxFabric.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.ComboBoxFabric.Location = new System.Drawing.Point(50, 570);
+            this.ComboBoxFabric.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.ComboBoxFabric.Name = "ComboBoxFabric";
             this.ComboBoxFabric.Size = new System.Drawing.Size(350, 50);
             this.ComboBoxFabric.TabIndex = 54;
@@ -239,8 +238,8 @@
             this.TextBoxWidth.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.TextBoxWidth.ForeColor = System.Drawing.Color.Black;
             this.TextBoxWidth.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.TextBoxWidth.Location = new System.Drawing.Point(50, 449);
-            this.TextBoxWidth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxWidth.Location = new System.Drawing.Point(50, 450);
+            this.TextBoxWidth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxWidth.Name = "TextBoxWidth";
             this.TextBoxWidth.PasswordChar = '\0';
             this.TextBoxWidth.PlaceholderText = "Ширина";
@@ -265,8 +264,8 @@
             this.TextBoxLength.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.TextBoxLength.ForeColor = System.Drawing.Color.Black;
             this.TextBoxLength.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.TextBoxLength.Location = new System.Drawing.Point(50, 391);
-            this.TextBoxLength.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxLength.Location = new System.Drawing.Point(50, 390);
+            this.TextBoxLength.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxLength.Name = "TextBoxLength";
             this.TextBoxLength.PasswordChar = '\0';
             this.TextBoxLength.PlaceholderText = "Длина";
@@ -291,8 +290,8 @@
             this.TextBoxProduct.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.TextBoxProduct.ForeColor = System.Drawing.Color.Black;
             this.TextBoxProduct.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.TextBoxProduct.Location = new System.Drawing.Point(50, 280);
-            this.TextBoxProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxProduct.Location = new System.Drawing.Point(50, 270);
+            this.TextBoxProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxProduct.Name = "TextBoxProduct";
             this.TextBoxProduct.PasswordChar = '\0';
             this.TextBoxProduct.PlaceholderText = "Изделие";
@@ -307,7 +306,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(450, 714);
+            this.ClientSize = new System.Drawing.Size(450, 712);
             this.Controls.Add(this.TextBoxDensity);
             this.Controls.Add(this.ComboBoxSize);
             this.Controls.Add(this.ComboBoxFabric);
