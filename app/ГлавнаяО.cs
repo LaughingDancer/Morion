@@ -95,7 +95,8 @@ namespace app
         }
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            UC_ВариантыОптимизацииА uc = new UC_ВариантыОптимизацииА();
+            int employeeId = Convert.ToInt32(employeeData["КодСотрудника"]);
+            UC_ВариантыОптимизацииО uc = new UC_ВариантыОптимизацииО(employeeId);
             addUserControl(uc);
         }
     }

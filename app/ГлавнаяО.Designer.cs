@@ -73,7 +73,7 @@
             this.HeaderPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.HeaderPanel.Location = new System.Drawing.Point(300, 0);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(1400, 40);
+            this.HeaderPanel.Size = new System.Drawing.Size(1320, 40);
             this.HeaderPanel.TabIndex = 2;
             // 
             // IconMinimized
@@ -90,7 +90,7 @@
             this.IconMinimized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.IconMinimized.Image = global::app.Properties.Resources.minimizeW;
             this.IconMinimized.ImageSize = new System.Drawing.Size(24, 24);
-            this.IconMinimized.Location = new System.Drawing.Point(1280, 0);
+            this.IconMinimized.Location = new System.Drawing.Point(1200, 0);
             this.IconMinimized.Name = "IconMinimized";
             this.IconMinimized.Size = new System.Drawing.Size(40, 40);
             this.IconMinimized.TabIndex = 2;
@@ -111,7 +111,7 @@
             this.IconMaximized.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.IconMaximized.Image = global::app.Properties.Resources.expand_window;
             this.IconMaximized.ImageSize = new System.Drawing.Size(30, 30);
-            this.IconMaximized.Location = new System.Drawing.Point(1320, 0);
+            this.IconMaximized.Location = new System.Drawing.Point(1240, 0);
             this.IconMaximized.Name = "IconMaximized";
             this.IconMaximized.Size = new System.Drawing.Size(40, 40);
             this.IconMaximized.TabIndex = 1;
@@ -132,7 +132,7 @@
             this.IconClose.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.IconClose.Image = global::app.Properties.Resources.closeW;
             this.IconClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.IconClose.Location = new System.Drawing.Point(1360, 0);
+            this.IconClose.Location = new System.Drawing.Point(1280, 0);
             this.IconClose.Name = "IconClose";
             this.IconClose.Size = new System.Drawing.Size(40, 40);
             this.IconClose.TabIndex = 0;
@@ -299,7 +299,7 @@
             this.DesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DesktopPanel.Location = new System.Drawing.Point(300, 40);
             this.DesktopPanel.Name = "DesktopPanel";
-            this.DesktopPanel.Size = new System.Drawing.Size(1400, 860);
+            this.DesktopPanel.Size = new System.Drawing.Size(1320, 860);
             this.DesktopPanel.TabIndex = 5;
             // 
             // guna2Button21
@@ -350,13 +350,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1700, 900);
+            this.ClientSize = new System.Drawing.Size(1620, 900);
             this.Controls.Add(this.DesktopPanel);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.MainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1700, 900);
+            this.MinimumSize = new System.Drawing.Size(1598, 898);
             this.Name = "ГлавнаяО";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ГлавнаяО";

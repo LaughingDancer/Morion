@@ -1,6 +1,6 @@
-﻿namespace app.UserControls
+﻿namespace app.UserControlsOperator
 {
-    partial class UC_ВариантыОптимизацииА
+    partial class UC_ВариантыОптимизацииО
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.DataGridViewOptimizationOptions = new Guna.UI2.WinForms.Guna2DataGridView();
             this.ButtonExcel = new Guna.UI2.WinForms.Guna2Button();
             this.comboBoxPostSearch = new Guna.UI2.WinForms.Guna2ComboBox();
             this.searchTextBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.DataGridViewOptimizationOptions = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOptimizationOptions)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(900, 50);
-            this.guna2Panel2.TabIndex = 13;
+            this.guna2Panel2.TabIndex = 14;
             // 
             // guna2HtmlLabel1
             // 
@@ -62,69 +62,6 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(202, 39);
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "Оптимизация";
-            // 
-            // DataGridViewOptimizationOptions
-            // 
-            this.DataGridViewOptimizationOptions.AllowUserToAddRows = false;
-            this.DataGridViewOptimizationOptions.AllowUserToDeleteRows = false;
-            this.DataGridViewOptimizationOptions.AllowUserToResizeColumns = false;
-            this.DataGridViewOptimizationOptions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            this.DataGridViewOptimizationOptions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DataGridViewOptimizationOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridViewOptimizationOptions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewOptimizationOptions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.DataGridViewOptimizationOptions.ColumnHeadersHeight = 40;
-            this.DataGridViewOptimizationOptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.DataGridViewOptimizationOptions.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewOptimizationOptions.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DataGridViewOptimizationOptions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.DataGridViewOptimizationOptions.Location = new System.Drawing.Point(20, 140);
-            this.DataGridViewOptimizationOptions.Margin = new System.Windows.Forms.Padding(0);
-            this.DataGridViewOptimizationOptions.Name = "DataGridViewOptimizationOptions";
-            this.DataGridViewOptimizationOptions.ReadOnly = true;
-            this.DataGridViewOptimizationOptions.RowHeadersVisible = false;
-            this.DataGridViewOptimizationOptions.RowHeadersWidth = 60;
-            this.DataGridViewOptimizationOptions.RowTemplate.Height = 60;
-            this.DataGridViewOptimizationOptions.Size = new System.Drawing.Size(860, 440);
-            this.DataGridViewOptimizationOptions.TabIndex = 48;
-            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.DataGridViewOptimizationOptions.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
-            this.DataGridViewOptimizationOptions.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
-            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.Height = 40;
-            this.DataGridViewOptimizationOptions.ThemeStyle.ReadOnly = true;
-            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
-            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.Height = 60;
-            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             // 
             // ButtonExcel
             // 
@@ -145,7 +82,7 @@
             this.ButtonExcel.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonExcel.Name = "ButtonExcel";
             this.ButtonExcel.Size = new System.Drawing.Size(200, 50);
-            this.ButtonExcel.TabIndex = 51;
+            this.ButtonExcel.TabIndex = 55;
             this.ButtonExcel.UseTransparentBackground = true;
             this.ButtonExcel.Click += new System.EventHandler(this.ButtonExcel_Click);
             // 
@@ -171,7 +108,7 @@
             this.comboBoxPostSearch.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.comboBoxPostSearch.Name = "comboBoxPostSearch";
             this.comboBoxPostSearch.Size = new System.Drawing.Size(300, 50);
-            this.comboBoxPostSearch.TabIndex = 50;
+            this.comboBoxPostSearch.TabIndex = 54;
             this.comboBoxPostSearch.SelectedIndexChanged += new System.EventHandler(this.comboBoxPostSearch_SelectedIndexChanged);
             // 
             // searchTextBox
@@ -196,10 +133,73 @@
             this.searchTextBox.PlaceholderText = "Поиск";
             this.searchTextBox.SelectedText = "";
             this.searchTextBox.Size = new System.Drawing.Size(300, 50);
-            this.searchTextBox.TabIndex = 49;
+            this.searchTextBox.TabIndex = 53;
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
-            // UC_ВариантыОптимизацииА
+            // DataGridViewOptimizationOptions
+            // 
+            this.DataGridViewOptimizationOptions.AllowUserToAddRows = false;
+            this.DataGridViewOptimizationOptions.AllowUserToDeleteRows = false;
+            this.DataGridViewOptimizationOptions.AllowUserToResizeColumns = false;
+            this.DataGridViewOptimizationOptions.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            this.DataGridViewOptimizationOptions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.DataGridViewOptimizationOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DataGridViewOptimizationOptions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewOptimizationOptions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.DataGridViewOptimizationOptions.ColumnHeadersHeight = 40;
+            this.DataGridViewOptimizationOptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.DataGridViewOptimizationOptions.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewOptimizationOptions.DefaultCellStyle = dataGridViewCellStyle15;
+            this.DataGridViewOptimizationOptions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.DataGridViewOptimizationOptions.Location = new System.Drawing.Point(20, 140);
+            this.DataGridViewOptimizationOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.DataGridViewOptimizationOptions.Name = "DataGridViewOptimizationOptions";
+            this.DataGridViewOptimizationOptions.ReadOnly = true;
+            this.DataGridViewOptimizationOptions.RowHeadersVisible = false;
+            this.DataGridViewOptimizationOptions.RowHeadersWidth = 60;
+            this.DataGridViewOptimizationOptions.RowTemplate.Height = 60;
+            this.DataGridViewOptimizationOptions.Size = new System.Drawing.Size(860, 440);
+            this.DataGridViewOptimizationOptions.TabIndex = 52;
+            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.DataGridViewOptimizationOptions.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.DataGridViewOptimizationOptions.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
+            this.DataGridViewOptimizationOptions.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.DataGridViewOptimizationOptions.ThemeStyle.HeaderStyle.Height = 40;
+            this.DataGridViewOptimizationOptions.ThemeStyle.ReadOnly = true;
+            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
+            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.Height = 60;
+            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            // 
+            // UC_ВариантыОптимизацииО
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -208,9 +208,9 @@
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.DataGridViewOptimizationOptions);
             this.Controls.Add(this.guna2Panel2);
-            this.Name = "UC_ВариантыОптимизацииА";
+            this.Name = "UC_ВариантыОптимизацииО";
             this.Size = new System.Drawing.Size(900, 600);
-            this.Load += new System.EventHandler(this.UC_ВариантыОптимизацииА_Load);
+            this.Load += new System.EventHandler(this.UC_ВариантыОптимизацииО_Load);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOptimizationOptions)).EndInit();
@@ -222,9 +222,9 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2DataGridView DataGridViewOptimizationOptions;
         private Guna.UI2.WinForms.Guna2Button ButtonExcel;
         private Guna.UI2.WinForms.Guna2ComboBox comboBoxPostSearch;
         private Guna.UI2.WinForms.Guna2TextBox searchTextBox;
+        private Guna.UI2.WinForms.Guna2DataGridView DataGridViewOptimizationOptions;
     }
 }

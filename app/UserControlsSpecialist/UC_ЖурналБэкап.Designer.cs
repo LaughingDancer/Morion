@@ -58,11 +58,11 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(422, 0);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(419, 0);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(248, 39);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(254, 39);
             this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Журнал и Бэкап";
+            this.guna2HtmlLabel1.Text = "Журнал & Бэкап";
             // 
             // comboBoxTable
             // 
