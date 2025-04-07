@@ -72,22 +72,22 @@ namespace app
         {
             var login = FormPanelTextBoxLogin.Text;
             var password = FormPanelTextBoxPassword.Text;
-            if (string.IsNullOrEmpty(login) && string.IsNullOrEmpty(password))
+
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (login == string.Empty)
-            {
-                MyCustomMessageBox.ShowMessage("Заполните поля логина", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (password == string.Empty)
-            {
-                MyCustomMessageBox.ShowMessage("Заполните поля пароля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+
             var authResult = AuthorizeUser(login, password);
+
+            if (authResult.position == "Уволен")
+            {
+                MyCustomMessageBox.ShowMessage("Доступ запрещен. Ваш аккаунт деактивирован.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (authResult.isAuthorized)
             {
                 ActiveForm.Hide();
@@ -106,14 +106,16 @@ namespace app
                         toГлавнаяШ.ShowDialog();
                         break;
                     default:
-                        MyCustomMessageBox.ShowMessage("Неизвестная должность.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MyCustomMessageBox.ShowMessage("Неизвестная должность.",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
                 }
                 Close();
             }
             else
             {
-                MyCustomMessageBox.ShowMessage("Неверный логин или пароль.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MyCustomMessageBox.ShowMessage("Неверный логин или пароль.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private (bool isAuthorized, string position) AuthorizeUser(string login, string password)
@@ -122,23 +124,38 @@ namespace app
             string position = string.Empty;
             var dbQeury = new DB();
             var getHash = new Hashing();
+
             using (SqlConnection con = new SqlConnection(dbQeury.StringConnection()))
             {
                 con.Open();
-                using (SqlCommand command = new SqlCommand($"SELECT * FROM Пользователи" +
-                    $" WHERE Логин ='{login}' and Пароль = '{getHash.Hash(password)}'", con))
+
+                string query = @"
+            SELECT u.Должность, s.Статус 
+            FROM Пользователи u
+            LEFT JOIN Сотрудники s ON u.КодПользователя = s.КодПользователя
+            WHERE u.Логин = @Login 
+            AND u.Пароль = @Password";
+
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    command.Parameters.AddWithValue("@Login", login);
+                    command.Parameters.AddWithValue("@Password", getHash.Hash(password));
+
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            if (reader["Пароль"].ToString() == getHash.Hash(password) &&
-                                reader["Логин"].ToString() == login)
+                            string employeeStatus = reader["Статус"] != DBNull.Value ?
+                                                  reader["Статус"].ToString() : "Активен";
+
+                            if (employeeStatus == "Уволен")
                             {
-                                isAuthorized = true;
-                                position = reader["Должность"].ToString();
-                                MyCustomMessageBox.ShowMessage("Вход успешно выполнен!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Возвращаем сразу, не продолжая выполнение
+                                return (false, "Уволен");
                             }
+
+                            isAuthorized = true;
+                            position = reader["Должность"].ToString();
                         }
                     }
                 }

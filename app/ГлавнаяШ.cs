@@ -12,6 +12,7 @@ namespace app
         private UC_Главная ucГлавная;
         private Dictionary<string, string> employeeData;
         private byte[] employeePhoto;
+        private int employeeId;
         private void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
@@ -31,6 +32,10 @@ namespace app
             DB db = new DB();
             employeeData = db.GetEmployeeDataByLogin(login);
             employeePhoto = db.GetEmployeePhotoByLogin(login);
+            if (employeeData.ContainsKey("КодСотрудника"))
+            {
+                employeeId = int.Parse(employeeData["КодСотрудника"]);
+            }
             ucГлавная.LoadEmployeeData(employeeData, employeePhoto);
         }
         private void ГлавнаяШ_Resize(object sender, EventArgs e)
@@ -73,7 +78,7 @@ namespace app
         }
         private void orderDetails_Click(object sender, EventArgs e)
         {
-            UC_ЗаказыШвея uc = new UC_ЗаказыШвея();
+            UC_ЗаказыШвея uc = new UC_ЗаказыШвея(employeeId);
             addUserControl(uc);
         }
         private void HomeButton_Click(object sender, EventArgs e)

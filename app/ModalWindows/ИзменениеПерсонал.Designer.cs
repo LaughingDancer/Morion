@@ -43,6 +43,7 @@
             this.DateTimePickerEmployee = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.pictureSet = new Guna.UI2.WinForms.Guna2PictureBox();
             this.buttonChangePassword = new Guna.UI2.WinForms.Guna2Button();
+            this.comboBoxBrigade = new Guna.UI2.WinForms.Guna2ComboBox();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).BeginInit();
             this.SuspendLayout();
@@ -108,11 +109,12 @@
             "Швея",
             "Оператор",
             "Специалист КБД"});
-            this.comboBoxPost.Location = new System.Drawing.Point(50, 570);
+            this.comboBoxPost.Location = new System.Drawing.Point(50, 630);
             this.comboBoxPost.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(350, 50);
             this.comboBoxPost.TabIndex = 39;
+            this.comboBoxPost.SelectedIndexChanged += new System.EventHandler(this.comboBoxPost_SelectedIndexChanged);
             this.comboBoxPost.Enter += new System.EventHandler(this.comboBoxPost_Enter);
             this.comboBoxPost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxPost_KeyDown);
             // 
@@ -129,7 +131,7 @@
             this.buttonChange.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
             this.buttonChange.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonChange.ForeColor = System.Drawing.Color.White;
-            this.buttonChange.Location = new System.Drawing.Point(50, 640);
+            this.buttonChange.Location = new System.Drawing.Point(50, 700);
             this.buttonChange.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(350, 50);
@@ -266,7 +268,7 @@
             this.DateTimePickerEmployee.FillColor = System.Drawing.Color.White;
             this.DateTimePickerEmployee.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DateTimePickerEmployee.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.DateTimePickerEmployee.Location = new System.Drawing.Point(50, 510);
+            this.DateTimePickerEmployee.Location = new System.Drawing.Point(50, 570);
             this.DateTimePickerEmployee.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             this.DateTimePickerEmployee.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DateTimePickerEmployee.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -302,7 +304,7 @@
             this.buttonChangePassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.buttonChangePassword.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonChangePassword.ForeColor = System.Drawing.Color.White;
-            this.buttonChangePassword.Location = new System.Drawing.Point(50, 700);
+            this.buttonChangePassword.Location = new System.Drawing.Point(50, 760);
             this.buttonChangePassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.buttonChangePassword.MinimumSize = new System.Drawing.Size(300, 50);
             this.buttonChangePassword.Name = "buttonChangePassword";
@@ -312,12 +314,33 @@
             this.buttonChangePassword.UseTransparentBackground = true;
             this.buttonChangePassword.Click += new System.EventHandler(this.buttonChangePassword_Click);
             // 
+            // comboBoxBrigade
+            // 
+            this.comboBoxBrigade.BackColor = System.Drawing.Color.Transparent;
+            this.comboBoxBrigade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.BorderRadius = 10;
+            this.comboBoxBrigade.BorderThickness = 2;
+            this.comboBoxBrigade.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxBrigade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBrigade.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxBrigade.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxBrigade.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.ItemHeight = 44;
+            this.comboBoxBrigade.Location = new System.Drawing.Point(50, 510);
+            this.comboBoxBrigade.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.comboBoxBrigade.Name = "comboBoxBrigade";
+            this.comboBoxBrigade.Size = new System.Drawing.Size(350, 50);
+            this.comboBoxBrigade.TabIndex = 42;
+            // 
             // ИзменениеПерсонал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(450, 773);
+            this.ClientSize = new System.Drawing.Size(450, 822);
+            this.Controls.Add(this.comboBoxBrigade);
             this.Controls.Add(this.buttonChangePassword);
             this.Controls.Add(this.DateTimePickerEmployee);
             this.Controls.Add(this.comboBoxPost);
@@ -354,5 +377,6 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePickerEmployee;
         private Guna.UI2.WinForms.Guna2Button buttonChangePassword;
+        private Guna.UI2.WinForms.Guna2ComboBox comboBoxBrigade;
     }
 }

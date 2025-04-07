@@ -20,11 +20,38 @@ namespace app.Forms
         private DB DB;
         private string con = @"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True";
         private UC_Персонал ucПерсонал;
+        private bool isShveyaSelected = false;
         public ДобавлениеПерсонал(UC_Персонал ucПерсонал)
         {
             this.ucПерсонал = ucПерсонал;
             DB = new DB();
             InitializeComponent();
+            LoadBrigades();
+        }
+        private void LoadBrigades()
+        {
+            try
+            {
+                string query = "SELECT КодБригады, НазваниеБригады FROM Бригады";
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter = DB.QueryExecute(query);
+
+                if (adapter != null)
+                {
+                    adapter.Fill(dt);
+
+                    comboBoxBrigade.DisplayMember = "НазваниеБригады";
+                    comboBoxBrigade.ValueMember = "КодБригады";
+                    comboBoxBrigade.DataSource = dt;
+
+                    // Устанавливаем selectedIndex в -1, чтобы ничего не было выбрано по умолчанию
+                    comboBoxBrigade.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при загрузке списка бригад: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void pictureSet_Click(object sender, EventArgs e)
         {
@@ -108,6 +135,11 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Пожалуйста, загрузите фотографию сотрудника.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (isShveyaSelected && (comboBoxBrigade.SelectedIndex == -1 || comboBoxBrigade.SelectedValue == DBNull.Value))
+            {
+                MyCustomMessageBox.ShowMessage("Для швеи необходимо выбрать бригаду", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string password = GeneratePassword();
             string login = GenerateLogin(password);
             ValidationLogin LV = new ValidationLogin();
@@ -127,11 +159,15 @@ namespace app.Forms
                 int employeeId = RegisterEmployee(textBoxName.Text, textBoxSurname.Text, textBoxEmail.Text, userId);
                 if (employeeId > 0)
                 {
+                    if (isShveyaSelected)
+                    {
+                        UpdateEmployeeBrigade(employeeId, comboBoxBrigade.SelectedValue);
+                    }
                     var uploader = new ImageUploader(con);
                     uploader.Upload(employeeId, pictureSet);
                     SendMessage(login, password, textBoxEmail.Text);
                     ucПерсонал.RefreshDataGridView();
-                    MyCustomMessageBox.ShowMessage("Сотрудник упешно зарегистрирован!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MyCustomMessageBox.ShowMessage("Сотрудник успешно зарегистрирован!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
                 else
@@ -142,6 +178,27 @@ namespace app.Forms
             else
             {
                 MyCustomMessageBox.ShowMessage("Ошибка при регистрации пользователя.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void UpdateEmployeeBrigade(int employeeId, object brigadeId)
+        {
+            try
+            {
+                string query;
+                if (brigadeId == DBNull.Value)
+                {
+                    query = $"UPDATE Сотрудники SET КодБригады = NULL WHERE КодСотрудника = {employeeId}";
+                }
+                else
+                {
+                    query = $"UPDATE Сотрудники SET КодБригады = {brigadeId} WHERE КодСотрудника = {employeeId}";
+                }
+
+                DB.QueryExecuteNonQuery(query);
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при обновлении бригады сотрудника: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private int RegisterUser(string login, string password, string post)
@@ -196,7 +253,7 @@ namespace app.Forms
             string smtpServer = "smtp.mail.ru";
             int smtpPort = 587;
             string smtpUsername = "noreplymorion@mail.ru";
-            string smtpPassword = "TeB6bnQkvFsBR1evpPw9";
+            string smtpPassword = "m1wkssLZ6rkq5waDKdLh";
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
@@ -279,6 +336,11 @@ namespace app.Forms
                 textBoxEmail.Focus();
                 e.Handled = true;
             }
+            if (e.KeyCode == Keys.Down)
+            {
+                comboBoxBrigade.Focus();
+                e.Handled = true;
+            }
             else if (e.KeyCode == Keys.Enter)
             {
                 buttonSave.PerformClick();
@@ -288,6 +350,36 @@ namespace app.Forms
         private void comboBoxPost_Enter(object sender, EventArgs e)
         {
             comboBoxPost.DroppedDown = true;
+        }
+
+        private void comboBoxBrigade_MouseEnter(object sender, EventArgs e)
+        {
+            comboBoxBrigade.DroppedDown = true;
+        }
+
+        private void comboBoxBrigade_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                comboBoxPost.Focus();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonSave.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void comboBoxPost_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            isShveyaSelected = comboBoxPost.Text == "Швея";
+            comboBoxBrigade.Enabled = isShveyaSelected;
+
+            if (!isShveyaSelected)
+            {
+                comboBoxBrigade.SelectedIndex = -1;
+            }
         }
     }
 }

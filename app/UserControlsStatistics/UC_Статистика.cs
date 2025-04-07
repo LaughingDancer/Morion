@@ -17,7 +17,7 @@ namespace app.UserControlsStatistics
         }
         private void UC_Статистика_Load(object sender, EventArgs e)
         {
-            DataTable dataTable = DB.GetOptimizationData();
+            DataTable dataTable = DB.GetGroupedOptimizationData();
             creatorChart.ChartBar(gunaChart1, dataTable, "Статистика Заказанных Изделий");
         }
         private void ButtonChartPie_Click(object sender, EventArgs e)
@@ -27,13 +27,19 @@ namespace app.UserControlsStatistics
         }
         private void ButtonChartBar_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = DB.GetOptimizationData();
+            DataTable dataTable = DB.GetGroupedOptimizationData();
             creatorChart.ChartBar(gunaChart1, dataTable, "Статистика Заказанных Изделий");
         }
         private void ButtonChartPie_Click_1(object sender, EventArgs e)
         {
             DataTable dataTable = DB.GetChartFabric();
             creatorChart.ChartPie(gunaChart1, dataTable, "Статистика Использования Тканей");
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = DB.GetBrigadeStatistics();
+            creatorChart.ChartBrigadeStats(gunaChart1, dataTable, "Статистика по бригадам");
         }
     }
 }

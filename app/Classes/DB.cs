@@ -274,6 +274,33 @@ namespace app.Classes
             }
             return dataTable;
         }
+        public DataTable GetGroupedOptimizationData()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                string query = @"SELECT 
+                        Изделия.НазваниеИзделия, 
+                        SUM(ВариантыОптимизации.КоличествоИзделий) AS КоличествоИзделий,
+                        SUM(ВариантыОптимизации.КоличествоОтходов) AS КоличествоОтходов,
+                        AVG(ВариантыОптимизации.ПроцентОтходов) AS ПроцентОтходов
+                    FROM ВариантыОптимизации
+                    JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
+                    GROUP BY Изделия.НазваниеИзделия";
+
+                SqlDataAdapter adapter = QueryExecute(query);
+                if (adapter != null)
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении сгруппированных данных оптимизации: " + ex.Message,
+                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dataTable;
+        }
 
         public DataTable GetChartFabric()
         {
@@ -290,6 +317,36 @@ namespace app.Classes
             catch (Exception ex)
             {
                 MyCustomMessageBox.ShowMessage("Ошибка при получении данных для графика: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dataTable;
+        }
+        public DataTable GetBrigadeStatistics()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                string query = @"SELECT 
+                б.НазваниеБригады,
+                COUNT(з.КодЗаказа) AS ВсегоЗаказов,
+                SUM(CASE WHEN з.Статус = 'Выполнено' THEN 1 ELSE 0 END) AS ЗавершеноЗаказов,
+                SUM(з.ОбщаяСтоимость) AS ОбщаяСтоимость,
+                AVG(во.ПроцентОтходов) AS СреднийПроцентОтходов
+            FROM Бригады б
+            LEFT JOIN Заказы з ON б.КодБригады = з.КодБригады
+            LEFT JOIN ВариантыОптимизации во ON з.КодОптимизации = во.КодОптимизации
+            GROUP BY б.НазваниеБригады
+            ORDER BY ЗавершеноЗаказов DESC";
+
+                SqlDataAdapter adapter = QueryExecute(query);
+                if (adapter != null)
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+            catch (Exception ex)
+            {
+                MyCustomMessageBox.ShowMessage("Ошибка при получении статистики по бригадам: " + ex.Message,
+                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dataTable;
         }

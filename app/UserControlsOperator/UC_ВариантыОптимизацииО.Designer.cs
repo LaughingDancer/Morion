@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.ButtonExcel = new Guna.UI2.WinForms.Guna2Button();
             this.comboBoxPostSearch = new Guna.UI2.WinForms.Guna2ComboBox();
             this.searchTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.DataGridViewOptimizationOptions = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.ButtonExcel = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewOptimizationOptions)).BeginInit();
             this.SuspendLayout();
@@ -62,29 +62,6 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(202, 39);
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "Оптимизация";
-            // 
-            // ButtonExcel
-            // 
-            this.ButtonExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonExcel.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonExcel.BorderRadius = 10;
-            this.ButtonExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.ButtonExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.ButtonExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.ButtonExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.ButtonExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(115)))), ((int)(((byte)(70)))));
-            this.ButtonExcel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.ButtonExcel.ForeColor = System.Drawing.Color.White;
-            this.ButtonExcel.Image = global::app.Properties.Resources.excel;
-            this.ButtonExcel.ImageSize = new System.Drawing.Size(50, 50);
-            this.ButtonExcel.Location = new System.Drawing.Point(680, 70);
-            this.ButtonExcel.Margin = new System.Windows.Forms.Padding(0);
-            this.ButtonExcel.Name = "ButtonExcel";
-            this.ButtonExcel.Size = new System.Drawing.Size(200, 50);
-            this.ButtonExcel.TabIndex = 55;
-            this.ButtonExcel.UseTransparentBackground = true;
-            this.ButtonExcel.Click += new System.EventHandler(this.ButtonExcel_Click);
             // 
             // comboBoxPostSearch
             // 
@@ -142,31 +119,31 @@
             this.DataGridViewOptimizationOptions.AllowUserToDeleteRows = false;
             this.DataGridViewOptimizationOptions.AllowUserToResizeColumns = false;
             this.DataGridViewOptimizationOptions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            this.DataGridViewOptimizationOptions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            this.DataGridViewOptimizationOptions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridViewOptimizationOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewOptimizationOptions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewOptimizationOptions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewOptimizationOptions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridViewOptimizationOptions.ColumnHeadersHeight = 40;
             this.DataGridViewOptimizationOptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DataGridViewOptimizationOptions.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewOptimizationOptions.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewOptimizationOptions.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewOptimizationOptions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.DataGridViewOptimizationOptions.Location = new System.Drawing.Point(20, 140);
             this.DataGridViewOptimizationOptions.Margin = new System.Windows.Forms.Padding(0);
@@ -198,6 +175,29 @@
             this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.Height = 60;
             this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(69)))), ((int)(((byte)(103)))));
             this.DataGridViewOptimizationOptions.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            // 
+            // ButtonExcel
+            // 
+            this.ButtonExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonExcel.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonExcel.BorderRadius = 10;
+            this.ButtonExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ButtonExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ButtonExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ButtonExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ButtonExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(115)))), ((int)(((byte)(70)))));
+            this.ButtonExcel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.ButtonExcel.ForeColor = System.Drawing.Color.White;
+            this.ButtonExcel.Image = global::app.Properties.Resources.excel;
+            this.ButtonExcel.ImageSize = new System.Drawing.Size(50, 50);
+            this.ButtonExcel.Location = new System.Drawing.Point(680, 70);
+            this.ButtonExcel.Margin = new System.Windows.Forms.Padding(0);
+            this.ButtonExcel.Name = "ButtonExcel";
+            this.ButtonExcel.Size = new System.Drawing.Size(200, 50);
+            this.ButtonExcel.TabIndex = 55;
+            this.ButtonExcel.UseTransparentBackground = true;
+            this.ButtonExcel.Click += new System.EventHandler(this.ButtonExcel_Click);
             // 
             // UC_ВариантыОптимизацииО
             // 

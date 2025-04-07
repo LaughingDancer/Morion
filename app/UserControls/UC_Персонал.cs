@@ -32,6 +32,7 @@ namespace app.UserControls
             DataGridViewPeople.Columns.Add("ДатаПриема", "Дата Приема");
             DataGridViewPeople.Columns.Add("Зарплата", "Зарплата");
             DataGridViewPeople.Columns.Add("Должность", "Должность");
+            DataGridViewPeople.Columns.Add("Бригада", "Бригада");
             DataGridViewImageColumn newEditColumn = new DataGridViewImageColumn();
             newEditColumn.Name = "EditColumn";
             newEditColumn.HeaderText = "Изменить";
@@ -53,6 +54,8 @@ namespace app.UserControls
         }
         private void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {
+            string brigadeName = Record["НазваниеБригады"] == DBNull.Value ? " " : Record["НазваниеБригады"].ToString();
+
             DGW.Rows.Add(
                 Record["КодСотрудника"],
                 Record["Логин"],
@@ -62,6 +65,7 @@ namespace app.UserControls
                 ((DateTime)Record["ДатаПриема"]).ToShortDateString(),
                 Record["Зарплата"],
                 Record["Должность"],
+                brigadeName, // Добавляем название бригады
                 Properties.Resources.edit,
                 Properties.Resources.delete
             );
@@ -69,7 +73,13 @@ namespace app.UserControls
         private void RefreshDataGrid(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string queryString = @"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя";
+            string queryString = @"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность, 
+                     Бригады.НазваниеБригады 
+                     FROM Сотрудники 
+                     JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+                     LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
+                     WHERE Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL";
+
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = command.ExecuteReader();
@@ -135,7 +145,16 @@ namespace app.UserControls
         private void Search(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string querrySearch = $@"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя WHERE CONCAT(Имя, Фамилия, ЭлектроннаяПочта, ДатаПриема, Зарплата, Пользователи.Логин, Пользователи.Должность) LIKE '%{searchTextBox.Text}%'";
+            string querrySearch = $@"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность, 
+                       Бригады.НазваниеБригады 
+                       FROM Сотрудники 
+                       JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+                       LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
+                       WHERE (Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL)
+                       AND CONCAT(Имя, Фамилия, ЭлектроннаяПочта, ДатаПриема, Зарплата, 
+                       Пользователи.Логин, Пользователи.Должность, Бригады.НазваниеБригады) 
+                       LIKE '%{searchTextBox.Text}%'";
+
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -171,24 +190,40 @@ namespace app.UserControls
             string querrySearch;
             if (comboBoxPostSearch.Text == "Все Должности")
             {
-                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя";
+                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин, 
+                    Бригады.НазваниеБригады 
+                    FROM Сотрудники 
+                    JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+                    LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
+                    WHERE Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL";
             }
             else
             {
-                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя WHERE Пользователи.Должность = @Должность";
+                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин, 
+                    Бригады.НазваниеБригады 
+                    FROM Сотрудники 
+                    JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
+                    LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
+                    WHERE Пользователи.Должность = @Должность
+                    AND (Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL)";
             }
+
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
 
             if (comboBoxPostSearch.Text != "Все Должности")
             {
                 sqlCommand.Parameters.AddWithValue("@Должность", comboBoxPostSearch.Text);
             }
+
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable DT = new DataTable();
             DataGridViewPeople.Rows.Clear();
             sqlDataAdapter.Fill(DT);
+
             foreach (DataRow row in DT.Rows)
             {
+                string brigadeName = row["НазваниеБригады"] == DBNull.Value ? " " : row["НазваниеБригады"].ToString();
+
                 DataGridViewPeople.Rows.Add(
                     row["КодСотрудника"],
                     row["Логин"],
@@ -198,6 +233,7 @@ namespace app.UserControls
                     ((DateTime)row["ДатаПриема"]).ToShortDateString(),
                     row["Зарплата"],
                     row["Должность"],
+                    brigadeName,
                     Properties.Resources.edit,
                     Properties.Resources.delete
                 );

@@ -52,8 +52,8 @@ namespace app
         {
             if (menuExpandOne == false)
             {
-                MainPanelMenuContainer1.Height += 10;
-                if (MainPanelMenuContainer1.Height >= 375)
+                MainPanelMenuContainer1.Height += 15;
+                if (MainPanelMenuContainer1.Height >= 450)
                 {
                     menuTransitionOne.Stop();
                     menuExpandOne = true;
@@ -61,7 +61,7 @@ namespace app
             }
             else
             {
-                MainPanelMenuContainer1.Height -= 10;
+                MainPanelMenuContainer1.Height -= 15;
                 if (MainPanelMenuContainer1.Height <= 75)
                 {
                     menuTransitionOne.Stop();
@@ -162,6 +162,12 @@ namespace app
             {
                 button.Checked = false;
             }
+        }
+
+        private void guna2Button3_Click_1(object sender, EventArgs e)
+        {
+            UC_Бригады uc = new UC_Бригады();
+            addUserControl(uc);
         }
     }
 }

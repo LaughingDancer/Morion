@@ -1,6 +1,6 @@
-﻿namespace app.Forms
+﻿namespace app.ModalWindows
 {
-    partial class УдалениеИзделия
+    partial class УдалениеБригады
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.HeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.HeaderPanelLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.labelQuation = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.labelEmployeeInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.buttonDelete = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
+            this.buttonDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.labelBrigadeInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.labelQuation = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,12 @@
             this.guna2BorderlessForm1.ResizeForm = false;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.HeaderPanel;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
             // HeaderPanel
             // 
             this.HeaderPanel.Controls.Add(this.HeaderPanelLabel);
@@ -58,7 +64,7 @@
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
             this.HeaderPanel.Size = new System.Drawing.Size(508, 40);
-            this.HeaderPanel.TabIndex = 33;
+            this.HeaderPanel.TabIndex = 34;
             // 
             // HeaderPanelLabel
             // 
@@ -70,54 +76,6 @@
             this.HeaderPanelLabel.Size = new System.Drawing.Size(193, 26);
             this.HeaderPanelLabel.TabIndex = 3;
             this.HeaderPanelLabel.Text = "Морион | Удаление";
-            // 
-            // labelQuation
-            // 
-            this.labelQuation.BackColor = System.Drawing.Color.Transparent;
-            this.labelQuation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQuation.Location = new System.Drawing.Point(63, 78);
-            this.labelQuation.Name = "labelQuation";
-            this.labelQuation.Size = new System.Drawing.Size(383, 26);
-            this.labelQuation.TabIndex = 41;
-            this.labelQuation.Text = "Вы уверены, что хотите удалить изделие:";
-            // 
-            // labelEmployeeInfo
-            // 
-            this.labelEmployeeInfo.BackColor = System.Drawing.Color.Transparent;
-            this.labelEmployeeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEmployeeInfo.Location = new System.Drawing.Point(217, 121);
-            this.labelEmployeeInfo.Name = "labelEmployeeInfo";
-            this.labelEmployeeInfo.Size = new System.Drawing.Size(74, 26);
-            this.labelEmployeeInfo.TabIndex = 42;
-            this.labelEmployeeInfo.Text = "quations";
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDelete.BackColor = System.Drawing.Color.Transparent;
-            this.buttonDelete.BorderRadius = 10;
-            this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonDelete.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(83, 194);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(350, 50);
-            this.buttonDelete.TabIndex = 43;
-            this.buttonDelete.Text = "Удалить";
-            this.buttonDelete.UseTransparentBackground = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.HeaderPanel;
-            this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // IconClose
             // 
@@ -140,20 +98,62 @@
             this.IconClose.UseTransparentBackground = true;
             this.IconClose.Click += new System.EventHandler(this.IconClose_Click);
             // 
-            // УдалениеИзделия
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDelete.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDelete.BorderRadius = 10;
+            this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonDelete.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
+            this.buttonDelete.Location = new System.Drawing.Point(83, 194);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(350, 50);
+            this.buttonDelete.TabIndex = 46;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseTransparentBackground = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // labelBrigadeInfo
+            // 
+            this.labelBrigadeInfo.BackColor = System.Drawing.Color.Transparent;
+            this.labelBrigadeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBrigadeInfo.Location = new System.Drawing.Point(217, 121);
+            this.labelBrigadeInfo.Name = "labelBrigadeInfo";
+            this.labelBrigadeInfo.Size = new System.Drawing.Size(74, 26);
+            this.labelBrigadeInfo.TabIndex = 45;
+            this.labelBrigadeInfo.Text = "quations";
+            // 
+            // labelQuation
+            // 
+            this.labelQuation.BackColor = System.Drawing.Color.Transparent;
+            this.labelQuation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelQuation.Location = new System.Drawing.Point(24, 78);
+            this.labelQuation.Name = "labelQuation";
+            this.labelQuation.Size = new System.Drawing.Size(461, 26);
+            this.labelQuation.TabIndex = 44;
+            this.labelQuation.Text = "Вы уверены, что хотите удалить изделие бригаду:";
+            // 
+            // УдалениеБригады
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(508, 268);
             this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.labelEmployeeInfo);
+            this.Controls.Add(this.labelBrigadeInfo);
             this.Controls.Add(this.labelQuation);
             this.Controls.Add(this.HeaderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "УдалениеИзделия";
+            this.Name = "УдалениеБригады";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = "УдалениеБригады";
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -164,12 +164,12 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Panel HeaderPanel;
         private Guna.UI2.WinForms.Guna2HtmlLabel HeaderPanelLabel;
         private Guna.UI2.WinForms.Guna2Button IconClose;
-        private Guna.UI2.WinForms.Guna2HtmlLabel labelQuation;
-        private Guna.UI2.WinForms.Guna2HtmlLabel labelEmployeeInfo;
         private Guna.UI2.WinForms.Guna2Button buttonDelete;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelBrigadeInfo;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelQuation;
     }
 }

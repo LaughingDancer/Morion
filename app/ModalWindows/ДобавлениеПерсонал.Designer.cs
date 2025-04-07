@@ -40,6 +40,7 @@
             this.IconClose = new Guna.UI2.WinForms.Guna2Button();
             this.buttonSave = new Guna.UI2.WinForms.Guna2Button();
             this.pictureSet = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.comboBoxBrigade = new Guna.UI2.WinForms.Guna2ComboBox();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSet)).BeginInit();
             this.SuspendLayout();
@@ -150,10 +151,11 @@
             "Оператор",
             "Специалист КБД"});
             this.comboBoxPost.Location = new System.Drawing.Point(50, 450);
-            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 20);
+            this.comboBoxPost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(350, 50);
             this.comboBoxPost.TabIndex = 23;
+            this.comboBoxPost.SelectedIndexChanged += new System.EventHandler(this.comboBoxPost_SelectedIndexChanged);
             this.comboBoxPost.Enter += new System.EventHandler(this.comboBoxPost_Enter);
             this.comboBoxPost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxPost_KeyDown);
             // 
@@ -219,7 +221,7 @@
             this.buttonSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(50, 520);
+            this.buttonSave.Location = new System.Drawing.Point(50, 580);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(350, 50);
@@ -242,12 +244,36 @@
             this.pictureSet.TabStop = false;
             this.pictureSet.Click += new System.EventHandler(this.pictureSet_Click);
             // 
+            // comboBoxBrigade
+            // 
+            this.comboBoxBrigade.BackColor = System.Drawing.Color.Transparent;
+            this.comboBoxBrigade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.BorderRadius = 10;
+            this.comboBoxBrigade.BorderThickness = 2;
+            this.comboBoxBrigade.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxBrigade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBrigade.Enabled = false;
+            this.comboBoxBrigade.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxBrigade.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxBrigade.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
+            this.comboBoxBrigade.ItemHeight = 44;
+            this.comboBoxBrigade.Location = new System.Drawing.Point(50, 510);
+            this.comboBoxBrigade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
+            this.comboBoxBrigade.Name = "comboBoxBrigade";
+            this.comboBoxBrigade.Size = new System.Drawing.Size(350, 50);
+            this.comboBoxBrigade.TabIndex = 33;
+            this.comboBoxBrigade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxBrigade_KeyDown);
+            this.comboBoxBrigade.MouseEnter += new System.EventHandler(this.comboBoxBrigade_MouseEnter);
+            // 
             // ДобавлениеПерсонал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(450, 590);
+            this.ClientSize = new System.Drawing.Size(450, 649);
+            this.Controls.Add(this.comboBoxBrigade);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.comboBoxPost);
             this.Controls.Add(this.buttonSave);
@@ -279,5 +305,6 @@
         private Guna.UI2.WinForms.Guna2Panel HeaderPanel;
         private Guna.UI2.WinForms.Guna2HtmlLabel HeaderPanelLabel;
         private Guna.UI2.WinForms.Guna2Button IconClose;
+        private Guna.UI2.WinForms.Guna2ComboBox comboBoxBrigade;
     }
 }
