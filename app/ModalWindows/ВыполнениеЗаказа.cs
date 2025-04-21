@@ -4,7 +4,6 @@ using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-
 namespace app.Forms
 {
     public partial class ВыполнениеЗаказа : Form
@@ -30,7 +29,7 @@ namespace app.Forms
         {
             string productName = string.Empty;
             string query = @"SELECT Изделия.НазваниеИзделия FROM Заказы JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия WHERE Заказы.КодЗаказа = @КодЗаказа";
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
@@ -63,7 +62,7 @@ namespace app.Forms
 
                 if (новыйКоличествоВыполненных >= 0 && новыйКоличествоВыполненных <= КоличествоИзделий)
                 {
-                    using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                    using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                     {
                         connection.Open();
                         string query = "UPDATE Заказы SET КоличествоВыполненных = @КоличествоВыполненных WHERE КодЗаказа = @КодЗаказа";

@@ -1,16 +1,8 @@
 ﻿using app.Classes;
 using app.UserControlsOperator;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace app.ModalWindows
 {
     public partial class ИзменениеБригады : Form
@@ -26,39 +18,31 @@ namespace app.ModalWindows
             this.brigadeName = brigadeName;
             this.ucБригады = ucБригады;
             DB = new DB();
-
-            // Заполняем поле текущим названием бригады
             textBoxBrigadeName.Text = brigadeName;
         }
         private bool ValidateInput()
         {
             string newBrigadeName = textBoxBrigadeName.Text.Trim();
-
             if (string.IsNullOrWhiteSpace(newBrigadeName))
             {
                 MyCustomMessageBox.ShowMessage("Название бригады не может быть пустым.",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (newBrigadeName.Length > 100)
             {
                 MyCustomMessageBox.ShowMessage("Название бригады слишком длинное (максимум 100 символов).",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            // Проверяем, изменилось ли название
             if (newBrigadeName == brigadeName)
             {
                 MyCustomMessageBox.ShowMessage("Название бригады не было изменено.",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
-
-            // Проверка на уникальность нового названия
             string checkQuery = "SELECT COUNT(*) FROM Бригады WHERE НазваниеБригады = @НазваниеБригады AND КодБригады != @КодБригады";
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(checkQuery, connection))
@@ -74,16 +58,13 @@ namespace app.ModalWindows
                     }
                 }
             }
-
             return true;
         }
-
         private void UpdateBrigade()
         {
             string newBrigadeName = textBoxBrigadeName.Text.Trim();
             string updateQuery = "UPDATE Бригады SET НазваниеБригады = @НазваниеБригады WHERE КодБригады = @КодБригады";
-
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(updateQuery, connection))
@@ -94,7 +75,6 @@ namespace app.ModalWindows
                 }
             }
         }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (ValidateInput())
@@ -114,7 +94,6 @@ namespace app.ModalWindows
                 }
             }
         }
-
         private void textBoxBrigadeName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -123,7 +102,6 @@ namespace app.ModalWindows
                 e.Handled = true;
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();

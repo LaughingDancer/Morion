@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
 namespace app.UserControls
 {
     public partial class UC_ТканиА : UserControl
@@ -30,7 +29,7 @@ namespace app.UserControls
             DataGridViewPeople.Columns.Add("ЦенаЗаМетр", "Цена за метр");
             DataGridViewPeople.Columns.Add("Количество", "Количество");
         }
-        private void ReadSingleRow(DataGridView DGW, IDataRecord Record)
+        private static void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {
             DGW.Rows.Add(
                 Record["КодТкани"],
@@ -105,10 +104,7 @@ namespace app.UserControls
             }
             else
             {
-                querrySearch = $@"
-                SELECT * 
-                FROM Ткани 
-                WHERE Вид = @Вид";
+                querrySearch = $@"SELECT * FROM Ткани WHERE Вид = @Вид";
             }
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             if (comboBoxPostSearch.Text != "Все Виды")

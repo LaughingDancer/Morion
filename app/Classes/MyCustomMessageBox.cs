@@ -1,6 +1,5 @@
 ﻿using app.CustomMessageBoxes;
 using System.Drawing;
-
 namespace app.Classes
 {
     public static class MyCustomMessageBox

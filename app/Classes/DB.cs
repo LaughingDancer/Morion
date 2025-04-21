@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
-
 namespace app.Classes
 {
     internal class DB
     {
-        private SqlConnection sqlConnection = new SqlConnection(@"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True");
-
-        public string StringConnection()
-        {
-            return @"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True";
-        }
-
+        private readonly SqlConnection sqlConnection = new SqlConnection(@"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True");
+        public static readonly string StringConnectionDB = @"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True";
         public SqlDataAdapter QueryExecute(string query)
         {
             try
             {
-                SqlConnection myCon = new SqlConnection(StringConnection());
+                SqlConnection myCon = new SqlConnection(StringConnectionDB);
                 myCon.Open();
                 SqlDataAdapter SDA = new SqlDataAdapter(query, myCon);
                 SDA.SelectCommand.ExecuteNonQuery();
@@ -31,7 +25,6 @@ namespace app.Classes
                 return null;
             }
         }
-
         public void OpenConnection()
         {
             try
@@ -46,7 +39,6 @@ namespace app.Classes
                 MyCustomMessageBox.ShowMessage("Ошибка при открытии соединения: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public void CloseConnection()
         {
             try
@@ -61,17 +53,15 @@ namespace app.Classes
                 MyCustomMessageBox.ShowMessage("Ошибка при закрытии соединения: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public SqlConnection GetConnection()
         {
             return sqlConnection;
         }
-
         public int QueryExecuteScalar(string query)
         {
             try
             {
-                using (SqlConnection myCon = new SqlConnection(StringConnection()))
+                using (SqlConnection myCon = new SqlConnection(StringConnectionDB))
                 {
                     myCon.Open();
                     using (SqlCommand command = new SqlCommand(query, myCon))
@@ -94,12 +84,11 @@ namespace app.Classes
                 return -1;
             }
         }
-
         public void QueryExecuteNonQuery(string query)
         {
             try
             {
-                using (SqlConnection myCon = new SqlConnection(StringConnection()))
+                using (SqlConnection myCon = new SqlConnection(StringConnectionDB))
                 {
                     myCon.Open();
                     using (SqlCommand command = new SqlCommand(query, myCon))
@@ -114,12 +103,11 @@ namespace app.Classes
                 MyCustomMessageBox.ShowMessage("Возникла ошибка при выполнении запроса: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public byte[] GetEmployeePhoto(int employeeId)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(StringConnection()))
+                using (SqlConnection connection = new SqlConnection(StringConnectionDB))
                 {
                     connection.Open();
                     string query = "SELECT Фото FROM Сотрудники WHERE КодСотрудника = @EmployeeId";
@@ -133,7 +121,7 @@ namespace app.Classes
                         }
                         else
                         {
-                            return null;
+                            return new byte[0];
                         }
                     }
                 }
@@ -141,15 +129,14 @@ namespace app.Classes
             catch (Exception ex)
             {
                 MyCustomMessageBox.ShowMessage("Ошибка при получении фото сотрудника: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return new byte[0];
             }
         }
-
         public (string Name, byte[] Photo) GetProductDetails(int productId)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(StringConnection()))
+                using (SqlConnection connection = new SqlConnection(StringConnectionDB))
                 {
                     connection.Open();
                     string query = "SELECT НазваниеИзделия, Фото FROM Изделия WHERE КодИзделия = @ProductId";
@@ -179,21 +166,15 @@ namespace app.Classes
                 return (null, null);
             }
         }
-
         public Dictionary<string, string> GetEmployeeDataByLogin(string login)
         {
             Dictionary<string, string> employeeData = new Dictionary<string, string>();
             try
             {
-                using (SqlConnection con = new SqlConnection(StringConnection()))
+                using (SqlConnection con = new SqlConnection(StringConnectionDB))
                 {
                     con.Open();
-                    string query = @"
-    SELECT Сотрудники.КодСотрудника, Сотрудники.Имя, Сотрудники.Фамилия, Сотрудники.ЭлектроннаяПочта, 
-           Сотрудники.ДатаПриема, Сотрудники.Зарплата, Пользователи.Должность, Пользователи.Пароль, Пользователи.Логин
-    FROM Сотрудники
-    INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-    WHERE Пользователи.Логин = @Логин";
+                    string query = @"SELECT Сотрудники.КодСотрудника, Сотрудники.Имя, Сотрудники.Фамилия, Сотрудники.ЭлектроннаяПочта, Сотрудники.ДатаПриема, Сотрудники.Зарплата, Пользователи.Должность, Пользователи.Пароль, Пользователи.Логин FROM Сотрудники INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя WHERE Пользователи.Логин = @Логин";
                     using (SqlCommand command = new SqlCommand(query, con))
                     {
                         command.Parameters.AddWithValue("@Логин", login);
@@ -221,19 +202,14 @@ namespace app.Classes
             }
             return employeeData;
         }
-
         public byte[] GetEmployeePhotoByLogin(string login)
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(StringConnection()))
+                using (SqlConnection con = new SqlConnection(StringConnectionDB))
                 {
                     con.Open();
-                    string query = @"
-            SELECT Фото
-            FROM Сотрудники
-            INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-            WHERE Пользователи.Логин = @Логин";
+                    string query = @"SELECT Фото FROM Сотрудники INNER JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя WHERE Пользователи.Логин = @Логин";
                     using (SqlCommand command = new SqlCommand(query, con))
                     {
                         command.Parameters.AddWithValue("@Логин", login);
@@ -244,7 +220,7 @@ namespace app.Classes
                         }
                         else
                         {
-                            return null;
+                            return new byte[0];
                         }
                     }
                 }
@@ -252,10 +228,9 @@ namespace app.Classes
             catch (Exception ex)
             {
                 MyCustomMessageBox.ShowMessage("Ошибка при получении фото сотрудника по логину: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return new byte[0];
             }
         }
-
         public DataTable GetOptimizationData()
         {
             DataTable dataTable = new DataTable();
@@ -279,15 +254,7 @@ namespace app.Classes
             DataTable dataTable = new DataTable();
             try
             {
-                string query = @"SELECT 
-                        Изделия.НазваниеИзделия, 
-                        SUM(ВариантыОптимизации.КоличествоИзделий) AS КоличествоИзделий,
-                        SUM(ВариантыОптимизации.КоличествоОтходов) AS КоличествоОтходов,
-                        AVG(ВариантыОптимизации.ПроцентОтходов) AS ПроцентОтходов
-                    FROM ВариантыОптимизации
-                    JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия
-                    GROUP BY Изделия.НазваниеИзделия";
-
+                string query = @"SELECT Изделия.НазваниеИзделия, SUM(ВариантыОптимизации.КоличествоИзделий) AS КоличествоИзделий, SUM(ВариантыОптимизации.КоличествоОтходов) AS КоличествоОтходов, AVG(ВариантыОптимизации.ПроцентОтходов) AS ПроцентОтходов FROM ВариантыОптимизации JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия GROUP BY Изделия.НазваниеИзделия";
                 SqlDataAdapter adapter = QueryExecute(query);
                 if (adapter != null)
                 {
@@ -301,7 +268,6 @@ namespace app.Classes
             }
             return dataTable;
         }
-
         public DataTable GetChartFabric()
         {
             DataTable dataTable = new DataTable();
@@ -325,18 +291,7 @@ namespace app.Classes
             DataTable dataTable = new DataTable();
             try
             {
-                string query = @"SELECT 
-                б.НазваниеБригады,
-                COUNT(з.КодЗаказа) AS ВсегоЗаказов,
-                SUM(CASE WHEN з.Статус = 'Выполнено' THEN 1 ELSE 0 END) AS ЗавершеноЗаказов,
-                SUM(з.ОбщаяСтоимость) AS ОбщаяСтоимость,
-                AVG(во.ПроцентОтходов) AS СреднийПроцентОтходов
-            FROM Бригады б
-            LEFT JOIN Заказы з ON б.КодБригады = з.КодБригады
-            LEFT JOIN ВариантыОптимизации во ON з.КодОптимизации = во.КодОптимизации
-            GROUP BY б.НазваниеБригады
-            ORDER BY ЗавершеноЗаказов DESC";
-
+                string query = @"SELECT б.НазваниеБригады, COUNT(з.КодЗаказа) AS ВсегоЗаказов, SUM(CASE WHEN з.Статус = 'Выполнено' THEN 1 ELSE 0 END) AS ЗавершеноЗаказов, SUM(з.ОбщаяСтоимость) AS ОбщаяСтоимость, AVG(во.ПроцентОтходов) AS СреднийПроцентОтходов FROM Бригады б LEFT JOIN Заказы з ON б.КодБригады = з.КодБригады LEFT JOIN ВариантыОптимизации во ON з.КодОптимизации = во.КодОптимизации GROUP BY б.НазваниеБригады ORDER BY ЗавершеноЗаказов DESC";
                 SqlDataAdapter adapter = QueryExecute(query);
                 if (adapter != null)
                 {

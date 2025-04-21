@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
 namespace app.UserControls
 {
     public partial class UC_ВариантыОптимизацииА : UserControl
@@ -37,7 +36,7 @@ namespace app.UserControls
             DataGridViewOptimizationOptions.Columns.Add("ПроцентОтходов", "Процент Отходов");
             DataGridViewOptimizationOptions.Columns.Add("ДатаСоздания", "Дата Создания");
         }
-        private void ReadSingleRow(DataGridView DGW, IDataRecord Record)
+        private static void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {
             DGW.Rows.Add(
                 Record["КодОптимизации"],

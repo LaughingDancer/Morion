@@ -9,7 +9,6 @@ using System.Linq;
 using System.Net.Mail;
 using System.Net;
 using System.Windows.Forms;
-
 namespace app.UserControls
 {
     public partial class UC_Главная : UserControl
@@ -59,7 +58,7 @@ namespace app.UserControls
                 TextBoxLogin.IconRight = Properties.Resources.visionHide;
             }
         }
-        private string GeneratePassword()
+        private static string GeneratePassword()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=[{]};:<>|./?";
             var random = new Random();
@@ -75,7 +74,7 @@ namespace app.UserControls
                 Hashing hashing = new Hashing();
                 string hashedPassword = hashing.Hash(newPassword);
                 string queryUpdatePassword = "UPDATE Пользователи SET Пароль = @Пароль WHERE Логин = @Логин";
-                using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(queryUpdatePassword, connection))
@@ -93,7 +92,7 @@ namespace app.UserControls
                 MyCustomMessageBox.ShowMessage("Действие отменено.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void SendMessage(string login, string password, string email)
+        private static void SendMessage(string login, string password, string email)
         {
             string smtpServer = "smtp.mail.ru";
             int smtpPort = 587;

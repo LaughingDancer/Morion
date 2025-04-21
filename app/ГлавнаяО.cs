@@ -4,7 +4,6 @@ using app.UserControlsOperator;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
 namespace app
 {
     public partial class ГлавнаяО : Form

@@ -7,15 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
 namespace app
 {
     public partial class ГлавнаяА : Form
     {
-        private Guna.UI2.WinForms.Guna2Button _selectedButton1;
-        private Guna.UI2.WinForms.Guna2Button _selectedButton2;
         bool menuExpandOne = false;
-        bool menuExpandTwo = false;
         private UC_Главная ucГлавная;
         private Dictionary<string, string> employeeData;
         private byte[] employeePhoto;
@@ -163,7 +159,6 @@ namespace app
                 button.Checked = false;
             }
         }
-
         private void guna2Button3_Click_1(object sender, EventArgs e)
         {
             UC_Бригады uc = new UC_Бригады();

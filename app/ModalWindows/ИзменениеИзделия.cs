@@ -1,12 +1,10 @@
 ﻿using app.Classes;
 using app.UserControlsOperator;
-using Guna.UI2.WinForms.Suite;
 using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
 namespace app.Forms
 {
     public partial class ИзменениеИзделия : Form
@@ -46,7 +44,7 @@ namespace app.Forms
         private void FillComboBoxSize()
         {
             string query = "SELECT DISTINCT НазваниеРазмер FROM Размеры";
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -102,7 +100,7 @@ namespace app.Forms
         private void UpdateSize()
         {
             string queryUpdateSize = "UPDATE Размеры SET НазваниеРазмер = @НазваниеРазмер, НеобходимаяДлинаТкани = @НеобходимаяДлинаТкани, НеобходимаяШиринаТкани = @НеобходимаяШиринаТкани WHERE КодРазмера = @КодРазмера";
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(queryUpdateSize, connection))
@@ -118,7 +116,7 @@ namespace app.Forms
         private int GetFabricIdByName(string fabricName)
         {
             string query = "SELECT КодТкани FROM Ткани WHERE Вид = @Вид";
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -139,7 +137,7 @@ namespace app.Forms
         private void UpdateProduct()
         {
             string queryUpdateProduct = "UPDATE Изделия SET НазваниеИзделия = @НазваниеИзделия, Плотность = @Плотность, КодТкани = @КодТкани WHERE КодИзделия = @КодИзделия";
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(queryUpdateProduct, connection))
@@ -158,7 +156,7 @@ namespace app.Forms
             if (selectedPhotoBytes != null)
             {
                 string queryUpPhoto = "UPDATE Изделия SET Фото = @Фото WHERE КодИзделия = @КодИзделия";
-                using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(queryUpPhoto, connection))
@@ -243,7 +241,6 @@ namespace app.Forms
                 Close();
             }
         }
-
         private void TextBoxProduct_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)

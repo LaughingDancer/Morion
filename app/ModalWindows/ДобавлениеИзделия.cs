@@ -5,13 +5,11 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
-
 namespace app.Forms
 {
     public partial class ДобавлениеИзделия : Form
     {
         private byte[] selectedPhotoBytes;
-        private DB DB;
         private string con = @"Data Source=MAKSIMN;Initial Catalog=Морион;Integrated Security=True";
         private UC_Изделия ucИзделия;
         private bool FDDComboBoxSize = true;
@@ -100,7 +98,6 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Пожалуйста, выберите тип ткани.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
-
             if (ComboBoxSize.SelectedItem == null || ComboBoxSize.SelectedItem.ToString() == "Размер")
             {
                 MyCustomMessageBox.ShowMessage("Пожалуйста, выберите размер изделия.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -126,9 +123,7 @@ namespace app.Forms
                     decimal density = decimal.Parse(TextBoxDensity.Text);
                     decimal requiredLength = decimal.Parse(TextBoxLength.Text);
                     decimal requiredWidth = decimal.Parse(TextBoxWidth.Text);
-                    string insertProductQuery = "INSERT INTO Изделия (НазваниеИзделия, Плотность, КодТкани, Фото) " +
-                                                "VALUES (@НазваниеИзделия, @Плотность, @КодТкани, @Фото); " +
-                                                "SELECT SCOPE_IDENTITY();";
+                    string insertProductQuery = "INSERT INTO Изделия (НазваниеИзделия, Плотность, КодТкани, Фото) " + "VALUES (@НазваниеИзделия, @Плотность, @КодТкани, @Фото); " + "SELECT SCOPE_IDENTITY();";
                     using (SqlCommand productCommand = new SqlCommand(insertProductQuery, connection))
                     {
                         productCommand.Parameters.AddWithValue("@НазваниеИзделия", TextBoxProduct.Text);
@@ -136,8 +131,7 @@ namespace app.Forms
                         productCommand.Parameters.AddWithValue("@КодТкани", fabricId);
                         productCommand.Parameters.AddWithValue("@Фото", selectedPhotoBytes);
                         int productId = Convert.ToInt32(productCommand.ExecuteScalar());
-                        string insertSizeQuery = "INSERT INTO Размеры (НазваниеРазмер, КодИзделия, НеобходимаяДлинаТкани, НеобходимаяШиринаТкани) " +
-                                                 "VALUES (@НазваниеРазмер, @КодИзделия, @НеобходимаяДлинаТкани, @НеобходимаяШиринаТкани);";
+                        string insertSizeQuery = "INSERT INTO Размеры (НазваниеРазмер, КодИзделия, НеобходимаяДлинаТкани, НеобходимаяШиринаТкани) " + "VALUES (@НазваниеРазмер, @КодИзделия, @НеобходимаяДлинаТкани, @НеобходимаяШиринаТкани);";
                         using (SqlCommand sizeCommand = new SqlCommand(insertSizeQuery, connection))
                         {
                             sizeCommand.Parameters.AddWithValue("@НазваниеРазмер", ComboBoxSize.SelectedItem.ToString());

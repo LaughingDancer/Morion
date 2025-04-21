@@ -10,7 +10,6 @@ using System.Net;
 using System.Windows.Forms;
 using static app.Classes.ValidationData;
 using System.Data;
-
 namespace app.Forms
 {
     public partial class ИзменениеПерсонал : Form
@@ -71,26 +70,17 @@ namespace app.Forms
         {
             try
             {
-                if (isShveyaSelected) // Загружаем бригады только если сотрудник - швея
+                if (isShveyaSelected)
                 {
-                    string query = @"
-            SELECT 
-                b.КодБригады, 
-                b.НазваниеБригады,
-                CASE WHEN s.КодБригады = b.КодБригады THEN 1 ELSE 0 END AS IsCurrent
-            FROM Бригады b
-            LEFT JOIN Сотрудники s ON s.КодСотрудника = @КодСотрудника
-            ORDER BY IsCurrent DESC, b.НазваниеБригады";
-
+                    string query = @"SELECT b.КодБригады, b.НазваниеБригады, CASE WHEN s.КодБригады = b.КодБригады THEN 1 ELSE 0 END AS IsCurrent FROM Бригады b LEFT JOIN Сотрудники s ON s.КодСотрудника = @КодСотрудника ORDER BY IsCurrent DESC, b.НазваниеБригады";
                     DataTable dt = new DataTable();
-                    using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                    using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@КодСотрудника", employeeId);
                         connection.Open();
                         dt.Load(command.ExecuteReader());
                     }
-
                     comboBoxBrigade.DisplayMember = "НазваниеБригады";
                     comboBoxBrigade.ValueMember = "КодБригады";
                     comboBoxBrigade.DataSource = dt;
@@ -102,7 +92,6 @@ namespace app.Forms
                 }
                 else
                 {
-                    // Если не швея - очищаем и скрываем комбобокс
                     comboBoxBrigade.DataSource = null;
                     comboBoxBrigade.Items.Clear();
                     comboBoxBrigade.Text = string.Empty;
@@ -114,12 +103,10 @@ namespace app.Forms
                                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void CheckPostAndSetBrigadeState(string post)
         {
             isShveyaSelected = post == "Швея";
             comboBoxBrigade.Enabled = isShveyaSelected;
-
             if (!isShveyaSelected)
             {
                 comboBoxBrigade.DataSource = null;
@@ -134,104 +121,78 @@ namespace app.Forms
             var email = textBoxEmail.Text;
             var post = comboBoxPost.Text;
             var salary = textBoxSalary.Text;
-
             if (string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(lastName) && string.IsNullOrEmpty(email) && string.IsNullOrEmpty(post) && string.IsNullOrEmpty(salary))
             {
                 MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (string.IsNullOrEmpty(firstName))
             {
                 MyCustomMessageBox.ShowMessage("Заполните поле Имя", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (string.IsNullOrEmpty(lastName))
             {
                 MyCustomMessageBox.ShowMessage("Заполните поле Фамилия", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (string.IsNullOrEmpty(email))
             {
                 MyCustomMessageBox.ShowMessage("Заполните поле электронная почта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (string.IsNullOrEmpty(post))
             {
                 MyCustomMessageBox.ShowMessage("Выберите Должность", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (string.IsNullOrEmpty(salary))
             {
                 MyCustomMessageBox.ShowMessage("Заполните поле Зарплата", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             Validation validator = new Validation();
             if (!validator.ValidateLastName(lastName))
             {
                 MyCustomMessageBox.ShowMessage("Некорректная фамилия", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (!validator.ValidateFirstName(firstName))
             {
                 MyCustomMessageBox.ShowMessage("Некорректное имя", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (!validator.ValidateEmail(email))
             {
                 MyCustomMessageBox.ShowMessage("Некорректный email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (!decimal.TryParse(salary, out decimal salaryValue) || salaryValue <= 0)
             {
                 MyCustomMessageBox.ShowMessage("Зарплата должна быть положительным числом.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             return true;
         }
         private void buttonChange_Click(object sender, EventArgs e)
         {
             if (!ValidateInput()) return;
-
             try
             {
                 DateTime dateOfHire = DateTime.Parse(DateTimePickerEmployee.Text);
                 string formattedDateOfHire = dateOfHire.ToString("yyyy-MM-dd");
-
-                using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                 {
                     connection.Open();
-
-                    // Обновление данных сотрудника
-                    string queryUpEmployee = @"UPDATE Сотрудники 
-                                     SET Имя = @Имя, 
-                                         Фамилия = @Фамилия, 
-                                         ЭлектроннаяПочта = @ЭлектроннаяПочта, 
-                                         ДатаПриема = @ДатаПриема, 
-                                         Зарплата = @Зарплата,
-                                         КодБригады = @КодБригады,
-                                         Фото = ISNULL(@Фото, Фото)
-                                     WHERE КодСотрудника = @КодСотрудника";
-
+                    string queryUpEmployee = @"UPDATE Сотрудники SET Имя = @Имя, Фамилия = @Фамилия, ЭлектроннаяПочта = @ЭлектроннаяПочта, ДатаПриема = @ДатаПриема, Зарплата = @Зарплата, КодБригады = @КодБригады, Фото = ISNULL(@Фото, Фото) WHERE КодСотрудника = @КодСотрудника";
                     using (SqlCommand command = new SqlCommand(queryUpEmployee, connection))
                     {
                         command.Parameters.AddWithValue("@Имя", textBoxName.Text);
                         command.Parameters.AddWithValue("@Фамилия", textBoxSurname.Text);
                         command.Parameters.AddWithValue("@ЭлектроннаяПочта", textBoxEmail.Text);
                         command.Parameters.AddWithValue("@ДатаПриема", formattedDateOfHire);
-                        command.Parameters.AddWithValue("@Зарплата", decimal.Parse(textBoxSalary.Text)); // Явное преобразование
+                        command.Parameters.AddWithValue("@Зарплата", decimal.Parse(textBoxSalary.Text));
                         command.Parameters.AddWithValue("@КодСотрудника", employeeId);
-
-                        // Параметр для фото (может быть NULL)
                         if (selectedPhotoBytes != null && selectedPhotoBytes.Length > 0)
                         {
                             command.Parameters.AddWithValue("@Фото", selectedPhotoBytes);
@@ -240,8 +201,6 @@ namespace app.Forms
                         {
                             command.Parameters.AddWithValue("@Фото", DBNull.Value);
                         }
-
-                        // Параметр для бригады
                         if (isShveyaSelected && comboBoxBrigade.SelectedValue != null &&
                             comboBoxBrigade.SelectedValue.ToString() != "")
                         {
@@ -254,13 +213,7 @@ namespace app.Forms
 
                         command.ExecuteNonQuery();
                     }
-
-                    // Обновление должности пользователя
-                    string queryUpUser = @"UPDATE Пользователи 
-                                 SET Должность = @Должность 
-                                 WHERE КодПользователя = 
-                                     (SELECT КодПользователя FROM Сотрудники WHERE КодСотрудника = @КодСотрудника)";
-
+                    string queryUpUser = @"UPDATE Пользователи SET Должность = @Должность WHERE КодПользователя = (SELECT КодПользователя FROM Сотрудники WHERE КодСотрудника = @КодСотрудника)";
                     using (SqlCommand command = new SqlCommand(queryUpUser, connection))
                     {
                         command.Parameters.AddWithValue("@Должность", comboBoxPost.Text);
@@ -268,7 +221,6 @@ namespace app.Forms
                         command.ExecuteNonQuery();
                     }
                 }
-
                 MyCustomMessageBox.ShowMessage("Данные успешно обновлены!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ucПерсонал.RefreshDataGridView();
                 Close();
@@ -279,7 +231,6 @@ namespace app.Forms
                                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void pictureSet_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -389,7 +340,7 @@ namespace app.Forms
                 Hashing hashing = new Hashing();
                 string hashedPassword = hashing.Hash(newPassword);
                 string queryUpdatePassword = "UPDATE Пользователи SET Пароль = @Пароль WHERE Логин = @Логин";
-                using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(queryUpdatePassword, connection))
@@ -407,14 +358,14 @@ namespace app.Forms
                 MyCustomMessageBox.ShowMessage("Действие отменено.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string GeneratePassword()
+        private static string GeneratePassword()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=[{]};:<>|./?";
             var random = new Random();
             return new string(Enumerable.Repeat(chars, 12)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        private void SendMessage(string login, string password, string email)
+        private static void SendMessage(string login, string password, string email)
         {
             string smtpServer = "smtp.mail.ru";
             int smtpPort = 587;
@@ -442,7 +393,6 @@ namespace app.Forms
                 }
             }
         }
-
         private void comboBoxPost_SelectedIndexChanged(object sender, EventArgs e)
         {
             isShveyaSelected = comboBoxPost.Text == "Швея";

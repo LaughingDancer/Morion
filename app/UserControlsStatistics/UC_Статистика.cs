@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 namespace app.UserControlsStatistics
 {
     public partial class UC_Статистика : UserControl

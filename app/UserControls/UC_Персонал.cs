@@ -4,7 +4,6 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
 namespace app.UserControls
 {
     public partial class UC_Персонал : UserControl
@@ -52,10 +51,9 @@ namespace app.UserControls
             DataGridViewPeople.Columns["DeleteColumn"].Width = 60;
             DataGridViewPeople.Columns["DeleteColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
-        private void ReadSingleRow(DataGridView DGW, IDataRecord Record)
+        private static void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {
             string brigadeName = Record["НазваниеБригады"] == DBNull.Value ? " " : Record["НазваниеБригады"].ToString();
-
             DGW.Rows.Add(
                 Record["КодСотрудника"],
                 Record["Логин"],
@@ -65,7 +63,7 @@ namespace app.UserControls
                 ((DateTime)Record["ДатаПриема"]).ToShortDateString(),
                 Record["Зарплата"],
                 Record["Должность"],
-                brigadeName, // Добавляем название бригады
+                brigadeName,
                 Properties.Resources.edit,
                 Properties.Resources.delete
             );
@@ -73,13 +71,7 @@ namespace app.UserControls
         private void RefreshDataGrid(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string queryString = @"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность, 
-                     Бригады.НазваниеБригады 
-                     FROM Сотрудники 
-                     JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-                     LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
-                     WHERE Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL";
-
+            string queryString = @"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность, Бригады.НазваниеБригады FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады WHERE Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL";
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = command.ExecuteReader();
@@ -145,16 +137,7 @@ namespace app.UserControls
         private void Search(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string querrySearch = $@"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность, 
-                       Бригады.НазваниеБригады 
-                       FROM Сотрудники 
-                       JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-                       LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
-                       WHERE (Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL)
-                       AND CONCAT(Имя, Фамилия, ЭлектроннаяПочта, ДатаПриема, Зарплата, 
-                       Пользователи.Логин, Пользователи.Должность, Бригады.НазваниеБригады) 
-                       LIKE '%{searchTextBox.Text}%'";
-
+            string querrySearch = $@"SELECT Сотрудники.*, Пользователи.Логин, Пользователи.Должность, Бригады.НазваниеБригады FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады WHERE (Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL) AND CONCAT(Имя, Фамилия, ЭлектроннаяПочта, ДатаПриема, Зарплата, Пользователи.Логин, Пользователи.Должность, Бригады.НазваниеБригады) LIKE '%{searchTextBox.Text}%'";
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -190,40 +173,24 @@ namespace app.UserControls
             string querrySearch;
             if (comboBoxPostSearch.Text == "Все Должности")
             {
-                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин, 
-                    Бригады.НазваниеБригады 
-                    FROM Сотрудники 
-                    JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-                    LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
-                    WHERE Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL";
+                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин, Бригады.НазваниеБригады FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады WHERE Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL";
             }
             else
             {
-                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин, 
-                    Бригады.НазваниеБригады 
-                    FROM Сотрудники 
-                    JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя
-                    LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады
-                    WHERE Пользователи.Должность = @Должность
-                    AND (Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL)";
+                querrySearch = @"SELECT Сотрудники.*, Пользователи.Должность, Пользователи.Логин, Бригады.НазваниеБригады FROM Сотрудники JOIN Пользователи ON Сотрудники.КодПользователя = Пользователи.КодПользователя LEFT JOIN Бригады ON Сотрудники.КодБригады = Бригады.КодБригады WHERE Пользователи.Должность = @Должность AND (Сотрудники.Статус <> 'Уволен' OR Сотрудники.Статус IS NULL)";
             }
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
-
             if (comboBoxPostSearch.Text != "Все Должности")
             {
                 sqlCommand.Parameters.AddWithValue("@Должность", comboBoxPostSearch.Text);
             }
-
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable DT = new DataTable();
             DataGridViewPeople.Rows.Clear();
             sqlDataAdapter.Fill(DT);
-
             foreach (DataRow row in DT.Rows)
             {
                 string brigadeName = row["НазваниеБригады"] == DBNull.Value ? " " : row["НазваниеБригады"].ToString();
-
                 DataGridViewPeople.Rows.Add(
                     row["КодСотрудника"],
                     row["Логин"],

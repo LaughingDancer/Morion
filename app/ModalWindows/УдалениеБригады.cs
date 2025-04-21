@@ -1,16 +1,9 @@
 ﻿using app.Classes;
 using app.UserControlsOperator;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace app.ModalWindows
 {
     public partial class УдалениеБригады : Form
@@ -26,22 +19,18 @@ namespace app.ModalWindows
             this.brigadeId = brigadeId;
             this.brigadeName = brigadeName;
             DB = new DB();
-
-            // Настройка отображения информации о бригаде
             labelBrigadeInfo.Text = $"{brigadeName}";
             labelBrigadeInfo.TextAlignment = ContentAlignment.MiddleCenter;
             labelBrigadeInfo.Location = new Point(
                 (this.ClientSize.Width - labelBrigadeInfo.Width) / 2,
                 (this.ClientSize.Height - labelBrigadeInfo.Height) / 2);
         }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MyCustomMessageBox.ShowMessage(
                 "Вы уверены, что хотите удалить бригаду?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
-
             if (result == DialogResult.Yes)
             {
                 try
@@ -56,7 +45,7 @@ namespace app.ModalWindows
                 }
                 catch (SqlException ex)
                 {
-                    if (ex.Number == 547) // Ошибка внешнего ключа
+                    if (ex.Number == 547)
                     {
                         MyCustomMessageBox.ShowMessage(
                             "Невозможно удалить бригаду, так как она привязана к сотрудникам.\n" +
@@ -89,29 +78,19 @@ namespace app.ModalWindows
                 Close();
             }
         }
-        private void DeleteBrigade(int brigadeId)
+        private static void DeleteBrigade(int brigadeId)
         {
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
-
-                // Сначала обнуляем бригаду у сотрудников
-                string updateEmployeesQuery = @"
-                    UPDATE Сотрудники 
-                    SET КодБригады = NULL 
-                    WHERE КодБригады = @КодБригады";
+                string updateEmployeesQuery = @"UPDATE Сотрудники SET КодБригады = NULL WHERE КодБригады = @КодБригады";
 
                 using (SqlCommand updateCommand = new SqlCommand(updateEmployeesQuery, connection))
                 {
                     updateCommand.Parameters.AddWithValue("@КодБригады", brigadeId);
                     updateCommand.ExecuteNonQuery();
                 }
-
-                // Затем удаляем саму бригаду
-                string deleteBrigadeQuery = @"
-                    DELETE FROM Бригады 
-                    WHERE КодБригады = @КодБригады";
-
+                string deleteBrigadeQuery = @"DELETE FROM Бригады WHERE КодБригады = @КодБригады";
                 using (SqlCommand deleteCommand = new SqlCommand(deleteBrigadeQuery, connection))
                 {
                     deleteCommand.Parameters.AddWithValue("@КодБригады", brigadeId);
@@ -119,7 +98,6 @@ namespace app.ModalWindows
                 }
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();

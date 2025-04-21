@@ -4,7 +4,6 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
 namespace app.UserControlsOperator
 {
     public partial class UC_Изделия : UserControl
@@ -54,7 +53,7 @@ namespace app.UserControlsOperator
             DataGridViewProduct.Columns["DeleteColumn"].Width = 60;
             DataGridViewProduct.Columns["DeleteColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
-        private void ReadSingleRow(DataGridView DGW, IDataRecord record)
+        private static void ReadSingleRow(DataGridView DGW, IDataRecord record)
         {
             DGW.Rows.Add(
                 record.GetInt32(0),
@@ -73,7 +72,6 @@ namespace app.UserControlsOperator
         {
             DGW.Rows.Clear();
             string queryString = @"SELECT Размеры.КодРазмера, Изделия.КодИзделия, Размеры.НазваниеРазмер, Изделия.НазваниеИзделия, Размеры.НеобходимаяДлинаТкани, Размеры.НеобходимаяШиринаТкани, Изделия.Плотность, Ткани.Вид AS ВидТкани FROM Размеры JOIN Изделия ON Размеры.КодИзделия = Изделия.КодИзделия JOIN Ткани ON Изделия.КодТкани = Ткани.КодТкани";
-
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             try
             {
@@ -160,7 +158,6 @@ namespace app.UserControlsOperator
         private void display_DGW()
         {
             string querrySearch;
-
             if (comboBoxPostSearch.Text == "Все Изделия")
             {
                 querrySearch = $"SELECT Размеры.КодРазмера, Изделия.КодИзделия, Размеры.НазваниеРазмер, Изделия.НазваниеИзделия, Размеры.НеобходимаяДлинаТкани, Размеры.НеобходимаяШиринаТкани, Изделия.Плотность, Ткани.Вид AS ВидТкани FROM Размеры JOIN Изделия ON Размеры.КодИзделия = Изделия.КодИзделия JOIN Ткани ON Изделия.КодТкани = Ткани.КодТкани";

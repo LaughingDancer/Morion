@@ -35,16 +35,12 @@ namespace app.Forms
                 string query = "SELECT КодБригады, НазваниеБригады FROM Бригады";
                 DataTable dt = new DataTable();
                 SqlDataAdapter adapter = DB.QueryExecute(query);
-
                 if (adapter != null)
                 {
                     adapter.Fill(dt);
-
                     comboBoxBrigade.DisplayMember = "НазваниеБригады";
                     comboBoxBrigade.ValueMember = "КодБригады";
                     comboBoxBrigade.DataSource = dt;
-
-                    // Устанавливаем selectedIndex в -1, чтобы ничего не было выбрано по умолчанию
                     comboBoxBrigade.SelectedIndex = -1;
                 }
             }
@@ -64,14 +60,14 @@ namespace app.Forms
                 selectedPhotoBytes = File.ReadAllBytes(selectedFile);
             }
         }
-        private string GeneratePassword()
+        private static string GeneratePassword()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=[{]};:<>|./?";
             var random = new Random();
             return new string(Enumerable.Repeat(chars, 12)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        private string GenerateLogin(string password)
+        private static string GenerateLogin(string password)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=[{]};:<>|./?";
             var random = new Random();
@@ -205,13 +201,11 @@ namespace app.Forms
         {
             Hashing GH = new Hashing();
             string queryadd = $"INSERT INTO Пользователи (Логин, Пароль, Должность) VALUES ('{login}', '{GH.Hash(password)}', '{post}'); SELECT SCOPE_IDENTITY();";
-            var DB = new DB();
             return DB.QueryExecuteScalar(queryadd);
         }
         private int RegisterEmployee(string firstName, string lastName, string email, int userId)
         {
             var queryAdd = $"INSERT INTO Сотрудники (Имя, Фамилия, ЭлектроннаяПочта, КодПользователя) VALUES ('{firstName}', '{lastName}', '{email}', {userId}); SELECT SCOPE_IDENTITY();";
-            var DB = new DB();
             return DB.QueryExecuteScalar(queryAdd);
         }
         class ImageUploader
@@ -248,7 +242,7 @@ namespace app.Forms
                 }
             }
         }
-        private void SendMessage(string login, string password, string email)
+        private static void SendMessage(string login, string password, string email)
         {
             string smtpServer = "smtp.mail.ru";
             int smtpPort = 587;

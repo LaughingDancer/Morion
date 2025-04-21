@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-
 namespace app.Classes
 {
     internal class Hashing

@@ -4,7 +4,6 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
 namespace app.UserControlsOperator
 {
     public partial class UC_ОформитьЗаказ : UserControl
@@ -54,10 +53,8 @@ namespace app.UserControlsOperator
                 MyCustomMessageBox.ShowMessage("Пожалуйста, выберите тип ткани.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            // Получение данных из полей
             string типТкани = ComboBoxFabric1.SelectedItem.ToString();
-            // Подключение и выполнение хранимой процедуры
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 SqlCommand command = new SqlCommand("CalculateOptimization", connection);
                 command.CommandType = CommandType.StoredProcedure;
@@ -70,7 +67,6 @@ namespace app.UserControlsOperator
                 adapter.Fill(resultTable);
                 foreach (DataRow row in resultTable.Rows)
                 {
-                    // Форматируем количество отходов и процент отходов с двумя знаками после запятой
                     row["КоличествоОтходов"] = Convert.ToDecimal(row["КоличествоОтходов"]).ToString("N2");
                     row["ПроцентОтходов"] = Convert.ToDecimal(row["ПроцентОтходов"]).ToString("N2");
                 }
@@ -83,36 +79,24 @@ namespace app.UserControlsOperator
             {
                 if (e.RowIndex >= 0)
                 {
-                    // Получение данных выбранной строки
                     DataGridViewRow row = DataGridViewOptimizationOptions.Rows[e.RowIndex];
-
-                    // Извлечение данных из строки
                     string изделие = row.Cells["Изделие"].Value.ToString();
                     string размер = row.Cells["Размер"].Value.ToString();
                     int количествоИзделий = Convert.ToInt32(row.Cells["КоличествоИзделий"].Value);
                     decimal количествоОтходов = Convert.ToDecimal(row.Cells["КоличествоОтходов"].Value);
                     decimal процентОтходов = Convert.ToDecimal(row.Cells["ПроцентОтходов"].Value);
-
-                    // Получение данных о ткани
                     string типТкани = ComboBoxFabric1.SelectedItem.ToString();
                     double длинаТкани = double.Parse(TextBoxLenght1.Text);
                     double ширинаТкани = double.Parse(TextBoxWidth1.Text);
                     double количествоТкани = double.Parse(TextBoxAmountFabric1.Text);
-
-                    // Расчет общей стоимости
                     decimal общаяСтоимость = CalculateTotalCost(типТкани, количествоИзделий);
-
-                    // Создаем строку с информацией о заказе
                     string orderInfo = $"Изделие: {изделие}\n" +
                   $"Размер: {размер}\n" +
                   $"Количество: {количествоИзделий}\n" +
                   $"Ткань: {типТкани}\n" +
                   $"Общая стоимость: {общаяСтоимость:N2} руб.";
-
-                    // Открываем новую форму для выбора бригады
                     ДобавитьЗаказ orderForm = new ДобавитьЗаказ(orderInfo, () =>
                     {
-                        // Этот код выполнится после подтверждения заказа
                         CompleteOrder(
                             employeeId,
                             типТкани,
@@ -136,7 +120,6 @@ namespace app.UserControlsOperator
                 MyCustomMessageBox.ShowMessage($"Ошибка: {ex.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void CompleteOrder(
     int employeeId,
     string типТкани,
@@ -152,35 +135,17 @@ namespace app.UserControlsOperator
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                 {
                     connection.Open();
-
-                    // 1. Вставка новой ткани
-                    string insertFabricQuery = @"
-                INSERT INTO Ткани (Вид, Длина, Ширина, Количество)
-                VALUES (@ТипТкани, @ДлинаТкани, @ШиринаТкани, @КоличествоТкани);
-                SELECT SCOPE_IDENTITY();";
-
+                    string insertFabricQuery = @"INSERT INTO Ткани (Вид, Длина, Ширина, Количество) VALUES (@ТипТкани, @ДлинаТкани, @ШиринаТкани, @КоличествоТкани); SELECT SCOPE_IDENTITY();";
                     SqlCommand insertFabricCommand = new SqlCommand(insertFabricQuery, connection);
                     insertFabricCommand.Parameters.AddWithValue("@ТипТкани", типТкани);
                     insertFabricCommand.Parameters.AddWithValue("@ДлинаТкани", длинаТкани);
                     insertFabricCommand.Parameters.AddWithValue("@ШиринаТкани", ширинаТкани);
                     insertFabricCommand.Parameters.AddWithValue("@КоличествоТкани", количествоТкани);
-
                     int кодТкани = Convert.ToInt32(insertFabricCommand.ExecuteScalar());
-
-                    // 2. Вставка варианта оптимизации
-                    string insertOptimizationQuery = @"
-                INSERT INTO ВариантыОптимизации 
-                (КодСотрудника, КодТкани, КодИзделия, КодРазмера, КоличествоИзделий, КоличествоОтходов, ПроцентОтходов, ДатаСоздания) 
-                VALUES 
-                (@КодСотрудника, @КодТкани, 
-                 (SELECT TOP 1 КодИзделия FROM Изделия WHERE НазваниеИзделия = @Изделие), 
-                 (SELECT TOP 1 КодРазмера FROM Размеры WHERE НазваниеРазмер = @Размер), 
-                 @КоличествоИзделий, @КоличествоОтходов, @ПроцентОтходов, GETDATE());
-                SELECT SCOPE_IDENTITY();";
-
+                    string insertOptimizationQuery = @"INSERT INTO ВариантыОптимизации (КодСотрудника, КодТкани, КодИзделия, КодРазмера, КоличествоИзделий, КоличествоОтходов, ПроцентОтходов, ДатаСоздания) VALUES (@КодСотрудника, @КодТкани, (SELECT TOP 1 КодИзделия FROM Изделия WHERE НазваниеИзделия = @Изделие), (SELECT TOP 1 КодРазмера FROM Размеры WHERE НазваниеРазмер = @Размер), @КоличествоИзделий, @КоличествоОтходов, @ПроцентОтходов, GETDATE()); SELECT SCOPE_IDENTITY();";
                     SqlCommand insertOptimizationCommand = new SqlCommand(insertOptimizationQuery, connection);
                     insertOptimizationCommand.Parameters.AddWithValue("@КодСотрудника", employeeId);
                     insertOptimizationCommand.Parameters.AddWithValue("@КодТкани", кодТкани);
@@ -189,23 +154,13 @@ namespace app.UserControlsOperator
                     insertOptimizationCommand.Parameters.AddWithValue("@КоличествоИзделий", количествоИзделий);
                     insertOptimizationCommand.Parameters.AddWithValue("@КоличествоОтходов", количествоОтходов);
                     insertOptimizationCommand.Parameters.AddWithValue("@ПроцентОтходов", процентОтходов);
-
                     int кодОптимизации = Convert.ToInt32(insertOptimizationCommand.ExecuteScalar());
-
-                    // 3. Вставка заказа
-                    string insertOrderQuery = @"
-                INSERT INTO Заказы 
-                (КодОптимизации, ОбщаяСтоимость, КоличествоВыполненных, КодБригады) 
-                VALUES 
-                (@КодОптимизации, @ОбщаяСтоимость, 0, @КодБригады)";
-
+                    string insertOrderQuery = @"INSERT INTO Заказы (КодОптимизации, ОбщаяСтоимость, КоличествоВыполненных, КодБригады) VALUES (@КодОптимизации, @ОбщаяСтоимость, 0, @КодБригады)";
                     SqlCommand insertOrderCommand = new SqlCommand(insertOrderQuery, connection);
                     insertOrderCommand.Parameters.AddWithValue("@КодОптимизации", кодОптимизации);
                     insertOrderCommand.Parameters.AddWithValue("@ОбщаяСтоимость", общаяСтоимость);
                     insertOrderCommand.Parameters.AddWithValue("@КодБригады", ДобавитьЗаказ.SelectedBrigadeId);
-
                     insertOrderCommand.ExecuteNonQuery();
-
                     MyCustomMessageBox.ShowMessage("Заказ успешно оформлен!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();
                 }
@@ -215,17 +170,13 @@ namespace app.UserControlsOperator
                 MyCustomMessageBox.ShowMessage($"Ошибка при оформлении заказа: {ex.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private decimal CalculateTotalCost(string типТкани, int количествоИзделий)
+        private static decimal CalculateTotalCost(string типТкани, int количествоИзделий)
         {
             decimal fabricPrice = 0;
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
-                string query = @"
-            SELECT ЦенаЗаМетр 
-            FROM Ткани 
-            WHERE Вид = @ТипТкани";
+                string query = @"SELECT ЦенаЗаМетр FROM Ткани WHERE Вид = @ТипТкани";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ТипТкани", типТкани);

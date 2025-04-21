@@ -4,7 +4,6 @@ using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-
 namespace app.Forms
 {
     public partial class УдалениеИзделия : Form
@@ -41,9 +40,9 @@ namespace app.Forms
                 Close();
             }
         }
-        private void DeleteProduct(int productId)
+        private static void DeleteProduct(int productId)
         {
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 string deleteSizesQuery = "DELETE FROM Размеры WHERE КодИзделия = @КодИзделия";

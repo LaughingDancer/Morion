@@ -4,14 +4,12 @@ using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-
 namespace app.ModalWindows
 {
     public partial class ДобавлениеБригады : Form
     {
         private DB DB;
         private UC_Бригады ucБригады;
-
         public ДобавлениеБригады(UC_Бригады ucБригады)
         {
             InitializeComponent();
@@ -20,7 +18,6 @@ namespace app.ModalWindows
         }
         private bool ValidateBrigadeName(string name)
         {
-            // Разрешаем буквы (русские и английские), цифры, пробелы и дефисы
             return Regex.IsMatch(name, @"^[a-zA-Zа-яА-ЯёЁ0-9\s-]+$");
         }
         private bool ValidateInput()
@@ -33,14 +30,12 @@ namespace app.ModalWindows
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (brigadeName.Length > 100)
             {
                 MyCustomMessageBox.ShowMessage("Название бригады слишком длинное (максимум 100 символов).",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
             if (!ValidateBrigadeName(brigadeName))
             {
                 MyCustomMessageBox.ShowMessage("Название бригады содержит недопустимые символы.\n" +
@@ -48,10 +43,8 @@ namespace app.ModalWindows
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            // Проверка на уникальность названия бригады
             string checkQuery = "SELECT COUNT(*) FROM Бригады WHERE НазваниеБригады = @НазваниеБригады";
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(checkQuery, connection))
@@ -66,14 +59,12 @@ namespace app.ModalWindows
                     }
                 }
             }
-
             return true;
         }
         private void SaveBrigade()
         {
             string insertQuery = "INSERT INTO Бригады (НазваниеБригады) VALUES (@НазваниеБригады)";
-
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
@@ -83,7 +74,6 @@ namespace app.ModalWindows
                 }
             }
         }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (ValidateInput())
@@ -94,12 +84,10 @@ namespace app.ModalWindows
                 this.Close();
             }
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void textBoxBrigadeName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

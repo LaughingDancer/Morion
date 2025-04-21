@@ -1,66 +1,56 @@
-﻿using app;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using app.Classes;
 
 namespace UnitTestsMorion
 {
     [TestClass]
-    public class MorionTests
+    public class ValidationDataTests
     {
-        [TestMethod]
-        public void TestAuthorizeUserCorrect()
+        private readonly ValidationData.Validation _validator = new ValidationData.Validation();
+
+        [DataTestMethod]
+        [DataRow("Иванов", true)]
+        [DataRow("Petrov", true)]
+        [DataRow("Smith", true)]
+        [DataRow("Смирнов", true)]
+        [DataRow("Иванов123", false)]
+        [DataRow("Petrov!", false)]
+        [DataRow("", false)]
+        [DataRow(" ", false)]
+        [DataRow(null, false)]
+        public void ValidateLastName_Tests(string input, bool expected)
         {
-            string login = "^L5.=FD6(uT?";
-            string password = "C<ouj*6u]O])";
-            Авторизация authorization = new Авторизация();
-            var result = authorization.AuthorizeUser(login, password);
-            Assert.IsTrue(result.isAuthorized);
-            Assert.IsNotNull(result.position);
-            Assert.AreNotEqual(string.Empty, result.position);
+            Assert.AreEqual(expected, _validator.ValidateLastName(input));
         }
 
-        [TestMethod]
-        public void TestAuthorizeUserIncorrec()
+        [DataTestMethod]
+        [DataRow("Алексей", true)]
+        [DataRow("John", true)]
+        [DataRow("Мария", true)]
+        [DataRow("Anna", true)]
+        [DataRow("Name123", false)]
+        [DataRow("First Name", false)]
+        [DataRow("", false)]
+        [DataRow(" ", false)]
+        [DataRow(null, false)]
+        public void ValidateFirstName_Tests(string input, bool expected)
         {
-            string login = "login";
-            string password = "password";
-            Авторизация authorization = new Авторизация();
-            var result = authorization.AuthorizeUser(login, password);
-            Assert.IsFalse(result.isAuthorized);
-            Assert.AreEqual(string.Empty, result.position);
+            Assert.AreEqual(expected, _validator.ValidateFirstName(input));
         }
 
-        [TestMethod]
-        public void TestAuthorizeUserIncorrectLogin()
+        [DataTestMethod]
+        [DataRow("test@example.com", true)]
+        [DataRow("user.name@domain.co.uk", true)]
+        [DataRow("firstname.lastname@example.com", true)]
+        [DataRow("plainstring", false)]
+        [DataRow("@no-user.com", false)]
+        [DataRow("no-at.com", false)]
+        [DataRow("user@.com", false)]
+        [DataRow("", false)]
+        [DataRow(null, false)]
+        public void ValidateEmail_Tests(string input, bool expected)
         {
-            string login = "incorrectLogin";
-            string password = "C<ouj*6u]O])";
-            Авторизация authorization = new Авторизация();
-            var result = authorization.AuthorizeUser(login, password);
-            Assert.IsFalse(result.isAuthorized);
-            Assert.AreEqual(string.Empty, result.position);
-        }
-
-        [TestMethod]
-        public void TestAuthorizeUserIncorrectPassword()
-        {
-            string login = "L5.=FD6(uT?";
-            string password = "incorrectPassword";
-            Авторизация authorization = new Авторизация();
-            var result = authorization.AuthorizeUser(login, password);
-            Assert.IsFalse(result.isAuthorized);
-            Assert.AreEqual(string.Empty, result.position);
-        }
-
-        [TestMethod]
-        public void TestAuthorizeUserNullValues()
-        {
-            string login = "";
-            string password = "";
-            Авторизация authorization = new Авторизация();
-            var result = authorization.AuthorizeUser(login, password);
-            Assert.IsFalse(result.isAuthorized);
-            Assert.AreEqual(string.Empty, result.position);
+            Assert.AreEqual(expected, _validator.ValidateEmail(input));
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
-
 namespace app.UserControlsSpecialist
 {
     public partial class UC_ЖурналБэкап : UserControl
@@ -32,17 +31,7 @@ namespace app.UserControlsSpecialist
         private void RefreshDataGrid(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string queryString = @"
-        SELECT 
-            Код, 
-            Таблица, 
-            Действие, 
-            СтароеЗначение, 
-            НовоеЗначение, 
-            ДатаИзменения 
-        FROM 
-            ЖурналИзменений";
-
+            string queryString = @"SELECT Код, Таблица, Действие, СтароеЗначение, НовоеЗначение, ДатаИзменения FROM ЖурналИзменений";
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = command.ExecuteReader();
@@ -53,7 +42,7 @@ namespace app.UserControlsSpecialist
             reader.Close();
             DB.CloseConnection();
         }
-        private void ReadSingleRowChangeLog(DataGridView DGW, IDataRecord Record)
+        private static void ReadSingleRowChangeLog(DataGridView DGW, IDataRecord Record)
         {
             DGW.Rows.Add(
                 Record["Код"],
@@ -82,18 +71,7 @@ namespace app.UserControlsSpecialist
         }
         private void SearchChangeLog(DataGridView DGW)
         {
-            string querrySearch = $@"
-        SELECT 
-            Код, 
-            Таблица, 
-            Действие, 
-            СтароеЗначение, 
-            НовоеЗначение, 
-            ДатаИзменения 
-        FROM 
-            ЖурналИзменений 
-        WHERE 
-            CONCAT(Таблица, Действие, СтароеЗначение, НовоеЗначение, ДатаИзменения) LIKE '%{searchTextBox.Text}%'";
+            string querrySearch = $@"SELECT Код, Таблица, Действие, СтароеЗначение, НовоеЗначение, ДатаИзменения FROM ЖурналИзменений WHERE CONCAT(Таблица, Действие, СтароеЗначение, НовоеЗначение, ДатаИзменения) LIKE '%{searchTextBox.Text}%'";
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -110,31 +88,11 @@ namespace app.UserControlsSpecialist
             string querrySearch;
             if (comboBoxTable.Text == "Все Таблицы")
             {
-                querrySearch = @"
-            SELECT 
-                Код, 
-                Таблица, 
-                Действие, 
-                СтароеЗначение, 
-                НовоеЗначение, 
-                ДатаИзменения 
-            FROM 
-                ЖурналИзменений";
+                querrySearch = @"SELECT Код, Таблица, Действие, СтароеЗначение, НовоеЗначение, ДатаИзменения FROM ЖурналИзменений";
             }
             else
             {
-                querrySearch = $@"
-            SELECT 
-                Код, 
-                Таблица, 
-                Действие, 
-                СтароеЗначение, 
-                НовоеЗначение, 
-                ДатаИзменения 
-            FROM 
-                ЖурналИзменений 
-            WHERE 
-                Таблица = @Таблица";
+                querrySearch = $@"SELECT Код, Таблица, Действие, СтароеЗначение, НовоеЗначение, ДатаИзменения FROM ЖурналИзменений WHERE Таблица = @Таблица";
             }
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             if (comboBoxTable.Text != "Все Таблицы")

@@ -5,7 +5,6 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
 namespace app.UserControlsOperator
 {
     public partial class UC_Заказы : UserControl
@@ -36,9 +35,7 @@ namespace app.UserControlsOperator
             DataGridViewOrders.Columns.Add("ДатаЗаказа", "Дата Заказа");
             DataGridViewOrders.Columns.Add("ДатаВыполнения", "Дата Выполнения");
             DataGridViewOrders.Columns["ДатаВыполнения"].DefaultCellStyle.NullValue = "-";
-            DataGridViewOrders.Columns.Add("НазваниеБригады", "Бригада"); // Новый столбец
-
-            // Остальные столбцы (кнопки) остаются без изменений
+            DataGridViewOrders.Columns.Add("НазваниеБригады", "Бригада");
             DataGridViewImageColumn newRepeatColumn = new DataGridViewImageColumn();
             newRepeatColumn.Name = "RepeatColumn";
             newRepeatColumn.HeaderText = "Повторить";
@@ -48,7 +45,6 @@ namespace app.UserControlsOperator
             DataGridViewOrders.Columns["RepeatColumn"].DisplayIndex = DataGridViewOrders.Columns.Count - 1;
             DataGridViewOrders.Columns["RepeatColumn"].Width = 60;
             DataGridViewOrders.Columns["RepeatColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
             DataGridViewImageColumn newDeleteColumn = new DataGridViewImageColumn();
             newDeleteColumn.Name = "DeleteColumn";
             newDeleteColumn.HeaderText = "Удалить";
@@ -59,8 +55,7 @@ namespace app.UserControlsOperator
             DataGridViewOrders.Columns["DeleteColumn"].Width = 60;
             DataGridViewOrders.Columns["DeleteColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
-
-        private void ReadSingleRow(DataGridView DGW, IDataRecord record)
+        private static void ReadSingleRow(DataGridView DGW, IDataRecord record)
         {
             DGW.Rows.Add(
                 record.GetInt32(0),
@@ -72,42 +67,21 @@ namespace app.UserControlsOperator
                 record.GetString(6),
                 record.GetDecimal(7),
                 record.GetDateTime(8).ToShortDateString(),
-                record.IsDBNull(9) ? null : (object)record.GetDateTime(9).ToShortDateString(), // ДатаВыполнения
-                record.IsDBNull(10) ? "Не назначена" : record.GetString(10), // Бригада
+                record.IsDBNull(9) ? null : (object)record.GetDateTime(9).ToShortDateString(),
+                record.IsDBNull(10) ? "Не назначена" : record.GetString(10),
                 Properties.Resources.repeat,
                 Properties.Resources.delete
             );
         }
-
-
         private void RefreshDataGrid(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string queryString = @"SELECT 
-        Заказы.КодЗаказа, 
-        Изделия.НазваниеИзделия, 
-        Размеры.НазваниеРазмер, 
-        Ткани.Вид AS ВидТкани, 
-        ВариантыОптимизации.КоличествоИзделий, 
-        Заказы.КоличествоВыполненных, 
-        Заказы.Статус, 
-        Заказы.ОбщаяСтоимость, 
-        Заказы.ДатаЗаказа, 
-        Заказы.ДатаВыполнения, 
-        Бригады.НазваниеБригады 
-    FROM Заказы 
-    JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации 
-    JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера 
-    JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия 
-    JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
-    LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады";
-
+            string queryString = @"SELECT Заказы.КодЗаказа, Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, Ткани.Вид AS ВидТкани, ВариантыОптимизации.КоличествоИзделий, Заказы.КоличествоВыполненных, Заказы.Статус, Заказы.ОбщаяСтоимость, Заказы.ДатаЗаказа, Заказы.ДатаВыполнения, Бригады.НазваниеБригады FROM Заказы JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады";
             SqlCommand command = new SqlCommand(queryString, DB.GetConnection());
             try
             {
                 DB.OpenConnection();
                 SqlDataReader reader = command.ExecuteReader();
-
                 while (reader.Read())
                 {
                     ReadSingleRow(DGW, reader);
@@ -127,34 +101,7 @@ namespace app.UserControlsOperator
         private void Search(DataGridView DGW)
         {
             DGW.Rows.Clear();
-            string querrySearch = @"SELECT 
-        Заказы.КодЗаказа, 
-        Изделия.НазваниеИзделия, 
-        Размеры.НазваниеРазмер, 
-        Ткани.Вид AS ВидТкани, 
-        ВариантыОптимизации.КоличествоИзделий, 
-        Заказы.КоличествоВыполненных, 
-        Заказы.Статус, 
-        Заказы.ОбщаяСтоимость, 
-        Заказы.ДатаЗаказа, 
-        Заказы.ДатаВыполнения, 
-        Бригады.НазваниеБригады 
-    FROM Заказы 
-    JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации 
-    JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера 
-    JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия 
-    JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
-    LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады 
-    WHERE CONCAT(
-        Изделия.НазваниеИзделия, 
-        Размеры.НазваниеРазмер, 
-        Ткани.Вид, 
-        Заказы.Статус, 
-        Заказы.ОбщаяСтоимость, 
-        Заказы.ДатаЗаказа,
-        ISNULL(Бригады.НазваниеБригады, '')
-    ) LIKE '%" + searchTextBox.Text + "%'";
-
+            string querrySearch = @"SELECT Заказы.КодЗаказа, Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, Ткани.Вид AS ВидТкани, ВариантыОптимизации.КоличествоИзделий, Заказы.КоличествоВыполненных, Заказы.Статус, Заказы.ОбщаяСтоимость, Заказы.ДатаЗаказа, Заказы.ДатаВыполнения, Бригады.НазваниеБригады FROM Заказы JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады WHERE CONCAT( Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, Ткани.Вид, Заказы.Статус, Заказы.ОбщаяСтоимость, Заказы.ДатаЗаказа, ISNULL(Бригады.НазваниеБригады, '') ) LIKE '%" + searchTextBox.Text + "%'";
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
             DB.OpenConnection();
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -179,8 +126,6 @@ namespace app.UserControlsOperator
             reader.Close();
             DB.CloseConnection();
         }
-
-
         private void comboSearch()
         {
             string quarrySearchPost = $"SELECT DISTINCT Статус FROM Заказы";
@@ -202,60 +147,21 @@ namespace app.UserControlsOperator
             string querrySearch;
             if (comboBoxStatus.Text == "Все Статусы")
             {
-                querrySearch = @"SELECT 
-            Заказы.КодЗаказа, 
-            Изделия.НазваниеИзделия, 
-            Размеры.НазваниеРазмер, 
-            Ткани.Вид AS ВидТкани, 
-            ВариантыОптимизации.КоличествоИзделий, 
-            Заказы.КоличествоВыполненных, 
-            Заказы.Статус, 
-            Заказы.ОбщаяСтоимость, 
-            Заказы.ДатаЗаказа, 
-            Заказы.ДатаВыполнения, 
-            Бригады.НазваниеБригады 
-        FROM Заказы 
-        JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации 
-        JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера 
-        JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия 
-        JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
-        LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады";
+                querrySearch = @"SELECT Заказы.КодЗаказа, Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, Ткани.Вид AS ВидТкани, ВариантыОптимизации.КоличествоИзделий, Заказы.КоличествоВыполненных, Заказы.Статус, Заказы.ОбщаяСтоимость, Заказы.ДатаЗаказа, Заказы.ДатаВыполнения, Бригады.НазваниеБригады FROM Заказы JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады";
             }
             else
             {
-                querrySearch = @"SELECT 
-            Заказы.КодЗаказа, 
-            Изделия.НазваниеИзделия, 
-            Размеры.НазваниеРазмер, 
-            Ткани.Вид AS ВидТкани, 
-            ВариантыОптимизации.КоличествоИзделий, 
-            Заказы.КоличествоВыполненных, 
-            Заказы.Статус, 
-            Заказы.ОбщаяСтоимость, 
-            Заказы.ДатаЗаказа, 
-            Заказы.ДатаВыполнения, 
-            Бригады.НазваниеБригады 
-        FROM Заказы 
-        JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации 
-        JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера 
-        JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия 
-        JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани
-        LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады 
-        WHERE Заказы.Статус = @Статус";
+                querrySearch = @"SELECT Заказы.КодЗаказа, Изделия.НазваниеИзделия, Размеры.НазваниеРазмер, Ткани.Вид AS ВидТкани, ВариантыОптимизации.КоличествоИзделий, Заказы.КоличествоВыполненных, Заказы.Статус, Заказы.ОбщаяСтоимость, Заказы.ДатаЗаказа, Заказы.ДатаВыполнения, Бригады.НазваниеБригады FROM Заказы JOIN ВариантыОптимизации ON Заказы.КодОптимизации = ВариантыОптимизации.КодОптимизации JOIN Размеры ON ВариантыОптимизации.КодРазмера = Размеры.КодРазмера JOIN Изделия ON ВариантыОптимизации.КодИзделия = Изделия.КодИзделия JOIN Ткани ON ВариантыОптимизации.КодТкани = Ткани.КодТкани LEFT JOIN Бригады ON Заказы.КодБригады = Бригады.КодБригады WHERE Заказы.Статус = @Статус";
             }
-
             SqlCommand sqlCommand = new SqlCommand(querrySearch, DB.GetConnection());
-
             if (comboBoxStatus.Text != "Все Статусы")
             {
                 sqlCommand.Parameters.AddWithValue("@Статус", comboBoxStatus.Text);
             }
-
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable DT = new DataTable();
             DataGridViewOrders.Rows.Clear();
             sqlDataAdapter.Fill(DT);
-
             foreach (DataRow row in DT.Rows)
             {
                 DataGridViewOrders.Rows.Add(
@@ -275,7 +181,6 @@ namespace app.UserControlsOperator
                 );
             }
         }
-
         private void comboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             display_DGW();
@@ -325,26 +230,21 @@ namespace app.UserControlsOperator
                     string productName = DataGridViewOrders.Rows[e.RowIndex].Cells["НазваниеИзделия"].Value.ToString();
                     decimal totalCost = Convert.ToDecimal(DataGridViewOrders.Rows[e.RowIndex].Cells["ОбщаяСтоимость"].Value);
                     string brigadeName = DataGridViewOrders.Rows[e.RowIndex].Cells["НазваниеБригады"].Value.ToString();
-
                     string orderInfo = $"Изделие: {productName}\n" +
                                      $"Бригада: {brigadeName}\n" +
                                      $"Общая стоимость: {totalCost:N2} руб.";
-
                     ДобавитьЗаказ addOrderForm = new ДобавитьЗаказ(orderInfo, () =>
                     {
                         RepeatOrder(optimizationId, totalCost);
                     });
-
                     addOrderForm.ShowDialog();
                 }
             }
         }
-
-        private int GetOptimizationIdByOrderId(int orderId)
+        private static int GetOptimizationIdByOrderId(int orderId)
         {
             string query = "SELECT КодОптимизации FROM Заказы WHERE КодЗаказа = @КодЗаказа";
-
-            using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+            using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
@@ -352,34 +252,24 @@ namespace app.UserControlsOperator
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
         private void RepeatOrder(int optimizationId, decimal totalCost)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                 {
                     connection.Open();
                     SqlTransaction transaction = connection.BeginTransaction();
 
                     try
                     {
-                        // Создаем новый заказ с существующим КодОптимизации
-                        string insertOrderQuery = @"
-                INSERT INTO Заказы 
-                (КодОптимизации, ОбщаяСтоимость, КоличествоВыполненных, КодБригады) 
-                VALUES 
-                (@КодОптимизации, @ОбщаяСтоимость, 0, @КодБригады)";
-
+                        string insertOrderQuery = @"INSERT INTO Заказы (КодОптимизации, ОбщаяСтоимость, КоличествоВыполненных, КодБригады) VALUES (@КодОптимизации, @ОбщаяСтоимость, 0, @КодБригады)";
                         SqlCommand insertOrderCommand = new SqlCommand(insertOrderQuery, connection, transaction);
                         insertOrderCommand.Parameters.AddWithValue("@КодОптимизации", optimizationId);
                         insertOrderCommand.Parameters.AddWithValue("@ОбщаяСтоимость", totalCost);
                         insertOrderCommand.Parameters.AddWithValue("@КодБригады", ДобавитьЗаказ.SelectedBrigadeId);
-
                         insertOrderCommand.ExecuteNonQuery();
-
                         transaction.Commit();
-
                         MyCustomMessageBox.ShowMessage("Заказ успешно повторен!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         RefreshDataGridView();
                     }
@@ -395,61 +285,6 @@ namespace app.UserControlsOperator
                 MyCustomMessageBox.ShowMessage($"Ошибка подключения к базе данных: {ex.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // Вспомогательные методы
-        private int GetProductId(string productName, SqlConnection connection, SqlTransaction transaction)
-        {
-            string query = "SELECT КодИзделия FROM Изделия WHERE НазваниеИзделия = @Название";
-            SqlCommand command = new SqlCommand(query, connection, transaction);
-            command.Parameters.AddWithValue("@Название", productName);
-            return Convert.ToInt32(command.ExecuteScalar());
-        }
-
-        private int GetSizeId(string sizeName, SqlConnection connection, SqlTransaction transaction)
-        {
-            string query = "SELECT КодРазмера FROM Размеры WHERE НазваниеРазмер = @Название";
-            SqlCommand command = new SqlCommand(query, connection, transaction);
-            command.Parameters.AddWithValue("@Название", sizeName);
-            return Convert.ToInt32(command.ExecuteScalar());
-        }
-
-        private int GetFabricId(string fabricName, SqlConnection connection, SqlTransaction transaction)
-        {
-            string query = "SELECT КодТкани FROM Ткани WHERE Вид = @Вид";
-            SqlCommand command = new SqlCommand(query, connection, transaction);
-            command.Parameters.AddWithValue("@Вид", fabricName);
-            return Convert.ToInt32(command.ExecuteScalar());
-        }
-
-        private (int EmployeeId, decimal WasteAmount, decimal WastePercentage) GetOriginalOptimizationData(int orderId, SqlConnection connection, SqlTransaction transaction)
-        {
-            string query = @"
-    SELECT 
-        vo.КодСотрудника,
-        vo.КоличествоОтходов,
-        vo.ПроцентОтходов
-    FROM Заказы z
-    JOIN ВариантыОптимизации vo ON z.КодОптимизации = vo.КодОптимизации
-    WHERE z.КодЗаказа = @КодЗаказа";
-
-            SqlCommand command = new SqlCommand(query, connection, transaction);
-            command.Parameters.AddWithValue("@КодЗаказа", orderId);
-
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    return (
-                        reader.GetInt32(0),
-                        reader.GetDecimal(1),
-                        reader.GetDecimal(2)
-                    );
-                }
-            }
-
-            throw new Exception("Не удалось найти данные оригинальной оптимизации");
-        }
-
         private void ButtonExcel_Click(object sender, EventArgs e)
         {
             excelExporter.ExportExcel(DataGridViewOrders);

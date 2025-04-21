@@ -11,7 +11,6 @@ namespace app.Classes
         {
             return dataTable.Rows.Count > 0;
         }
-
         public void ChartPie(GunaChart chart, DataTable data, string nameChart)
         {
             if (checkEmpty(data))
@@ -34,9 +33,10 @@ namespace app.Classes
                 chart.Datasets.Add(datasetТканей);
             }
             else
-            MyCustomMessageBox.ShowMessage("Данных не достаточно.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                MyCustomMessageBox.ShowMessage("Данных не достаточно.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
         public void ChartBar(GunaChart chart, DataTable data, string nameChart)
         {
             if (checkEmpty(data))
@@ -47,14 +47,10 @@ namespace app.Classes
                 chart.XAxes.Display = true;
                 chart.YAxes.Display = true;
                 chart.Title.Text = nameChart;
-
                 var dataset = new GunaBarDataset();
                 dataset.Label = "Количество Изделий";
-
-                // Сортируем данные по количеству изделий (по убыванию)
                 data.DefaultView.Sort = "КоличествоИзделий DESC";
                 data = data.DefaultView.ToTable();
-
                 foreach (DataRow row in data.Rows)
                 {
                     dataset.DataPoints.Add(
@@ -62,7 +58,6 @@ namespace app.Classes
                         Convert.ToDouble(row["КоличествоИзделий"])
                     );
                 }
-
                 chart.Datasets.Add(dataset);
             }
             else
@@ -70,7 +65,6 @@ namespace app.Classes
                 MyCustomMessageBox.ShowMessage("Данных не достаточно.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public void ChartHorizontalBar(GunaChart chart, DataTable data, string nameChart)
         {
             if (checkEmpty(data))
@@ -113,40 +107,29 @@ namespace app.Classes
                 chart.XAxes.Display = true;
                 chart.YAxes.Display = true;
                 chart.Title.Text = nameChart;
-
-                // Dataset для выполненных заказов
                 var completedOrders = new GunaBarDataset();
                 completedOrders.Label = "Выполнено заказов";
-
-                // Dataset для общего количества заказов
                 var totalOrders = new GunaBarDataset();
                 totalOrders.Label = "Всего заказов";
-
-                // Dataset для эффективности (линия)
                 var efficiency = new GunaLineDataset();
                 efficiency.Label = "Эффективность (%)";
                 efficiency.BorderColor = Color.Green;
                 efficiency.BorderWidth = 3;
                 efficiency.FillColor = Color.Transparent;
-
                 foreach (DataRow row in data.Rows)
                 {
                     string brigadeName = row["НазваниеБригады"].ToString();
                     double completed = Convert.ToDouble(row["ЗавершеноЗаказов"]);
                     double total = Convert.ToDouble(row["ВсегоЗаказов"]);
-
-                    // Обработка NULL значения для СреднийПроцентОтходов
-                    double wastePercent = 0; // Значение по умолчанию
+                    double wastePercent = 0;
                     if (row["СреднийПроцентОтходов"] != DBNull.Value)
                     {
                         wastePercent = Convert.ToDouble(row["СреднийПроцентОтходов"]);
                     }
-
                     completedOrders.DataPoints.Add(brigadeName, completed);
                     totalOrders.DataPoints.Add(brigadeName, total);
                     efficiency.DataPoints.Add(brigadeName, 100 - wastePercent);
                 }
-
                 chart.Datasets.Add(completedOrders);
                 chart.Datasets.Add(totalOrders);
                 chart.Datasets.Add(efficiency);

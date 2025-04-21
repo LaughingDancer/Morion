@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Net.Mail;
 using System.Net;
 using System.Windows.Forms;
-
 namespace app.Forms
 {
     public partial class УдалениеПерсонал : Form
@@ -17,7 +16,6 @@ namespace app.Forms
         private string email;
         private DB DB;
         private UC_Персонал ucПерсонал;
-
         public УдалениеПерсонал(int employeeId, string firstName, string lastName, string email, UC_Персонал ucПерсонал)
         {
             InitializeComponent();
@@ -33,12 +31,10 @@ namespace app.Forms
                 (this.ClientSize.Width - labelEmployeeInfo.Width) / 2,
                 (this.ClientSize.Height - labelEmployeeInfo.Height) / 2);
         }
-
         private void IconClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void buttonFire_Click(object sender, EventArgs e)
         {
             DialogResult result = MyCustomMessageBox.ShowMessage(
@@ -50,22 +46,14 @@ namespace app.Forms
             {
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(DB.StringConnection()))
+                    using (SqlConnection connection = new SqlConnection(DB.StringConnectionDB))
                     {
                         connection.Open();
-
-                        // Обновляем статус сотрудника
-                        string queryUpdateStatus = @"
-                    UPDATE Сотрудники 
-                    SET Статус = 'Уволен', 
-                        КодБригады = NULL 
-                    WHERE КодСотрудника = @КодСотрудника";
-
+                        string queryUpdateStatus = @"UPDATE Сотрудники SET Статус = 'Уволен', КодБригады = NULL WHERE КодСотрудника = @КодСотрудника";
                         using (SqlCommand command = new SqlCommand(queryUpdateStatus, connection))
                         {
                             command.Parameters.AddWithValue("@КодСотрудника", employeeId);
                             int rowsAffected = command.ExecuteNonQuery();
-
                             if (rowsAffected > 0)
                             {
                                 SendMessage(email);
@@ -103,14 +91,12 @@ namespace app.Forms
                 Close();
             }
         }
-
         private void SendMessage(string email)
         {
             string smtpServer = "smtp.mail.ru";
             int smtpPort = 587;
             string smtpUsername = "noreplymorion@mail.ru";
             string smtpPassword = "m1wkssLZ6rkq5waDKdLh";
-
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
