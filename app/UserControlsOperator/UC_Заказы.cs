@@ -27,15 +27,22 @@ namespace app.UserControlsOperator
             DataGridViewOrders.Columns["КодЗаказа"].Visible = false;
             DataGridViewOrders.Columns.Add("НазваниеИзделия", "Изделия");
             DataGridViewOrders.Columns.Add("НазваниеРазмера", "Размер");
+            DataGridViewOrders.Columns["НазваниеРазмера"].Width = 185;
             DataGridViewOrders.Columns.Add("ВидТкани", "Ткань");
-            DataGridViewOrders.Columns.Add("Количествозделий", "Количество");
-            DataGridViewOrders.Columns.Add("Количествоыполненных", "Выполненные");
+            DataGridViewOrders.Columns["ВидТкани"].Width = 185;
+            DataGridViewOrders.Columns.Add("КоличествоИзделий", "Количество Изделий (шт)");
+            DataGridViewOrders.Columns.Add("КоличествоВыполненных", "Готовые Изделия (шт)");
             DataGridViewOrders.Columns.Add("Статус", "Статус");
-            DataGridViewOrders.Columns.Add("ОбщаяСтоимость", "Стоимость");
+            DataGridViewOrders.Columns["Статус"].Width = 115;
+            DataGridViewOrders.Columns.Add("ОбщаяСтоимость", "Стоимость (₽)");
+            DataGridViewOrders.Columns["ОбщаяСтоимость"].Width = 85;
             DataGridViewOrders.Columns.Add("ДатаЗаказа", "Дата Заказа");
+            DataGridViewOrders.Columns["ДатаЗаказа"].Width = 85;
             DataGridViewOrders.Columns.Add("ДатаВыполнения", "Дата Выполнения");
+            DataGridViewOrders.Columns["ДатаВыполнения"].Width = 85;
             DataGridViewOrders.Columns["ДатаВыполнения"].DefaultCellStyle.NullValue = "-";
             DataGridViewOrders.Columns.Add("НазваниеБригады", "Бригада");
+            DataGridViewOrders.Columns["НазваниеБригады"].Width = 40;
             DataGridViewImageColumn newRepeatColumn = new DataGridViewImageColumn();
             newRepeatColumn.Name = "RepeatColumn";
             newRepeatColumn.HeaderText = "Повторить";
@@ -43,7 +50,7 @@ namespace app.UserControlsOperator
             newRepeatColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             DataGridViewOrders.Columns.Add(newRepeatColumn);
             DataGridViewOrders.Columns["RepeatColumn"].DisplayIndex = DataGridViewOrders.Columns.Count - 1;
-            DataGridViewOrders.Columns["RepeatColumn"].Width = 60;
+            DataGridViewOrders.Columns["RepeatColumn"].Width = 45;
             DataGridViewOrders.Columns["RepeatColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridViewImageColumn newDeleteColumn = new DataGridViewImageColumn();
             newDeleteColumn.Name = "DeleteColumn";
@@ -52,7 +59,7 @@ namespace app.UserControlsOperator
             newDeleteColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             DataGridViewOrders.Columns.Add(newDeleteColumn);
             DataGridViewOrders.Columns["DeleteColumn"].DisplayIndex = DataGridViewOrders.Columns.Count - 1;
-            DataGridViewOrders.Columns["DeleteColumn"].Width = 60;
+            DataGridViewOrders.Columns["DeleteColumn"].Width = 45;
             DataGridViewOrders.Columns["DeleteColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private static void ReadSingleRow(DataGridView DGW, IDataRecord record)

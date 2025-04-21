@@ -29,7 +29,7 @@ namespace app.UserControls
             DataGridViewPeople.Columns.Add("Имя", "Имя");
             DataGridViewPeople.Columns.Add("ЭлектроннаяПочта", "Email");
             DataGridViewPeople.Columns.Add("ДатаПриема", "Дата Приема");
-            DataGridViewPeople.Columns.Add("Зарплата", "Зарплата");
+            DataGridViewPeople.Columns.Add("Зарплата", "Зарплата ₽");
             DataGridViewPeople.Columns.Add("Должность", "Должность");
             DataGridViewPeople.Columns.Add("Бригада", "Бригада");
             DataGridViewImageColumn newEditColumn = new DataGridViewImageColumn();

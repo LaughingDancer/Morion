@@ -159,8 +159,7 @@
             this.TextBoxCompleted.Location = new System.Drawing.Point(100, 203);
             this.TextBoxCompleted.Margin = new System.Windows.Forms.Padding(4, 4, 4, 10);
             this.TextBoxCompleted.Name = "TextBoxCompleted";
-            this.TextBoxCompleted.PasswordChar = '\0';
-            this.TextBoxCompleted.PlaceholderText = "Количество Выполненных Изделий";
+            this.TextBoxCompleted.PlaceholderText = "Количество Готовых Изделий (шт)";
             this.TextBoxCompleted.SelectedText = "";
             this.TextBoxCompleted.Size = new System.Drawing.Size(350, 50);
             this.TextBoxCompleted.TabIndex = 58;

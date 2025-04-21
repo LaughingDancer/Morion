@@ -30,7 +30,7 @@ namespace app.UserControls
             {
                 TextBoxDateOfHire.Text = dateOfHire.ToString("dd.MM.yyyy");
             }
-            TextBoxSalary.Text = employeeData["Зарплата"];
+            TextBoxSalary.Text = employeeData["Зарплата"] + " ₽";
             TextBoxPost.Text = employeeData["Должность"];
             TextBoxLogin.Text = employeeData["Логин"];
             if (photoBytes != null)

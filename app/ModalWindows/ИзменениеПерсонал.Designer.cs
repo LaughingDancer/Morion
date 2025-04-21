@@ -158,8 +158,7 @@
             this.textBoxSalary.Location = new System.Drawing.Point(50, 450);
             this.textBoxSalary.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxSalary.Name = "textBoxSalary";
-            this.textBoxSalary.PasswordChar = '\0';
-            this.textBoxSalary.PlaceholderText = "Зарплата";
+            this.textBoxSalary.PlaceholderText = "Зарплата (₽)";
             this.textBoxSalary.SelectedText = "";
             this.textBoxSalary.Size = new System.Drawing.Size(350, 50);
             this.textBoxSalary.TabIndex = 36;
@@ -184,7 +183,6 @@
             this.textBoxEmail.Location = new System.Drawing.Point(50, 390);
             this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.PasswordChar = '\0';
             this.textBoxEmail.PlaceholderText = "Электронная Почта";
             this.textBoxEmail.SelectedText = "";
             this.textBoxEmail.Size = new System.Drawing.Size(350, 50);
@@ -210,7 +208,6 @@
             this.textBoxSurname.Location = new System.Drawing.Point(50, 270);
             this.textBoxSurname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.PasswordChar = '\0';
             this.textBoxSurname.PlaceholderText = "Фамилия";
             this.textBoxSurname.SelectedText = "";
             this.textBoxSurname.Size = new System.Drawing.Size(350, 50);
@@ -236,7 +233,6 @@
             this.textBoxName.Location = new System.Drawing.Point(50, 330);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.PasswordChar = '\0';
             this.textBoxName.PlaceholderText = "Имя";
             this.textBoxName.SelectedText = "";
             this.textBoxName.Size = new System.Drawing.Size(350, 50);

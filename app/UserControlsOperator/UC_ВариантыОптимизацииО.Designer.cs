@@ -106,7 +106,6 @@
             this.searchTextBox.Location = new System.Drawing.Point(20, 70);
             this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 10, 20);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.PasswordChar = '\0';
             this.searchTextBox.PlaceholderText = "Поиск";
             this.searchTextBox.SelectedText = "";
             this.searchTextBox.Size = new System.Drawing.Size(300, 50);

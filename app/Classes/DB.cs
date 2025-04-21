@@ -291,7 +291,7 @@ namespace app.Classes
             DataTable dataTable = new DataTable();
             try
             {
-                string query = @"SELECT б.НазваниеБригады, COUNT(з.КодЗаказа) AS ВсегоЗаказов, SUM(CASE WHEN з.Статус = 'Выполнено' THEN 1 ELSE 0 END) AS ЗавершеноЗаказов, SUM(з.ОбщаяСтоимость) AS ОбщаяСтоимость, AVG(во.ПроцентОтходов) AS СреднийПроцентОтходов FROM Бригады б LEFT JOIN Заказы з ON б.КодБригады = з.КодБригады LEFT JOIN ВариантыОптимизации во ON з.КодОптимизации = во.КодОптимизации GROUP BY б.НазваниеБригады ORDER BY ЗавершеноЗаказов DESC";
+                string query = @"SELECT б.НазваниеБригады, COUNT(з.КодЗаказа) AS ВсегоЗаказов, SUM(CASE WHEN з.Статус = 'Выполнено' THEN 1 ELSE 0 END) AS ЗавершеноЗаказов, SUM(з.ОбщаяСтоимость) AS ОбщаяСтоимость, SUM(во.ПроцентОтходов) AS СреднийПроцентОтходов FROM Бригады б LEFT JOIN Заказы з ON б.КодБригады = з.КодБригады LEFT JOIN ВариантыОптимизации во ON з.КодОптимизации = во.КодОптимизации GROUP BY б.НазваниеБригады ORDER BY ЗавершеноЗаказов DESC";
                 SqlDataAdapter adapter = QueryExecute(query);
                 if (adapter != null)
                 {

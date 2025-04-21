@@ -15,7 +15,7 @@ namespace app.Classes
             {
                 if (string.IsNullOrWhiteSpace(firstName))
                     return false;
-                return Regex.IsMatch(firstName, @"^[а-яА-Яa-zA-Z]+$");
+                return Regex.IsMatch(firstName, @"^[а-яА-Яa-zA-Z0-9\s\-\.,]+$");
             }
             public bool ValidateEmail(string email)
             {

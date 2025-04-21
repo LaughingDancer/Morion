@@ -71,6 +71,15 @@ namespace app.UserControlsOperator
                     row["ПроцентОтходов"] = Convert.ToDecimal(row["ПроцентОтходов"]).ToString("N2");
                 }
                 DataGridViewOptimizationOptions.DataSource = resultTable;
+                if (DataGridViewOptimizationOptions.Columns.Count > 0)
+                {
+                    DataGridViewOptimizationOptions.Columns["Изделие"].HeaderText = "Изделие";
+                    DataGridViewOptimizationOptions.Columns["Размер"].HeaderText = "Размер";
+                    DataGridViewOptimizationOptions.Columns["КоличествоИзделий"].HeaderText = "Количество (шт)";
+                    DataGridViewOptimizationOptions.Columns["КоличествоОтходов"].HeaderText = "Отходы (м)";
+                    DataGridViewOptimizationOptions.Columns["ПроцентОтходов"].HeaderText = "Отходы (%)";
+                    DataGridViewOptimizationOptions.Columns["ДатаСоздания"].HeaderText = "Дата Создания";
+                }
             }
         }
         private void DataGridViewOptimizationOptions_CellClick(object sender, DataGridViewCellEventArgs e)

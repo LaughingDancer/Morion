@@ -24,7 +24,7 @@ namespace app.UserControlsOperator
         {
             DataGridViewBrigade.Columns.Add("КодБригады", "КодБригады");
             DataGridViewBrigade.Columns["КодБригады"].Visible = false;
-            DataGridViewBrigade.Columns.Add("НазваниеБригады", "Название бригады");
+            DataGridViewBrigade.Columns.Add("НазваниеБригады", "Название Бригады");
             DataGridViewImageColumn newEditColumn = new DataGridViewImageColumn();
             newEditColumn.Name = "EditColumn";
             newEditColumn.HeaderText = "Изменить";

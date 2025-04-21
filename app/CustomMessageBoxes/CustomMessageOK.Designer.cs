@@ -42,7 +42,7 @@
             this.PanelMessage.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMessage.Location = new System.Drawing.Point(0, 0);
             this.PanelMessage.Name = "PanelMessage";
-            this.PanelMessage.Size = new System.Drawing.Size(30, 180);
+            this.PanelMessage.Size = new System.Drawing.Size(30, 214);
             this.PanelMessage.TabIndex = 2;
             // 
             // LabelMessage
@@ -50,9 +50,9 @@
             this.LabelMessage.AutoSize = false;
             this.LabelMessage.BackColor = System.Drawing.Color.Transparent;
             this.LabelMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelMessage.Location = new System.Drawing.Point(169, 35);
+            this.LabelMessage.Location = new System.Drawing.Point(165, 45);
             this.LabelMessage.Name = "LabelMessage";
-            this.LabelMessage.Size = new System.Drawing.Size(249, 69);
+            this.LabelMessage.Size = new System.Drawing.Size(296, 83);
             this.LabelMessage.TabIndex = 4;
             this.LabelMessage.Text = "Сообщение";
             // 
@@ -68,9 +68,9 @@
             this.ButtonOK.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ButtonOK.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.ButtonOK.ForeColor = System.Drawing.Color.White;
-            this.ButtonOK.Location = new System.Drawing.Point(169, 110);
+            this.ButtonOK.Location = new System.Drawing.Point(165, 134);
             this.ButtonOK.Name = "ButtonOK";
-            this.ButtonOK.Size = new System.Drawing.Size(249, 35);
+            this.ButtonOK.Size = new System.Drawing.Size(296, 35);
             this.ButtonOK.TabIndex = 5;
             this.ButtonOK.Text = "ОК";
             this.ButtonOK.Click += new System.EventHandler(this.ButtonOK_Click);
@@ -80,7 +80,7 @@
             this.PictureBoxIcon.BackColor = System.Drawing.Color.Transparent;
             this.PictureBoxIcon.Image = global::app.Properties.Resources.checkOK;
             this.PictureBoxIcon.ImageRotate = 0F;
-            this.PictureBoxIcon.Location = new System.Drawing.Point(36, 35);
+            this.PictureBoxIcon.Location = new System.Drawing.Point(32, 45);
             this.PictureBoxIcon.Name = "PictureBoxIcon";
             this.PictureBoxIcon.Size = new System.Drawing.Size(110, 110);
             this.PictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -102,7 +102,7 @@
             this.AcceptButton = this.ButtonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 180);
+            this.ClientSize = new System.Drawing.Size(492, 214);
             this.Controls.Add(this.ButtonOK);
             this.Controls.Add(this.LabelMessage);
             this.Controls.Add(this.PictureBoxIcon);

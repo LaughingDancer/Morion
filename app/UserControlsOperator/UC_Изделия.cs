@@ -30,9 +30,9 @@ namespace app.UserControlsOperator
             DataGridViewProduct.Columns["КодИзделия"].Visible = false;
             DataGridViewProduct.Columns.Add("НазваниеИзделия", "Изделие");
             DataGridViewProduct.Columns.Add("НазваниеРазмер", "Размер");
-            DataGridViewProduct.Columns.Add("НеобходимаяДлинаТкани", "Длина");
-            DataGridViewProduct.Columns.Add("НеобходимаяШиринаТкани", "Ширина");
-            DataGridViewProduct.Columns.Add("Плотность", "Плотность");
+            DataGridViewProduct.Columns.Add("НеобходимаяДлинаТкани", "Длина (м)");
+            DataGridViewProduct.Columns.Add("НеобходимаяШиринаТкани", "Ширина (м)");
+            DataGridViewProduct.Columns.Add("Плотность", "Плотность (г/м2)");
             DataGridViewProduct.Columns.Add("КодТкани", "Ткань");
             DataGridViewImageColumn newEditColumn = new DataGridViewImageColumn();
             newEditColumn.Name = "EditColumn";
@@ -41,7 +41,7 @@ namespace app.UserControlsOperator
             newEditColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             DataGridViewProduct.Columns.Add(newEditColumn);
             DataGridViewProduct.Columns["EditColumn"].DisplayIndex = DataGridViewProduct.Columns.Count - 1;
-            DataGridViewProduct.Columns["EditColumn"].Width = 60;
+            DataGridViewProduct.Columns["EditColumn"].Width = 80;
             DataGridViewProduct.Columns["EditColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridViewImageColumn newDeleteColumn = new DataGridViewImageColumn();
             newDeleteColumn.Name = "DeleteColumn";
@@ -50,7 +50,7 @@ namespace app.UserControlsOperator
             newDeleteColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             DataGridViewProduct.Columns.Add(newDeleteColumn);
             DataGridViewProduct.Columns["DeleteColumn"].DisplayIndex = DataGridViewProduct.Columns.Count - 1;
-            DataGridViewProduct.Columns["DeleteColumn"].Width = 60;
+            DataGridViewProduct.Columns["DeleteColumn"].Width = 80;
             DataGridViewProduct.Columns["DeleteColumn"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private static void ReadSingleRow(DataGridView DGW, IDataRecord record)

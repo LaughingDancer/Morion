@@ -87,8 +87,7 @@
             this.TextBoxLenght1.Location = new System.Drawing.Point(0, 0);
             this.TextBoxLenght1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextBoxLenght1.Name = "TextBoxLenght1";
-            this.TextBoxLenght1.PasswordChar = '\0';
-            this.TextBoxLenght1.PlaceholderText = "Длина";
+            this.TextBoxLenght1.PlaceholderText = "Длина (м)";
             this.TextBoxLenght1.SelectedText = "";
             this.TextBoxLenght1.Size = new System.Drawing.Size(250, 50);
             this.TextBoxLenght1.TabIndex = 35;
@@ -114,8 +113,7 @@
             this.TextBoxWidth1.Location = new System.Drawing.Point(258, 0);
             this.TextBoxWidth1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextBoxWidth1.Name = "TextBoxWidth1";
-            this.TextBoxWidth1.PasswordChar = '\0';
-            this.TextBoxWidth1.PlaceholderText = "Ширина";
+            this.TextBoxWidth1.PlaceholderText = "Ширина (м)";
             this.TextBoxWidth1.SelectedText = "";
             this.TextBoxWidth1.Size = new System.Drawing.Size(250, 50);
             this.TextBoxWidth1.TabIndex = 41;
@@ -141,8 +139,7 @@
             this.TextBoxAmountFabric1.Location = new System.Drawing.Point(516, 0);
             this.TextBoxAmountFabric1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextBoxAmountFabric1.Name = "TextBoxAmountFabric1";
-            this.TextBoxAmountFabric1.PasswordChar = '\0';
-            this.TextBoxAmountFabric1.PlaceholderText = "Количество Ткани";
+            this.TextBoxAmountFabric1.PlaceholderText = "Количество Ткани (шт)";
             this.TextBoxAmountFabric1.SelectedText = "";
             this.TextBoxAmountFabric1.Size = new System.Drawing.Size(250, 50);
             this.TextBoxAmountFabric1.TabIndex = 42;

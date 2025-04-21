@@ -155,8 +155,7 @@
             this.TextBoxWidth.Location = new System.Drawing.Point(50, 450);
             this.TextBoxWidth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxWidth.Name = "TextBoxWidth";
-            this.TextBoxWidth.PasswordChar = '\0';
-            this.TextBoxWidth.PlaceholderText = "Ширина";
+            this.TextBoxWidth.PlaceholderText = "Ширина (м)";
             this.TextBoxWidth.SelectedText = "";
             this.TextBoxWidth.Size = new System.Drawing.Size(350, 50);
             this.TextBoxWidth.TabIndex = 45;
@@ -181,8 +180,7 @@
             this.TextBoxLength.Location = new System.Drawing.Point(50, 390);
             this.TextBoxLength.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxLength.Name = "TextBoxLength";
-            this.TextBoxLength.PasswordChar = '\0';
-            this.TextBoxLength.PlaceholderText = "Длина";
+            this.TextBoxLength.PlaceholderText = "Длина (м)";
             this.TextBoxLength.SelectedText = "";
             this.TextBoxLength.Size = new System.Drawing.Size(350, 50);
             this.TextBoxLength.TabIndex = 44;
@@ -207,7 +205,6 @@
             this.TextBoxProduct.Location = new System.Drawing.Point(50, 270);
             this.TextBoxProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxProduct.Name = "TextBoxProduct";
-            this.TextBoxProduct.PasswordChar = '\0';
             this.TextBoxProduct.PlaceholderText = "Изделие";
             this.TextBoxProduct.SelectedText = "";
             this.TextBoxProduct.Size = new System.Drawing.Size(350, 50);
@@ -255,8 +252,7 @@
             this.TextBoxDensity.Location = new System.Drawing.Point(50, 510);
             this.TextBoxDensity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 10);
             this.TextBoxDensity.Name = "TextBoxDensity";
-            this.TextBoxDensity.PasswordChar = '\0';
-            this.TextBoxDensity.PlaceholderText = "Плотность";
+            this.TextBoxDensity.PlaceholderText = "Плотность ( г/м2)";
             this.TextBoxDensity.SelectedText = "";
             this.TextBoxDensity.Size = new System.Drawing.Size(350, 50);
             this.TextBoxDensity.TabIndex = 50;

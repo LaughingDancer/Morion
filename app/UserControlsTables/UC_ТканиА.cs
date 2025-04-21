@@ -24,10 +24,10 @@ namespace app.UserControls
             DataGridViewPeople.Columns.Add("КодТкани", "КодТкани");
             DataGridViewPeople.Columns["КодТкани"].Visible = false;
             DataGridViewPeople.Columns.Add("Вид", "Вид");
-            DataGridViewPeople.Columns.Add("Ширина", "Ширина");
-            DataGridViewPeople.Columns.Add("Длина", "Длина");
-            DataGridViewPeople.Columns.Add("ЦенаЗаМетр", "Цена за метр");
-            DataGridViewPeople.Columns.Add("Количество", "Количество");
+            DataGridViewPeople.Columns.Add("Ширина", "Ширина (м)");
+            DataGridViewPeople.Columns.Add("Длина", "Длина (м)");
+            DataGridViewPeople.Columns.Add("ЦенаЗаМетр", "Цена за метр (₽)");
+            DataGridViewPeople.Columns.Add("Количество", "Количество (шт)");
         }
         private static void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {

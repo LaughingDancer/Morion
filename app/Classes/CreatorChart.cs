@@ -18,9 +18,21 @@ namespace app.Classes
                 chart.Datasets.Clear();
                 chart.Legend.Position = LegendPosition.Right;
                 chart.Legend.Display = true;
+                chart.Legend.LabelFont = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 14,
+                    Style = ChartFontStyle.Bold
+                };
                 chart.XAxes.Display = false;
                 chart.YAxes.Display = false;
                 chart.Title.Text = nameChart;
+                chart.Title.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 18,
+                    Style = ChartFontStyle.Bold
+                };
                 var datasetТканей = new GunaPieDataset();
                 datasetТканей.Label = "Количество Изделий по Тканям";
                 foreach (DataRow row in data.Rows)
@@ -30,6 +42,12 @@ namespace app.Classes
                         Convert.ToDouble(row["КоличествоИзделий"])
                     );
                 }
+                //datasetТканей.Tooltip.Font = new ChartFont
+                //{
+                //    FontName = "Segoe UI",
+                //    Size = 16, // Увеличьте размер шрифта
+                //    Style = ChartFontStyle.Bold
+                //};
                 chart.Datasets.Add(datasetТканей);
             }
             else
@@ -42,11 +60,34 @@ namespace app.Classes
             if (checkEmpty(data))
             {
                 chart.Datasets.Clear();
-                chart.Legend.Display = false;
+                chart.Legend.Position = LegendPosition.Right;
+                chart.Legend.Display = true;
+                chart.Legend.LabelFont = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 14,
+                    Style = ChartFontStyle.Bold
+                };
                 chart.YAxes.GridLines.Display = false;
                 chart.XAxes.Display = true;
                 chart.YAxes.Display = true;
+                chart.YAxes.Ticks.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 12
+                };
+                chart.XAxes.Ticks.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 12
+                };
                 chart.Title.Text = nameChart;
+                chart.Title.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 18,
+                    Style = ChartFontStyle.Bold
+                };
                 var dataset = new GunaBarDataset();
                 dataset.Label = "Количество Изделий";
                 data.DefaultView.Sort = "КоличествоИзделий DESC";
@@ -70,10 +111,33 @@ namespace app.Classes
             if (checkEmpty(data))
             {
                 chart.Datasets.Clear();
+                chart.Legend.Position = LegendPosition.Right;
                 chart.Legend.Display = true;
+                chart.Legend.LabelFont = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 14,
+                    Style = ChartFontStyle.Bold
+                };
                 chart.XAxes.Display = true;
                 chart.YAxes.Display = true;
+                chart.YAxes.Ticks.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 12
+                };
+                chart.XAxes.Ticks.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 12
+                };
                 chart.Title.Text = nameChart;
+                chart.Title.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 18,
+                    Style = ChartFontStyle.Bold
+                };
                 var datasetОтходов = new GunaHorizontalBarDataset();
                 datasetОтходов.Label = "Количество Отходов";
                 foreach (DataRow row in data.Rows)
@@ -103,10 +167,33 @@ namespace app.Classes
             if (checkEmpty(data))
             {
                 chart.Datasets.Clear();
+                chart.Legend.Position = LegendPosition.Right;
                 chart.Legend.Display = true;
+                chart.Legend.LabelFont = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 14,
+                    Style = ChartFontStyle.Bold
+                };
                 chart.XAxes.Display = true;
                 chart.YAxes.Display = true;
+                chart.YAxes.Ticks.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 12
+                };
+                chart.XAxes.Ticks.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 12
+                };
                 chart.Title.Text = nameChart;
+                chart.Title.Font = new ChartFont
+                {
+                    FontName = "Segoe UI",
+                    Size = 18,
+                    Style = ChartFontStyle.Bold
+                };
                 var completedOrders = new GunaBarDataset();
                 completedOrders.Label = "Выполнено заказов";
                 var totalOrders = new GunaBarDataset();

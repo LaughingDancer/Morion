@@ -25,14 +25,18 @@ namespace app.UserControlsOperator
             DataGridViewOptimizationOptions.Columns["КодСотрудника"].Visible = false;
             DataGridViewOptimizationOptions.Columns.Add("ФамилияСотрудника", "Сотрудник");
             DataGridViewOptimizationOptions.Columns.Add("ВидТкани", "Ткань");
-            DataGridViewOptimizationOptions.Columns.Add("ДлинаТкани", "Длина");
-            DataGridViewOptimizationOptions.Columns.Add("ШиринаТкани", "Ширина");
+            DataGridViewOptimizationOptions.Columns.Add("ДлинаТкани", "Длина (м)");
+            DataGridViewOptimizationOptions.Columns.Add("ШиринаТкани", "Ширина (м)");
             DataGridViewOptimizationOptions.Columns.Add("НазваниеИзделия", "Изделия");
             DataGridViewOptimizationOptions.Columns.Add("НазваниеРазмер", "Размер");
-            DataGridViewOptimizationOptions.Columns.Add("КоличествоИзделий", "Количество Изделий");
-            DataGridViewOptimizationOptions.Columns.Add("КоличествоОтходов", "Количество Отходов");
-            DataGridViewOptimizationOptions.Columns.Add("ПроцентОтходов", "Процент Отходов");
+            DataGridViewOptimizationOptions.Columns["НазваниеРазмер"].Width = 65;
+            DataGridViewOptimizationOptions.Columns.Add("КоличествоИзделий", "Количество Изделий (шт)");
+            DataGridViewOptimizationOptions.Columns.Add("КоличествоОтходов", "Отходы (м)");
+            DataGridViewOptimizationOptions.Columns["КоличествоОтходов"].Width = 65;
+            DataGridViewOptimizationOptions.Columns.Add("ПроцентОтходов", "Отходы (%)");
+            DataGridViewOptimizationOptions.Columns["ПроцентОтходов"].Width = 65;
             DataGridViewOptimizationOptions.Columns.Add("ДатаСоздания", "Дата Создания");
+            DataGridViewOptimizationOptions.Columns["ДатаСоздания"].Width = 65;
         }
         private static void ReadSingleRow(DataGridView DGW, IDataRecord Record)
         {
