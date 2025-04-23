@@ -1,6 +1,6 @@
 ## Установка
 
-Для установки приложения необходимо скачать последний релиз, доступный во вкладке [**Releases**](https://github.com/your-repo/releases).
+Для установки приложения необходимо скачать последний релиз, доступный во вкладке [**Releases**](https://github.com/LaughingDancer/Morion/releases).
 
 ---
 
