@@ -47,12 +47,13 @@ namespace app.UserControlsSeamstress
             DataGridViewOrders.Columns["КодЗаказа"].Visible = false;
             DataGridViewOrders.Columns.Add("НазваниеИзделия", "Изделия");
             DataGridViewOrders.Columns.Add("НазваниеРазмера", "Размер");
-            DataGridViewOrders.Columns.Add("КоличествоИзделий", "Количество (шт)");
-            DataGridViewOrders.Columns.Add("КоличествоВыполненных", "Готовые (шт)");
+            DataGridViewOrders.Columns.Add("КоличествоИзделий", "Количество Изделий (шт)");
+            DataGridViewOrders.Columns.Add("КоличествоВыполненных", "Готовые Изделия (шт)");
             DataGridViewOrders.Columns.Add("Вид", "Ткань");
             DataGridViewOrders.Columns.Add("Длина", "Длина (м)");
             DataGridViewOrders.Columns.Add("Ширина", "Ширина (м)");
             DataGridViewOrders.Columns.Add("ДатаЗаказа", "Дата Заказа");
+            DataGridViewOrders.Columns["ДатаЗаказа"].Width = 80;
         }
         private static void ReadSingleRow(DataGridView DGW, IDataRecord record)
         {

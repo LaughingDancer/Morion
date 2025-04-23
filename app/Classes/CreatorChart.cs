@@ -42,12 +42,6 @@ namespace app.Classes
                         Convert.ToDouble(row["КоличествоИзделий"])
                     );
                 }
-                //datasetТканей.Tooltip.Font = new ChartFont
-                //{
-                //    FontName = "Segoe UI",
-                //    Size = 16, // Увеличьте размер шрифта
-                //    Style = ChartFontStyle.Bold
-                //};
                 chart.Datasets.Add(datasetТканей);
             }
             else
@@ -89,7 +83,7 @@ namespace app.Classes
                     Style = ChartFontStyle.Bold
                 };
                 var dataset = new GunaBarDataset();
-                dataset.Label = "Количество Изделий";
+                dataset.Label = "Количество Изделий (шт)";
                 data.DefaultView.Sort = "КоличествоИзделий DESC";
                 data = data.DefaultView.ToTable();
                 foreach (DataRow row in data.Rows)
@@ -139,7 +133,7 @@ namespace app.Classes
                     Style = ChartFontStyle.Bold
                 };
                 var datasetОтходов = new GunaHorizontalBarDataset();
-                datasetОтходов.Label = "Количество Отходов";
+                datasetОтходов.Label = "Количество Отходов (м)";
                 foreach (DataRow row in data.Rows)
                 {
                     datasetОтходов.DataPoints.Add(
@@ -149,7 +143,7 @@ namespace app.Classes
                 }
                 chart.Datasets.Add(datasetОтходов);
                 var datasetПроцентОтходов = new GunaHorizontalBarDataset();
-                datasetПроцентОтходов.Label = "Процент Отходов";
+                datasetПроцентОтходов.Label = "Процент Отходов (%)";
                 foreach (DataRow row in data.Rows)
                 {
                     datasetПроцентОтходов.DataPoints.Add(
@@ -195,9 +189,9 @@ namespace app.Classes
                     Style = ChartFontStyle.Bold
                 };
                 var completedOrders = new GunaBarDataset();
-                completedOrders.Label = "Выполнено заказов";
+                completedOrders.Label = "Выполнено заказов (шт)";
                 var totalOrders = new GunaBarDataset();
-                totalOrders.Label = "Всего заказов";
+                totalOrders.Label = "Всего заказов (шт)";
                 var efficiency = new GunaLineDataset();
                 efficiency.Label = "Эффективность (%)";
                 efficiency.BorderColor = Color.Green;

@@ -77,6 +77,16 @@ namespace app
         {
             var login = FormPanelTextBoxLogin.Text;
             var password = FormPanelTextBoxPassword.Text;
+            if (string.IsNullOrEmpty(login))
+            {
+                MyCustomMessageBox.ShowMessage("Заполните логин", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrEmpty(password))
+            {
+                MyCustomMessageBox.ShowMessage("Заполните пароль", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 MyCustomMessageBox.ShowMessage("Заполните все поля", MessageBoxButtons.OK, MessageBoxIcon.Warning);
